@@ -1288,7 +1288,8 @@
 
   .ill-node rect {
     fill: var(--color-ink-2);
-    stroke: rgb(233 228 216 / 0.35);
+    /* The fill barely differs from the page, so the outline is the only boundary: keep it above 3:1. */
+    stroke: rgb(233 228 216 / 0.42);
     stroke-width: 1.5;
   }
 
@@ -1343,7 +1344,8 @@
   }
 
   .ill-grid {
-    stroke: var(--color-line);
+    /* A figure guide carries meaning, so it is drawn stronger than the layout lines of --color-line. */
+    stroke: rgb(233 228 216 / 0.45);
     stroke-dasharray: 3 5;
   }
 
@@ -1368,11 +1370,23 @@
   }
 
   .ill-canvas svg {
-    min-width: 30rem;
+    min-width: 34rem;
   }
 
   .ill-canvas-wide svg {
-    min-width: 40rem;
+    min-width: 44rem;
+  }
+
+  /* Scrolled down to its minimum width the drawing renders at about three quarters of its own scale,
+     which would put the mono metadata below a readable size; it is set larger there instead. */
+  @media (width <= 40rem) {
+    .ill-canvas .ill-meta {
+      font-size: 15px;
+    }
+
+    .ill-canvas .ill-label-sm {
+      font-size: 17px;
+    }
   }
 
   .ill-key {
@@ -1453,6 +1467,8 @@
 
   .ill-node-alert rect {
     stroke: var(--color-blood);
+    stroke-width: 3;
+    stroke-dasharray: 6 4;
   }
 
   .ill-caption {
@@ -1646,6 +1662,15 @@
   .ill-fill-bone,
   .ill-fill-muted {
     fill: #000 !important;
+  }
+
+  /* Colour is gone on paper, so the two series are told apart by weight and dash instead. */
+  .ill-curve-alert {
+    stroke-width: 4 !important;
+  }
+
+  .ill-curve-bone {
+    stroke-dasharray: 8 4;
   }
 
   .card-grid,

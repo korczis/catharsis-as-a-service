@@ -20,8 +20,8 @@ references = ["mcewen-1998", "ochsner-gross-2005", "cohen-wills-1985", "saarikal
 [[extra.figures]]
 kind = "curves"
 id = "fig-stress-termination"
-title = "Stresová reakce, která odezní, a reakce, která neodeznívá"
-description = "Spojnicový graf s časem na vodorovné ose a stresovou reakcí na svislé ose. Obě křivky po stresoru stoupnou; jedna se vrátí na výchozí úroveň, druhá zůstává zvýšená."
+title = "Stresová reakce, která se vypne, a reakce, která se nevypne"
+description = "Spojnicový graf s časem na vodorovné ose a stresovou reakcí na svislé ose. Obě křivky po stresoru stoupnou; jedna se vrátí na výchozí úroveň, druhá zůstane zvýšená."
 caption = "Obrázek 1. Stresové mediátory akutně chrání a při nedostatečném ukončení přispívají k alostatické zátěži (McEwen, 1998). Koncepční ilustrace, nikoli naměřená data."
 axis_x = "čas"
 axis_y = "stresová reakce"
@@ -29,8 +29,8 @@ baseline = "výchozí úroveň"
 baseline_value = 20
 events = [{ at = 1, label = "stresor" }]
 series = [
-  { label = "neodeznívá", style = "alert", values = [20, 65, 60, 56, 54, 53, 52] },
-  { label = "odezní", style = "bone", values = [20, 65, 42, 28, 22, 20, 20] },
+  { label = "nedostatečně ukončená", style = "alert", values = [20, 65, 60, 56, 54, 53, 52] },
+  { label = "vypne se", style = "bone", values = [20, 65, 42, 28, 22, 20, 20] },
 ]
 
 +++

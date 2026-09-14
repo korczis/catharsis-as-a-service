@@ -35,9 +35,9 @@ In print every stroke and text is forced to black on white (`@media print`).
 
 ## Narrow screens
 
-A `curves` or `pipeline` figure keeps a minimum drawing width (30rem, or 40rem for a row of more than three
+A `curves` or `pipeline` figure keeps a minimum drawing width (34rem, or 44rem for a row of more than three
 nodes) and scrolls sideways inside its own focusable region below it, rather than shrinking its labels until
-they cannot be read. The page body itself never scrolls sideways, and in print the region expands and the
+they cannot be read; at those widths the mono metadata is set larger, because the drawing is scaled down. The page body itself never scrolls sideways, and in print the region expands and the
 whole figure is drawn. Because a `curves` figure carries its series labels at the right edge of the drawing,
 where a narrow screen scrolls them out of view, the same labels are repeated as a key below the figure and
 CSS shows that key only at those widths. The fixed kinds used on the landing page are unaffected.

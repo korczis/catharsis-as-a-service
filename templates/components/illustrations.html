@@ -4,7 +4,7 @@
 
 {% component illustration.relief_loop(id: string, labels: map) %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
-  <svg viewBox="0 0 720 420" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
     <defs>
@@ -50,7 +50,7 @@
 
 {% component illustration.relief_curve(id: string, labels: map) %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
-  <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
     <line x1="70" y1="330" x2="690" y2="330" class="ill-axis"/>
@@ -71,7 +71,7 @@
 
 {% component illustration.synchrony(id: string, labels: map) %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
-  <svg viewBox="0 0 720 360" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 720 360" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
     <text x="40" y="36" class="ill-meta">{{ labels.before }}</text>
@@ -118,7 +118,7 @@
   {#- Below the drawing's minimum width the figure scrolls sideways inside its own region rather than
       shrinking the labels out of legibility; the region is focusable so it can be scrolled by keyboard. -#}
   <div class="ill-canvas" tabindex="0" role="group" aria-label="{{ labels.title }}">
-  <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
     <line x1="70" y1="330" x2="690" y2="330" class="ill-axis"/>
@@ -169,10 +169,11 @@
 {% component illustration.pipeline(id: string, labels: map) %}
 {%- set n = labels.nodes | length %}
 {%- set w = (680 - 28 * (n - 1)) / n %}
+{%- if labels.loop is defined %}{% set height = 320 %}{% else %}{% set height = 206 %}{% endif %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
   {#- See illustration.curves: the same scroll region, widened once a row carries more than three nodes. -#}
   <div class="ill-canvas{% if n > 3 %} ill-canvas-wide{% endif %}" tabindex="0" role="group" aria-label="{{ labels.title }}">
-  <svg viewBox="0 0 720 320" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+  <svg viewBox="0 0 720 {{ height }}" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
     <defs>
