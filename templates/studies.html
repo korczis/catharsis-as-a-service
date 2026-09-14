@@ -17,7 +17,9 @@
   </div>
 </section>
 
-<section class="section" aria-label="{{ section.title }}">
+{#- Unnamed on purpose: naming it makes a second region landmark that duplicates the hero
+    above, which is already named by the h1. -#}
+<section class="section">
   <div class="shell">
     {%- for level in section.extra.levels %}
     <section class="mt-16 first:mt-0" aria-labelledby="level-{{ level | lower }}-title">

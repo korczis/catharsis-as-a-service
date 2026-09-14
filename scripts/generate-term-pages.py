@@ -18,8 +18,8 @@ from pathlib import Path
 
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+\s*\n", re.S)
 LANGS = ("en", "cs")
-# scripts/validate-content.py enforces this range on every page's description.
-DESCRIPTION = (50, 320)
+# Inside scripts/validate-content.py's range, and short enough to survive a search result intact.
+DESCRIPTION = (50, 170)
 
 # A term and a study can carry the same name ("Affective computing"), so the term page states its kind
 # in the <title> while the heading stays the term itself.

@@ -21,8 +21,9 @@ from pathlib import Path
 
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+\s*\n", re.S)
 LANGS = ("en", "cs")
-# Kept inside scripts/validate-content.py's DESCRIPTION_LENGTH.
-DESCRIPTION = (50, 320)
+# Inside scripts/validate-content.py's DESCRIPTION_LENGTH, and short enough that a search result
+# shows the whole of it rather than a truncated half-sentence.
+DESCRIPTION = (50, 170)
 
 SECTION = {
     "en": {
@@ -58,14 +59,19 @@ def citation(ref, lang):
 
 
 def describe(ref, source, lang):
-    """A description of useful length: the citation, then as much of the appraisal as fits."""
+    """A description that fits a search result: the citation, then as much of the appraisal as fits."""
     low, high = DESCRIPTION
     head = citation(ref, lang)
     appraisal = localized(source.get("appraisal", {}), lang)
     text = f"{head} {appraisal}".strip()
     if len(text) <= high:
-        return text if len(text) >= low else (text + " " + localized(source.get("population", {}), lang)).strip()[:high]
+        if len(text) >= low:
+            return text
+        return (text + " " + localized(source.get("population", {}), lang)).strip()[:high]
     cut = text[: high - 1]
+    stop = cut.rfind(". ")
+    if stop > low:
+        return cut[: stop + 1]
     return cut[: cut.rfind(" ")].rstrip(",;:") + "…"
 
 
@@ -87,15 +93,25 @@ def content_pages(root):
     return pages
 
 
-def citing_pages(pages):
-    """Map reference id -> the language-neutral content paths whose front matter cites it."""
+def citing_pages(root, pages):
+    """Map reference id -> the language-neutral content paths that cite it.
+
+    Front matter is not the only place a work is cited: a glossary term cites its sources in
+    data/glossary.toml, and each term has a page of its own (scripts/generate-term-pages.py). Those pages
+    are generated after this one, so they are derived from the glossary rather than read from disk.
+    """
     citing = {}
     for rel, meta in pages.items():
         if ".cs.md" in rel:
             continue
         for ident in meta.get("extra", {}).get("references", []) or []:
             citing.setdefault(ident, []).append(rel)
-    return citing
+    glossary = root / "data" / "glossary.toml"
+    if glossary.exists():
+        for term in tomllib.loads(glossary.read_text(encoding="utf-8"))["terms"]:
+            for ident in term.get("references", []) or []:
+                citing.setdefault(ident, []).append(f"terms/{term['id']}/index.md")
+    return {ident: sorted(set(paths)) for ident, paths in citing.items()}
 
 
 def page(ref, source, claims, cited_by, ident, lang):
@@ -153,7 +169,7 @@ def render(root):
     sources = data["sources"]["sources"]
     claims = data["claims"]["claims"]
     pages = content_pages(root)
-    citing = citing_pages(pages)
+    citing = citing_pages(root, pages)
 
     by_reference = {}
     for claim in claims:

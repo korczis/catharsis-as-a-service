@@ -4,6 +4,9 @@ base_url = "https://korczis.github.io/catharsis-as-a-service"
 title = "Catharsis as a Service™"
 description = "Catharsis as a Service™ is a digital artifact exploring collective catharsis as an emotional state transition: repetition, synchronization, discharge, temporary relief."
 default_language = "en"
+# Top-level, not [extra]: Zola's built-in Atom template reads config.author and otherwise
+# attributes every entry in both feeds to "Unknown". [languages.cs] rejects the key.
+author = "Sig Nihl"
 
 compile_sass = false
 minify_html = true
@@ -141,6 +144,7 @@ study_cited_none = "No page cites this work yet."
 study_record = "Ledger record"
 study_record_note = "The appraisal is editorial judgement, dated and re-reviewed; the citation is checked against Crossref."
 study_source_link = "Source"
+studies_by_level = "Cited works by level of evidence"
 studies_count = "Cited works"
 studies_claims_short = "claims"
 studies_pages_short = "pages"
@@ -372,6 +376,7 @@ study_cited_none = "Tuto práci zatím žádná stránka necituje."
 study_record = "Záznam v evidenci"
 study_record_note = "Posouzení je datovaný redakční úsudek, který se znovu ověřuje; citace se kontroluje proti Crossref."
 study_source_link = "Zdroj"
+studies_by_level = "Citované práce podle úrovně důkazů"
 studies_count = "Citovaných prací"
 studies_claims_short = "tvrzení"
 studies_pages_short = "stránek"

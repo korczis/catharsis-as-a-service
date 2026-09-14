@@ -55,12 +55,27 @@ def test_pages_carry_the_appraisal_and_the_claims_that_rest_on_the_work():
 
 def test_cited_by_names_pages_that_exist_and_actually_cite_the_work():
     run([PY, "scripts/generate-study-pages.py"])
+    run([PY, "scripts/generate-term-pages.py"])
     for path in sorted(STUDIES.glob("*/index.md")):
         extra = front_matter(path)["extra"]
         for rel in extra["cited_by"]:
             cited = ROOT / "content" / rel
             assert cited.exists(), f"{path.parent.name} names a missing page: {rel}"
             assert extra["reference"] in front_matter(cited)["extra"]["references"]
+
+
+def test_a_work_cited_only_by_a_glossary_term_is_not_reported_as_uncited():
+    """A term page cites its sources too; a study page must not claim that nothing cites it."""
+    run([PY, "scripts/generate-study-pages.py"])
+    glossary = tomllib.loads((ROOT / "data" / "glossary.toml").read_text(encoding="utf-8"))["terms"]
+    from_terms = {ident for term in glossary for ident in term.get("references", [])}
+    assert from_terms, "the glossary cites no sources; this test would prove nothing"
+    for ident in sorted(from_terms):
+        page = STUDIES / ident / "index.md"
+        if not page.exists():
+            continue
+        cited_by = front_matter(page)["extra"]["cited_by"]
+        assert cited_by, f"{ident} is cited by a glossary term but its page reports no citing page"
 
 
 def test_check_mode_reports_drift():
