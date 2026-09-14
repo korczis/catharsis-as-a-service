@@ -12,6 +12,8 @@
     {%- endif -%}
   {%- endfor %}
   {%- set is_term_page = relative is starting_with(pat="tags/") and relative != "tags/" %}
+  {%- set_global matched = false -%}
+  {%- for item in config.extra.localized_paths %}{% for code in config.extra.locales %}{% if relative == item[code] %}{% set_global matched = true %}{% set_global alias = item %}{% endif %}{% endfor %}{% endfor %}
   <url>
     <loc>{{ entry.permalink | escape_xml }}</loc>
     {%- if entry.updated %}
@@ -19,9 +21,9 @@
     {%- endif %}
     {%- if not is_term_page %}
     {%- for code in config.extra.locales %}
-    <xhtml:link rel="alternate" hreflang="{{ code }}" href="{{ base }}{% if code != config.default_language %}{{ code }}/{% endif %}{{ relative | escape_xml }}"/>
+    <xhtml:link rel="alternate" hreflang="{{ code }}" href="{{ base }}{% if code != config.default_language %}{{ code }}/{% endif %}{% if matched %}{{ alias[code] | escape_xml }}{% else %}{{ relative | escape_xml }}{% endif %}"/>
     {%- endfor %}
-    <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ relative | escape_xml }}"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{% if matched %}{{ alias[config.default_language] | escape_xml }}{% else %}{{ relative | escape_xml }}{% endif %}"/>
     {%- endif %}
   </url>
 {%- endfor %}

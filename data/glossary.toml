@@ -1,0 +1,490 @@
+# Glossary of terms used across the site. Rendered at /glossary/ and /cs/slovnik/; exported to the content API.
+# Fields: id (kebab-case, unique, also the anchor), term.en/cs, definition.en/cs (2–4 sentences),
+# kind (empirical | theoretical | clinical | technical | artistic | historical), see_also (term ids),
+# links (content paths that must exist), references (ids from data/references.toml).
+
+[[terms]]
+id = "abreaction"
+term = { en = "Abreaction", cs = "Abreakce" }
+definition = { en = "The discharge of emotion attached to a recalled distressing memory, as described by Breuer and Freud in their cathartic method. They reported that symptoms eased after abreaction, but the relief was often temporary, and Freud later abandoned the method. The term survives mainly as a historical reference point for the idea that expressing an emotion empties it.", cs = "Výboj emoce spojené s vybavenou tíživou vzpomínkou, jak jej Breuer a Freud popsali v rámci katarzní metody. Uváděli, že po abreakci příznaky polevily, úleva však byla často jen dočasná a Freud od metody později upustil. Pojem dnes slouží hlavně jako historický bod odkazu pro představu, že vyjádřením se emoce vyprázdní." }
+kind = "historical"
+see_also = ["catharsis", "hydraulic-model", "venting"]
+links = ["research/what-is-catharsis/index.md"]
+references = ["breuer-freud-1895"]
+
+[[terms]]
+id = "acceptance"
+term = { en = "Acceptance", cs = "Přijetí" }
+definition = { en = "In emotion regulation, a strategy of allowing emotions, thoughts and bodily sensations to be present without trying to change, suppress or escape them. It differs from reappraisal, which changes the meaning of a situation, and from resignation, because acceptance concerns internal experience rather than the circumstances that produce it. Acceptance is a central process in acceptance- and mindfulness-based therapies; meta-analytic work compares its neural correlates with those of reappraisal, and the two appear to rely on partly different networks.", cs = "V regulaci emocí strategie, při níž člověk nechává emoce, myšlenky a tělesné pocity být, aniž by se je snažil změnit, potlačit nebo před nimi uniknout. Liší se od přehodnocení, které mění význam situace, i od rezignace, protože se týká vnitřního prožívání, nikoli okolností, které je vyvolávají. Přijetí je ústředním procesem terapií založených na přijetí a všímavosti; metaanalytické práce srovnávají jeho neurální koreláty s koreláty přehodnocení a obě strategie se zdají opírat o částečně odlišné sítě." }
+kind = "clinical"
+see_also = ["reappraisal", "experiential-avoidance", "emotion-regulation"]
+links = ["research/clinical-perspectives/index.md", "research/relief-is-not-resolution/index.md"]
+references = ["hayes-1996", "hofmann-2010", "monachesi-2023"]
+
+[[terms]]
+id = "affect"
+term = { en = "Affect", cs = "Afekt" }
+definition = { en = "An umbrella term for felt states that have a pleasant or unpleasant quality and some degree of activation, including emotions, moods and momentary feelings. Many researchers describe core affect along two dimensions, valence and arousal. Usage varies between traditions: in some writing affect is a synonym for emotion, in others it names the more basic feeling component underlying both emotion and mood.", cs = "Zastřešující pojem pro prožívané stavy, které mají příjemnou či nepříjemnou kvalitu a určitou míru aktivace, včetně emocí, nálad a okamžitých pocitů. Mnoho badatelů popisuje takzvaný jádrový afekt pomocí dvou dimenzí, valence a arousalu. Užití se mezi tradicemi liší: v některých textech je afekt synonymem emoce, v jiných označuje základnější pocitovou složku, na které stojí emoce i nálada." }
+kind = "theoretical"
+see_also = ["emotion", "mood", "valence", "arousal"]
+links = ["research/measuring-emotion/index.md"]
+references = ["mauss-robinson-2009"]
+
+[[terms]]
+id = "affect-labeling"
+term = { en = "Affect labeling", cs = "Pojmenování afektu" }
+definition = { en = "Putting a feeling into words, for example naming an emotional reaction to an image instead of only looking at it. In a neuroimaging study, labeling the emotion in facial expressions was associated with lower amygdala activity and higher activity in right ventrolateral prefrontal cortex than passive viewing or labeling other attributes. The effect is usually described as implicit regulation, because it does not require a deliberate intention to feel differently.", cs = "Převedení pocitu do slov, například pojmenování emoční reakce na obrázek místo pouhého pozorování. V neurozobrazovací studii bylo pojmenování emoce ve výrazech tváří spojeno s nižší aktivitou amygdaly a vyšší aktivitou pravé ventrolaterální prefrontální kůry než pasivní pozorování nebo pojmenování jiných vlastností. Účinek se obvykle popisuje jako implicitní regulace, protože nevyžaduje záměrnou snahu cítit se jinak." }
+kind = "empirical"
+see_also = ["emotion-regulation", "social-sharing-of-emotion", "expressive-writing"]
+links = ["research/crying-and-sharing/index.md", "advice/name-the-feeling/index.md"]
+references = ["lieberman-2007"]
+
+[[terms]]
+id = "affective-computing"
+term = { en = "Affective computing", cs = "Afektivní informatika" }
+definition = { en = "The study and development of computing systems that recognise, interpret, simulate or respond to human affect, a research programme named by Rosalind Picard in 1997. In practice such systems estimate emotional categories or dimensions from signals such as facial movements, voice, text or physiology, and the validity of those estimates depends on the assumed link between signal and state. The field also raises ethical questions about consent, surveillance and the use of such inferences in consequential decisions.", cs = "Obor zkoumající a vyvíjející výpočetní systémy, které rozpoznávají, interpretují, simulují nebo reagují na lidský afekt; výzkumný program pojmenovala Rosalind Picardová v roce 1997. V praxi takové systémy odhadují emoční kategorie nebo dimenze ze signálů, jako jsou pohyby obličeje, hlas, text nebo fyziologie, a platnost těchto odhadů závisí na předpokládaném vztahu mezi signálem a stavem. Obor zároveň otevírá etické otázky souhlasu, sledování a využití takových odhadů při rozhodnutích se závažnými důsledky." }
+kind = "technical"
+see_also = ["inference", "reverse-inference", "multimodality", "construct-validity"]
+links = ["research/measuring-emotion/index.md"]
+references = ["picard-1997", "barrett-2019", "stark-hoey-2021"]
+
+[[terms]]
+id = "allostatic-load"
+term = { en = "Allostatic load", cs = "Alostatická zátěž" }
+definition = { en = "The cumulative physiological cost of repeated or prolonged activation of stress-response systems. McEwen described how stress mediators such as cortisol and catecholamines are protective in the short term but can contribute to wear on cardiovascular, metabolic and immune function when activation is frequent, prolonged or poorly terminated. The concept concerns patterns over months and years, not the response to a single stressful episode.", cs = "Kumulativní fyziologická cena opakované nebo dlouhodobé aktivace systémů stresové odpovědi. McEwen popsal, jak stresové mediátory, například kortizol a katecholaminy, působí krátkodobě ochranně, ale při častém, dlouhém nebo nedostatečně ukončeném působení mohou přispívat k opotřebení kardiovaskulárních, metabolických a imunitních funkcí. Pojem se týká vzorců v průběhu měsíců a let, nikoli reakce na jedinou stresovou epizodu." }
+kind = "theoretical"
+see_also = ["autonomic-nervous-system", "social-support"]
+links = ["research/stress-and-social-buffering/index.md"]
+references = ["mcewen-1998"]
+
+[[terms]]
+id = "arousal"
+term = { en = "Arousal", cs = "Arousal (aktivace)" }
+definition = { en = "The degree of physiological and subjective activation, ranging from calm or sleepy to excited or agitated. Arousal is one of the two dimensions commonly used to describe affect, alongside valence, and it is indexed by self-report and by autonomic measures such as electrodermal activity and heart rate. A meta-analysis of anger management activities found that activities which decrease arousal reduced anger, whereas activities which increase arousal did not reliably do so.", cs = "Míra fyziologické a subjektivní aktivace v rozmezí od klidu či ospalosti po vzrušení či neklid. Arousal je vedle valence jednou ze dvou dimenzí, kterými se afekt běžně popisuje, a zachycuje se sebeposouzením i autonomními ukazateli, jako je elektrodermální aktivita a srdeční frekvence. Metaanalýza aktivit pro zvládání hněvu zjistila, že aktivity snižující arousal hněv snižovaly, zatímco aktivity arousal zvyšující jej spolehlivě nesnižovaly." }
+kind = "empirical"
+see_also = ["valence", "affect", "electrodermal-activity", "venting"]
+links = ["research/venting-hypothesis/index.md", "research/measuring-emotion/index.md"]
+references = ["mauss-robinson-2009", "kjaervik-bushman-2024", "kreibig-2010"]
+
+[[terms]]
+id = "autonomic-nervous-system"
+term = { en = "Autonomic nervous system", cs = "Autonomní nervový systém" }
+definition = { en = "The part of the peripheral nervous system that regulates largely involuntary functions such as heart rate, breathing, sweating and digestion, through sympathetic and parasympathetic branches. Emotional episodes are accompanied by changes in autonomic activity, which is why measures such as heart rate variability and electrodermal activity appear in emotion research. Meta-analytic evidence indicates that autonomic patterns vary widely within emotion categories and do not form consistent, category-specific fingerprints.", cs = "Část periferního nervového systému, která prostřednictvím sympatické a parasympatické větve reguluje převážně bezděčné funkce, jako je srdeční frekvence, dýchání, pocení a trávení. Emoční epizody provázejí změny autonomní aktivity, a proto se ve výzkumu emocí používají ukazatele jako variabilita srdeční frekvence a elektrodermální aktivita. Metaanalytické poznatky ukazují, že autonomní vzorce se v rámci jednotlivých emočních kategorií značně liší a netvoří konzistentní otisky specifické pro danou kategorii." }
+kind = "empirical"
+see_also = ["heart-rate-variability", "electrodermal-activity", "arousal", "allostatic-load"]
+links = ["research/stress-and-social-buffering/index.md", "research/measuring-emotion/index.md"]
+references = ["kreibig-2010", "siegel-2018"]
+
+[[terms]]
+id = "baseline"
+term = { en = "Baseline", cs = "Výchozí hodnota (baseline)" }
+definition = { en = "A reference measurement taken before or outside the condition of interest, against which change is evaluated. Physiological signals differ greatly between people and between moments, so a value such as skin conductance or heart rate variability is interpretable mainly relative to a person's own baseline recorded under comparable conditions. Methodological recommendations therefore specify the duration, posture and context of baseline recordings.", cs = "Referenční měření pořízené před sledovanou podmínkou nebo mimo ni, vůči němuž se hodnotí změna. Fyziologické signály se mezi lidmi i mezi okamžiky výrazně liší, takže hodnotu jako kožní vodivost nebo variabilitu srdeční frekvence lze interpretovat hlavně ve vztahu k vlastní výchozí hodnotě daného člověka, zaznamenané za srovnatelných podmínek. Metodická doporučení proto stanovují délku, polohu těla a kontext výchozího záznamu." }
+kind = "technical"
+see_also = ["signal", "heart-rate-variability", "electrodermal-activity", "context"]
+links = ["methods/index.md"]
+references = ["laborde-2017", "boucsein-2012"]
+
+[[terms]]
+id = "catharsis"
+term = { en = "Catharsis", cs = "Katarze" }
+definition = { en = "From the Greek for cleansing; Aristotle used it for what tragedy achieves through pity and fear, and commentators have read it as purgation, purification or clarification. Breuer and Freud turned it into a clinical method of emotional discharge, and empirical psychology turned it into a testable claim that expressing an emotion reduces it. On this site catharsis means a subjectively felt release of emotional tension after expression, exertion or immersion, without any assumption that the cause of the tension has changed.", cs = "Z řeckého slova pro očištění; Aristotelés jím označil to, čeho tragédie dosahuje skrze soucit a strach, a komentátoři jej četli jako očistu, zušlechtění nebo objasnění. Breuer a Freud z něj udělali klinickou metodu emočního výboje a empirická psychologie testovatelné tvrzení, že vyjádření emoce ji zmírní. Na tomto webu katarze znamená subjektivně prožívané uvolnění emočního napětí po vyjádření, námaze nebo ponoření do zážitku, bez předpokladu, že se změnila příčina napětí." }
+kind = "historical"
+see_also = ["abreaction", "venting", "hydraulic-model", "relief-vs-resolution"]
+links = ["research/what-is-catharsis/index.md"]
+references = ["aristotle-poetics", "breuer-freud-1895", "pennebaker-1997"]
+
+[[terms]]
+id = "clinical-boundary"
+term = { en = "Clinical boundary", cs = "Klinická hranice" }
+definition = { en = "The point at which self-help strategies and popular-science information are no longer an adequate response and professional assessment is appropriate. Common indications are distress that persists for weeks, that increasingly disrupts sleep, work or relationships, that follows a traumatic event and does not ease, or that involves thoughts of self-harm, which call for contacting a doctor or crisis service promptly. Crossing this boundary is not a failure of coping; effective, structured treatments exist, and the material on this site is not a substitute for them.", cs = "Bod, v němž svépomocné strategie a populárně-naučné informace přestávají být přiměřenou odpovědí a je namístě odborné posouzení. Obvyklými signály jsou potíže, které trvají týdny, stále více narušují spánek, práci nebo vztahy, přetrvávají po traumatické události, nebo zahrnují myšlenky na sebepoškození, kdy je vhodné neprodleně kontaktovat lékaře či krizovou službu. Překročení této hranice není selháním zvládání; existují účinné strukturované léčebné postupy a obsah tohoto webu je nenahrazuje." }
+kind = "clinical"
+see_also = ["psychological-debriefing", "emotional-processing", "rumination"]
+links = ["research/clinical-perspectives/index.md", "advice/after-trauma/index.md"]
+references = []
+
+[[terms]]
+id = "collective-effervescence"
+term = { en = "Collective effervescence", cs = "Kolektivní efervescence" }
+definition = { en = "A term from Rimé and colleagues for the heightened, shared emotional state that can arise during collective gatherings such as demonstrations, commemorations and festivals, marked by intense emotion, a sense of unity and increased social sharing. A meta-analytic review associated participation in such gatherings with stronger group identification and prosocial and collective-action outcomes. The evidence relies largely on self-report and cross-sectional designs, so the direction of these associations is not settled.", cs = "Pojem Rimého a kolegů pro zesílený sdílený emoční stav, který může vzniknout při kolektivních shromážděních, jako jsou demonstrace, vzpomínkové akce a slavnosti, a vyznačuje se intenzivními emocemi, pocitem jednoty a častějším sociálním sdílením. Metaanalytický přehled spojil účast na takových shromážděních se silnější identifikací se skupinou a s prosociálními výsledky a kolektivním jednáním. Poznatky se opírají převážně o sebeposouzení a průřezové designy, takže směr těchto souvislostí není vyjasněn." }
+kind = "empirical"
+see_also = ["interpersonal-synchrony", "social-sharing-of-emotion", "social-support"]
+links = ["research/collective-synchrony/index.md"]
+references = ["pizarro-2022", "rime-2009"]
+
+[[terms]]
+id = "confidence"
+term = { en = "Confidence", cs = "Míra jistoty" }
+definition = { en = "In the evidence ledger, a rating of how firmly a specific claim is supported: HIGH, MODERATE, LOW or UNKNOWN. It is distinct from the evidence level, which classifies the design of a source, because a claim resting on strong designs can still merit lower confidence when results are inconsistent, indirect or drawn from narrow samples. UNKNOWN marks claims for which the available sources do not allow a responsible judgement.", cs = "V evidenci tvrzení hodnocení toho, jak pevně je konkrétní tvrzení podloženo: HIGH (vysoká), MODERATE (střední), LOW (nízká) nebo UNKNOWN (neznámá). Liší se od úrovně důkazů, která klasifikuje design zdroje, protože i tvrzení opřené o silné designy si může zasloužit nižší jistotu, jsou-li výsledky nekonzistentní, nepřímé nebo získané na úzkých vzorcích. UNKNOWN označuje tvrzení, u nichž dostupné zdroje nedovolují zodpovědný úsudek." }
+kind = "technical"
+see_also = ["evidence-level", "effect-size", "meta-analysis"]
+links = ["evidence/index.md", "methods/index.md"]
+references = []
+
+[[terms]]
+id = "construct-validity"
+term = { en = "Construct validity", cs = "Konstruktová validita" }
+definition = { en = "The degree to which a measure captures the psychological construct it is meant to capture, rather than something correlated with it. For emotion, construct validity is difficult to establish because there is no single agreed criterion: self-report, behaviour and physiology each capture different aspects and often agree only modestly. A measure can be highly reliable, giving the same value repeatedly, and still have weak construct validity.", cs = "Míra, do jaké měření zachycuje psychologický konstrukt, který zachytit má, a nikoli něco, co s ním pouze souvisí. U emocí je konstruktovou validitu obtížné doložit, protože neexistuje jediné shodně přijímané kritérium: sebeposouzení, chování i fyziologie zachycují různé stránky a často se shodují jen mírně. Měření může být vysoce reliabilní, tedy opakovaně dávat stejnou hodnotu, a přesto mít slabou konstruktovou validitu." }
+kind = "technical"
+see_also = ["self-report", "inference", "multimodality", "affective-computing"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["mauss-robinson-2009", "barrett-2019"]
+
+[[terms]]
+id = "context"
+term = { en = "Context", cs = "Kontext" }
+definition = { en = "In inference about emotion, the situation, culture, relationship, bodily state and activity in which a signal occurs. The same facial configuration or change in heart rate can accompany different states in different contexts, so a signal considered without its context supports only weak conclusions. Reviews of facial movement and autonomic data identify context as one of the main sources of variation that simple signal-to-emotion mappings ignore.", cs = "Při usuzování o emocích situace, kultura, vztah, tělesný stav a činnost, v nichž se signál objevuje. Stejná konfigurace obličeje nebo změna srdeční frekvence může v různých kontextech provázet různé stavy, takže signál posuzovaný bez kontextu podporuje jen slabé závěry. Přehledy dat o pohybech obličeje a autonomní aktivitě uvádějí kontext jako jeden z hlavních zdrojů variability, které jednoduchá přiřazení signálu k emoci přehlížejí." }
+kind = "technical"
+see_also = ["inference", "reverse-inference", "baseline"]
+links = ["research/measuring-emotion/index.md"]
+references = ["barrett-2019", "siegel-2018"]
+
+[[terms]]
+id = "crying"
+term = { en = "Crying", cs = "Pláč" }
+definition = { en = "Emotional tearing, often accompanied by vocal and respiratory changes, typically in response to loss, helplessness or being moved. Retrospective survey data suggest that people more often report feeling better after crying when they receive social support and when the situation that prompted it is resolved or understood. Whether crying itself has a self-soothing physiological function remains debated, and the evidence is mixed.", cs = "Emoční slzení, často provázené změnami hlasu a dýchání, obvykle jako reakce na ztrátu, bezmoc nebo dojetí. Retrospektivní dotazníková data naznačují, že lidé častěji uvádějí, že se jim po pláči ulevilo, když se jim dostalo sociální opory a když se situace, která pláč vyvolala, vyřešila nebo jí porozuměli. Zda má pláč sám o sobě uklidňující fyziologickou funkci, zůstává sporné a poznatky nejsou jednoznačné." }
+kind = "empirical"
+see_also = ["social-sharing-of-emotion", "social-support", "catharsis"]
+links = ["research/crying-and-sharing/index.md"]
+references = ["bylsma-2008", "gracanin-2014"]
+
+[[terms]]
+id = "distraction"
+term = { en = "Distraction", cs = "Odvedení pozornosti (distrakce)" }
+definition = { en = "An attentional regulation strategy that shifts attention away from the emotional aspects of a situation or from the situation altogether. Meta-analytic evidence indicates that distraction reduces emotional experience in the short term, and in venting experiments it was followed by less aggression than rumination. Because it does not change the appraisal of the situation, its effects are generally expected to be shorter-lived than those of reappraisal when the situation recurs.", cs = "Strategie regulace pozornosti, která přesouvá pozornost od emočních stránek situace nebo od situace vůbec. Metaanalytické poznatky ukazují, že odvedení pozornosti krátkodobě zmírňuje emoční prožitek, a v experimentech s ventilací po něm následovala menší agrese než po ruminaci. Protože nemění zhodnocení situace, očekává se obecně, že jeho účinky budou při opakování situace kratší než účinky přehodnocení." }
+kind = "empirical"
+see_also = ["rumination", "reappraisal", "emotion-regulation", "venting"]
+links = ["research/venting-hypothesis/index.md", "advice/let-anger-cool/index.md"]
+references = ["bushman-2002", "webb-2012"]
+
+[[terms]]
+id = "ecological-momentary-assessment"
+term = { en = "Ecological momentary assessment", cs = "Ekologické okamžikové hodnocení (EMA)" }
+definition = { en = "A family of methods in which people report their current states repeatedly in daily life, for example several times a day on a phone, rather than recalling them later in a laboratory. Momentary reports reduce the reliance on memory and general beliefs that shapes retrospective self-report, and repeated sampling makes it possible to study how emotions change over time. The method still depends on self-report and can alter what it measures by prompting reflection.", cs = "Skupina metod, při nichž lidé opakovaně v běžném životě uvádějí své aktuální stavy, například několikrát denně v telefonu, místo aby si je později vybavovali v laboratoři. Okamžité výpovědi snižují závislost na paměti a obecných přesvědčeních, která ovlivňuje retrospektivní sebeposouzení, a opakované vzorkování umožňuje zkoumat, jak se emoce v čase mění. Metoda přesto stojí na sebeposouzení a může měřené ovlivnit tím, že podněcuje k sebereflexi." }
+kind = "technical"
+see_also = ["self-report", "emotion-dynamics", "context"]
+links = ["methods/index.md", "research/measuring-emotion/index.md"]
+references = ["robinson-clore-2002", "kuppens-verduyn-2017"]
+
+[[terms]]
+id = "effect-size"
+term = { en = "Effect size", cs = "Velikost účinku" }
+definition = { en = "A quantitative estimate of how large a difference or association is, expressed in a standardised form such as a standardised mean difference or a correlation coefficient. Unlike a p-value, which mainly reflects whether a result is distinguishable from zero given the sample size, an effect size indicates magnitude and can be compared and pooled across studies. Conventional labels such as small, medium and large are rough guides, and practical importance depends on the outcome and context.", cs = "Kvantitativní odhad velikosti rozdílu nebo souvislosti vyjádřený ve standardizované podobě, například jako standardizovaný rozdíl průměrů nebo korelační koeficient. Na rozdíl od p-hodnoty, která odráží hlavně to, zda je výsledek při dané velikosti vzorku odlišitelný od nuly, vypovídá velikost účinku o rozsahu a lze ji srovnávat a slučovat napříč studiemi. Konvenční označení malý, střední a velký jsou jen hrubým vodítkem a praktický význam závisí na sledovaném výsledku a kontextu." }
+kind = "technical"
+see_also = ["meta-analysis", "randomized-controlled-trial", "confidence"]
+links = ["evidence/index.md", "methods/index.md"]
+references = []
+
+[[terms]]
+id = "electrodermal-activity"
+term = { en = "Electrodermal activity", cs = "Elektrodermální aktivita" }
+definition = { en = "Changes in the electrical properties of the skin, usually measured as skin conductance, which reflect eccrine sweat gland activity under sympathetic control. It is widely used as an index of physiological arousal and orienting responses. Electrodermal activity does not indicate whether a state is pleasant or unpleasant, and it is also affected by temperature, movement and individual differences, so it cannot by itself identify a specific emotion.", cs = "Změny elektrických vlastností kůže, obvykle měřené jako kožní vodivost, které odrážejí činnost ekrinních potních žláz řízenou sympatikem. Široce se používá jako ukazatel fyziologického arousalu a orientačních reakcí. Elektrodermální aktivita nevypovídá o tom, zda je stav příjemný či nepříjemný, a ovlivňuje ji také teplota, pohyb a individuální rozdíly, takže sama o sobě konkrétní emoci určit nedokáže." }
+kind = "technical"
+see_also = ["arousal", "autonomic-nervous-system", "signal", "baseline"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["boucsein-2012", "kreibig-2010"]
+
+[[terms]]
+id = "emotion"
+term = { en = "Emotion", cs = "Emoce" }
+definition = { en = "A relatively brief, coordinated response to a situation that is appraised as relevant to a person's goals, involving subjective experience, physiological change and tendencies toward expression and action. Theories disagree about whether a small set of basic emotions has distinct, universal signatures or whether emotion categories are constructed from more general processes and vary across instances and contexts. Research reviewed on this site finds considerable variability in facial and autonomic responses within the same emotion category.", cs = "Relativně krátká, koordinovaná odpověď na situaci, kterou člověk vyhodnotí jako relevantní pro své cíle, zahrnující subjektivní prožitek, fyziologické změny a sklony k projevu a jednání. Teorie se neshodují v tom, zda malá sada základních emocí má odlišné univerzální znaky, nebo zda se emoční kategorie konstruují z obecnějších procesů a liší se podle jednotlivých případů a kontextů. Výzkum shrnutý na tomto webu nachází značnou variabilitu obličejových i autonomních reakcí v rámci téže emoční kategorie." }
+kind = "theoretical"
+see_also = ["affect", "mood", "emotion-regulation", "emotion-dynamics"]
+links = ["research/what-is-catharsis/index.md", "research/measuring-emotion/index.md"]
+references = ["gross-1998", "barrett-2019", "siegel-2018"]
+
+[[terms]]
+id = "emotion-dynamics"
+term = { en = "Emotion dynamics", cs = "Dynamika emocí" }
+definition = { en = "The study of how emotional states change over time: how quickly they rise, how long they last, how variable they are and how strongly one moment carries over into the next. Common indicators include intensity, variability, instability and inertia, usually estimated from repeated momentary reports. Differences in these patterns have been associated with well-being and psychological difficulties, although the indicators overlap and their unique contributions are debated.", cs = "Zkoumání toho, jak se emoční stavy mění v čase: jak rychle nastupují, jak dlouho trvají, jak jsou proměnlivé a jak silně se jeden okamžik přenáší do dalšího. Mezi běžné ukazatele patří intenzita, variabilita, nestabilita a setrvačnost, obvykle odhadované z opakovaných okamžikových výpovědí. Rozdíly v těchto vzorcích byly spojeny s pohodou i s psychickými potížemi, ukazatele se však překrývají a o jejich samostatném přínosu se vedou spory." }
+kind = "empirical"
+see_also = ["ecological-momentary-assessment", "emotion", "peak-end-rule", "rumination"]
+links = ["research/relief-is-not-resolution/index.md", "methods/index.md"]
+references = ["kuppens-verduyn-2017"]
+
+[[terms]]
+id = "emotion-regulation"
+term = { en = "Emotion regulation", cs = "Regulace emocí" }
+definition = { en = "The processes by which people influence which emotions they have, when they have them and how they experience and express them. Gross's process model groups strategies by the point at which they act: situation selection and modification, attentional deployment, cognitive change and response modulation. Meta-analyses indicate that strategies differ in effectiveness and that habitual reliance on rumination, avoidance and suppression is associated with symptoms across several disorders.", cs = "Procesy, jimiž lidé ovlivňují, jaké emoce mají, kdy je mají a jak je prožívají a projevují. Grossův procesuální model třídí strategie podle bodu, v němž působí: výběr a úprava situace, zaměření pozornosti, kognitivní změna a modulace reakce. Metaanalýzy ukazují, že strategie se liší účinností a že navyklé spoléhání na ruminaci, vyhýbání a potlačení souvisí s příznaky napříč několika poruchami." }
+kind = "theoretical"
+see_also = ["reappraisal", "expressive-suppression", "distraction", "acceptance", "music-based-emotion-regulation"]
+links = ["research/clinical-perspectives/index.md", "advice/reappraise/index.md"]
+references = ["gross-1998", "webb-2012", "aldao-2010"]
+
+[[terms]]
+id = "emotional-processing"
+term = { en = "Emotional processing", cs = "Emoční zpracování" }
+definition = { en = "In Foa and Kozak's account, the modification of a fear memory structure through activation of the fear together with information that is incompatible with it, which is the rationale for exposure therapy. Exposure is structured, graded and repeated, and it is not the same as simply reliving or expressing distress. More broadly the term refers to working through an emotional experience so that it becomes less disruptive, as opposed to discharging it.", cs = "Podle pojetí Foaové a Kozaka úprava paměťové struktury strachu prostřednictvím aktivace strachu spolu s informací, která je s ním neslučitelná; na tomto principu stojí expoziční terapie. Expozice je strukturovaná, odstupňovaná a opakovaná a není totožná s pouhým znovuprožíváním nebo vyjadřováním úzkosti. V širším smyslu pojem označuje zpracování emočního zážitku tak, aby byl méně rušivý, na rozdíl od jeho vybití." }
+kind = "clinical"
+see_also = ["relief-vs-resolution", "psychological-debriefing", "clinical-boundary", "expressive-writing"]
+links = ["research/clinical-perspectives/index.md", "advice/after-trauma/index.md"]
+references = ["foa-kozak-1986"]
+
+[[terms]]
+id = "evidence-level"
+term = { en = "Evidence level", cs = "Úroveň důkazů" }
+definition = { en = "The site's classification of a source by study design, from A to E. A: meta-analyses and systematic reviews of controlled studies; B: controlled experiments; C: longitudinal or quasi-experimental studies; D: cross-sectional and qualitative studies, narrative reviews and theory; E: classical texts, expert opinion, project records and artistic material. The level describes design, not truth, and is read together with the confidence rating of each claim.", cs = "Klasifikace zdroje podle designu studie, kterou web používá, od A po E. A: metaanalýzy a systematické přehledy kontrolovaných studií; B: kontrolované experimenty; C: longitudinální nebo kvaziexperimentální studie; D: průřezové a kvalitativní studie, narativní přehledy a teorie; E: klasické texty, expertní názor, projektové záznamy a umělecký materiál. Úroveň popisuje design, nikoli pravdivost, a čte se spolu s mírou jistoty každého tvrzení." }
+kind = "technical"
+see_also = ["confidence", "meta-analysis", "randomized-controlled-trial"]
+links = ["evidence/index.md", "methods/index.md"]
+references = []
+
+[[terms]]
+id = "experiential-avoidance"
+term = { en = "Experiential avoidance", cs = "Zážitkové vyhýbání" }
+definition = { en = "The attempt to escape, suppress or alter unwanted internal experiences, such as thoughts, emotions and bodily sensations, even when doing so causes harm over time. Hayes and colleagues proposed it as a functional process shared by many psychological difficulties, and it became a central target of acceptance and commitment therapy. An activity is not avoidant by its form; what matters is whether its main function is to make an internal state go away.", cs = "Snaha uniknout nechtěným vnitřním zážitkům, jako jsou myšlenky, emoce a tělesné pocity, potlačit je nebo je změnit, i když to z dlouhodobého hlediska škodí. Hayes a kolegové jej navrhli jako funkční proces společný mnoha psychickým potížím a stal se ústředním cílem terapie přijetí a závazku. Činnost není vyhýbavá svou formou; rozhoduje, zda je její hlavní funkcí zbavit se vnitřního stavu." }
+kind = "clinical"
+see_also = ["acceptance", "negative-reinforcement", "relief-vs-resolution"]
+links = ["research/relief-is-not-resolution/index.md", "advice/ask-what-changed/index.md"]
+references = ["hayes-1996"]
+
+[[terms]]
+id = "expressive-suppression"
+term = { en = "Expressive suppression", cs = "Potlačení projevu emocí" }
+definition = { en = "A response-focused regulation strategy that inhibits the outward expression of an emotion that is already under way, for example keeping a neutral face. In Gross's work suppression reduced visible expression but not the reported experience, and it was associated with increased physiological activation. People who habitually suppress reported less positive and more negative emotion and poorer social functioning than people who habitually reappraise, although these data are correlational.", cs = "Strategie regulace zaměřená na reakci, která tlumí vnější projev již probíhající emoce, například udržováním neutrálního výrazu. V Grossových pracích potlačení snižovalo viditelný projev, nikoli však udávaný prožitek, a bylo spojeno se zvýšenou fyziologickou aktivací. Lidé, kteří potlačují navykle, uváděli méně pozitivních a více negativních emocí a horší sociální fungování než lidé, kteří navykle přehodnocují, tato data jsou však korelační." }
+kind = "empirical"
+see_also = ["reappraisal", "emotion-regulation", "venting"]
+links = ["advice/reappraise/index.md", "research/venting-hypothesis/index.md"]
+references = ["gross-1998", "gross-john-2003"]
+
+[[terms]]
+id = "expressive-writing"
+term = { en = "Expressive writing", cs = "Expresivní psaní" }
+definition = { en = "A procedure, developed by Pennebaker and colleagues, in which people write about their deepest thoughts and feelings concerning a difficult experience, typically for 15 to 20 minutes on several consecutive days. In early studies, writing about both facts and feelings was followed by health benefits compared with control writing. Later analyses linked benefit to the development of a coherent account and to changes in causal and insight words, which points to cognitive processing rather than discharge alone.", cs = "Postup vyvinutý Pennebakerem a kolegy, při němž lidé píší o svých nejhlubších myšlenkách a pocitech spojených s obtížným zážitkem, obvykle 15 až 20 minut několik po sobě jdoucích dní. V raných studiích následovaly po psaní o faktech i pocitech zdravotní přínosy ve srovnání s kontrolním psaním. Pozdější analýzy spojily přínos s vytvářením souvislého vyprávění a se změnami v užívání kauzálních a vhledových slov, což ukazuje spíše na kognitivní zpracování než na samotný výboj." }
+kind = "empirical"
+see_also = ["emotional-processing", "affect-labeling", "social-sharing-of-emotion", "catharsis"]
+links = ["research/what-is-catharsis/index.md", "advice/write-to-make-sense/index.md"]
+references = ["pennebaker-beall-1986", "pennebaker-1997"]
+
+[[terms]]
+id = "false-negative"
+term = { en = "False negative", cs = "Falešně negativní výsledek" }
+definition = { en = "A result in which a classifier or test reports that a condition is absent when it is present, for example a system that reports no distress in a person who is distressed. The rate of false negatives trades off against the rate of false positives as a decision threshold is moved. For states without a clear ground truth, such as emotions, even estimating this rate depends on which criterion is accepted as correct.", cs = "Výsledek, při němž klasifikátor nebo test uvede, že stav není přítomen, ačkoli přítomen je, například systém, který u člověka v tísni žádnou tíseň neuvede. Míra falešně negativních výsledků se při posouvání rozhodovacího prahu vyvažuje s mírou falešně pozitivních výsledků. U stavů bez jasného referenčního kritéria, jako jsou emoce, závisí už samotný odhad této míry na tom, které kritérium se přijme jako správné." }
+kind = "technical"
+see_also = ["false-positive", "inference", "construct-validity"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = []
+
+[[terms]]
+id = "false-positive"
+term = { en = "False positive", cs = "Falešně pozitivní výsledek" }
+definition = { en = "A result in which a classifier or test reports that a condition is present when it is absent, for example labelling a neutral face as angry. When the condition is rare in the population being screened, even an accurate classifier can produce more false positives than true positives. In emotion inference, false positives carry particular ethical weight when labels are used in hiring, education, security or policing.", cs = "Výsledek, při němž klasifikátor nebo test uvede, že stav je přítomen, ačkoli přítomen není, například označení neutrálního obličeje za rozzlobený. Je-li stav ve sledované populaci vzácný, může i přesný klasifikátor vytvářet více falešně pozitivních než skutečně pozitivních výsledků. Při odhadování emocí mají falešně pozitivní výsledky zvláštní etickou váhu, pokud se takové štítky používají při náboru, ve vzdělávání, v bezpečnostních kontrolách nebo při policejní činnosti." }
+kind = "technical"
+see_also = ["false-negative", "reverse-inference", "affective-computing"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["stark-hoey-2021"]
+
+[[terms]]
+id = "feature"
+term = { en = "Feature", cs = "Příznak (feature)" }
+definition = { en = "In signal processing and machine learning, a quantity computed from a raw signal and used as input to analysis or classification, such as mean heart rate, an HRV index or the number of skin conductance responses per minute. Feature choice encodes assumptions about which aspects of a signal matter, and different features derived from the same recording can lead to different conclusions. A feature that separates conditions in one sample may not generalise to other people or contexts.", cs = "Při zpracování signálu a ve strojovém učení veličina vypočtená ze surového signálu a použitá jako vstup analýzy nebo klasifikace, například průměrná srdeční frekvence, některý ukazatel variability srdeční frekvence nebo počet kožních vodivostních reakcí za minutu. Volba příznaků v sobě nese předpoklady o tom, které stránky signálu jsou podstatné, a různé příznaky odvozené z téhož záznamu mohou vést k různým závěrům. Příznak, který v jednom vzorku odlišuje podmínky, nemusí platit pro jiné lidi nebo kontexty." }
+kind = "technical"
+see_also = ["signal", "baseline", "multimodality", "heart-rate-variability"]
+links = ["methods/index.md"]
+references = ["laborde-2017", "siegel-2018"]
+
+[[terms]]
+id = "heart-rate-variability"
+term = { en = "Heart rate variability", cs = "Variabilita srdeční frekvence" }
+definition = { en = "The variation in time between successive heartbeats, summarised by time-domain and frequency-domain indices. Some indices, such as RMSSD and high-frequency power, are used to estimate cardiac vagal (parasympathetic) influence, and they have been associated with self-regulation in psychophysiological research. HRV is strongly affected by breathing, posture, movement, age and recording length, so recommendations stress controlled conditions and careful reporting before any psychological interpretation.", cs = "Kolísání časových intervalů mezi po sobě jdoucími srdečními stahy, shrnované ukazateli v časové a frekvenční oblasti. Některé ukazatele, například RMSSD a výkon ve vysokofrekvenčním pásmu, se používají k odhadu vagového (parasympatického) vlivu na srdce a v psychofyziologickém výzkumu byly spojeny se seberegulací. Variabilitu srdeční frekvence silně ovlivňuje dýchání, poloha těla, pohyb, věk a délka záznamu, a doporučení proto zdůrazňují kontrolované podmínky a pečlivé vykazování dříve, než dojde k jakékoli psychologické interpretaci." }
+kind = "technical"
+see_also = ["autonomic-nervous-system", "baseline", "feature", "signal"]
+links = ["research/stress-and-social-buffering/index.md", "methods/index.md"]
+references = ["laborde-2017", "kreibig-2010"]
+
+[[terms]]
+id = "hydraulic-model"
+term = { en = "Hydraulic model of emotion", cs = "Hydraulický model emocí" }
+definition = { en = "The popular picture of emotions as pressure that builds up and must be released to avoid harm, inherited in part from the cathartic method of the late nineteenth century. It predicts that expressing an emotion, such as hitting a punching bag when angry, should reduce it. Controlled experiments on anger did not support this prediction, and current emotion regulation research does not use the model.", cs = "Populární představa emocí jako tlaku, který se hromadí a musí se vypustit, aby neškodil, převzatá zčásti z katarzní metody konce 19. století. Předpovídá, že vyjádření emoce, například bušení do boxovacího pytle v hněvu, ji zmírní. Kontrolované experimenty s hněvem tuto předpověď nepodpořily a současný výzkum regulace emocí s modelem nepracuje." }
+kind = "historical"
+see_also = ["catharsis", "venting", "abreaction"]
+links = ["research/what-is-catharsis/index.md", "research/venting-hypothesis/index.md"]
+references = ["breuer-freud-1895", "bushman-2002"]
+
+[[terms]]
+id = "inference"
+term = { en = "Inference", cs = "Inference (usuzování)" }
+definition = { en = "Reaching a conclusion about something not directly observed from data that are observed. Emotional states are not directly observable, so any statement about them from faces, voice or physiology is an inference whose strength depends on how specific and consistent the link between signal and state is, and on context. Describing such conclusions as estimates with stated uncertainty, rather than as readings, keeps the inferential step visible.", cs = "Dospění k závěru o něčem, co není přímo pozorováno, na základě dat, která pozorována jsou. Emoční stavy nejsou přímo pozorovatelné, takže každé tvrzení o nich na základě obličeje, hlasu nebo fyziologie je inferencí, jejíž síla závisí na tom, jak specifický a konzistentní je vztah mezi signálem a stavem, a na kontextu. Popisovat takové závěry jako odhady s uvedenou nejistotou, nikoli jako odečtené hodnoty, udržuje inferenční krok viditelný." }
+kind = "technical"
+see_also = ["reverse-inference", "context", "construct-validity", "false-positive"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["barrett-2019"]
+
+[[terms]]
+id = "interpersonal-synchrony"
+term = { en = "Interpersonal synchrony", cs = "Interpersonální synchronie" }
+definition = { en = "The temporal coordination of movement, sound or physiology between people, such as tapping, walking, singing or dancing in time. Experiments have associated synchronous activity with greater reported affiliation, cooperation and, in dance, higher pain thresholds, an effect used as an indirect marker of endorphin activity. Effects are typically measured shortly after brief laboratory tasks, so their duration and their size in real-world groups are less well established.", cs = "Časová koordinace pohybu, zvuku nebo fyziologie mezi lidmi, například ťukání, chůze, zpěv nebo tanec v rytmu. Experimenty spojily synchronní činnost s vyšší udávanou náklonností, spoluprací a u tance s vyšším prahem bolesti, který se používá jako nepřímý ukazatel endorfinové aktivity. Účinky se obvykle měří krátce po krátkých laboratorních úlohách, takže jejich trvání a velikost v reálných skupinách jsou prozkoumány méně." }
+kind = "empirical"
+see_also = ["collective-effervescence", "music-based-emotion-regulation", "social-support"]
+links = ["research/collective-synchrony/index.md", "advice/move-together/index.md"]
+references = ["hove-risen-2009", "wiltermuth-heath-2009", "tarr-2015"]
+
+[[terms]]
+id = "meta-analysis"
+term = { en = "Meta-analysis", cs = "Metaanalýza" }
+definition = { en = "A statistical synthesis that combines effect sizes from multiple studies of the same question into a pooled estimate and examines how results vary between studies. When based on a systematic search and on controlled studies, it provides the strongest design-based evidence on this site. Its conclusions are limited by the quality of the included studies, by publication bias and by heterogeneity in methods and populations.", cs = "Statistická syntéza, která slučuje velikosti účinku z více studií téže otázky do souhrnného odhadu a zkoumá, jak se výsledky mezi studiemi liší. Opírá-li se o systematické vyhledávání a o kontrolované studie, poskytuje na tomto webu nejsilnější doklady z hlediska designu. Její závěry omezuje kvalita zahrnutých studií, publikační zkreslení a heterogenita metod a populací." }
+kind = "technical"
+see_also = ["effect-size", "evidence-level", "randomized-controlled-trial"]
+links = ["evidence/index.md", "methods/index.md"]
+references = []
+
+[[terms]]
+id = "mood"
+term = { en = "Mood", cs = "Nálada" }
+definition = { en = "A diffuse affective state that typically lasts longer than an emotion, is less intense and is not clearly directed at a specific object or event. Moods colour perception and judgement and can persist after the circumstances that contributed to them have passed. The boundary between mood and emotion is drawn differently by different authors, and in everyday language the words overlap.", cs = "Difuzní afektivní stav, který obvykle trvá déle než emoce, je méně intenzivní a není jasně zaměřen na konkrétní objekt nebo událost. Nálady zabarvují vnímání a úsudek a mohou přetrvávat i poté, co okolnosti, které k nim přispěly, pominuly. Hranici mezi náladou a emocí vedou různí autoři různě a v běžném jazyce se tato slova překrývají." }
+kind = "theoretical"
+see_also = ["affect", "emotion", "emotion-dynamics"]
+links = ["research/relief-is-not-resolution/index.md"]
+references = []
+
+[[terms]]
+id = "multimodality"
+term = { en = "Multimodality", cs = "Multimodalita" }
+definition = { en = "The combination of several kinds of data, such as self-report, facial movement, voice, text and physiology, in one analysis. Combining modalities can reduce reliance on any single ambiguous channel, but it does not remove the underlying problem that each channel relates to emotional states only probabilistically and context-dependently. Multimodal systems also collect more personal data, which increases the importance of consent and data minimisation.", cs = "Kombinace několika druhů dat, například sebeposouzení, pohybů obličeje, hlasu, textu a fyziologie, v jedné analýze. Spojení modalit může snížit závislost na jediném nejednoznačném kanálu, neodstraňuje však základní problém, že každý kanál souvisí s emočními stavy jen pravděpodobnostně a v závislosti na kontextu. Multimodální systémy navíc shromažďují více osobních údajů, což zvyšuje význam souhlasu a minimalizace dat." }
+kind = "technical"
+see_also = ["affective-computing", "construct-validity", "feature", "context"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["picard-1997", "stark-hoey-2021"]
+
+[[terms]]
+id = "music-based-emotion-regulation"
+term = { en = "Music-based emotion regulation", cs = "Regulace emocí pomocí hudby" }
+definition = { en = "The use of listening to, playing or moving to music to change or maintain emotional states, for example for relaxation, distraction, discharge or reflective processing. Survey and interview studies describe these uses across the lifespan, and meta-analyses of music interventions report reductions in stress-related outcomes. The same strategy can be helpful or unhelpful depending on how it is used: music used to dwell on distress has been associated with rumination rather than recovery.", cs = "Využití poslechu hudby, hraní nebo pohybu na hudbu ke změně či udržení emočních stavů, například k uvolnění, odvedení pozornosti, vybití nebo reflexivnímu zpracování. Dotazníkové a rozhovorové studie popisují tato užití napříč životem a metaanalýzy hudebních intervencí uvádějí snížení ukazatelů souvisejících se stresem. Tatáž strategie může být užitečná i neužitečná podle toho, jak se používá: hudba sloužící k setrvávání v tísni byla spojena spíše s ruminací než se zotavením." }
+kind = "empirical"
+see_also = ["emotion-regulation", "interpersonal-synchrony", "rumination", "distraction"]
+links = ["research/music-and-emotion-regulation/index.md", "research/stress-and-social-buffering/index.md"]
+references = ["saarikallio-erkkila-2007", "saarikallio-2011", "baltazar-saarikallio-2016", "cook-roy-welker-2019", "miranda-blais-rochette-2020", "de-witte-2020"]
+
+[[terms]]
+id = "negative-reinforcement"
+term = { en = "Negative reinforcement", cs = "Negativní posílení" }
+definition = { en = "In learning theory, the strengthening of a behaviour because it removes or reduces an aversive state; it is not the same as punishment. Relief that follows an activity makes that activity more likely to be repeated in similar circumstances, whether or not it changes the source of the aversive state. This mechanism explains how a strategy can feel effective and become habitual while the underlying difficulty persists.", cs = "V teorii učení posílení chování proto, že odstraňuje nebo zmírňuje averzivní stav; nejde o totéž co trest. Úleva, která následuje po určité činnosti, zvyšuje pravděpodobnost, že se činnost v podobných situacích zopakuje, bez ohledu na to, zda mění zdroj averzivního stavu. Tento mechanismus vysvětluje, jak může strategie působit účinně a stát se návykem, zatímco základní potíž trvá." }
+kind = "theoretical"
+see_also = ["relief-vs-resolution", "experiential-avoidance", "peak-end-rule"]
+links = ["research/relief-is-not-resolution/index.md", "advice/ask-what-changed/index.md"]
+references = ["hayes-1996"]
+
+[[terms]]
+id = "peak-end-rule"
+term = { en = "Peak-end rule", cs = "Pravidlo vrcholu a konce" }
+definition = { en = "The finding that retrospective evaluations of an experience are dominated by its most intense moment and by how it ends, while its duration is largely neglected. In one demonstration, participants preferred to repeat a longer episode of cold-water discomfort that ended slightly less unpleasantly over a shorter one. For pleasant episodes, a strong peak and a good ending can make an experience remembered as more restorative than its lasting effects justify.", cs = "Zjištění, že v retrospektivním hodnocení zážitku převažuje jeho nejintenzivnější okamžik a způsob, jakým skončil, zatímco jeho trvání je do značné míry přehlíženo. V jedné demonstraci účastníci raději volili zopakování delší epizody nepříjemného chladu ve vodě, která končila o něco méně nepříjemně, než kratší epizody. U příjemných epizod může silný vrchol a dobrý konec způsobit, že si člověk zážitek pamatuje jako obnovující více, než odpovídá jeho trvalým účinkům." }
+kind = "empirical"
+see_also = ["negative-reinforcement", "relief-vs-resolution", "emotion-dynamics"]
+links = ["research/relief-is-not-resolution/index.md"]
+references = ["fredrickson-kahneman-1993", "kahneman-1993"]
+
+[[terms]]
+id = "psychological-debriefing"
+term = { en = "Psychological debriefing", cs = "Psychologický debriefing" }
+definition = { en = "A single-session intervention, delivered soon after a traumatic event, in which people are encouraged to recount the event and express their emotional reactions. A Cochrane systematic review found no evidence that single-session individual debriefing prevents post-traumatic stress disorder, and some trials reported worse outcomes in the debriefed group. The finding is often cited as a caution against assuming that early emotional expression is protective for everyone.", cs = "Jednosezení intervence poskytovaná krátce po traumatické události, při níž jsou lidé vedeni k tomu, aby událost převyprávěli a vyjádřili své emoční reakce. Systematický přehled Cochrane nenašel doklady, že by individuální jednorázový debriefing předcházel posttraumatické stresové poruše, a některé studie uváděly horší výsledky ve skupině, která debriefing absolvovala. Zjištění se často uvádí jako varování před předpokladem, že časné vyjádření emocí chrání každého." }
+kind = "clinical"
+see_also = ["emotional-processing", "clinical-boundary", "social-sharing-of-emotion"]
+links = ["research/clinical-perspectives/index.md", "advice/after-trauma/index.md"]
+references = ["rose-2002"]
+
+[[terms]]
+id = "randomized-controlled-trial"
+term = { en = "Randomized controlled trial", cs = "Randomizovaná kontrolovaná studie" }
+definition = { en = "A study in which participants are allocated at random to an intervention or a comparison condition, so that differences in outcome can be attributed to the intervention with less risk of confounding. Its credibility also depends on allocation concealment, blinding where possible, adequate sample size, low attrition and pre-specified outcomes. Well-conducted trials support causal conclusions for the studied population and setting, which may differ from everyday conditions.", cs = "Studie, v níž jsou účastníci náhodně přiřazeni k intervenci nebo ke srovnávací podmínce, takže rozdíly ve výsledcích lze s menším rizikem zkreslení přičíst intervenci. Její věrohodnost závisí také na utajení přiřazení, zaslepení tam, kde je možné, dostatečné velikosti vzorku, nízkém odpadu účastníků a předem stanovených výstupech. Dobře provedené studie podporují kauzální závěry pro zkoumanou populaci a prostředí, které se mohou od běžných podmínek lišit." }
+kind = "technical"
+see_also = ["meta-analysis", "evidence-level", "effect-size"]
+links = ["evidence/index.md", "methods/index.md"]
+references = []
+
+[[terms]]
+id = "reappraisal"
+term = { en = "Reappraisal", cs = "Přehodnocení" }
+definition = { en = "A cognitive regulation strategy that changes how a situation is interpreted in order to change its emotional impact, for example viewing a provocation as the result of someone else's bad day. Meta-analytic evidence indicates that reappraising the situation itself tends to be more effective than attempting to change the emotional response directly, and habitual reappraisal is associated with more positive and less negative emotion. Recent work describes reappraisal as a family of tactics whose usefulness depends on the person, the situation and whether the situation can be changed.", cs = "Kognitivní regulační strategie, která mění interpretaci situace, a tím i její emoční dopad, například když člověk chápe provokaci jako důsledek špatného dne druhého. Metaanalytické poznatky ukazují, že přehodnocení samotné situace bývá účinnější než snaha přímo změnit emoční reakci a že navyklé přehodnocování souvisí s více pozitivními a méně negativními emocemi. Novější práce popisují přehodnocení jako skupinu taktik, jejichž užitečnost závisí na člověku, situaci a na tom, zda lze situaci změnit." }
+kind = "empirical"
+see_also = ["expressive-suppression", "acceptance", "self-distancing", "emotion-regulation"]
+links = ["advice/reappraise/index.md", "research/venting-hypothesis/index.md"]
+references = ["gross-1998", "gross-john-2003", "ochsner-gross-2005", "webb-2012", "uusberg-2023", "monachesi-2023"]
+
+[[terms]]
+id = "relief-vs-resolution"
+term = { en = "Relief versus resolution", cs = "Úleva versus řešení" }
+definition = { en = "The distinction, central to this project, between a change in how a state feels (relief) and a change in the conditions that produce it (resolution). Both are followed by feeling better, which makes them easy to confuse, and relief alone reinforces whatever preceded it. The artwork's status line problem_solved: false expresses this distinction in compressed form.", cs = "Rozlišení, které je pro tento projekt ústřední, mezi změnou toho, jak se stav prožívá (úleva), a změnou podmínek, které stav vyvolávají (řešení). Po obojím se člověk cítí lépe, a proto se snadno zaměňují, přičemž samotná úleva posiluje to, co jí předcházelo. Stavový řádek díla problem_solved: false vyjadřuje toto rozlišení ve zhuštěné podobě." }
+kind = "theoretical"
+see_also = ["negative-reinforcement", "catharsis", "experiential-avoidance", "emotional-processing"]
+links = ["research/relief-is-not-resolution/index.md", "advice/ask-what-changed/index.md"]
+references = ["hayes-1996", "fredrickson-kahneman-1993"]
+
+[[terms]]
+id = "reverse-inference"
+term = { en = "Reverse inference", cs = "Reverzní inference" }
+definition = { en = "Reasoning from an observed signal back to a mental state, for example concluding that a person is angry because they scowl or afraid because a particular brain region is active. Such reasoning is justified only to the extent that the signal is specific to that state; if the same signal also occurs with other states, the inference is weak. Reviews of facial movement and autonomic data found that this specificity is generally low for emotion categories.", cs = "Usuzování od pozorovaného signálu zpět k duševnímu stavu, například závěr, že člověk je rozzlobený, protože se mračí, nebo že má strach, protože je aktivní určitá oblast mozku. Takové usuzování je oprávněné jen do té míry, do jaké je signál pro daný stav specifický; objevuje-li se stejný signál i u jiných stavů, je inference slabá. Přehledy dat o pohybech obličeje a autonomní aktivitě zjistily, že tato specifičnost je u emočních kategorií obecně nízká." }
+kind = "technical"
+see_also = ["inference", "context", "false-positive", "affective-computing"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["barrett-2019", "siegel-2018"]
+
+[[terms]]
+id = "rumination"
+term = { en = "Rumination", cs = "Ruminace" }
+definition = { en = "Repetitive, passive focus on one's distress and its possible causes and consequences. Rumination predicts longer and more intense episodes of negative mood and is associated with the onset of depression, and in venting experiments it was followed by more anger and aggression. Not all repetitive thought is harmful: abstract, evaluative forms tend to be unconstructive, whereas concrete, process-focused forms can support problem solving.", cs = "Opakované, pasivní zaměření na vlastní tíseň a její možné příčiny a důsledky. Ruminace předpovídá delší a intenzivnější epizody negativní nálady a souvisí s nástupem deprese; v experimentech s ventilací po ní následovalo více hněvu a agrese. Ne každé opakované myšlení škodí: abstraktní, hodnoticí formy bývají nekonstruktivní, kdežto konkrétní formy zaměřené na průběh mohou podporovat řešení problémů." }
+kind = "empirical"
+see_also = ["self-distancing", "distraction", "venting", "emotion-regulation"]
+links = ["research/relief-is-not-resolution/index.md", "advice/from-brooding-to-next-steps/index.md"]
+references = ["nolen-hoeksema-2008", "watkins-2008", "aldao-2010", "bushman-2002"]
+
+[[terms]]
+id = "self-distancing"
+term = { en = "Self-distancing", cs = "Sebedistancování" }
+definition = { en = "Reflecting on an experience from the perspective of an observer rather than reliving it from one's own point of view, for example by imagining watching the scene from a distance. In experiments, self-distanced reflection on upsetting memories was associated with lower emotional reactivity and less rumination than immersed recall, while still allowing people to make sense of the experience. It is used as a way to analyse why something happened without re-experiencing it at full intensity.", cs = "Přemýšlení o zážitku z pozice pozorovatele namísto jeho znovuprožívání z vlastní perspektivy, například představou, že člověk scénu sleduje z odstupu. V experimentech bylo reflektování tíživých vzpomínek s odstupem spojeno s nižší emoční reaktivitou a menší ruminací než ponořené vybavování, a přitom lidem umožňovalo zážitku porozumět. Používá se jako způsob, jak analyzovat, proč se něco stalo, aniž by to člověk znovu prožíval v plné intenzitě." }
+kind = "empirical"
+see_also = ["rumination", "reappraisal", "expressive-writing"]
+links = ["advice/reflect-from-a-distance/index.md", "research/venting-hypothesis/index.md"]
+references = ["kross-ayduk-mischel-2005", "kross-ayduk-2011"]
+
+[[terms]]
+id = "self-report"
+term = { en = "Self-report", cs = "Sebeposouzení (self-report)" }
+definition = { en = "A person's own account of their state, collected through questionnaires, rating scales, interviews or momentary prompts. Self-report is the most direct access to subjective experience, but it depends on awareness, language, willingness to disclose and, for past states, on memory and general beliefs about how one usually feels. Momentary reports rely more on current experience, whereas retrospective reports increasingly draw on such beliefs.", cs = "Vlastní výpověď člověka o jeho stavu, získaná dotazníky, posuzovacími škálami, rozhovory nebo okamžikovými výzvami. Sebeposouzení poskytuje nejpřímější přístup k subjektivnímu prožitku, závisí však na uvědomění, jazyce, ochotě se svěřit a u minulých stavů na paměti a obecných přesvědčeních o tom, jak se člověk obvykle cítí. Okamžikové výpovědi se opírají více o aktuální prožitek, kdežto retrospektivní výpovědi čím dál více čerpají z takových přesvědčení." }
+kind = "technical"
+see_also = ["ecological-momentary-assessment", "construct-validity", "multimodality"]
+links = ["research/measuring-emotion/index.md", "methods/index.md"]
+references = ["robinson-clore-2002", "mauss-robinson-2009"]
+
+[[terms]]
+id = "signal"
+term = { en = "Signal", cs = "Signál" }
+definition = { en = "A time-varying recording of a measurable quantity, such as the electrocardiogram, skin conductance, respiration or an audio waveform, from which features are derived. A raw signal contains the component of interest together with noise and artefacts from movement, electrodes, environment and unrelated bodily processes. The signal itself is not an emotion; linking it to one requires the inferential steps of feature extraction, comparison with a baseline and interpretation in context.", cs = "Časově proměnný záznam měřitelné veličiny, například elektrokardiogramu, kožní vodivosti, dýchání nebo zvukové vlny, z něhož se odvozují příznaky. Surový signál obsahuje sledovanou složku spolu se šumem a artefakty z pohybu, elektrod, prostředí a nesouvisejících tělesných procesů. Signál sám není emocí; jeho spojení s emocí vyžaduje inferenční kroky extrakce příznaků, srovnání s výchozí hodnotou a interpretace v kontextu." }
+kind = "technical"
+see_also = ["feature", "baseline", "inference", "electrodermal-activity"]
+links = ["methods/index.md", "research/measuring-emotion/index.md"]
+references = ["boucsein-2012"]
+
+[[terms]]
+id = "social-sharing-of-emotion"
+term = { en = "Social sharing of emotion", cs = "Sociální sdílení emocí" }
+definition = { en = "Talking with others about an emotional experience, which Rimé showed follows most emotional episodes and is often repeated. Sharing is associated with feeling understood, closer relationships and perceived benefit, but talking about an event did not by itself reduce the emotional impact of the memory in experimental studies. Recovery appears to depend more on the kind of response received, including cognitive help in making sense of the event, than on disclosure alone.", cs = "Rozhovor s druhými o emočním zážitku, o němž Rimé ukázal, že následuje po většině emočních epizod a často se opakuje. Sdílení souvisí s pocitem porozumění, bližšími vztahy a vnímaným přínosem, samotné mluvení o události však v experimentálních studiích emoční dopad vzpomínky nesnížilo. Zotavení se zdá záviset spíše na druhu odezvy, včetně kognitivní pomoci s porozuměním události, než na samotném svěření." }
+kind = "empirical"
+see_also = ["social-support", "crying", "affect-labeling", "collective-effervescence"]
+links = ["research/crying-and-sharing/index.md", "advice/build-lasting-support/index.md"]
+references = ["rime-2009", "zech-rime-2005"]
+
+[[terms]]
+id = "social-support"
+term = { en = "Social support and stress buffering", cs = "Sociální opora a tlumení stresu" }
+definition = { en = "Social support refers to resources provided by relationships, such as emotional understanding, practical help and information. The buffering hypothesis proposes that perceived availability of support protects people mainly when they are under stress, by changing how stressors are appraised and responded to. Cohen and Wills reviewed evidence for both buffering effects and direct associations between social integration and well-being, with the pattern depending on how support was measured.", cs = "Sociální opora označuje zdroje, které poskytují vztahy, například emoční porozumění, praktickou pomoc a informace. Hypotéza tlumení (nárazníkového efektu) předpokládá, že vnímaná dostupnost opory chrání lidi hlavně ve chvílích zátěže, protože mění, jak stresory hodnotí a jak na ně reagují. Cohen a Wills shrnuli doklady jak pro tlumivý účinek, tak pro přímé souvislosti mezi sociální začleněností a pohodou, přičemž výsledný obraz závisel na tom, jak byla opora měřena." }
+kind = "empirical"
+see_also = ["allostatic-load", "social-sharing-of-emotion", "collective-effervescence"]
+links = ["research/stress-and-social-buffering/index.md", "advice/build-lasting-support/index.md"]
+references = ["cohen-wills-1985"]
+
+[[terms]]
+id = "valence"
+term = { en = "Valence", cs = "Valence" }
+definition = { en = "The pleasantness or unpleasantness of an affective state, one of the two dimensions commonly used to describe affect alongside arousal. Valence is most directly assessed by self-report, and to some extent by facial muscle activity and behavioural measures. Autonomic measures such as skin conductance track arousal more than valence, which is one reason physiological data alone cannot establish whether a person feels good or bad.", cs = "Příjemnost či nepříjemnost afektivního stavu, vedle arousalu jedna ze dvou dimenzí, kterými se afekt běžně popisuje. Valence se nejpříměji posuzuje sebeposouzením, do jisté míry také aktivitou obličejových svalů a behaviorálními ukazateli. Autonomní ukazatele, jako je kožní vodivost, sledují spíše arousal než valenci, což je jeden z důvodů, proč samotná fyziologická data nemohou určit, zda se člověk cítí dobře, nebo špatně." }
+kind = "theoretical"
+see_also = ["arousal", "affect", "self-report"]
+links = ["research/measuring-emotion/index.md"]
+references = ["mauss-robinson-2009"]
+
+[[terms]]
+id = "venting"
+term = { en = "Venting", cs = "Ventilace emocí" }
+definition = { en = "Expressing an emotion, especially anger, with the aim of getting it out, for example by shouting or hitting an object. In controlled experiments, venting while thinking about the provocation kept anger active and was followed by more aggression than sitting quietly, and belief that venting helps increased the tendency to vent. A meta-analysis found that arousal-reducing activities lowered anger, whereas arousal-increasing activities did not reliably do so.", cs = "Vyjadřování emoce, zejména hněvu, s cílem dostat ji ze sebe, například křikem nebo bušením do předmětu. V kontrolovaných experimentech ventilace při myšlení na provokaci udržovala hněv aktivní a následovalo po ní více agrese než po tichém sezení, a přesvědčení, že ventilace pomáhá, zvyšovalo sklon k ní sáhnout. Metaanalýza zjistila, že aktivity snižující arousal hněv snižovaly, zatímco aktivity arousal zvyšující jej spolehlivě nesnižovaly." }
+kind = "empirical"
+see_also = ["hydraulic-model", "rumination", "arousal", "catharsis"]
+links = ["research/venting-hypothesis/index.md", "advice/let-anger-cool/index.md"]
+references = ["bushman-baumeister-stack-1999", "bushman-2002", "kjaervik-bushman-2024"]

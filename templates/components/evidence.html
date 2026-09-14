@@ -1,0 +1,98 @@
+{#- Evidence ledger building blocks: kind labels, level/confidence/status badges, claim and source cards.
+    Data: data/claims.toml, data/sources.toml, data/references.toml. Pages never restate a claim's grade
+    by hand; they render it from the ledger. -#}
+
+{% component evidence.kind(kind: string, lang: string) %}
+{%- set key = "kind_" ~ (kind | replace(from="-", to="_")) -%}
+<span class="kind-label kind-{{ kind }}">{{ trans(key=key, lang=lang) }}</span>
+{% endcomponent evidence.kind %}
+
+{% component evidence.level(level: string, lang: string) %}
+<span class="level-badge level-{{ level | lower }}"><span class="badge-key">{{ trans(key="evidence_level", lang=lang) }}</span> {{ level }}</span>
+{% endcomponent evidence.level %}
+
+{% component evidence.confidence(value: string, lang: string) %}
+<span class="confidence-badge confidence-{{ value | lower }}"><span class="badge-key">{{ trans(key="confidence", lang=lang) }}</span> {{ value }}</span>
+{% endcomponent evidence.confidence %}
+
+{% component evidence.status(status: string, lang: string) %}
+{%- set key = "status_" ~ (status | replace(from="-", to="_")) -%}
+<span class="status-badge status-{{ status }}">{{ trans(key=key, lang=lang) }}</span>
+{% endcomponent evidence.status %}
+
+{% component evidence.design(design: string, lang: string) %}
+{%- set key = "design_" ~ (design | replace(from="-", to="_")) -%}
+<span class="label">{{ trans(key=key, lang=lang) }}</span>
+{% endcomponent evidence.design %}
+
+{% component evidence.source(id: string, lang: string) %}
+{%- set reference_data = load_data(path="data/references.toml") -%}
+{%- set source_data = load_data(path="data/sources.toml") -%}
+{%- set ref = reference_data.references[id] -%}
+{%- set appraisal = source_data.sources[id] -%}
+{%- set title_key = "title_" ~ lang -%}
+<li class="source-item">
+  <p class="source-cite">
+    <span class="ref-authors">{{ ref.authors }}</span> ({{ ref.year }}).
+    <cite>{% if ref[title_key] is defined %}{{ ref[title_key] }}{% else %}{{ ref.title }}{% endif %}</cite>.
+    {%- if ref.doi != "" %} <a href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">doi:{{ ref.doi }}</a>{% elif ref.url != "" %} <a href="{{ ref.url }}" rel="noopener" target="_blank">{{ ref.url }}</a>{% endif %}
+  </p>
+  <p class="source-meta">{{ <evidence.level level={appraisal.level} lang={lang} /> }} {{ <evidence.design design={appraisal.design} lang={lang} /> }}</p>
+  <p class="source-appraisal">{{ appraisal.appraisal[lang] }}</p>
+</li>
+{% endcomponent evidence.source %}
+
+{#- A claim card. The sources panel is an Alpine disclosure; without JavaScript it stays open (.no-js rule). -#}
+{% component evidence.claim(claim: map, lang: string, heading: string = "h3") %}
+{%- set show_label = trans(key="show_sources", lang=lang) -%}
+{%- set hide_label = trans(key="hide_sources", lang=lang) -%}
+<article id="claim-{{ claim.id }}" class="claim-card" x-data="{ open: false }">
+  <div class="claim-badges">
+    {{ <evidence.kind kind={claim.claim_type} lang={lang} /> }}
+    {{ <evidence.level level={claim.evidence_level} lang={lang} /> }}
+    {{ <evidence.confidence value={claim.confidence} lang={lang} /> }}
+  </div>
+  <{{ heading }} class="claim-statement">{{ claim.statement[lang] }}</{{ heading }}>
+  <dl class="claim-facts">
+    <div><dt class="label">{{ trans(key="scope", lang=lang) }}</dt><dd>{{ claim.scope[lang] }}</dd></div>
+    <div><dt class="label">{{ trans(key="caveat", lang=lang) }}</dt><dd>{{ claim.caveat[lang] }}</dd></div>
+  </dl>
+  <p class="claim-dates label">
+    {{ trans(key="last_reviewed", lang=lang) }} <time datetime="{{ claim.last_reviewed }}">{{ claim.last_reviewed }}</time>
+    · {{ trans(key="review_due", lang=lang) }} <time datetime="{{ claim.review_due }}">{{ claim.review_due }}</time>
+    · <span class="claim-id">{{ claim.id }}</span>
+  </p>
+  {%- if claim.sources | length > 0 %}
+  <button type="button" class="claim-toggle" data-requires-js aria-controls="claim-{{ claim.id }}-sources" aria-expanded="false"
+    x-on:click="open = !open" x-bind:aria-expanded="open.toString()">
+    <span x-text="open ? '{{ hide_label }}' : '{{ show_label }}'">{{ show_label }}</span> <span aria-hidden="true">({{ claim.sources | length }})</span>
+  </button>
+  <div id="claim-{{ claim.id }}-sources" class="claim-sources hidden" x-bind:class="{ 'hidden': !open }">
+    <p class="label">{{ trans(key="sources", lang=lang) }}</p>
+    <ul>
+      {%- for id in claim.sources %}
+      {{ <evidence.source id={id} lang={lang} /> }}
+      {%- endfor %}
+    </ul>
+  </div>
+  {%- endif %}
+</article>
+{% endcomponent evidence.claim %}
+
+{#- The ledger entries whose used_in names this page (path relative to content/, English file name). -#}
+{% component evidence.page_claims(path: string, lang: string) %}
+{%- set ledger = load_data(path="data/claims.toml") -%}
+{%- set_global found = [] -%}
+{%- for c in ledger.claims %}{% if path in c.used_in %}{% set_global found = [...found, c] %}{% endif %}{% endfor -%}
+{%- if found | length > 0 %}
+<section class="page-claims" aria-labelledby="page-claims-title">
+  <h2 id="page-claims-title" class="condensed">{{ trans(key="claims_in_page", lang=lang) }}</h2>
+  <p class="mt-3 max-w-3xl">{{ trans(key="claims_in_page_note", lang=lang) }} <a href="{{ get_url(path='@/evidence/index.md', lang=lang) }}">{{ trans(key="nav_evidence", lang=lang) }} →</a></p>
+  <div class="claim-list mt-6">
+    {%- for c in found %}
+    {{ <evidence.claim claim={c} lang={lang} /> }}
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+{% endcomponent evidence.page_claims %}

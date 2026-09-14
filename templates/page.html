@@ -16,7 +16,12 @@
         </ol>
       </nav>
       {%- endif %}
-      <div class="prose-page {% if page.toc | length > 2 %}lg:col-span-9{% else %}lg:col-span-12{% endif %}">{{ page.content | safe }}</div>
+      <div class="{% if page.toc | length > 2 %}lg:col-span-9{% else %}lg:col-span-12{% endif %}">
+        <div class="prose-page">{{ page.content | safe }}</div>
+        {%- if page.extra.figures is defined %}
+        <div class="figures">{{ <library.figures figures={page.extra.figures} lang={lang} /> }}</div>
+        {%- endif %}
+      </div>
     </div>
   </div>
 </article>

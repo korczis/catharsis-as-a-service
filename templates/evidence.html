@@ -1,0 +1,152 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- set x = page.extra -%}
+{%- set ledger = load_data(path="data/claims.toml") -%}
+{%- set appraisals = load_data(path="data/sources.toml") -%}
+{%- set registry = load_data(path="data/references.toml") -%}
+{%- set changes = load_data(path="data/evidence_changelog.toml") -%}
+<article class="hero" aria-labelledby="evidence-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ x.kicker }}</p>
+    <h1 id="evidence-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ ledger.claims | length }} {{ trans(key="claims_heading", lang=lang) }} · {{ registry.references | length }} {{ trans(key="sources", lang=lang) }}</p>
+    <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+    <p class="lead mt-10 max-w-4xl">{{ x.summary }}</p>
+
+    <nav class="inline-toc mt-10" aria-label="{{ trans(key='toc_label', lang=lang) }}">
+      <ul>
+        <li><a href="#levels">{{ trans(key="levels_heading", lang=lang) }}</a></li>
+        <li><a href="#confidence">{{ trans(key="confidence", lang=lang) }}</a></li>
+        <li><a href="#claim-types">{{ trans(key="claim_types_heading", lang=lang) }}</a></li>
+        <li><a href="#claims">{{ trans(key="claims_heading", lang=lang) }}</a></li>
+        <li><a href="#sources">{{ trans(key="sources_heading", lang=lang) }}</a></li>
+        <li><a href="#changelog">{{ trans(key="changelog", lang=lang) }}</a></li>
+      </ul>
+    </nav>
+
+    <div class="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="prose-page prose-wide lg:col-span-8">{{ page.content | safe }}</div>
+      <aside class="space-y-10 lg:col-span-4">
+        <section class="aside-block" aria-labelledby="review-policy-title">
+          <h2 id="review-policy-title" class="label">{{ trans(key="review_policy_heading", lang=lang) }}</h2>
+          <p class="mt-3">{{ x.review_policy }}</p>
+          <a class="btn-ghost mt-6" href="{{ config.extra.repo_url }}/issues/new?template=evidence-update.yml" target="_blank" rel="noopener">{{ x.report_label }} <span aria-hidden="true">↗</span></a>
+        </section>
+        {{ <library.disclaimer lang={lang} /> }}
+      </aside>
+    </div>
+
+    <section id="levels" class="ledger-block" aria-labelledby="levels-title">
+      <h2 id="levels-title" class="display display-md">{{ trans(key="levels_heading", lang=lang) }}</h2>
+      <dl class="definition-grid mt-10">
+        {%- for item in x.levels %}
+        <div class="definition-item">
+          <dt>{{ <evidence.level level={item.level} lang={lang} /> }} <span class="condensed definition-name">{{ item.name }}</span></dt>
+          <dd>{{ item.text }}</dd>
+        </div>
+        {%- endfor %}
+      </dl>
+    </section>
+
+    <section id="confidence" class="ledger-block" aria-labelledby="confidence-title">
+      <h2 id="confidence-title" class="display display-md">{{ trans(key="confidence", lang=lang) }}</h2>
+      <dl class="definition-grid mt-10">
+        {%- for item in x.confidence %}
+        <div class="definition-item">
+          <dt>{{ <evidence.confidence value={item.value} lang={lang} /> }}</dt>
+          <dd>{{ item.text }}</dd>
+        </div>
+        {%- endfor %}
+      </dl>
+    </section>
+
+    <section id="claim-types" class="ledger-block" aria-labelledby="claim-types-title">
+      <h2 id="claim-types-title" class="display display-md">{{ trans(key="claim_types_heading", lang=lang) }}</h2>
+      <dl class="definition-grid mt-10">
+        {%- for item in x.claim_types %}
+        <div class="definition-item">
+          <dt>{{ <evidence.kind kind={item.id} lang={lang} /> }} <span class="condensed definition-name">{{ item.name }}</span></dt>
+          <dd>{{ item.text }}</dd>
+        </div>
+        {%- endfor %}
+      </dl>
+    </section>
+
+    <section id="claims" class="ledger-block" aria-labelledby="claims-title">
+      <h2 id="claims-title" class="display display-md">{{ trans(key="claims_heading", lang=lang) }}</h2>
+      {%- for type in x.claim_types %}
+      {%- set_global members = [] -%}
+      {%- for c in ledger.claims %}{% if c.claim_type == type.id %}{% set_global members = [...members, c] %}{% endif %}{% endfor -%}
+      {%- if members | length > 0 %}
+      <section id="claims-{{ type.id }}" class="mt-14" aria-labelledby="claims-{{ type.id }}-title">
+        <h3 id="claims-{{ type.id }}-title" class="condensed ledger-subtitle">{{ type.name }} <span class="label">{{ members | length }}</span></h3>
+        <div class="claim-list mt-6">
+          {%- for c in members %}
+          {{ <evidence.claim claim={c} lang={lang} heading="h4" /> }}
+          {%- endfor %}
+        </div>
+      </section>
+      {%- endif %}
+      {%- endfor %}
+    </section>
+
+    <section id="sources" class="ledger-block" aria-labelledby="sources-title">
+      <h2 id="sources-title" class="display display-md">{{ trans(key="sources_heading", lang=lang) }}</h2>
+      <div class="table-scroll mt-10" role="region" aria-labelledby="sources-title" tabindex="0">
+        <table class="ledger-table">
+          <thead>
+            <tr>
+              <th scope="col">{{ trans(key="sources", lang=lang) }}</th>
+              <th scope="col">{{ trans(key="design", lang=lang) }}</th>
+              <th scope="col">{{ trans(key="evidence_level", lang=lang) }}</th>
+              <th scope="col">{{ trans(key="last_reviewed", lang=lang) }}</th>
+              <th scope="col">{{ trans(key="review_due", lang=lang) }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {%- for id, source in appraisals.sources %}
+            {%- set ref = registry.references[id] %}
+            <tr id="source-{{ id }}">
+              <th scope="row">
+                <span class="ref-authors">{{ ref.authors }}</span> ({{ ref.year }}). <cite>{{ ref.title }}</cite>
+                {%- if ref.doi != "" %} <a href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">doi</a>{% endif %}
+                <span class="source-appraisal block">{{ source.appraisal[lang] }}</span>
+              </th>
+              <td>{{ <evidence.design design={source.design} lang={lang} /> }}</td>
+              <td>{{ <evidence.level level={source.level} lang={lang} /> }}</td>
+              <td><time datetime="{{ source.last_reviewed }}">{{ source.last_reviewed }}</time></td>
+              <td><time datetime="{{ source.review_due }}">{{ source.review_due }}</time></td>
+            </tr>
+            {%- endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="changelog" class="ledger-block" aria-labelledby="changelog-title">
+      <h2 id="changelog-title" class="display display-md">{{ trans(key="changelog", lang=lang) }}</h2>
+      <ol class="changelog mt-10">
+        {%- for entry in changes.entries %}
+        {%- set change_key = "change_" ~ entry.kind %}
+        <li>
+          <p class="label"><time datetime="{{ entry.date }}">{{ entry.date }}</time> · {{ trans(key=change_key, lang=lang) }}</p>
+          <p class="mt-2">{{ entry.summary[lang] }}</p>
+          {%- if entry.claims | length > 0 %}
+          <ul class="changelog-claims">
+            {%- for id in entry.claims %}
+            <li><a href="#claim-{{ id }}">{{ id }}</a></li>
+            {%- endfor %}
+          </ul>
+          {%- endif %}
+        </li>
+        {%- endfor %}
+      </ol>
+    </section>
+  </div>
+</article>
+{% endblock content %}

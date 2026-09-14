@@ -15,7 +15,7 @@ key_points = [
   "Zážitkové vyhýbání, snaha uniknout nechtěnému vnitřnímu prožitku, je proces společný mnoha psychickým potížím (Hayes a kol., 1996).",
   "Jednorázový pohyb spolehlivě a krátkodobě zvyšuje pozitivní afekt (Reed & Ones, 2006) a vzpomínky na zážitky ovládá jejich vrchol a konec (Fredrickson & Kahneman, 1993).",
 ]
-references = ["hayes-1996", "reed-ones-2006", "nolen-hoeksema-2008", "watkins-2008", "fredrickson-kahneman-1993", "kahneman-1993"]
+references = ["hayes-1996", "reed-ones-2006", "nolen-hoeksema-2008", "watkins-2008", "fredrickson-kahneman-1993", "kahneman-1993", "mcewen-1998", "kjaervik-bushman-2024"]
 
 [[extra.figures]]
 kind = "relief_loop"
@@ -56,6 +56,14 @@ Hayes a kolegové (1996) popsali *zážitkové vyhýbání* jako snahu uniknout 
 ## Jak zlepšení funguje a jak dlouho trvá
 
 Metaanalýza experimentů s jednorázovým aerobním cvičením zjistila spolehlivé zvýšení pozitivního aktivovaného afektu, například pocitu energie nebo nadšení, po jednotlivých cvičeních (Reed & Ones, 2006). Kolektivní rytmus přidává odměnu a sociální blízkost ([Výzkumná poznámka 03](@/research/collective-synchrony/index.cs.md)). Jsou to skutečné účinky, ale akutní: popisují, jak se lidé cítí během epizody a po ní, ne změny podmínek, do kterých se vracejí.
+
+## Tělo může změnit stav, aniž se změní svět kolem něj
+
+Fyziologické zotavení a řešení se snadno zaměňují, protože zotavení člověk cítí v těle. McEwen (1998) popsal stresové reakce jako krátkodobě ochranné a zavedl pojem *alostatická zátěž* pro cenu jejich opakované nebo dlouhodobé aktivace, včetně reakcí, které se po odeznění výzvy nevypnou. V tomto rámci má návrat do klidového stavu po aktivaci hodnotu sám o sobě. Zároveň je to z definice změna stavu těla, nikoli změna výzvy.
+
+Právě v tomto bodě se úleva a řešení rozcházejí. Večer plný pohybu a hudby, vyplakání nebo zklidňující dechové cvičení mohou vrátit srdeční frekvenci, svalové napětí i prožívanou tíseň blíže k [výchozí úrovni](../../slovnik/#baseline). Pokud podmínky, které reakci spustily, například konflikt, dluh nebo ztráta, trvají, stejná reakce se po návratu k nim pravděpodobně spustí znovu. Zotavení snižuje cenu každé aktivace; jen změna podmínek, nebo toho, jak je člověk hodnotí, snižuje, jak často k aktivaci dochází.
+
+Rozlišení také objasňuje, co dělají různé druhy vybití. V metaanalýze činností pro zvládání hněvu snižovaly činnosti snižující vzrušení hněv a agresi, zatímco činnosti vzrušení zvyšující, jako bušení do pytle nebo běh, byly pro tyto výsledky celkově neúčinné (Kjærvik & Bushman, 2024; viz [Výzkumná poznámka 02](@/research/venting-hypothesis/index.cs.md)). Zjištění se týká hněvu a agrese, nikoli toho, zda některá činnost změnila situaci, která je vyvolala. [Časový model na stránce o metodách](../../methods/#temporal-model) tyto časové škály odděluje a [přehled důkazů](@/evidence/index.cs.md) zaznamenává, jak silně je každé tvrzení podloženo.
 
 ## Opakující se myšlení
 

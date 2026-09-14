@@ -10,6 +10,7 @@ kicker = "Diagnostika lidských systémů"
 subtitle = "Endpoint přechodu emočního stavu"
 endpoint = "POST /v1/catharsis"
 status = "200 OK"
+hero_line = "úleva zaznamenána ≠ příčina vyřešena"
 poster = "assets/catharsis-as-a-service.png"
 poster_alt = "Plakát Catharsis as a Service: monumentální industriální rave stage v rudém světle, hustý dav a anonymní postava uprostřed pod diagnostickou telemetrií."
 sidebar_left = ["Pozorovat", "Propojit", "Uvažovat", "Jednat", "Opakovat"]

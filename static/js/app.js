@@ -13,6 +13,13 @@
   const VIEWS = ['experience', 'diagnostic', 'raw'];
   const COPY_RESET_MS = 1800;
   const HEADER_REVEAL_OFFSET = 200;
+  // Detector simulation thresholds (invented, documented on the methods page).
+  const DETECTOR_HEART_RANGE = 40;
+  const DETECTOR_EDA_RANGE = 12;
+  const DETECTOR_LOW = 0.25;
+  const DETECTOR_HIGH = 0.6;
+  const DETECTOR_RELIEF = 6;
+  const DETECTOR_SYNCHRONY = 50;
 
   const onReady = (fn) => {
     if (document.readyState === 'loading') {
@@ -107,6 +114,65 @@
         this.timer = setTimeout(() => {
           this.state = 'idle';
         }, COPY_RESET_MS);
+      },
+    }));
+
+    // Methods page: the detection model applied to invented inputs. The rules mirror the page text;
+    // nothing is stored or sent, and no conclusion ever exceeds low confidence.
+    Alpine.data('detector', () => ({
+      config: { inputs: [] },
+      values: {},
+      cause: false,
+
+      init() {
+        this.config = JSON.parse(this.$el.dataset.config);
+        this.reset();
+      },
+
+      reset() {
+        this.values = Object.fromEntries(this.config.inputs.map((input) => [input.id, input.value]));
+        this.cause = false;
+      },
+
+      get activationScore() {
+        const clamp = (value) => Math.min(1, Math.max(0, value));
+        const heart = clamp((this.values.heart_rate ?? 0) / DETECTOR_HEART_RANGE);
+        const skin = clamp((this.values.eda ?? 0) / DETECTOR_EDA_RANGE);
+        return (heart + skin) / 2;
+      },
+
+      get activation() {
+        const score = this.activationScore;
+        if (score < DETECTOR_LOW) return 'low';
+        return score < DETECTOR_HIGH ? 'moderate' : 'high';
+      },
+
+      get relieved() {
+        return (this.values.relief ?? 0) >= DETECTOR_RELIEF;
+      },
+
+      get phase() {
+        const level = this.activation;
+        if (level === 'low') return this.relieved ? 'recovery' : 'baseline';
+        if (level === 'high') return this.relieved ? 'discharge' : 'peak';
+        return this.relieved ? 'recovery' : 'activation';
+      },
+
+      get synchrony() {
+        return (this.values.synchrony ?? 0) >= DETECTOR_SYNCHRONY ? 'high' : 'low';
+      },
+
+      get relief() {
+        return this.relieved ? 'reported' : 'not_reported';
+      },
+
+      get causeState() {
+        return this.cause ? 'reported' : 'unknown';
+      },
+
+      // Relief without any report that the cause changed is the artwork's case: problem_solved false.
+      get problem() {
+        return this.relieved && !this.cause ? 'false' : 'unknown';
       },
     }));
   });

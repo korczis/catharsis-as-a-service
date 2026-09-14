@@ -25,7 +25,7 @@ limits = [
   "The meta-analytic effects are small to medium on average and vary between people and situations.",
 ]
 related = ["research/clinical-perspectives/index.md", "research/venting-hypothesis/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["webb-2012", "gross-1998", "gross-john-2003", "ochsner-gross-2005"]
+references = ["webb-2012", "gross-1998", "gross-john-2003", "ochsner-gross-2005", "uusberg-2023", "monachesi-2023"]
 +++
 
 ## Why it works
@@ -39,3 +39,15 @@ The difference has measurable consequences. Neuroimaging studies show that reapp
 Webb, Miles and Sheeran (2012) meta-analysed experiments in which participants were instructed to use a specific regulation strategy. Strategies based on cognitive change, and reappraisal in particular, had a small-to-medium effect on emotional outcomes. Suppressing the expression of an emotion reduced its outward expression, but instructions to suppress the experience itself were not effective. Concentrating on one's feelings did not improve emotional outcomes.
 
 For catharsis, the implication is direct. The feeling that an emotion must be released assumes that its intensity is fixed. Reappraisal shows that intensity depends partly on interpretation, and that changing the interpretation can reduce the need for release altogether.
+
+## Reappraisal is a family of tactics
+
+"Think about it differently" can sound like a single move. Uusberg, Ford, Uusberg and Gross (2023) propose that it is better understood as a family of tactics. In their expanded reAppraisal framework, reappraisal consists of shifts in appraisal that arise either from changing the mental construal of a situation (*reconstrual*) or from changing the goals used to evaluate it (*repurposing*). Both can target the situation itself (object level) or one's own mental states, such as the emotion or thoughts about it (meta level). And both can work by loosening commitment to the dominant construal or goal (*decommitment*) or by building commitment to an alternative (*commitment*). Crossing these three distinctions gives a map of eight tactics, which the authors illustrate with examples from basic and clinical research.
+
+The framework is a theoretical proposal, not a test of which tactic works best. It is practically useful because it widens the options. The steps above mostly use reconstrual of the situation: finding other interpretations of the same facts. When no alternative interpretation is credible, repurposing, asking which goal matters most now, or reappraising the emotion itself ("this anger is information, not an instruction") are other routes within the same family.
+
+## What imaging studies add, and what they do not
+
+Monachesi, Grecucci, Ahmadi Ghomroudi and Messina (2023) used activation likelihood estimation to meta-analyse fMRI studies of task-related activity during reappraisal and during acceptance. Both strategies were associated with increased activity in the left inferior frontal gyrus and the insula. Reappraisal was also associated with decreased activity in the basal ganglia, and acceptance with decreased activity in limbic regions. The authors suggest that emotion regulation may rely on a shared inhibitory circuit together with strategy-specific top-down and bottom-up processes, which would extend earlier dual-route models.
+
+These are associations between tasks and patterns of measured activity across imaging studies. They are consistent with reappraisal and acceptance working partly through different processes, but they do not establish the mechanism, and they do not show that one strategy is better for a given person or problem. The practical reading is modest: [acceptance](../../glossary/#acceptance) is a distinct option rather than a failed attempt at reappraisal, which matters when a situation cannot be credibly reinterpreted.

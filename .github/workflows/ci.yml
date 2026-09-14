@@ -59,6 +59,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
+        with:
+          # Tags make `git describe` produce the content version shown in the footer and on /status/.
+          fetch-depth: 0
       - uses: ./.github/actions/setup
       - name: scripts/validate.sh
         run: npm run validate

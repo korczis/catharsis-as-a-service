@@ -14,9 +14,10 @@ key_points = [
   "Believing that venting helps made people more likely to vent, and venting was followed by more aggression, not less (Bushman, Baumeister & Stack, 1999).",
   "Hitting a punching bag while thinking about the provocateur produced the most anger and aggression; sitting quietly produced the least (Bushman, 2002).",
   "Reappraisal and self-distancing reduce anger and rumination without rehearsing the provocation.",
+  "A meta-analysis of 154 studies (10,189 participants) found that arousal-decreasing activities reduced anger and aggression (g = -0.63), while arousal-increasing activities, including venting-style exertion and running, were ineffective overall (g = -0.02) (Kjærvik & Bushman, 2024).",
 ]
 figures = []
-references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gross-john-2003", "kross-ayduk-mischel-2005"]
+references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gross-john-2003", "kross-ayduk-mischel-2005", "kjaervik-bushman-2024"]
 +++
 
 ## The hypothesis
@@ -40,6 +41,20 @@ The proposed mechanism is rehearsal. Venting while attention stays on the provoc
 Strategies that lower arousal, such as waiting, slow breathing or genuine distraction, let anger decline without rehearsing it. Cognitive reappraisal changes the interpretation of the provocation before or while the emotion unfolds; people who habitually use reappraisal report more positive and less negative emotion than people who habitually suppress (Gross, 1998; Gross & John, 2003). Reflecting on an upsetting experience from a self-distanced perspective, as an observer rather than reliving it, reduced emotional reactivity and rumination compared with immersed recall (Kross, Ayduk & Mischel, 2005).
 
 These strategies share one feature. They change the relationship to the emotion rather than trying to empty it out.
+
+## A meta-analytic test: turning arousal up or down
+
+The experiments above are single studies with particular procedures. Kjærvik and Bushman (2024) asked the broader question across the literature: do anger management activities that increase physiological arousal work differently from activities that decrease it? Arousal-decreasing activities included deep breathing, mindfulness and meditation. Arousal-increasing activities included hitting a bag, jogging and cycling. Their meta-analytic review was based on 154 studies with 184 independent samples and 10,189 participants.
+
+Arousal-decreasing activities reduced anger and aggression, with a pooled effect of g = -0.63 (95% interval -0.82 to -0.43), and the result was robust. The effect held across genders, races, ages and cultures; in students and non-students, criminal offenders and non-offenders, and people with and without intellectual disabilities; whether delivered digitally, by researchers or by therapists; in group and individual sessions; and in field and laboratory settings. Arousal-increasing activities, by contrast, were ineffective overall (g = -0.02, interval -0.13 to 0.09), and their results were heterogeneous and complex. The authors conclude that the findings do not support venting anger or going for a run as effective anger management activities.
+
+Two cautions keep the result in proportion. The null average for arousal-increasing activities means no reliable reduction in anger on average, not that exercise is harmful; the heterogeneity means some studies found different results, and the pooled estimate does not identify which conditions made the difference. And the review concerns anger and aggression, not mood, fitness or social connection, where exercise has other documented benefits ([Research note 04](@/research/relief-is-not-resolution/index.md)).
+
+## Catharsis is not the same as venting
+
+The meta-analysis sharpens a distinction that everyday language blurs. *Catharsis*, in the sense this library examines, names an experienced release: the feeling, after expressing an emotion, that something has been let out. *[Venting](../../glossary/#venting)* names a behaviour: expressing anger, often with high physical arousal, in the expectation that this reduces it.
+
+The two can come apart. A person can feel released after hitting a bag and still be as angry, measured by self-report or behaviour, as someone who did nothing, or angrier. The feeling of release is real as an experience, and it is also what makes venting attractive to repeat. It is not a measurement of whether anger and aggression have gone down. On the measured outcome, the evidence favours lowering arousal over raising it. The distinction between how a change feels and what it changes is developed in [Research note 04](@/research/relief-is-not-resolution/index.md).
 
 ## Relevance to the artifact
 

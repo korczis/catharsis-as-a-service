@@ -10,6 +10,7 @@ kicker = "Human Systems Diagnostics"
 subtitle = "Emotional State Transition Endpoint"
 endpoint = "POST /v1/catharsis"
 status = "200 OK"
+hero_line = "relief detected ≠ cause resolved"
 poster = "assets/catharsis-as-a-service.png"
 poster_alt = "Catharsis as a Service poster showing a monumental red-lit industrial rave stage, a dense crowd and a central anonymous figure beneath diagnostic telemetry."
 sidebar_left = ["Observe", "Connect", "Reason", "Act", "Repeat"]
@@ -97,7 +98,7 @@ Seen up close, the poster starts filing a report. The overlay names an input, a 
 
 ## Why an API
 
-Service language is how we describe things meant to be consumed on demand, repeatably, with a guaranteed response. Putting catharsis behind an endpoint makes one uncomfortable property visible: the transaction can succeed completely without the request ever being resolved. The endpoint does exactly what it promises. The promise was just smaller than the need.
+Service language is how we describe things meant to be consumed on demand, repeatably, with a predictable response. Putting catharsis behind an endpoint makes one uncomfortable property visible: the transaction can succeed completely without the request ever being resolved. The endpoint does exactly what it promises. The promise was just smaller than the need.
 
 ## Relief is not resolution
 

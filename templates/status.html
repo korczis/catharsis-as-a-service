@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{#- Generated status: build metadata from the environment scripts/validate.sh exports, and ledger
+    statistics computed from data/*.toml at build time. Nothing here is typed by hand. -#}
+{% block content %}
+{%- set ledger = load_data(path="data/claims.toml") -%}
+{%- set appraisals = load_data(path="data/sources.toml") -%}
+{%- set changes = load_data(path="data/evidence_changelog.toml") -%}
+{%- set glossary = load_data(path="data/glossary.toml") -%}
+{%- set sha = get_env(name="GITHUB_SHA", default="local") -%}
+{%- set version = get_env(name="CAAS_VERSION", default="unreleased") -%}
+{%- set committed = get_env(name="CAAS_COMMITTED", default="local") -%}
+{%- set total = ledger.claims | length -%}
+{%- set by_review = ledger.claims | sort(attribute="review_due") -%}
+{%- set latest = ledger.claims | sort(attribute="last_reviewed") | last -%}
+<article class="hero" aria-labelledby="status-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ page.extra.kicker }}</p>
+    <h1 id="status-title" class="display display-lg mt-7">{{ page.title }}</h1>
+    <p class="lead mt-10 max-w-4xl">{{ page.extra.intro }}</p>
+
+    <section id="build" class="ledger-block" aria-labelledby="build-title">
+      <h2 id="build-title" class="display display-md">{{ trans(key="build_label", lang=lang) }}</h2>
+      <dl class="stat-grid mt-10">
+        <div class="stat">
+          <dt class="label">{{ trans(key="status_revision", lang=lang) }}</dt>
+          <dd class="stat-value-sm" data-build="revision">{% if sha == "local" %}local{% else %}<a href="{{ config.extra.repo_url }}/commit/{{ sha }}">{{ sha | truncate(length=7, end="") }}</a>{% endif %}</dd>
+        </div>
+        <div class="stat">
+          <dt class="label">{{ trans(key="content_version", lang=lang) }}</dt>
+          <dd class="stat-value-sm" data-build="version">{{ version }}</dd>
+        </div>
+        <div class="stat">
+          <dt class="label">{{ trans(key="status_build_time", lang=lang) }}</dt>
+          <dd class="stat-value-sm">{{ committed }}</dd>
+        </div>
+        <div class="stat">
+          <dt class="label">{{ trans(key="evidence_date", lang=lang) }}</dt>
+          <dd class="stat-value-sm" data-build="evidence-date">{{ latest.last_reviewed }}</dd>
+        </div>
+      </dl>
+    </section>
+
+    <section id="ledger" class="ledger-block" aria-labelledby="ledger-title">
+      <h2 id="ledger-title" class="display display-md">{{ trans(key="nav_evidence", lang=lang) }}</h2>
+      <dl class="stat-grid mt-10">
+        <div class="stat"><dt class="label">{{ trans(key="claims_heading", lang=lang) }}</dt><dd class="display stat-value" data-stat="claims">{{ total }}</dd></div>
+        <div class="stat"><dt class="label">{{ trans(key="sources_heading", lang=lang) }}</dt><dd class="display stat-value" data-stat="sources">{{ appraisals.sources | length }}</dd></div>
+        <div class="stat"><dt class="label">{{ trans(key="nav_glossary", lang=lang) }}</dt><dd class="display stat-value" data-stat="terms">{{ glossary.terms | length }}</dd></div>
+        <div class="stat"><dt class="label">{{ trans(key="changelog", lang=lang) }}</dt><dd class="display stat-value">{{ changes.entries | length }}</dd></div>
+      </dl>
+
+      <div class="mt-14 grid gap-12 lg:grid-cols-3">
+        <section aria-labelledby="by-level-title">
+          <h3 id="by-level-title" class="condensed ledger-subtitle">{{ trans(key="by_level", lang=lang) }}</h3>
+          <ul class="bar-list mt-6">
+            {%- for level in ["A", "B", "C", "D", "E"] %}
+            {%- set_global n = 0 %}{% for c in ledger.claims %}{% if c.evidence_level == level %}{% set_global n = n + 1 %}{% endif %}{% endfor %}
+            <li>{{ <evidence.level level={level} lang={lang} /> }}<span class="bar" aria-hidden="true"><span style="--share: {{ n / total * 100 | round }}%"></span></span><span class="bar-count">{{ n }}</span></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        <section aria-labelledby="by-confidence-title">
+          <h3 id="by-confidence-title" class="condensed ledger-subtitle">{{ trans(key="by_confidence", lang=lang) }}</h3>
+          <ul class="bar-list mt-6">
+            {%- for value in ["HIGH", "MODERATE", "LOW", "UNKNOWN"] %}
+            {%- set_global n = 0 %}{% for c in ledger.claims %}{% if c.confidence == value %}{% set_global n = n + 1 %}{% endif %}{% endfor %}
+            <li>{{ <evidence.confidence value={value} lang={lang} /> }}<span class="bar" aria-hidden="true"><span style="--share: {{ n / total * 100 | round }}%"></span></span><span class="bar-count">{{ n }}</span></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        <section aria-labelledby="by-type-title">
+          <h3 id="by-type-title" class="condensed ledger-subtitle">{{ trans(key="by_type", lang=lang) }}</h3>
+          <ul class="bar-list mt-6">
+            {%- for type in ["empirical", "theoretical", "historical", "clinical-boundary", "technical", "artistic"] %}
+            {%- set_global n = 0 %}{% for c in ledger.claims %}{% if c.claim_type == type %}{% set_global n = n + 1 %}{% endif %}{% endfor %}
+            <li>{{ <evidence.kind kind={type} lang={lang} /> }}<span class="bar" aria-hidden="true"><span style="--share: {{ n / total * 100 | round }}%"></span></span><span class="bar-count">{{ n }}</span></li>
+            {%- endfor %}
+          </ul>
+        </section>
+      </div>
+
+      <section class="mt-16" aria-labelledby="next-reviews-title">
+        <h3 id="next-reviews-title" class="condensed ledger-subtitle">{{ trans(key="next_reviews", lang=lang) }}</h3>
+        <div class="table-scroll mt-6" role="region" aria-labelledby="next-reviews-title" tabindex="0">
+          <table class="ledger-table">
+            <thead>
+              <tr>
+                <th scope="col">{{ trans(key="review_due", lang=lang) }}</th>
+                <th scope="col">{{ trans(key="claims_heading", lang=lang) }}</th>
+                <th scope="col">{{ trans(key="status", lang=lang) }}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {%- for c in by_review[:6] %}
+              <tr>
+                <td><time datetime="{{ c.review_due }}">{{ c.review_due }}</time></td>
+                <th scope="row"><a href="{{ get_url(path='@/evidence/index.md', lang=lang) }}#claim-{{ c.id }}">{{ c.statement[lang] }}</a></th>
+                <td>{{ <evidence.kind kind={c.claim_type} lang={lang} /> }}</td>
+              </tr>
+              {%- endfor %}
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <section id="checks" class="ledger-block" aria-labelledby="checks-title">
+      <h2 id="checks-title" class="display display-md">{{ trans(key="checks_heading", lang=lang) }}</h2>
+      <dl class="definition-grid mt-10">
+        {%- for check in page.extra.checks %}
+        <div class="definition-item"><dt class="condensed definition-name">{{ check.name }}</dt><dd>{{ check.text }}</dd></div>
+        {%- endfor %}
+      </dl>
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a class="btn-ghost" href="{{ config.extra.repo_url }}/actions" target="_blank" rel="noopener">GitHub Actions <span aria-hidden="true">↗</span></a>
+        <a class="btn-ghost" href="{{ config.extra.repo_url }}/releases" target="_blank" rel="noopener">Releases <span aria-hidden="true">↗</span></a>
+        <a class="btn-ghost" href="{{ get_url(path='api/v1/index.json') }}">API v1</a>
+        <a class="btn-ghost" href="{{ get_url(path='@/evidence/index.md', lang=lang) }}#changelog">{{ trans(key="changelog", lang=lang) }} <span aria-hidden="true">→</span></a>
+      </div>
+    </section>
+  </div>
+</article>
+{% endblock content %}

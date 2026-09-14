@@ -1,0 +1,49 @@
+name: Evidence update
+description: Report a claim that is outdated, misrepresents its source, or should reflect new evidence.
+title: "Evidence: "
+labels: [evidence-update]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Every claim on the site is recorded in the evidence ledger (`/evidence/`) with its sources and review dates.
+        Thank you for helping keep it accurate. This form is for evidence, not for personal medical questions.
+  - type: input
+    id: claim
+    attributes:
+      label: Claim id or page
+      description: The claim id shown on the evidence page (for example `venting-increases-anger`), or the page URL.
+    validations:
+      required: true
+  - type: dropdown
+    id: problem
+    attributes:
+      label: What is the problem?
+      options:
+        - The claim overstates or misrepresents its source
+        - Newer evidence changes the conclusion
+        - The evidence level or confidence is wrong
+        - A reference is broken or its metadata is wrong
+        - The Czech and English versions say different things
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Details
+      description: What should change, and why. Quote the sentence on the site if possible.
+    validations:
+      required: true
+  - type: input
+    id: doi
+    attributes:
+      label: Supporting source (DOI or URL)
+      description: A peer-reviewed source is preferred.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I checked the claim's sources and review dates on the evidence page.
+          required: true

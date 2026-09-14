@@ -25,10 +25,11 @@ import urllib.request
 from pathlib import Path
 
 REQUIRED = ("kind", "authors", "year", "title", "container", "volume", "issue", "pages", "publisher", "doi", "url")
-KINDS = {"journal-article", "systematic-review", "book", "classical", "software", "record"}
+KINDS = {"journal-article", "systematic-review", "conference-paper", "book", "classical", "software", "record"}
 DOI = re.compile(r"^10\.\d{4,9}/\S+$")
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+", re.S)
 CITING_SECTIONS = ("research", "advice")
+CITING_PAGES = ("methods",)
 TITLE_SIMILARITY = 0.9
 
 
@@ -38,11 +39,12 @@ def load_registry(root):
 
 
 def cited_documents(root):
-    for section in CITING_SECTIONS:
-        for path in sorted((root / "content" / section).glob("*/index*.md")):
-            match = FRONT_MATTER.match(path.read_text(encoding="utf-8"))
-            meta = tomllib.loads(match.group(1)) if match else {}
-            yield path, meta.get("extra", {}).get("references", [])
+    paths = [p for section in CITING_SECTIONS for p in sorted((root / "content" / section).glob("*/index*.md"))]
+    paths += [p for page in CITING_PAGES for p in sorted((root / "content" / page).glob("index*.md"))]
+    for path in paths:
+        match = FRONT_MATTER.match(path.read_text(encoding="utf-8"))
+        meta = tomllib.loads(match.group(1)) if match else {}
+        yield path, meta.get("extra", {}).get("references", [])
 
 
 def normalise(text):
@@ -132,13 +134,18 @@ def check_online(registry):
             for local in registered_forms
             for text in remote_forms
         )
-        year = str((record.get("issued", {}).get("date-parts") or [[None]])[0][0])
+        # Citations use the year of the issue, which often differs from the online-first year.
+        years = {
+            str((record.get(key, {}).get("date-parts") or [[None]])[0][0])
+            for key in ("issued", "published-print", "published-online")
+            if record.get(key)
+        }
         status = "ok"
         if similarity < TITLE_SIMILARITY:
             errors.append(f"{ident}: title differs from Crossref ({similarity:.2f}): {remote!r}")
             status = "title"
-        if year != str(entry["year"]):
-            errors.append(f"{ident}: year {entry['year']} differs from Crossref {year}")
+        if str(entry["year"]) not in years:
+            errors.append(f"{ident}: year {entry['year']} differs from Crossref {sorted(years)}")
             status = "year"
         print(f"  {status:<5} {ident:<32} {doi}")
         time.sleep(0.2)

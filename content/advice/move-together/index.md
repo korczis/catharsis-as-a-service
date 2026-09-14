@@ -25,7 +25,7 @@ limits = [
   "Nightlife settings can involve alcohol, drugs, sleep loss and noise exposure, which carry their own risks.",
 ]
 related = ["research/collective-synchrony/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["tarr-2015", "wiltermuth-heath-2009", "hove-risen-2009", "reed-ones-2006"]
+references = ["tarr-2015", "wiltermuth-heath-2009", "hove-risen-2009", "reed-ones-2006", "pizarro-2022"]
 +++
 
 ## Why it works
@@ -35,6 +35,8 @@ Moving in time with others coordinates attention and action. It produces a sense
 ## What the evidence shows
 
 Synchronous tapping increased liking for a partner (Hove & Risen, 2009), and groups that walked, sang or moved in synchrony cooperated more afterwards than groups that did not (Wiltermuth & Heath, 2009). In group dance, synchrony and exertion each independently raised pain thresholds, an indirect marker of endorphin activity, and synchrony increased reported closeness to the group (Tarr et al., 2015). A meta-analysis found that single sessions of aerobic exercise reliably increase positive activated affect (Reed & Ones, 2006).
+
+Outside the laboratory, a meta-analytic review of 50 studies found that reports of *collective effervescence*, intense shared emotion and a sense of unison during gatherings such as rituals, celebrations and demonstrations, were associated with group identity, collective positive emotions, well-being and collective efficacy (Pizarro et al., 2022). These are correlations based largely on self-report from people who chose to attend, so they describe what tends to go together rather than what attending causes ([Research note 03](@/research/collective-synchrony/index.md)).
 
 ## What it does not do
 

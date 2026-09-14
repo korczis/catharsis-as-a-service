@@ -22,7 +22,7 @@ audience = [
 ]
 approach_label = "Přístup"
 approach = [
-  { title = "Dílo", text = "Plakát a interaktivní stránka, které představí kolektivní euforii a poté ji diagnostikují jako transakci služby." },
+  { title = "Dílo", text = "Plakát a interaktivní stránka, které představí kolektivní euforii a poté ji popíší jako transakci služby." },
   { title = "Důkazy", text = "Devět výzkumných poznámek, které shrnují klasické prameny a recenzované studie, každá s ověřenou literaturou." },
   { title = "Praxe", text = "Deset rad seřazených podle síly důkazů, s konkrétními kroky a výslovně uvedenými limity." },
 ]
@@ -89,6 +89,9 @@ intro = "Devět výzkumných poznámek odděluje, co studie zjistily, od toho, c
 read = "Číst poznámku"
 notes_label = "Výzkumné poznámky"
 cta = "Všechny výzkumné poznámky"
+cta_ledger = "Registr důkazů"
+cta_methods = "Metody"
+cta_glossary = "Slovník pojmů"
 findings = [
   { title = "Ventilace zvyšuje agresi", text = "Bušení do boxovacího pytle při myšlenkách na provokaci vedlo k většímu hněvu a agresi než tiché sezení.", source = "Bushman, 2002", path = "research/venting-hypothesis/index.md" },
   { title = "Synchronie buduje vazby", text = "Synchronizovaný skupinový tanec zvýšil práh bolesti a uváděnou blízkost ke skupině.", source = "Tarr a kol., 2015", path = "research/collective-synchrony/index.md" },
@@ -131,4 +134,68 @@ items = [
   { question = "Jde o lékařskou radu?", answer = "Ne. Obsah je vzdělávací a vychází z publikovaného výzkumu. Pokud potíže přetrvávají, narušují každodenní život nebo zahrnují myšlenky na sebepoškození, obraťte se na kvalifikovaného odborníka nebo místní tísňovou linku." },
   { question = "Jak web vznikl a jak dlouho to trvalo?", answer = "Vznikl během jednoho pracovního sezení; napsal ho AI agent pro programování pod dozorem Majordomu (majordomus.dev). První ověřené vydání trvalo od založení repozitáře 51 minut a 36 sekund. Poznámka o metodě dokumentuje časovou osu, druhy zadání i to, co z toho vyvodit nelze." },
 ]
+
+[extra.making.screens]
+id = "making-cockpit"
+caption = "Koncepční obrazovky cockpitu Majordomu pro sezení, testy a milníky. Data v nich jsou ilustrativní a nepopisují tento projekt; naměřenou časovou osu uvádí poznámka o metodě."
+items = [
+  { src = "assets/majordomus/cockpit-sessions.png", title = "Sezení", alt = "Koncepční obrazovka pohledu Sezení v cockpitu Majordomu: seznam pracovních sezení a časová osa jednoho sezení od začátku po aktualizaci dokumentace, se zdroji kontextu, které načetlo.", caption = "Každé sezení uchovává časovou osu, zdroje kontextu, rozhodnutí a předávku." },
+  { src = "assets/majordomus/cockpit-tests.png", title = "Testy", alt = "Koncepční obrazovka pohledu Testy v cockpitu Majordomu: počty úspěšných a neúspěšných testů, vývoj výsledků, pokrytí, kvalitativní brány a živý výstup testů.", caption = "Běhy testů, selhání a kvalitativní brány na jednom místě, propojené s issues a commity." },
+  { src = "assets/majordomus/cockpit-milestones.png", title = "Milníky", alt = "Koncepční obrazovka pohledu Milníky v cockpitu Majordomu: tři milníky s ukazateli postupu, graf kumulativního postupu, časová osa a závislosti.", caption = "Milníky s postupem, harmonogramem a závislostmi odvozenými z plánu issues." },
+]
+
+[extra.statement]
+label = "Teze"
+lines = ["Tělo může změnit stav,", "aniž se změní", "svět kolem něj."]
+text = "Srdeční frekvence se zklidní, svaly povolí, dav se rozejde a člověk popisuje úlevu. To všechno může být skutečné a velkou část lze zaznamenat. Nic z toho ale neukazuje, že se změnil dluh, konflikt, ztráta nebo pracovní podmínky, které za potížemi stojí. V téhle mezeře je celý argument díla, vyslovený co nejprostěji."
+formula = "úleva zaznamenána ≠ příčina vyřešena"
+cta_methods = "Časový model"
+cta_note = "Úleva není vyřešení"
+
+[extra.venting]
+label = "Katarze není ventilace"
+heading = "Uvolnění není totéž co vybít si vztek."
+lead = "Katarze označuje prožívané uvolnění. Ventilace označuje strategii: vyjádřit hněv aktivitou s vysokým vzrušením v očekávání, že tím odezní. Obojí se často zaměňuje a výzkum je od sebe odlišuje."
+contrast = [
+  { label = "Zvyšování vzrušení", title = "Aktivity, které vzrušení zvyšují", value = "g = −0,02", text = "Napříč studiemi aktivity, které zvyšovaly fyziologické vzrušení, spolehlivě nesnižovaly hněv ani agresi; interval spolehlivosti zahrnuje nulu." },
+  { label = "Snižování vzrušení", title = "Aktivity, které vzrušení snižují", value = "g = −0,63", text = "Aktivity, které vzrušení snižovaly, byly napříč studiemi a vzorky spojeny se středně velkým poklesem hněvu a agrese." },
+]
+stats = [
+  { value = "154", label = "studií" },
+  { value = "184", label = "vzorků" },
+  { value = "10 189", label = "účastníků" },
+]
+source = "Kjærvik, S. L., & Bushman, B. J. (2024). Metaanalýza v časopise Clinical Psychology Review, 109, 102414."
+meaning = "Pocit uvolnění po křiku nebo bušení do něčeho je skutečný. Důkazy ale nepodporují očekávání, že vybití vzrušení zmenší hněv, který přijde potom. Lépe funguje nejprve vzrušení snížit a teprve pak pracovat se situací."
+cta_note = "Hypotéza ventilace"
+cta_advice = "Nechte hněv vychladnout"
+
+[extra.questions]
+label = "Lepší otázky"
+heading = "Lepší otázky než: pomohlo to?"
+intro = "Zda byl zážitek příjemný, je nejsnazší a zároveň nejméně informativní otázka. Tyto otázky vycházejí z výzkumu regulace emocí a z toho, co se děje po úlevě."
+items = [
+  { instead = "Je mi líp?", better = "Co přesně se změnilo: tělo, nálada, porozumění, nebo situace?" },
+  { instead = "Mám to všechno pustit ven?", better = "Snižuje vyjádření mé vzrušení a někam vede, nebo mě nutí provokaci znovu přehrávat?" },
+  { instead = "Proč se to pořád vrací?", better = "Čemu se mi díky úlevě snáz vyhýbalo?" },
+  { instead = "Je to normální?", better = "Trvá to déle, sílí to, nebo to narušuje spánek, práci či vztahy?" },
+  { instead = "Jak ten stav zažít znovu?", better = "Které části toho zážitku, třeba pohyb, hudbu nebo lidi, můžu přenést do běžného týdne?" },
+  { instead = "Spravil to ten večer venku?", better = "Jaký je jeden konkrétní krok k příčině a kdo by ho mohl udělat se mnou?" },
+]
+
+[extra.boundary]
+label = "Klinická hranice"
+heading = "Kde tento web končí."
+text = "Jde o vzdělávací publikaci. Shrnuje výzkum na úrovni skupin, nemůže posoudit jednotlivce a nic na něm vás neměří. Některé zkušenosti potřebují kvalifikovaného odborníka, ne článek."
+signs_label = "Obraťte se na kvalifikovaného odborníka, pokud"
+signs = [
+  "potíže trvají týdny nebo stále sílí",
+  "je narušený spánek, práce, studium nebo vztahy",
+  "úleva závisí na alkoholu, drogách nebo riskantním chování",
+  "traumatická událost se stále vrací v podobě dotěrných vzpomínek, nočních můr nebo vyhýbání",
+]
+urgent = "Pokud máte myšlenky na ublížení sobě nebo někomu jinému, kontaktujte hned místní tísňovou linku nebo krizovou linku."
+cta_advice = "Po traumatické události"
+cta_evidence = "Jak se tvrzení hodnotí"
+
 +++

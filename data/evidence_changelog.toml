@@ -1,0 +1,31 @@
+# Evidence changelog: what changed in the ledger, when and why. Newest first.
+
+[[entries]]
+date = 2026-09-14
+kind = "added"
+summary = { en = "Ledger created with 50 claims and an appraisal of all 56 references. Designs were checked against published abstracts; two sources without a retrievable abstract (Pennebaker & Beall, 1986; Reed & Ones, 2006) are marked unverified and no numbers are stated for them. Syntheses of correlational studies are graded by the design of the studies they pool.", cs = "Vytvořen registr s 50 tvrzeními a hodnocením všech 56 zdrojů. Designy byly ověřeny podle publikovaných abstraktů; dva zdroje bez dostupného abstraktu (Pennebaker a Beall, 1986; Reed a Ones, 2006) jsou označeny jako neověřené a neuvádějí se u nich žádná čísla. Syntézy korelačních studií jsou hodnoceny podle designu studií, které shrnují." }
+claims = ["catharsis-working-definition", "expressive-writing-coherence", "exercise-acute-positive-affect", "rumination-associated-symptoms", "collective-effervescence-associations", "relief-not-resolution-thesis", "telemetry-is-artistic", "no-analytics-trackers-cookies"]
+
+[[entries]]
+date = 2026-09-14
+kind = "revised"
+summary = { en = "Venting evidence revised to include the 2024 meta-analysis of 154 studies: arousal-decreasing activities reduced anger and aggression, arousal-increasing activities were ineffective overall. The landing-page wording 'venting increases aggression' is scoped in the ledger to rumination while venting in laboratory experiments (level B), and the arousal-increasing finding is held at moderate confidence because of heterogeneity.", cs = "Doklady o ventilování byly doplněny o metaanalýzu 154 studií z roku 2024: aktivity snižující vzrušení zmírňovaly hněv a agresi, aktivity zvyšující vzrušení byly celkově neúčinné. Formulace z úvodní stránky „ventilování zvyšuje agresi“ je v registru omezena na ruminaci během ventilování v laboratorních experimentech (úroveň B) a zjištění o aktivitách zvyšujících vzrušení má kvůli heterogenitě střední míru jistoty." }
+claims = ["venting-increases-anger", "arousal-increasing-activities-ineffective", "arousal-decreasing-activities-reduce-anger", "catharsis-distinct-from-venting"]
+
+[[entries]]
+date = 2026-09-14
+kind = "added"
+summary = { en = "Music and emotion regulation claims added for the new research note, separating the randomised evidence on structured music interventions from the qualitative and correlational evidence on everyday music use, whose effectiveness remains insufficiently studied.", cs = "Pro novou výzkumnou poznámku byla přidána tvrzení o hudbě a regulaci emocí, která oddělují randomizované doklady o strukturovaných hudebních intervencích od kvalitativních a korelačních dokladů o každodenním používání hudby, jehož účinnost zůstává nedostatečně prozkoumána." }
+claims = ["music-interventions-reduce-stress", "music-used-for-emotion-regulation", "music-discharge-strategy", "music-self-regulation-effectiveness-untested"]
+
+[[entries]]
+date = 2026-09-14
+kind = "added"
+summary = { en = "Measurement claims added for the methods page: no consistent autonomic fingerprint for emotion categories (with the dissenting 2010 review acknowledged), limits of facial movements and self-report, emotion dynamics, heart rate variability methods and the ethics of emotion AI.", cs = "Pro stránku o metodách byla přidána tvrzení o měření: chybějící konzistentní autonomní otisk kategorií emocí (s uvedením odlišného přehledu z roku 2010), limity výrazů obličeje a sebeposouzení, dynamika emocí, metody variability srdeční frekvence a etika afektivní umělé inteligence." }
+claims = ["no-autonomic-fingerprint", "facial-movements-not-reliable", "no-gold-standard-measure", "self-report-accessibility", "emotion-dynamics-repeated-measurement", "hrv-careful-interpretation", "emotion-ai-contested-models"]
+
+[[entries]]
+date = 2026-09-14
+kind = "added"
+summary = { en = "Clinical-boundary claims given a 180-day review interval: the debriefing finding, the statement that the content is education rather than individual treatment, and when to seek professional or emergency help.", cs = "Tvrzení o klinických hranicích dostala interval revize 180 dní: zjištění o debriefingu, prohlášení, že obsah je osvětou, nikoli individuální léčbou, a kdy vyhledat odbornou nebo tísňovou pomoc." }
+claims = ["debriefing-does-not-prevent-ptsd", "education-not-individual-treatment", "seek-professional-help"]

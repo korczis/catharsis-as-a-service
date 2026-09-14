@@ -33,7 +33,7 @@
   {#- Mobile order: title, poster, telemetry. Desktop: copy on the left, poster spanning both rows. -#}
   <div class="shell grid gap-10 lg:grid-cols-2 lg:grid-rows-[auto_auto] lg:gap-x-16 lg:gap-y-8">
     <div class="flex flex-col gap-7 lg:col-start-1 lg:row-start-1 lg:self-end">
-      <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ a.extra.kicker }}</span></p>
+      <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ a.extra.kicker }}</span> {{ <evidence.kind kind="artistic" lang={lang} /> }}</p>
       <h1 id="hero-title" class="display display-hero">
         {%- for line in a.extra.title_lines %}<span class="block{% if loop.first %} text-blood{% endif %}">{{ line | replace(from="™", to='<sup class="tm">™</sup>') | safe }}</span>{% endfor -%}
       </h1>
@@ -56,6 +56,7 @@
       <div class="flex flex-col items-start gap-3">
         <p class="endpoint"><span>&gt; {{ a.extra.endpoint }}</span> <span aria-hidden="true">→</span> <strong class="text-blood">{{ a.extra.status }}</strong></p>
         <p class="font-bold text-blood">problem_solved: {{ d.problem_solved }}</p>
+        <p class="hero-line" data-hero-line>{{ a.extra.hero_line }}</p>
       </div>
     </div>
   </div>

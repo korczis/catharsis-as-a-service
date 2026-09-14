@@ -8,7 +8,8 @@
       {"name": trans(key="nav_research", lang=lang), "url": get_url(path="@/research/_index.md", lang=lang)},
       {"name": page.extra.kicker, "url": page.permalink}
     ]} /> }}
-    <p class="eyebrow"><a class="no-underline" href="{{ get_url(path='@/research/_index.md', lang=lang) }}">{{ trans(key="nav_research", lang=lang) }}</a> <span class="text-muted">// {{ page.extra.kicker }}</span></p>
+    {%- if page.extra.kind is defined %}{% set kind = page.extra.kind %}{% else %}{% set kind = "empirical" %}{% endif %}
+    <p class="eyebrow"><a class="no-underline" href="{{ get_url(path='@/research/_index.md', lang=lang) }}">{{ trans(key="nav_research", lang=lang) }}</a> <span class="text-muted">// {{ page.extra.kicker }}</span> {{ <evidence.kind kind={kind} lang={lang} /> }}</p>
     <h1 id="essay-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
     <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
     <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
@@ -32,8 +33,10 @@
         {%- endif %}
       </aside>
       <div class="lg:col-span-8">
-        <div class="figures">{{ <library.figures figures={page.extra.figures} /> }}</div>
+        {%- set claim_path = page.relative_path | replace(from="." ~ lang ~ ".md", to=".md") %}
+        <div class="figures">{{ <library.figures figures={page.extra.figures} lang={lang} /> }}</div>
         <div class="prose-page prose-wide">{{ page.content | safe }}</div>
+        {{ <evidence.page_claims path={claim_path} lang={lang} /> }}
         {{ <library.references ids={page.extra.references} lang={lang} /> }}
         <div class="mt-12">{{ <library.disclaimer lang={lang} /> }}</div>
       </div>

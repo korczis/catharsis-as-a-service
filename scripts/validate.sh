@@ -5,6 +5,9 @@ cd "$(dirname "$0")/.."
 
 BASE_URL="${BASE_URL:-$(python3 -c 'import tomllib; print(tomllib.load(open("zola.toml", "rb"))["base_url"])')}"
 REQUIRED_ZOLA="$(tr -d '[:space:]' < .zola-version)"
+# Build metadata for the footer and /status/. Derived from the commit, so a rebuild is reproducible.
+export CAAS_VERSION="${CAAS_VERSION:-$(git describe --tags --always 2>/dev/null || echo unreleased)}"
+export CAAS_COMMITTED="${CAAS_COMMITTED:-$(git log -1 --format=%cs 2>/dev/null || echo local)}"
 RESULTS=()
 
 dots() {
@@ -53,6 +56,7 @@ step javascript js_syntax
 step i18n python3 scripts/validate-i18n.py
 step content python3 scripts/validate-content.py
 step references python3 scripts/check-references.py
+step claims python3 scripts/validate-claims.py
 step zola-check zola check --skip-external-links
 step zola-build zola build --base-url "$BASE_URL"
 step api python3 scripts/export-api.py --out public --base-url "$BASE_URL"

@@ -9,13 +9,25 @@ tags = ["method", "majordomus", "verification", "software delivery"]
 
 [extra]
 kicker = "Research note 06"
+kind = "technical"
 summary = "The site went from an empty GitHub repository to a verified release in 51 minutes and 36 seconds, and from Majordomus initialisation to that release in 19 minutes and 19 seconds. This note reports the recorded timeline, the types of instructions that drove the work, the findings Majordomus raised before anything was pushed, and the limits of any claim about speed."
 key_points = [
   "Measured from the repository and pipeline records: repository created 09:54:06 UTC, first release v0.1.0 verified and published 10:45:42 UTC on 14 September 2026.",
   "Majordomus reported two scope errors and one bootstrap failure before the first push; the first deployment pipeline passed all seven jobs.",
   "No control condition exists, so no speed-up factor is claimed; the records show where time was not lost and make every completion claim checkable.",
 ]
-figures = []
+figures = [
+  { kind = "screens", id = "majordomus-cockpit", caption = "Concept screens of a Majordomus cockpit: views over sessions, rules, worktrees, issues, tests, documentation, milestones and model usage. All names, numbers and dates in them are illustrative and do not describe this project; its real records are the timeline in this note.", items = [
+    { src = "assets/majordomus/cockpit-sessions.png", title = "Sessions", alt = "Concept screen of the Majordomus cockpit Sessions view: a list of working sessions and the timeline of one session from start to updated documentation, with the context sources it loaded.", caption = "Each session keeps its timeline, context sources, decisions and handover." },
+    { src = "assets/majordomus/cockpit-rules.png", title = "Rules", alt = "Concept screen of the Majordomus cockpit Rules view: a list of enforced repository rules with coverage, the detail of one rule, its validation status and where it is enforced.", caption = "Executable rules with their enforcement points: command line, CI, pre-commit hook." },
+    { src = "assets/majordomus/cockpit-worktrees.png", title = "Worktrees", alt = "Concept screen of the Majordomus cockpit Worktrees view: parallel branches with their status, a diff of changed files, commits ahead and a terminal.", caption = "Parallel branches in their own worktrees, each tied to an issue and a session." },
+    { src = "assets/majordomus/cockpit-issues.png", title = "Issues", alt = "Concept screen of the Majordomus cockpit Issues view: an issue list and the detail of one issue with its linked worktree, session, pull request, tests and documentation.", caption = "An issue connected to the work that implements and verifies it." },
+    { src = "assets/majordomus/cockpit-tests.png", title = "Tests", alt = "Concept screen of the Majordomus cockpit Tests view: pass and fail counts, a results trend, coverage, quality gates and live test output.", caption = "Test runs, failures and quality gates in one place, linked to issues and commits." },
+    { src = "assets/majordomus/cockpit-docs.png", title = "Documentation", alt = "Concept screen of the Majordomus cockpit Documentation view: a document tree and an architecture decision record with context, decision and consequences.", caption = "Documentation and architecture decisions next to the rules they implement." },
+    { src = "assets/majordomus/cockpit-milestones.png", title = "Milestones", alt = "Concept screen of the Majordomus cockpit Milestones view: three milestones with progress bars, a cumulative progress chart, a timeline and dependencies.", caption = "Milestones with progress, schedule and dependencies derived from the issue plan." },
+    { src = "assets/majordomus/cockpit-models.png", title = "Models", alt = "Concept screen of the Majordomus cockpit Models view: AI model providers with usage, latency, cost breakdown and live requests.", caption = "Which models were used for what, at what latency and cost." },
+  ] },
+]
 references = ["majordomus-2026", "repository-2026"]
 +++
 

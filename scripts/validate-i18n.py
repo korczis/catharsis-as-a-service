@@ -20,6 +20,8 @@ FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+", re.S)
 TRANS_KEY = re.compile(r"""trans\(\s*key\s*=\s*["']([A-Za-z0-9_]+)["']""")
 
 
+DYNAMIC_PREFIXES = ("kind_", "status_", "design_", "change_")
+
 def load_config():
     with open(ROOT / "zola.toml", "rb") as handle:
         return tomllib.load(handle)
@@ -103,6 +105,8 @@ def main():
                 errors.append(f"UI string '{key}' is empty for {code}")
 
     used = {item["key"] for item in config.get("extra", {}).get("nav", [])}
+    # Keys built from data values in templates (e.g. "kind_" ~ claim.claim_type) count as used.
+    used.update(key for key in all_keys if key.startswith(DYNAMIC_PREFIXES))
     for template in TEMPLATES.rglob("*.html"):
         used.update(TRANS_KEY.findall(template.read_text(encoding="utf-8")))
     for key in sorted(used - all_keys):

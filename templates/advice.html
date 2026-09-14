@@ -33,6 +33,8 @@
             {%- endfor %}
           </ul>
         </section>
+        {%- set claim_path = page.relative_path | replace(from="." ~ lang ~ ".md", to=".md") %}
+        {{ <evidence.page_claims path={claim_path} lang={lang} /> }}
         {{ <library.references ids={page.extra.references} lang={lang} /> }}
       </div>
       <aside class="space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">

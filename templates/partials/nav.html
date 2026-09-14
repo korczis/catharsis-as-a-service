@@ -6,9 +6,10 @@
     <ul class="hidden items-center gap-6 xl:flex">
       <li><a class="nav-link" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
-      <li><a class="nav-link" href="{{ home_url }}#artifact">{{ trans(key="nav_artifact", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/methods/index.md', lang=l) }}">{{ trans(key="nav_methods", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/evidence/index.md', lang=l) }}">{{ trans(key="nav_evidence", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/glossary/index.md', lang=l) }}">{{ trans(key="nav_glossary", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/about/index.md', lang=l) }}">{{ trans(key="nav_about", lang=l) }}</a></li>
-      <li><a class="nav-link" href="{{ get_url(path='@/guides/index.md', lang=l) }}">{{ trans(key="nav_guides", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ config.extra.repo_url }}" target="_blank" rel="noopener">{{ trans(key="nav_source", lang=l) }} <span aria-hidden="true">↗</span></a></li>
       <li>{% include "partials/locale-switcher.html" %}</li>
     </ul>
@@ -26,6 +27,9 @@
   <ul class="flex flex-col gap-4">
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/methods/index.md', lang=l) }}">{{ trans(key="nav_methods", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/evidence/index.md', lang=l) }}">{{ trans(key="nav_evidence", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/glossary/index.md', lang=l) }}">{{ trans(key="nav_glossary", lang=l) }}</a></li>
     {%- for item in config.extra.nav %}
     <li><a class="condensed text-3xl no-underline" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
     {%- endfor %}

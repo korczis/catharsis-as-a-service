@@ -41,6 +41,57 @@
   }] -%}
 {%- endif -%}
 
+{#- Library pages are Article (never MedicalWebPage: the site is educational, see
+    .ai/repo/rules/project/medical-claims.v1.md); listing pages are CollectionPage. -#}
+{%- if page is defined and page.extra.poster is not defined -%}
+  {%- set_global citations = [] -%}
+  {%- if page.extra.references is defined -%}
+    {%- set reference_data = load_data(path="data/references.toml") -%}
+    {%- set registry = reference_data.references -%}
+    {%- for id in page.extra.references -%}
+      {%- set ref = registry[id] -%}
+      {%- if ref.doi != "" -%}{%- set_global citations = [...citations, "https://doi.org/" ~ ref.doi] -%}
+      {%- elif ref.url != "" -%}{%- set_global citations = [...citations, ref.url] -%}{%- endif -%}
+    {%- endfor -%}
+  {%- endif -%}
+  {%- if page.date -%}{%- set published = page.date -%}{%- else -%}{%- set published = "" -%}{%- endif -%}
+  {%- set_global graph = [...graph, {
+    "@type": "Article",
+    "@id": page.permalink ~ "#article",
+    "url": page.permalink,
+    "mainEntityOfPage": page.permalink,
+    "headline": page.title,
+    "description": page.description,
+    "inLanguage": l,
+    "datePublished": published,
+    "author": {"@id": site_url ~ "#author"},
+    "publisher": {"@id": site_url ~ "#author"},
+    "isPartOf": {"@id": site_url ~ "#website"},
+    "image": preview_url,
+    "keywords": (page.taxonomies.tags or []) | join(sep=", "),
+    "citation": citations,
+    "isAccessibleForFree": true
+  }] -%}
+  {%- if "glossary/" in page.relative_path -%}
+    {%- set glossary = load_data(path="data/glossary.toml") -%}
+    {%- set_global defined_terms = [] -%}
+    {%- for t in glossary.terms -%}
+      {%- set_global defined_terms = [...defined_terms, {"@type": "DefinedTerm", "@id": page.permalink ~ "#" ~ t.id, "name": t.term[l], "description": t.definition[l], "inDefinedTermSet": page.permalink ~ "#termset"}] -%}
+    {%- endfor -%}
+    {%- set_global graph = [...graph, {"@type": "DefinedTermSet", "@id": page.permalink ~ "#termset", "name": page.title, "url": page.permalink, "inLanguage": l, "hasDefinedTerm": defined_terms}] -%}
+  {%- endif -%}
+{%- elif section is defined and current_url is defined and current_url != site_url -%}
+  {%- set_global graph = [...graph, {
+    "@type": "CollectionPage",
+    "@id": section.permalink ~ "#collection",
+    "url": section.permalink,
+    "name": section.title,
+    "description": section.description,
+    "inLanguage": l,
+    "isPartOf": {"@id": site_url ~ "#website"}
+  }] -%}
+{%- endif -%}
+
 {%- if current_url is defined and current_url != site_url -%}
   {%- set_global crumbs = [{"@type": "ListItem", "position": 1, "name": trans(key="breadcrumb_home", lang=l), "item": site_url}] -%}
   {%- for ancestor in ctx.ancestors -%}

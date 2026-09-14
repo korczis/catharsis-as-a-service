@@ -61,9 +61,32 @@
 </section>
 {% endcomponent library.references %}
 
-{% component library.figures(figures: array) %}
+{#- Screenshots of concept interfaces. Always labelled as concept screens with illustrative data. -#}
+{% component library.screens(fig: map, lang: string) %}
+<figure id="{{ fig.id }}" class="screens" aria-labelledby="{{ fig.id }}-caption">
+  <p class="screen-label" role="note">{{ trans(key="cockpit_label", lang=lang) }}</p>
+  <ul class="screen-grid{% if fig.items | length == 1 %} is-single{% endif %}">
+    {%- for item in fig.items %}
+    {%- set large = resize_image(path=item.src, width=1200, op="fit_width", format="webp", quality=84) %}
+    {%- set small = resize_image(path=item.src, width=768, op="fit_width", format="webp", quality=82) %}
+    <li class="screen">
+      <a class="screen-frame" href="{{ get_url(path=item.src) }}" target="_blank" rel="noopener">
+        <img src="{{ large.url }}" srcset="{{ small.url }} 768w, {{ large.url }} 1200w" sizes="(min-width: 1024px) 34vw, 92vw"
+          width="{{ large.width }}" height="{{ large.height }}" alt="{{ item.alt }}" loading="lazy" decoding="async">
+      </a>
+      <p class="screen-caption"><span class="condensed screen-title">{{ item.title }}</span> {{ item.caption }}</p>
+    </li>
+    {%- endfor %}
+  </ul>
+  <figcaption id="{{ fig.id }}-caption" class="screen-figcaption">{{ fig.caption }}</figcaption>
+</figure>
+{% endcomponent library.screens %}
+
+{% component library.figures(figures: array, lang: string = "en") %}
 {%- for fig in figures %}
-{%- if fig.kind == "timeline" %}
+{%- if fig.kind == "screens" %}
+{{ <library.screens fig={fig} lang={lang} /> }}
+{%- elif fig.kind == "timeline" %}
 {{ <illustration.timeline id={fig.id} title={fig.title} description={fig.description} caption={fig.caption} items={fig.items} /> }}
 {%- elif fig.kind == "relief_loop" %}
 {{ <illustration.relief_loop id={fig.id} labels={fig} /> }}

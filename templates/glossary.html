@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- set glossary = load_data(path="data/glossary.toml") -%}
+{%- set reference_data = load_data(path="data/references.toml") -%}
+{%- set registry = reference_data.references -%}
+{%- if lang == "cs" %}{% set other = "en" %}{% else %}{% set other = "cs" %}{% endif -%}
+{%- set terms = glossary.terms | sort(attribute="term." ~ lang) -%}
+{%- set_global letters = [] -%}
+{%- for t in terms %}
+  {%- set initial = t.term[lang] | truncate(length=1, end="") | upper -%}
+  {%- if initial not in letters %}{% set_global letters = [...letters, initial] %}{% endif -%}
+{%- endfor -%}
+<article class="hero" aria-labelledby="glossary-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ page.extra.kicker }}</p>
+    <h1 id="glossary-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="label mt-6">{{ terms | length }} · {{ trans(key="nav_glossary", lang=lang) }}</p>
+    <p class="lead mt-10 max-w-4xl">{{ page.extra.intro }}</p>
+    <div class="prose-page mt-6 max-w-4xl">{{ page.content | safe }}</div>
+
+    <nav class="letter-nav mt-12" aria-label="{{ trans(key='glossary_index', lang=lang) }}">
+      <ul>
+        {%- for letter in letters %}
+        <li><a href="#letter-{{ loop.index }}">{{ letter }}</a></li>
+        {%- endfor %}
+      </ul>
+    </nav>
+
+    <div class="glossary mt-14">
+      {%- for letter in letters %}
+      <section id="letter-{{ loop.index }}" class="glossary-letter" aria-labelledby="letter-{{ loop.index }}-title">
+        <h2 id="letter-{{ loop.index }}-title" class="display display-md glossary-initial">{{ letter }}</h2>
+        <div class="term-list">
+          {%- for t in terms %}
+          {%- set initial = t.term[lang] | truncate(length=1, end="") | upper %}
+          {%- if initial == letter %}
+          <article id="{{ t.id }}" class="term" aria-labelledby="{{ t.id }}-title">
+            <div class="term-head">
+              <h3 id="{{ t.id }}-title" class="condensed term-title"><dfn>{{ t.term[lang] }}</dfn></h3>
+              {{ <evidence.kind kind={t.kind} lang={lang} /> }}
+            </div>
+            <p class="term-other label" lang="{{ other }}">{{ t.term[other] }}</p>
+            <p class="term-definition">{{ t.definition[lang] }}</p>
+            {%- if t.see_also | length > 0 %}
+            <p class="term-links"><span class="label">{{ trans(key="see_also", lang=lang) }}</span>
+              {%- for ref_id in t.see_also %}
+              {%- for candidate in glossary.terms %}{% if candidate.id == ref_id %} <a href="#{{ ref_id }}">{{ candidate.term[lang] }}</a>{% if not loop.last %}{% endif %}{% endif %}{% endfor %}
+              {%- endfor %}
+            </p>
+            {%- endif %}
+            {%- if t.links | length > 0 %}
+            <p class="term-links"><span class="label">{{ trans(key="read_more", lang=lang) }}</span>
+              {%- for link in t.links %}
+              {%- if lang == config.default_language %}{% set target = link %}{% else %}{% set target = link | replace(from="index.md", to="index." ~ lang ~ ".md") %}{% endif %}
+              {%- set linked = get_page(path=target) %}
+              <a href="{{ linked.permalink }}">{{ linked.title }}</a>
+              {%- endfor %}
+            </p>
+            {%- endif %}
+            {%- if t.references | length > 0 %}
+            <p class="term-links"><span class="label">{{ trans(key="sources", lang=lang) }}</span>
+              {%- for ref_id in t.references %}
+              {%- set ref = registry[ref_id] %}
+              {%- set short = ref.authors | split(pat=",") | first %}
+              {%- if ref.doi != "" %} <a href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">{{ short }} ({{ ref.year }})</a>{% else %} <span>{{ short }} ({{ ref.year }})</span>{% endif %}
+              {%- endfor %}
+            </p>
+            {%- endif %}
+          </article>
+          {%- endif %}
+          {%- endfor %}
+        </div>
+      </section>
+      {%- endfor %}
+    </div>
+    <div class="mt-16">{{ <library.disclaimer lang={lang} /> }}</div>
+  </div>
+</article>
+{% endblock content %}

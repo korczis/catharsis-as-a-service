@@ -22,7 +22,7 @@ audience = [
 ]
 approach_label = "The approach"
 approach = [
-  { title = "Artwork", text = "A poster and an interactive page that present collective euphoria and then diagnose it as a service transaction." },
+  { title = "Artwork", text = "A poster and an interactive page that present collective euphoria and then describe it as a service transaction." },
   { title = "Evidence", text = "Nine research notes that summarise classical sources and peer-reviewed studies, each with verified references." },
   { title = "Practice", text = "Ten advice entries graded by the strength of their evidence, with concrete steps and explicit limits." },
 ]
@@ -89,6 +89,9 @@ intro = "Nine research notes separate what studies found from what remains uncer
 read = "Read the note"
 notes_label = "Research notes"
 cta = "All research notes"
+cta_ledger = "Evidence ledger"
+cta_methods = "Methods"
+cta_glossary = "Glossary"
 findings = [
   { title = "Venting increases aggression", text = "Hitting a punching bag while thinking about a provocation produced more anger and aggression than sitting quietly.", source = "Bushman, 2002", path = "research/venting-hypothesis/index.md" },
   { title = "Synchrony builds bonds", text = "Group dance in synchrony raised pain thresholds and increased reported closeness to the group.", source = "Tarr et al., 2015", path = "research/collective-synchrony/index.md" },
@@ -131,4 +134,68 @@ items = [
   { question = "Is this medical advice?", answer = "No. The content is educational and based on published research. If distress persists, disrupts daily life, or includes thoughts of harming yourself, contact a qualified professional or local emergency services." },
   { question = "How was the site built, and how long did it take?", answer = "It was built in one working session by an AI coding agent under the supervision of Majordomus (majordomus.dev). The first verified release took 51 minutes and 36 seconds from repository creation. The method note documents the timeline, the kinds of instructions given and what cannot be concluded." },
 ]
+
+[extra.making.screens]
+id = "making-cockpit"
+caption = "Concept screens of a Majordomus cockpit for sessions, tests and milestones. The data in them is illustrative and does not describe this project; the measured timeline is in the method note."
+items = [
+  { src = "assets/majordomus/cockpit-sessions.png", title = "Sessions", alt = "Concept screen of the Majordomus cockpit Sessions view: a list of working sessions and the timeline of one session from start to updated documentation, with the context sources it loaded.", caption = "Each session keeps its timeline, context sources, decisions and handover." },
+  { src = "assets/majordomus/cockpit-tests.png", title = "Tests", alt = "Concept screen of the Majordomus cockpit Tests view: pass and fail counts, a results trend, coverage, quality gates and live test output.", caption = "Test runs, failures and quality gates in one place, linked to issues and commits." },
+  { src = "assets/majordomus/cockpit-milestones.png", title = "Milestones", alt = "Concept screen of the Majordomus cockpit Milestones view: three milestones with progress bars, a cumulative progress chart, a timeline and dependencies.", caption = "Milestones with progress, schedule and dependencies derived from the issue plan." },
+]
+
+[extra.statement]
+label = "Thesis"
+lines = ["The body can change state", "without the world", "changing with it."]
+text = "Heart rate settles, muscles loosen, a crowd disperses and a person reports relief. All of that can be real, and much of it can be recorded. None of it shows that the debt, the conflict, the loss or the working conditions behind the distress have changed. That gap is the whole argument of the artwork, stated as plainly as possible."
+formula = "relief detected ≠ cause resolved"
+cta_methods = "The temporal model"
+cta_note = "Relief is not resolution"
+
+[extra.venting]
+label = "Catharsis is not venting"
+heading = "Release is not the same as blowing off steam."
+lead = "Catharsis names a felt release. Venting names a strategy: expressing anger through high-arousal activity in the expectation that it will drain away. The two are often treated as one, and the evidence separates them."
+contrast = [
+  { label = "Raising arousal", title = "Activities that increase arousal", value = "g = −0.02", text = "Across studies, activities that raised physiological arousal did not reliably reduce anger or aggression; the confidence interval spans zero." },
+  { label = "Lowering arousal", title = "Activities that decrease arousal", value = "g = −0.63", text = "Activities that lowered arousal were associated with a moderate reduction in anger and aggression across studies and samples." },
+]
+stats = [
+  { value = "154", label = "studies" },
+  { value = "184", label = "samples" },
+  { value = "10,189", label = "participants" },
+]
+source = "Kjærvik, S. L., & Bushman, B. J. (2024). Meta-analysis in Clinical Psychology Review, 109, 102414."
+meaning = "The felt release after shouting or pounding something is real. What the evidence does not support is the expectation that discharging arousal reduces the anger that follows. Lowering arousal first, and then working with the situation, does better."
+cta_note = "The venting hypothesis"
+cta_advice = "Let anger cool"
+
+[extra.questions]
+label = "Better questions"
+heading = "Better questions than: did it help?"
+intro = "Whether an experience felt good is the easiest question and the least informative one. These questions follow the research on emotion regulation and on what happens after relief."
+items = [
+  { instead = "Did I feel better?", better = "What exactly changed: my body, my mood, my understanding, or the situation?" },
+  { instead = "Should I let it all out?", better = "Does expressing this lower my arousal and lead somewhere, or does it keep me rehearsing the provocation?" },
+  { instead = "Why does it keep coming back?", better = "What did the relief make easier to avoid?" },
+  { instead = "Is this normal?", better = "Is it lasting longer, growing stronger, or disrupting sleep, work or relationships?" },
+  { instead = "How do I get that high again?", better = "Which parts of that experience, such as movement, music or other people, can I bring into an ordinary week?" },
+  { instead = "Did the night out fix it?", better = "What is one concrete step toward the cause, and who could take it with me?" },
+]
+
+[extra.boundary]
+label = "Clinical boundary"
+heading = "Where this site stops."
+text = "This is an educational publication. It summarises group-level research, it cannot assess an individual, and nothing on it measures you. Some experiences need a qualified professional rather than an article."
+signs_label = "Contact a qualified professional if"
+signs = [
+  "distress lasts for weeks or keeps intensifying",
+  "sleep, work, study or relationships are disrupted",
+  "relief depends on alcohol, drugs or risky behaviour",
+  "a traumatic event keeps returning as intrusive memories, nightmares or avoidance",
+]
+urgent = "If you have thoughts of harming yourself or someone else, contact local emergency services or a crisis line now."
+cta_advice = "After a traumatic event"
+cta_evidence = "How claims are graded"
+
 +++

@@ -25,7 +25,7 @@ limits = [
   "Noční život může zahrnovat alkohol, drogy, nedostatek spánku a hluk, které nesou vlastní rizika.",
 ]
 related = ["research/collective-synchrony/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["tarr-2015", "wiltermuth-heath-2009", "hove-risen-2009", "reed-ones-2006"]
+references = ["tarr-2015", "wiltermuth-heath-2009", "hove-risen-2009", "reed-ones-2006", "pizarro-2022"]
 +++
 
 ## Proč to funguje
@@ -35,6 +35,8 @@ Pohyb v souladu s druhými koordinuje pozornost i jednání. Vytváří pocit so
 ## Co ukazují důkazy
 
 Synchronní ťukání zvýšilo sympatie k partnerovi (Hove & Risen, 2009) a skupiny, které chodily, zpívaly nebo se pohybovaly synchronně, potom spolupracovaly více než skupiny, které tak nečinily (Wiltermuth & Heath, 2009). Při skupinovém tanci synchronie i námaha nezávisle na sobě zvýšily práh bolesti, nepřímý ukazatel aktivity endorfinů, a synchronie zvýšila uváděnou blízkost ke skupině (Tarr a kol., 2015). Metaanalýza zjistila, že jednotlivá aerobní cvičení spolehlivě zvyšují pozitivní aktivovaný afekt (Reed & Ones, 2006).
+
+Mimo laboratoř zjistil metaanalytický přehled 50 studií, že uváděná *kolektivní šumivost*, intenzivní sdílená emoce a pocit jednoty během shromáždění, jako jsou rituály, oslavy a demonstrace, souvisela se skupinovou identitou, kolektivními pozitivními emocemi, duševní pohodou a kolektivní účinností (Pizarro a kol., 2022). Jde o korelace založené převážně na sebeposouzení lidí, kteří se sami rozhodli přijít, takže popisují, co se obvykle vyskytuje společně, nikoli co účast způsobuje ([Výzkumná poznámka 03](@/research/collective-synchrony/index.cs.md)).
 
 ## Co to nedělá
 

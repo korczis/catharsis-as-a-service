@@ -1,0 +1,485 @@
+# Appraisal of every reference in data/references.toml. Bibliographic facts live in references.toml
+# (checked against Crossref); this file holds editorial judgement, which is dated and must be re-reviewed.
+#
+# Designs were checked against the published abstracts (Crossref, OpenAlex or PubMed) on 2026-09-14.
+# Where no abstract was retrievable, the appraisal says so and no sample size is stated.
+# Level A is reserved for syntheses of controlled studies; syntheses of correlational studies are
+# graded by the design of the studies they pool.
+
+# ── Classical, historical and reference works ─────────────────────────────────────────────────────
+
+[sources.aristotle-poetics]
+design = "classical"
+level = "E"
+population = { en = "Not applicable: a classical treatise on tragedy and poetics.", cs = "Neuplatňuje se: klasický spis o tragédii a poetice." }
+appraisal = { en = "Supports historical claims about where the term katharsis entered aesthetics. It makes no empirical claim, and its meaning is contested by commentators.", cs = "Podporuje historická tvrzení o tom, jak pojem katharsis vstoupil do estetiky. Neobsahuje empirické tvrzení a jeho význam komentátoři dodnes zpochybňují." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.breuer-freud-1895]
+design = "book"
+level = "E"
+population = { en = "Clinical case descriptions of patients treated with the cathartic method.", cs = "Klinické kazuistiky pacientek léčených katarzní metodou." }
+appraisal = { en = "Supports historical claims about the cathartic method and abreaction. Uncontrolled case reports cannot show whether the method was effective.", cs = "Podporuje historická tvrzení o katarzní metodě a abreakci. Nekontrolované kazuistiky nemohou ukázat, zda byla metoda účinná." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.picard-1997]
+design = "book"
+level = "E"
+population = { en = "Not applicable: a monograph defining the field of affective computing.", cs = "Neuplatňuje se: monografie vymezující obor afektivní informatiky." }
+appraisal = { en = "Supports the historical claim that affective computing was framed as a research field in 1997. It is not evidence that emotion can be validly inferred from signals.", cs = "Podporuje historické tvrzení, že afektivní informatika byla jako výzkumný obor vymezena v roce 1997. Není dokladem, že emoce lze ze signálů validně odvodit." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.boucsein-2012]
+design = "book"
+level = "E"
+population = { en = "Not applicable: a methodological handbook on electrodermal activity.", cs = "Neuplatňuje se: metodologická příručka o elektrodermální aktivitě." }
+appraisal = { en = "Supports technical statements about how electrodermal activity is recorded and what it indexes. Expert synthesis, not a test of any single claim.", cs = "Podporuje technická tvrzení o tom, jak se elektrodermální aktivita zaznamenává a co indexuje. Jde o expertní syntézu, nikoli o test konkrétního tvrzení." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+# ── Venting, anger and emotion regulation ─────────────────────────────────────────────────────────
+
+[sources.bushman-baumeister-stack-1999]
+design = "experiment"
+level = "B"
+population = { en = "Participants in two laboratory studies exposed to pro- or anti-catharsis messages and then to provocation.", cs = "Účastníci dvou laboratorních studií vystavení zprávám pro katarzi nebo proti ní a poté provokaci." }
+appraisal = { en = "Supports the claim that belief in catharsis increased the wish to vent and that venting was followed by more laboratory aggression. Brief provocations and laboratory aggression measures limit generalisation.", cs = "Podporuje tvrzení, že víra v katarzi zvyšovala chuť ventilovat a že po ventilaci následovala vyšší laboratorní agrese. Krátké provokace a laboratorní měřítka agrese omezují zobecnění." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bushman-2002]
+design = "experiment"
+level = "B"
+population = { en = "Angered participants assigned to rumination, distraction or no punching-bag control conditions.", cs = "Rozhněvaní účastníci přidělení do podmínek ruminace, rozptýlení nebo kontroly bez boxovacího pytle." }
+appraisal = { en = "Supports the claim that hitting a punching bag while ruminating produced more anger and aggression than doing nothing. A single laboratory experiment with a noise-blast aggression measure.", cs = "Podporuje tvrzení, že bušení do pytle při ruminaci vedlo k většímu hněvu a agresi než nečinnost. Jde o jediný laboratorní experiment s měřením agrese pomocí hlukových podnětů." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kjaervik-bushman-2024]
+design = "meta-analysis"
+level = "A"
+population = { en = "154 studies with 184 independent samples and 10,189 participants, including students, non-students and offenders.", cs = "154 studií se 184 nezávislými vzorky a 10 189 účastníky, včetně studentů, nestudentů a pachatelů trestné činnosti." }
+appraisal = { en = "Supports the claims that arousal-decreasing activities reduced anger and aggression and that arousal-increasing activities were ineffective overall. The arousal-increasing studies were heterogeneous, so conclusions about specific activities such as running are less certain.", cs = "Podporuje tvrzení, že aktivity snižující vzrušení zmírňovaly hněv a agresi a že aktivity vzrušení zvyšující byly celkově neúčinné. Studie aktivit zvyšujících vzrušení byly heterogenní, takže závěry o konkrétních aktivitách, jako je běh, jsou méně jisté." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.gross-1998]
+design = "review"
+level = "D"
+population = { en = "Not applicable: an integrative review proposing the process model of emotion regulation.", cs = "Neuplatňuje se: integrativní přehled, který navrhuje procesový model regulace emocí." }
+appraisal = { en = "Supports definitions and the five-point process model used across the library. A conceptual framework, not a test of which strategies work.", cs = "Podporuje definice a pětibodový procesový model používaný v celé knihovně. Jde o koncepční rámec, nikoli o test účinnosti strategií." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.gross-john-2003]
+design = "cross-sectional"
+level = "D"
+population = { en = "Five correlational studies of individual differences in habitual reappraisal and suppression.", cs = "Pět korelačních studií individuálních rozdílů v obvyklém používání přehodnocení a potlačení." }
+appraisal = { en = "Supports the claim that habitual reappraisal is associated with more positive and less negative emotion and better well-being than habitual suppression. Correlational data cannot show that the strategy causes these outcomes.", cs = "Podporuje tvrzení, že obvyklé přehodnocování je spojeno s více pozitivními a méně negativními emocemi a lepší pohodou než obvyklé potlačování. Korelační data nemohou ukázat, že strategie tyto výsledky způsobuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.webb-2012]
+design = "meta-analysis"
+level = "A"
+population = { en = "306 experimental comparisons of instructed emotion regulation strategies.", cs = "306 experimentálních srovnání instruovaných strategií regulace emocí." }
+appraisal = { en = "Supports the claims that cognitive change had a small-to-medium effect, distraction was effective, concentration on feelings was not, and suppressing the experience of emotion was ineffective. Effects come from short laboratory inductions and vary with moderators.", cs = "Podporuje tvrzení, že kognitivní změna měla malý až střední účinek, rozptýlení bylo účinné, soustředění na pocity nikoli a potlačování prožitku emoce neúčinné. Účinky pocházejí z krátkých laboratorních indukcí a liší se podle moderátorů." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.aldao-2010]
+design = "meta-analysis"
+level = "D"
+population = { en = "241 effect sizes from 114 studies of dispositional emotion regulation and symptoms of anxiety, depression, eating and substance-related disorders.", cs = "241 velikostí účinku ze 114 studií dispoziční regulace emocí a symptomů úzkosti, deprese, poruch příjmu potravy a poruch souvisejících s návykovými látkami." }
+appraisal = { en = "Supports the claim that rumination shows the largest association with symptoms, with avoidance and suppression also associated. It pools correlational studies, so it is graded D and cannot establish causation.", cs = "Podporuje tvrzení, že ruminace vykazuje nejsilnější souvislost se symptomy a že se symptomy souvisí také vyhýbání a potlačování. Shrnuje korelační studie, proto má úroveň D a nemůže doložit kauzalitu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.uusberg-2023]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical paper expanding the reAppraisal framework.", cs = "Neuplatňuje se: teoretická práce rozšiřující rámec reAppraisal." }
+appraisal = { en = "Supports the conceptual claim that reappraisal is a family of tactics (reconstrual and repurposing, object- and meta-level, decommitment and commitment). It proposes a map; it does not test the tactics' effectiveness.", cs = "Podporuje koncepční tvrzení, že přehodnocení je rodinou taktik (rekonstrukce a přeformulování cílů, objektová a metaúroveň, uvolnění a přijetí závazku). Navrhuje mapu, účinnost taktik netestuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.monachesi-2023]
+design = "meta-analysis"
+level = "A"
+population = { en = "Activation likelihood estimation meta-analysis of fMRI studies of reappraisal and acceptance tasks.", cs = "Metaanalýza fMRI studií úloh přehodnocení a přijetí metodou activation likelihood estimation." }
+appraisal = { en = "Supports the claim that reappraisal and acceptance share activity in left inferior frontal gyrus and insula but differ in other regions. Neural activation patterns do not show which strategy is more effective for a person.", cs = "Podporuje tvrzení, že přehodnocení a přijetí sdílejí aktivitu v levém dolním čelním závitu a insule, ale v jiných oblastech se liší. Vzorce neurální aktivace neukazují, která strategie je pro konkrétního člověka účinnější." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.ochsner-gross-2005]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of neuroimaging studies of attentional control and reappraisal.", cs = "Neuplatňuje se: narativní přehled neurozobrazovacích studií kontroly pozornosti a přehodnocení." }
+appraisal = { en = "Supports the claim that reappraisal and attentional control involve interactions between prefrontal and cingulate control systems and emotion-generative regions. Narrative review of early imaging work.", cs = "Podporuje tvrzení, že přehodnocení a kontrola pozornosti zahrnují interakci prefrontálních a cingulárních kontrolních systémů s oblastmi, které emoce generují. Narativní přehled raných zobrazovacích studií." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kross-ayduk-mischel-2005]
+design = "experiment"
+level = "B"
+population = { en = "Participants in two experiments who recalled an anger-eliciting interpersonal experience.", cs = "Účastníci dvou experimentů, kteří si vybavovali interpersonální zážitek vyvolávající hněv." }
+appraisal = { en = "Supports the claim that a self-distanced 'why' focus reduced negative affect on recall compared with immersed recall, replicated in a second study. Laboratory recall tasks, short-term outcomes.", cs = "Podporuje tvrzení, že zaměření na otázku „proč“ z odstupu snižovalo negativní afekt při vybavování ve srovnání s ponořeným vybavováním, s replikací ve druhé studii. Laboratorní úlohy vybavování, krátkodobé výsledky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kross-ayduk-2011]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a short review of research on self-distancing.", cs = "Neuplatňuje se: krátký přehled výzkumu sebedistancování." }
+appraisal = { en = "Supports the claim that self-distancing is associated with adaptive self-reflection across several levels of analysis. A brief review by the authors of much of the primary research.", cs = "Podporuje tvrzení, že sebedistancování souvisí s adaptivní sebereflexí na několika úrovních analýzy. Krátký přehled od autorů velké části primárního výzkumu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lieberman-2007]
+design = "experiment"
+level = "B"
+population = { en = "fMRI participants viewing emotional facial images under affect-labelling and control encoding conditions.", cs = "Účastníci fMRI studie sledující emoční obrázky tváří v podmínkách pojmenování afektu a kontrolního kódování." }
+appraisal = { en = "Supports the claim that affect labelling was associated with reduced amygdala response and increased right ventrolateral prefrontal activity. Standardised images, not personal events, and no measure of later recovery.", cs = "Podporuje tvrzení, že pojmenování afektu souviselo se sníženou odpovědí amygdaly a zvýšenou aktivitou pravého ventrolaterálního prefrontálního kortexu. Standardizované obrázky, nikoli osobní události, a bez měření pozdějšího zotavení." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.nolen-hoeksema-2008]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of response styles theory and rumination research.", cs = "Neuplatňuje se: narativní přehled teorie stylů reakce a výzkumu ruminace." }
+appraisal = { en = "Supports the claims that rumination predicts the onset of depression and is associated with several psychopathologies, and that positive distraction relieves depressed mood experimentally. Narrative synthesis of mixed designs.", cs = "Podporuje tvrzení, že ruminace predikuje nástup deprese a souvisí s řadou psychopatologií a že pozitivní rozptýlení experimentálně zmírňuje depresivní náladu. Narativní syntéza studií různého designu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watkins-2008]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of constructive and unconstructive repetitive thought.", cs = "Neuplatňuje se: přehled konstruktivního a nekonstruktivního opakujícího se myšlení." }
+appraisal = { en = "Supports the claim that the consequences of repetitive thought depend on valence, context and level of construal, with abstract processing tending to be unconstructive. Narrative review; the advice built on it has not been trialled as such.", cs = "Podporuje tvrzení, že důsledky opakujícího se myšlení závisí na valenci, kontextu a úrovni konstruálu a že abstraktní zpracování bývá nekonstruktivní. Narativní přehled; rady na něm postavené nebyly jako takové testovány." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hayes-1996]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical review proposing experiential avoidance as a functional dimension.", cs = "Neuplatňuje se: teoretický přehled navrhující zážitkové vyhýbání jako funkční dimenzi." }
+appraisal = { en = "Supports the claim that experiential avoidance was proposed as a process common to many psychological difficulties. A theoretical argument drawing on diverse research, not a direct test.", cs = "Podporuje tvrzení, že zážitkové vyhýbání bylo navrženo jako proces společný mnoha psychickým obtížím. Teoretický argument opřený o různorodý výzkum, nikoli přímý test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Expression, writing, crying and sharing ───────────────────────────────────────────────────────
+
+[sources.pennebaker-beall-1986]
+design = "experiment"
+level = "B"
+population = { en = "Not verified: no abstract was retrievable; the study is an expressive-writing experiment with assigned writing conditions.", cs = "Neověřeno: abstrakt nebyl dostupný; jde o experiment expresivního psaní s přidělenými podmínkami psaní." }
+appraisal = { en = "Cited for the historical origin of the expressive-writing paradigm and later health benefits of writing about facts and feelings. Sample size and outcomes were not re-verified from an abstract and are not stated on the site.", cs = "Citováno pro historický počátek paradigmatu expresivního psaní a pozdější zdravotní přínosy psaní o faktech i pocitech. Velikost vzorku a výsledky nebyly z abstraktu znovu ověřeny a web je neuvádí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.pennebaker-1997]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of expressive-writing studies.", cs = "Neuplatňuje se: přehled studií expresivního psaní." }
+appraisal = { en = "Supports the claim that changes in cognitive and linguistic processes during writing predict better health more than reduced inhibition alone. A review by the paradigm's originator; later meta-analyses report variable effects.", cs = "Podporuje tvrzení, že zdraví lépe predikují změny kognitivních a jazykových procesů při psaní než samotné snížení inhibice. Přehled od autora paradigmatu; pozdější metaanalýzy uvádějí proměnlivé účinky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bylsma-2008]
+design = "cross-sectional"
+level = "D"
+population = { en = "Self-reports on the most recent crying episode from 2,181 male and 2,915 female students in 35 countries.", cs = "Sebeposouzení posledního pláče od 2 181 studentů a 2 915 studentek v 35 zemích." }
+appraisal = { en = "Supports the claim that social support, resolution and new understanding were associated with reports of cathartic crying, and shame and suppression with fewer. Retrospective self-report in student samples.", cs = "Podporuje tvrzení, že sociální opora, vyřešení situace a nové porozumění souvisely s popisem pláče jako úlevného, zatímco stud a potlačování s méně častou úlevou. Retrospektivní sebeposouzení ve studentských vzorcích." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.gracanin-2014]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of the self-soothing effects of crying.", cs = "Neuplatňuje se: narativní přehled sebeuklidňujících účinků pláče." }
+appraisal = { en = "Supports the claim that findings on mood after crying appear discrepant and that self-soothing and social-soothing mechanisms have been proposed. Proposes mechanisms rather than establishing them.", cs = "Podporuje tvrzení, že zjištění o náladě po pláči se zdají rozporná a že byly navrženy mechanismy sebeuklidnění i sociálního uklidnění. Mechanismy navrhuje, nedokládá je." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rime-2009]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a theoretical and empirical review of the social sharing of emotion.", cs = "Neuplatňuje se: teoretický a empirický přehled sociálního sdílení emocí." }
+appraisal = { en = "Supports the claims that emotional experiences commonly elicit social sharing and that sharing has interpersonal functions. Narrative review largely of the author's own research programme.", cs = "Podporuje tvrzení, že emoční zážitky běžně vedou k sociálnímu sdílení a že sdílení má mezilidské funkce. Narativní přehled převážně autorova vlastního výzkumného programu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.zech-rime-2005]
+design = "experiment"
+level = "B"
+population = { en = "Participants in two experiments assigned to talk about an emotional episode or to control conditions, followed up to two months.", cs = "Účastníci dvou experimentů přidělení k vyprávění o emočním zážitku nebo do kontrolních podmínek, sledovaní až dva měsíce." }
+appraisal = { en = "Supports the claim that talking about emotions produced perceived benefits without reducing emotional impact compared with control conditions. The role of cognitive work in sharing is discussed rather than directly tested here.", cs = "Podporuje tvrzení, že mluvení o emocích přinášelo pociťovaný užitek, ale ve srovnání s kontrolními podmínkami nesnížilo emoční dopad. Roli kognitivního zpracování práce spíše diskutuje, než přímo testuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Synchrony, music and collective gatherings ────────────────────────────────────────────────────
+
+[sources.tarr-2015]
+design = "experiment"
+level = "B"
+population = { en = "Participants in a 2 × 2 group-dance experiment manipulating synchrony and exertion.", cs = "Účastníci skupinového tanečního experimentu 2 × 2 s manipulací synchronie a námahy." }
+appraisal = { en = "Supports the claim that synchrony and exertion each raised pain thresholds and in-group bonding. Pain threshold is a proxy for endorphin activity, which was not measured directly.", cs = "Podporuje tvrzení, že synchronie i námaha nezávisle zvyšovaly práh bolesti a sounáležitost se skupinou. Práh bolesti je nepřímým ukazatelem endorfinové aktivity, která nebyla přímo měřena." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.wiltermuth-heath-2009]
+design = "experiment"
+level = "B"
+population = { en = "Participants in three experiments acting in or out of synchrony before group economic games.", cs = "Účastníci tří experimentů jednající synchronně nebo nesynchronně před skupinovými ekonomickými hrami." }
+appraisal = { en = "Supports the claim that synchronous activity increased later cooperation, including under personal cost. Short laboratory tasks; long-term effects were not studied.", cs = "Podporuje tvrzení, že synchronní činnost zvyšovala následnou spolupráci, i když vyžadovala osobní oběť. Krátké laboratorní úlohy; dlouhodobé účinky nebyly zkoumány." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hove-risen-2009]
+design = "experiment"
+level = "B"
+population = { en = "Participants in three finger-tapping experiments with an experimenter tapping in or out of synchrony.", cs = "Účastníci tří experimentů s ťukáním prstem, při nichž experimentátor ťukal synchronně nebo nesynchronně." }
+appraisal = { en = "Supports the claim that the degree of interpersonal synchrony predicted affiliation ratings. A minimal laboratory task far removed from dance or crowds.", cs = "Podporuje tvrzení, že míra interpersonální synchronie predikovala hodnocení náklonnosti. Minimalistická laboratorní úloha vzdálená tanci i davu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.salimpoor-2011]
+design = "experiment"
+level = "B"
+population = { en = "Listeners scanned with PET and fMRI while hearing self-selected music that reliably elicited peak emotion.", cs = "Posluchači snímaní pomocí PET a fMRI při poslechu vlastní hudby, která spolehlivě vyvolávala vrchol emoční odezvy." }
+appraisal = { en = "Supports the claim that peak emotional responses to music were accompanied by striatal dopamine release, with caudate and nucleus accumbens linked to anticipation and experience. Small imaging sample of self-selected music; not about dance music or crowds.", cs = "Podporuje tvrzení, že vrcholné emoční odezvy na hudbu provázelo uvolnění dopaminu ve striatu, přičemž nucleus caudatus souvisel s očekáváním a nucleus accumbens s prožitkem. Malý zobrazovací vzorek s vlastní hudbou; netýká se taneční hudby ani davu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.janata-2012]
+design = "experiment"
+level = "B"
+population = { en = "Young adults in phenomenological, behavioural and tapping studies of groove.", cs = "Mladí dospělí ve fenomenologických, behaviorálních a ťukacích studiích grooveu." }
+appraisal = { en = "Supports the claim that experienced groove is linked to the quality of sensorimotor coupling with music. Says nothing about emotional recovery or social outcomes.", cs = "Podporuje tvrzení, že prožívaný groove souvisí s kvalitou senzomotorické vazby na hudbu. Nic neříká o emočním zotavení ani o sociálních výsledcích." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.pizarro-2022]
+design = "meta-analysis"
+level = "D"
+population = { en = "A conceptual review plus a meta-analysis of correlates (k = 50, N = 182,738) from demonstrations, rituals, ceremonies and celebrations.", cs = "Koncepční přehled a metaanalýza korelátů (k = 50, N = 182 738) z demonstrací, rituálů, obřadů a oslav." }
+appraisal = { en = "Supports the claim that collective effervescence is associated with self-transcendent emotions, group identity, social integration, wellbeing and collective efficacy. The pooled studies are mainly correlational, so associations are not evidence that gatherings cause these outcomes.", cs = "Podporuje tvrzení, že kolektivní šumění (collective effervescence) souvisí se sebepřesahujícími emocemi, skupinovou identitou, sociální integrací, pohodou a kolektivní účinností. Shrnuté studie jsou převážně korelační, takže souvislosti nedokládají, že by setkání tyto výsledky způsobovala." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.saarikallio-erkkila-2007]
+design = "qualitative"
+level = "D"
+population = { en = "Eight adolescents in group interviews with follow-up forms, analysed with grounded theory.", cs = "Osm dospívajících ve skupinových rozhovorech s doplňujícími formuláři, analyzováno metodou zakotvené teorie." }
+appraisal = { en = "Supports the claim that adolescents describe distinct music-based mood-regulation strategies, including discharge. A very small qualitative sample that describes strategies rather than measuring effects.", cs = "Podporuje tvrzení, že dospívající popisují odlišné strategie regulace nálady hudbou včetně vybití. Velmi malý kvalitativní vzorek, který strategie popisuje, ale účinky neměří." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.saarikallio-2011]
+design = "qualitative"
+level = "D"
+population = { en = "21 adults aged 21 to 70 in group interviews.", cs = "21 dospělých ve věku 21 až 70 let ve skupinových rozhovorech." }
+appraisal = { en = "Supports the claim that music-related emotional self-regulation goals and strategies remain broadly similar across adulthood, with some age- and event-related changes. Qualitative and small; no effect measures.", cs = "Podporuje tvrzení, že cíle a strategie emoční seberegulace hudbou zůstávají v dospělosti v zásadě podobné, s určitými změnami podle věku a životních událostí. Kvalitativní a malá studie bez měření účinků." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.baltazar-saarikallio-2016]
+design = "systematic-review"
+level = "D"
+population = { en = "34 publications from 1994 to 2014 selected by systematic database search.", cs = "34 publikací z let 1994 až 2014 vybraných systematickým vyhledáváním v databázích." }
+appraisal = { en = "Supports the claim that research on affect regulation through music is conceptually inconsistent and can be organised into goals, strategies, tactics and mechanisms. A conceptual review, not a synthesis of controlled effects.", cs = "Podporuje tvrzení, že výzkum regulace afektu hudbou je pojmově nejednotný a lze jej uspořádat do cílů, strategií, taktik a mechanismů. Koncepční přehled, nikoli syntéza kontrolovaných účinků." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.cook-roy-welker-2019]
+design = "cross-sectional"
+level = "D"
+population = { en = "794 university students reporting music preferences and uses of music for emotion regulation.", cs = "794 vysokoškolských studentů, kteří uváděli hudební preference a využití hudby k regulaci emocí." }
+appraisal = { en = "Supports the claim that preference for energetic and rhythmic music is associated with using music to regulate emotion. Cross-sectional self-report; it does not test whether any music regulates emotion effectively.", cs = "Podporuje tvrzení, že preference energické a rytmické hudby souvisí s využíváním hudby k regulaci emocí. Průřezové sebeposouzení; netestuje, zda nějaká hudba emoce účinně reguluje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.miranda-blais-rochette-2020]
+design = "meta-analysis"
+level = "D"
+population = { en = "13 correlational studies with 2,641 participants.", cs = "13 korelačních studií s 2 641 účastníky." }
+appraisal = { en = "Supports the claim that neuroticism correlates positively with emotion regulation through music listening (r = .22). Pools correlational studies, so it is graded D and does not address effectiveness.", cs = "Podporuje tvrzení, že neuroticismus pozitivně koreluje s regulací emocí poslechem hudby (r = 0,22). Shrnuje korelační studie, proto má úroveň D a účinností se nezabývá." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.de-witte-2020]
+design = "meta-analysis"
+level = "A"
+population = { en = "Two multilevel meta-analyses of 104 randomised controlled trials, 327 effect sizes and 9,617 participants.", cs = "Dvě víceúrovňové metaanalýzy 104 randomizovaných kontrolovaných studií, 327 velikostí účinku a 9 617 účastníků." }
+appraisal = { en = "Supports the claim that music interventions reduced physiological (d = .380) and psychological (d = .545) stress-related outcomes. Interventions and settings are varied, and stress reduction is not the same as resolving a stressor.", cs = "Podporuje tvrzení, že hudební intervence snižovaly fyziologické (d = 0,380) i psychologické (d = 0,545) ukazatele stresu. Intervence a prostředí jsou různorodé a snížení stresu není totéž co odstranění stresoru." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Relief, reinforcement, memory, stress and clinical work ───────────────────────────────────────
+
+[sources.reed-ones-2006]
+design = "meta-analysis"
+level = "A"
+population = { en = "Not verified: no abstract was retrievable; a meta-analysis of studies of single sessions of aerobic exercise.", cs = "Neověřeno: abstrakt nebyl dostupný; metaanalýza studií jednorázového aerobního cvičení." }
+appraisal = { en = "Cited for the claim that acute aerobic exercise increases positive activated affect in the short term. The number and designs of included studies were not re-verified from an abstract, so claims relying on it are held at moderate confidence.", cs = "Citováno pro tvrzení, že akutní aerobní cvičení krátkodobě zvyšuje pozitivní aktivovaný afekt. Počet a design zahrnutých studií nebyly z abstraktu znovu ověřeny, proto se tvrzení o ni opřená drží na střední míře jistoty." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.fredrickson-kahneman-1993]
+design = "experiment"
+level = "B"
+population = { en = "Two experiments with 32 and 96 participants rating aversive and pleasant film clips.", cs = "Dva experimenty s 32 a 96 účastníky hodnotícími nepříjemné a příjemné filmové ukázky." }
+appraisal = { en = "Supports the claim of duration neglect: retrospective evaluations were little affected by duration. Film clips in the laboratory, not real-life episodes.", cs = "Podporuje tvrzení o zanedbávání trvání: retrospektivní hodnocení délka téměř neovlivňovala. Filmové ukázky v laboratoři, nikoli skutečné životní epizody." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kahneman-1993]
+design = "experiment"
+level = "B"
+population = { en = "Participants exposed to a short and a longer cold-water trial and asked which to repeat.", cs = "Účastníci vystavení kratšímu a delšímu pokusu se studenou vodou a dotázaní, který chtějí zopakovat." }
+appraisal = { en = "Supports the claim that a majority chose to repeat the longer trial that ended less painfully, consistent with peak and end effects. A single paradigm of mild physical discomfort.", cs = "Podporuje tvrzení, že většina zvolila zopakování delšího pokusu, který skončil méně bolestivě, v souladu s efektem vrcholu a konce. Jediné paradigma mírného fyzického nepohodlí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.mcewen-1998]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of stress mediators and allostatic load.", cs = "Neuplatňuje se: narativní přehled mediátorů stresu a alostatické zátěže." }
+appraisal = { en = "Supports the claim that stress mediators protect acutely and contribute to damage when chronically activated or poorly terminated. An influential conceptual review; the allostatic load construct remains debated in measurement.", cs = "Podporuje tvrzení, že mediátory stresu akutně chrání a při chronické aktivaci nebo nedostatečném ukončení přispívají k poškození. Vlivný koncepční přehled; měření alostatické zátěže zůstává předmětem debat." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.cohen-wills-1985]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of studies on social support, stress and well-being.", cs = "Neuplatňuje se: přehled studií sociální opory, stresu a pohody." }
+appraisal = { en = "Supports the claim that perceived availability of support buffers stress, while social integration has a main effect. Based largely on observational studies.", cs = "Podporuje tvrzení, že vnímaná dostupnost opory tlumí dopady stresu, zatímco sociální integrace má přímý účinek. Opírá se převážně o observační studie." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.foa-kozak-1986]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical account of emotional processing of fear.", cs = "Neuplatňuje se: teoretický model emočního zpracování strachu." }
+appraisal = { en = "Supports the claim that emotional processing theory requires activation of the fear structure plus corrective information. Theory; the efficacy of exposure therapies rests on later trials not cited here.", cs = "Podporuje tvrzení, že teorie emočního zpracování vyžaduje aktivaci struktury strachu a korigující informaci. Jde o teorii; účinnost expozičních terapií dokládají pozdější studie, které zde citovány nejsou." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rose-2002]
+design = "systematic-review"
+level = "A"
+population = { en = "11 randomised trials of single-session debriefing for people exposed to a traumatic event within the previous month.", cs = "11 randomizovaných studií jednorázového debriefingu u lidí vystavených traumatické události během předchozího měsíce." }
+appraisal = { en = "Supports the claim that single-session individual debriefing did not reduce distress or prevent PTSD, with one trial showing increased risk at one year. Trial quality was generally poor, and the review concerns one specific format.", cs = "Podporuje tvrzení, že jednorázový individuální debriefing nesnížil distres ani nezabránil rozvoji PTSD a že jedna studie ukázala po roce zvýšené riziko. Kvalita studií byla převážně nízká a přehled se týká jednoho konkrétního formátu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hofmann-2010]
+design = "meta-analysis"
+level = "C"
+population = { en = "39 studies with 1,140 participants receiving mindfulness-based therapy for varied conditions.", cs = "39 studií s 1 140 účastníky, kteří absolvovali terapii založenou na všímavosti u různých obtíží." }
+appraisal = { en = "Supports the claim of moderate pre-to-post reductions in anxiety and mood symptoms, larger in anxiety and mood disorders. Effect sizes are pre-post rather than against controls, so it is graded C.", cs = "Podporuje tvrzení o středně velkém snížení symptomů úzkosti a nálady mezi začátkem a koncem léčby, výraznějším u úzkostných a afektivních poruch. Velikosti účinku jsou před–po, nikoli oproti kontrolám, proto má úroveň C." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Measuring emotion ─────────────────────────────────────────────────────────────────────────────
+
+[sources.barrett-2019]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a large review of production and perception studies for six emotion categories.", cs = "Neuplatňuje se: rozsáhlý přehled studií produkce a percepce výrazů pro šest kategorií emocí." }
+appraisal = { en = "Supports the claim that facial configurations are not reliable, specific indicators of emotional states across cultures, situations and people, although they co-occur above chance. A narrative review by authors associated with one theoretical position; critics dispute parts of it.", cs = "Podporuje tvrzení, že konfigurace obličeje nejsou spolehlivými a specifickými ukazateli emočních stavů napříč kulturami, situacemi a lidmi, přestože se s nimi vyskytují častěji než náhodně. Narativní přehled autorů spojených s jedním teoretickým stanoviskem; kritici části závěrů zpochybňují." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.siegel-2018]
+design = "meta-analysis"
+level = "A"
+population = { en = "202 studies measuring autonomic reactivity during laboratory emotion inductions in nonclinical adults.", cs = "202 studií měřících autonomní reaktivitu při laboratorní indukci emocí u neklinických dospělých." }
+appraisal = { en = "Supports the claim that autonomic effect-size patterns did not clearly distinguish one emotion category from another and varied substantially within categories. Laboratory inductions; the interpretation favours one theory of emotion.", cs = "Podporuje tvrzení, že vzorce autonomních velikostí účinku jednoznačně neodlišovaly jednu kategorii emocí od jiné a uvnitř kategorií se výrazně lišily. Laboratorní indukce; interpretace upřednostňuje jednu teorii emocí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kreibig-2010]
+design = "review"
+level = "D"
+population = { en = "Review of 134 publications of experimental emotion effects on peripheral physiology in healthy people.", cs = "Přehled 134 publikací o experimentálních účincích emocí na periferní fyziologii zdravých lidí." }
+appraisal = { en = "Reports considerable autonomic response specificity when emotion subtypes are considered. It is never cited as evidence against autonomic fingerprints; it is cited only as a partial counterpoint to Siegel et al. (2018), and claims citing both must say so.", cs = "Uvádí značnou specifičnost autonomních odpovědí, pokud se berou v úvahu podtypy emocí. Nikdy není citován jako doklad proti existenci autonomních otisků; slouží jen jako částečná protiváha k Siegel et al. (2018) a tvrzení citující oba zdroje to musí uvést." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.mauss-robinson-2009]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of experiential, physiological and behavioural measures of emotion.", cs = "Neuplatňuje se: přehled prožitkových, fyziologických a behaviorálních měřítek emocí." }
+appraisal = { en = "Supports the claims that measures tend to reflect dimensions rather than discrete states, converge only modestly, and that there is no gold-standard measure of emotion. Narrative review.", cs = "Podporuje tvrzení, že měřítka spíše odrážejí dimenze než diskrétní stavy, shodují se jen mírně a že neexistuje zlatý standard měření emocí. Narativní přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.robinson-clore-2002]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a review proposing an accessibility model of emotional self-report.", cs = "Neuplatňuje se: přehled navrhující model dostupnosti pro sebeposouzení emocí." }
+appraisal = { en = "Supports the claim that reports of current feelings and reports of past or hypothetical feelings draw on different information, episodic experience versus beliefs about emotion. A theoretical organising model.", cs = "Podporuje tvrzení, že výpovědi o aktuálních pocitech a o minulých či hypotetických pocitech čerpají z odlišných informací: z epizodického prožitku oproti přesvědčením o emocích. Teoretický organizační model." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kuppens-verduyn-2017]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a short review of emotion dynamics.", cs = "Neuplatňuje se: krátký přehled dynamiky emocí." }
+appraisal = { en = "Supports the claim that emotions fluctuate over time in patterned ways that require repeated measurement to study. A brief opinion-style review.", cs = "Podporuje tvrzení, že emoce v čase kolísají podle určitých vzorců, jejichž studium vyžaduje opakované měření. Krátký přehled názorového charakteru." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.laborde-2017]
+design = "review"
+level = "D"
+population = { en = "Not applicable: methodological recommendations for heart rate variability research.", cs = "Neuplatňuje se: metodologická doporučení pro výzkum variability srdeční frekvence." }
+appraisal = { en = "Supports the claims that HRV indexes cardiac vagal tone and that its findings are easily misconstrued without careful design, analysis and reporting. Methods guidance, not evidence about emotion categories.", cs = "Podporuje tvrzení, že HRV indexuje srdeční vagový tonus a že bez pečlivého designu, analýzy a reportování se její výsledky snadno mylně vykládají. Metodologické doporučení, nikoli doklad o kategoriích emocí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.stark-hoey-2021]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a conceptual taxonomy of emotion models and proxy data in AI systems.", cs = "Neuplatňuje se: koncepční taxonomie modelů emocí a zástupných dat v systémech umělé inteligence." }
+appraisal = { en = "Supports the claim that emotion-AI systems depend on contested models of emotion and proxy data, which shapes their ethical implications. A conceptual argument, not an empirical audit of any product.", cs = "Podporuje tvrzení, že systémy afektivní umělé inteligence stojí na sporných modelech emocí a zástupných datech, což určuje jejich etické dopady. Koncepční argument, nikoli empirický audit konkrétního produktu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Project records ───────────────────────────────────────────────────────────────────────────────
+
+[sources.majordomus-2026]
+design = "software"
+level = "E"
+population = { en = "Not applicable: the supervisory software and its ledger records.", cs = "Neuplatňuje se: dohledový software a záznamy jeho ledgeru." }
+appraisal = { en = "Supports technical statements about what the tool records and enforces in this repository. Primary records produced by the tool itself, with no independent evaluation of its effect.", cs = "Podporuje technická tvrzení o tom, co nástroj v tomto repozitáři zaznamenává a vynucuje. Primární záznamy vytvořené samotným nástrojem bez nezávislého hodnocení jeho účinku." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.repository-2026]
+design = "record"
+level = "E"
+population = { en = "Not applicable: the project's Git history, workflow runs, releases and source code.", cs = "Neuplatňuje se: historie Gitu, běhy workflow, vydání a zdrojový kód projektu." }
+appraisal = { en = "Supports technical statements about the site's build timeline and the absence of analytics code. Records of one project; they cannot support comparative claims such as a speed-up.", cs = "Podporuje technická tvrzení o časové ose vzniku webu a o absenci analytického kódu. Záznamy jednoho projektu nemohou podložit srovnávací tvrzení, například o zrychlení." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.shiffman-2008]
+design = "review"
+level = "D"
+population = { en = "Narrative review of ecological momentary assessment methods in clinical psychology.", cs = "Narativní přehled metod ekologického okamžikového hodnocení v klinické psychologii." }
+appraisal = { en = "Supports describing repeated in-the-moment self-report as reducing retrospective recall bias. As a methods review it does not establish the validity of any particular measure.", cs = "Podporuje popis opakovaného hodnocení v daném okamžiku jako způsobu, jak omezit zkreslení při zpětném vybavování. Jako metodologický přehled nedokládá validitu žádného konkrétního měření." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.poldrack-2006]
+design = "review"
+level = "D"
+population = { en = "Conceptual analysis of reverse inference in neuroimaging, with a quantitative illustration from a database of imaging studies.", cs = "Konceptuální analýza obrácené inference v neurozobrazování s kvantitativní ilustrací z databáze zobrazovacích studií." }
+appraisal = { en = "Supports the argument that inferring a mental state from observed activity is weak unless that activity is selective; the site applies the argument to bodily signals by analogy.", cs = "Podporuje argument, že usuzovat na duševní stav z pozorované aktivity je slabé, pokud tato aktivita není selektivní; web argument analogicky vztahuje i na tělesné signály." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14

@@ -12,7 +12,11 @@
       <ul class="space-y-2">
         <li><a class="nav-link" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
         <li><a class="nav-link" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/methods/index.md', lang=l) }}">{{ trans(key="nav_methods", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/evidence/index.md', lang=l) }}">{{ trans(key="nav_evidence", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/glossary/index.md', lang=l) }}">{{ trans(key="nav_glossary", lang=l) }}</a></li>
         <li><a class="nav-link" href="{{ get_url(path='@/commands/index.md', lang=l) }}">{{ trans(key="nav_commands", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/status/index.md', lang=l) }}">{{ trans(key="nav_status", lang=l) }}</a></li>
         <li><a class="nav-link" href="{{ get_url(path='tags/', lang=l) }}">{{ trans(key="nav_tags", lang=l) }}</a></li>
         {%- for item in config.extra.nav %}
         <li><a class="nav-link" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
@@ -28,5 +32,19 @@
       <p class="label mt-1">{{ trans(key="footer_privacy", lang=l) }}</p>
       <p class="label mt-4"><a class="nav-link text-bone" href="https://majordomus.dev" target="_blank" rel="noopener">{{ trans(key="supervised_by", lang=l) }} · majordomus.dev <span aria-hidden="true">↗</span></a></p>
     </div>
+  </div>
+  {#- Build metadata comes from the environment scripts/validate.sh exports; the evidence date from the ledger. -#}
+  {%- set footer_sha = get_env(name="GITHUB_SHA", default="local") -%}
+  {%- set footer_ledger = load_data(path="data/claims.toml") -%}
+  {%- set footer_latest = footer_ledger.claims | sort(attribute="last_reviewed") | last -%}
+  <div class="shell footer-meta border-t border-line py-8">
+    <p class="footer-science">{{ trans(key="science_disclaimer", lang=l) }}</p>
+    <p class="label mt-3" data-build-meta>
+      {{ trans(key="build_label", lang=l) }}
+      {% if footer_sha == "local" %}<span data-build="revision">local</span>{% else %}<a class="nav-link" data-build="revision" href="{{ config.extra.repo_url }}/commit/{{ footer_sha }}">{{ footer_sha | truncate(length=7, end="") }}</a>{% endif %}
+      · {{ trans(key="content_version", lang=l) }} <span data-build="version">{{ get_env(name="CAAS_VERSION", default="unreleased") }}</span>
+      · {{ trans(key="evidence_date", lang=l) }} <time data-build="evidence-date" datetime="{{ footer_latest.last_reviewed }}">{{ footer_latest.last_reviewed }}</time>
+      · <a class="nav-link" href="{{ get_url(path='@/status/index.md', lang=l) }}">{{ trans(key="nav_status", lang=l) }}</a>
+    </p>
   </div>
 </footer>

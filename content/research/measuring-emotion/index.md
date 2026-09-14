@@ -1,6 +1,6 @@
 +++
 title = "Instrumented emotion: why the telemetry here is conceptual"
-description = "Affective computing promises to read emotion like a system metric. The evidence on inferring emotion from facial movements, together with questions of consent, explains why every metric in this artifact is an artistic value."
+description = "Affective computing promises to infer emotion as if it were a system metric. The evidence on facial movements and autonomic signals, together with questions of consent, explains why every metric in this artifact is an artistic value."
 date = 2026-09-14
 weight = 5
 
@@ -9,14 +9,15 @@ tags = ["affective computing", "measurement", "ethics", "emotion"]
 
 [extra]
 kicker = "Research note 05"
-summary = "The artifact borrows the language of dashboards but refuses to measure anyone. Research reviewed by Barrett and colleagues shows that emotional states cannot be reliably read from facial movements, and a visitor to an artwork has not consented to being analysed. The page therefore labels every metric as an artistic value and collects nothing."
+summary = "The artifact borrows the language of dashboards but refuses to measure anyone. Research reviewed by Barrett and colleagues shows that emotional states cannot be reliably inferred from facial movements, and a visitor to an artwork has not consented to being analysed. The page therefore labels every metric as an artistic value and collects nothing."
 key_points = [
   "Affective computing studies systems that recognise and respond to emotion (Picard, 1997) and has produced a commercial market for emotion recognition.",
   "A large review concluded that facial movements are not reliable, specific indicators of particular emotional states across people and contexts (Barrett et al., 2019).",
+  "A meta-analysis of 202 studies found that autonomic effect sizes did not clearly distinguish one emotion category from another (Siegel et al., 2018), although an earlier narrative review reported specificity at the level of emotion subtypes (Kreibig, 2010).",
   "Validity, consent and coherence are the three reasons this site presents conceptual values instead of measurements.",
 ]
 figures = []
-references = ["picard-1997", "barrett-2019"]
+references = ["picard-1997", "barrett-2019", "kreibig-2010", "siegel-2018"]
 +++
 
 ## The appeal of emotion as data
@@ -32,6 +33,16 @@ In 1997 Rosalind Picard described *affective computing*, the study and developme
 Barrett, Adolphs, Marsella, Martinez and Pollak (2019) reviewed the scientific evidence behind the common assumption that particular emotions are reliably expressed by particular facial configurations, for example that a scowl signals anger. They examined studies of how people move their faces when they experience emotions and studies of how observers infer emotions from faces.
 
 Their conclusion was that people do, on average, scowl when angry or smile when happy more often than would be expected by chance, but the relationship is weak and inconsistent. The same facial configuration can accompany different emotional states, the same emotional state can be expressed in many ways, and the relationship varies substantially across contexts, individuals and cultures. A facial configuration alone therefore cannot be treated as a reliable readout of a specific internal state. The authors cautioned that technologies built on that assumption are not justified by the evidence.
+
+## Are bodily signals any clearer?
+
+If faces are unreliable, physiology might seem a better source: heart rate, skin conductance, breathing and blood pressure are measured by instruments rather than judged by observers. The question is whether particular emotion categories have consistent autonomic patterns, sometimes called *fingerprints*, that would allow the category to be inferred from the signals.
+
+Kreibig (2010) reviewed 134 publications reporting experiments on emotional effects on peripheral physiological responding in healthy people. The review suggested considerable autonomic response specificity in emotion when subtypes of distinct emotions are considered, and emphasised that sound terminology for the affective states studied and the choice of physiological measures are both important for assessing it. In other words, the review found patterns, but they depended on how finely emotions were defined and what was measured.
+
+Siegel and colleagues (2018) tested the fingerprint hypothesis directly with a meta-analysis of 202 studies measuring autonomic reactivity during laboratory emotion inductions in non-clinical adult samples. Mean effect sizes increased for 59.4% of autonomic variables across emotion categories, but the pattern of effect sizes did not clearly distinguish one emotion category from another. Variation within categories was substantial: heterogeneity accounted for a moderate to substantial share of variability (I² of at least 30%) in 54% of the effect sizes. Experimental features such as whether emotion was induced with films or imagery did not explain much of that variation, and correcting for publication bias reduced the estimated effects further. The authors interpret the results as more consistent with the view that an emotion category is a population of variable, context-specific instances than with fixed fingerprints.
+
+The two reviews are not simply contradictory. They differ in method (a narrative review versus a quantitative meta-analysis with pattern classification) and in the level of description (subtypes versus broad categories). Together they support a practical conclusion: emotion is accompanied by bodily change, but inferring a specific emotion from autonomic signals alone, outside controlled conditions and without context, is not supported by consistent evidence. A rising heart rate is a [signal](../../glossary/#signal); calling it fear, excitement or anger is an [inference](../../glossary/#inference) that needs other information. The [methods page](@/methods/index.md) describes how this library separates signals, inferences and claims.
 
 ## Why the artifact does not measure
 

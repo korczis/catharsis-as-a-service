@@ -1,6 +1,6 @@
 +++
 title = "Commands"
-description = "Every command mentioned on this site, in the README and in the documentation: what it does, where it lives and which test or CI job proves that it works."
+description = "Every command mentioned on this site, in the README and in the documentation: what it does, where it lives and which test or CI job verifies it."
 template = "commands.html"
 +++
 

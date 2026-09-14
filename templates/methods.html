@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block content %}
+{%- set x = page.extra -%}
+{%- set s = x.simulation -%}
+<article class="hero" aria-labelledby="methods-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": trans(key="nav_methods", lang=lang), "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ x.kicker }} <span class="text-muted">//</span> {{ <evidence.kind kind="technical" lang={lang} /> }}</p>
+    <h1 id="methods-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
+    <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <aside class="aside-scroll space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        <section class="aside-block" aria-labelledby="abstract-title">
+          <h2 id="abstract-title" class="label">{{ trans(key="abstract", lang=lang) }}</h2>
+          <p class="mt-3">{{ x.summary }}</p>
+        </section>
+        {{ <library.key_points points={x.key_points} lang={lang} /> }}
+        <nav class="toc aside-block" aria-label="{{ trans(key='toc_label', lang=lang) }}">
+          <p class="label">{{ trans(key="toc_label", lang=lang) }}</p>
+          <ol class="mt-3 space-y-2 border-l border-line pl-4">
+            {%- for heading in page.toc %}
+            <li><a class="nav-link normal-case tracking-normal" href="#{{ heading.id }}">{{ heading.title }}</a></li>
+            {%- endfor %}
+            {%- for anchor in [
+              ["detection-chain", trans(key="detection_chain", lang=lang)],
+              ["temporal-model", trans(key="temporal_model", lang=lang)],
+              ["detection-matrix", trans(key="detection_matrix", lang=lang)],
+              ["uncertainty", trans(key="uncertainty", lang=lang)],
+              ["errors", trans(key="errors_heading", lang=lang)],
+              ["architecture", trans(key="architecture", lang=lang)],
+              ["simulation", trans(key="simulation", lang=lang)]
+            ] %}
+            <li><a class="nav-link normal-case tracking-normal" href="#{{ anchor[0] }}">{{ anchor[1] }}</a></li>
+            {%- endfor %}
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="lg:col-span-8">
+        <div class="prose-page prose-wide">{{ page.content | safe }}</div>
+
+        <section id="detection-chain" class="method-block" aria-labelledby="detection-chain-title">
+          <h2 id="detection-chain-title" class="condensed method-title">{{ trans(key="detection_chain", lang=lang) }}</h2>
+          <ol class="chain mt-8">
+            {%- for step in x.detection_chain %}
+            <li class="chain-step">
+              <p class="label text-blood">{{ loop.index }} · {{ step.id }}</p>
+              <h3 class="condensed chain-title">{{ step.name }}</h3>
+              <p>{{ step.text }}</p>
+              <p class="chain-note"><span class="label">{{ trans(key="example", lang=lang) }}</span> {{ step.example }}</p>
+              <p class="chain-note"><span class="label">{{ trans(key="risk", lang=lang) }}</span> {{ step.risk }}</p>
+            </li>
+            {%- endfor %}
+          </ol>
+        </section>
+
+        <section id="temporal-model" class="method-block" aria-labelledby="temporal-model-title">
+          <h2 id="temporal-model-title" class="condensed method-title">{{ trans(key="temporal_model", lang=lang) }}</h2>
+          <ol class="phase-track mt-8" aria-label="{{ trans(key='temporal_model', lang=lang) }}">
+            {%- for phase in x.temporal_model %}
+            <li class="phase-step{% if phase.id == 'peak' or phase.id == 'discharge' %} is-peak{% endif %}"><a href="#phase-{{ phase.id }}"><span class="label">{{ loop.index }}</span> <span class="condensed">{{ phase.name }}</span></a></li>
+            {%- endfor %}
+          </ol>
+          <div class="mt-10 space-y-8">
+            {%- for phase in x.temporal_model %}
+            <div id="phase-{{ phase.id }}" class="phase-detail">
+              <h3 class="condensed chain-title"><span class="label text-blood">{{ loop.index }}</span> {{ phase.name }}</h3>
+              <p class="mt-2">{{ phase.text }}</p>
+              <dl class="phase-facts">
+                <div><dt class="label">{{ trans(key="observable", lang=lang) }}</dt><dd>{{ phase.observable }}</dd></div>
+                <div><dt class="label">{{ trans(key="caution", lang=lang) }}</dt><dd>{{ phase.caution }}</dd></div>
+              </dl>
+            </div>
+            {%- endfor %}
+          </div>
+        </section>
+
+        <section id="detection-matrix" class="method-block" aria-labelledby="detection-matrix-title">
+          <h2 id="detection-matrix-title" class="condensed method-title">{{ trans(key="detection_matrix", lang=lang) }}</h2>
+          {%- set m = x.detection_matrix %}
+          <div class="table-scroll mt-8" role="region" aria-labelledby="detection-matrix-title" tabindex="0">
+            <table class="ledger-table matrix-table">
+              <caption>{{ m.caption }}</caption>
+              <thead>
+                <tr>
+                  {%- for key in ["signal", "records", "consistent_with", "cannot_establish", "confounds"] %}
+                  <th scope="col">{{ m.columns[key] }}</th>
+                  {%- endfor %}
+                </tr>
+              </thead>
+              <tbody>
+                {%- for row in m.rows %}
+                <tr>
+                  <th scope="row">{{ row.signal }}</th>
+                  <td>{{ row.records }}</td>
+                  <td>{{ row.consistent_with }}</td>
+                  <td>{{ row.cannot_establish }}</td>
+                  <td>{{ row.confounds }}</td>
+                </tr>
+                {%- endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="uncertainty" class="method-block" aria-labelledby="uncertainty-title">
+          <h2 id="uncertainty-title" class="condensed method-title">{{ trans(key="uncertainty", lang=lang) }}</h2>
+          <dl class="vocab mt-8">
+            {%- for item in x.uncertainty %}
+            <div><dt><q>{{ item.term }}</q></dt><dd>{{ item.meaning }}</dd></div>
+            {%- endfor %}
+          </dl>
+        </section>
+
+        <section id="errors" class="method-block" aria-labelledby="errors-title">
+          <h2 id="errors-title" class="condensed method-title">{{ trans(key="errors_heading", lang=lang) }}</h2>
+          <div class="mt-8 grid gap-6 md:grid-cols-2">
+            {%- for key in ["false_positive", "false_negative"] %}
+            {%- set e = x.errors[key] %}
+            <article class="error-card">
+              <h3 class="condensed chain-title">{{ e.name }}</h3>
+              <p class="mt-2">{{ e.text }}</p>
+              <p class="chain-note"><span class="label">{{ trans(key="example", lang=lang) }}</span> {{ e.example }}</p>
+              <p class="chain-note"><span class="label">{{ trans(key="cost", lang=lang) }}</span> {{ e.cost }}</p>
+            </article>
+            {%- endfor %}
+          </div>
+        </section>
+
+        <section id="architecture" class="method-block" aria-labelledby="architecture-title">
+          <h2 id="architecture-title" class="condensed method-title">{{ trans(key="architecture", lang=lang) }}</h2>
+          <div class="table-scroll mt-8" role="region" aria-labelledby="architecture-title" tabindex="0">
+            <table class="ledger-table">
+              <thead>
+                <tr>
+                  <th scope="col">{{ trans(key="component", lang=lang) }}</th>
+                  <th scope="col">{{ trans(key="status", lang=lang) }}</th>
+                  <th scope="col">{{ trans(key="role", lang=lang) }}</th>
+                  <th scope="col">{{ trans(key="note", lang=lang) }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for row in x.architecture %}
+                <tr data-status="{{ row.status }}">
+                  <th scope="row">{{ row.component }}</th>
+                  <td>{{ <evidence.status status={row.status} lang={lang} /> }}</td>
+                  <td>{{ row.role }}</td>
+                  <td>{{ row.note }}</td>
+                </tr>
+                {%- endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {#- Alpine component "detector" (static/js/app.js). Inputs are invented; nothing is stored or sent. -#}
+        <section id="simulation" class="method-block" aria-labelledby="simulation-title">
+          <h2 id="simulation-title" class="condensed method-title">{{ s.heading }}</h2>
+          <p class="sim-banner mt-6" role="note">{{ s.banner }}</p>
+          <p class="mt-6 max-w-3xl">{{ s.intro }}</p>
+          <div class="detector mt-8" data-requires-js data-detector x-data="detector" data-config="{{ s | json_encode }}">
+            <fieldset class="detector-inputs">
+              <legend class="label">{{ s.inputs_label }}</legend>
+              {%- for input in s.inputs %}
+              <div class="slider">
+                <div class="slider-head">
+                  <label for="sim-{{ input.id }}">{{ input.label }}</label>
+                  <output for="sim-{{ input.id }}" x-text="values.{{ input.id }} + ' {{ input.unit }}'">{{ input.value }} {{ input.unit }}</output>
+                </div>
+                <input type="range" id="sim-{{ input.id }}" name="{{ input.id }}" min="{{ input.min }}" max="{{ input.max }}" step="{{ input.step }}" value="{{ input.value }}" x-model.number="values.{{ input.id }}">
+              </div>
+              {%- endfor %}
+              <div class="toggle-row">
+                <input type="checkbox" id="sim-cause" name="cause" x-model="cause">
+                <label for="sim-cause">{{ s.cause_label }}</label>
+              </div>
+              <button type="button" class="btn-ghost mt-6" x-on:click="reset()">{{ s.reset }}</button>
+            </fieldset>
+            <div class="detector-output" aria-live="polite">
+              <p class="label">{{ s.output_label }}</p>
+              <dl>
+                <div><dt>{{ s.out_activation }}</dt><dd data-output="activation" x-text="config.levels[activation]"></dd><dd class="detector-note">{{ s.activation_note }}</dd></div>
+                <div><dt>{{ s.out_phase }}</dt><dd data-output="phase" x-bind:data-phase="phase" x-text="config.phases[phase]"></dd></div>
+                <div><dt>{{ s.out_synchrony }}</dt><dd data-output="synchrony" x-text="config.synchrony_values[synchrony]"></dd></div>
+                <div><dt>{{ s.out_relief }}</dt><dd data-output="relief" x-text="config.relief_values[relief]"></dd></div>
+                <div><dt>{{ s.out_cause }}</dt><dd data-output="cause" x-text="config.cause_values[causeState]"></dd></div>
+                <div><dt>{{ s.out_confidence }}</dt><dd data-output="confidence">{{ s.confidence_value }}</dd><dd class="detector-note">{{ s.confidence_note }}</dd></div>
+              </dl>
+              <p class="detector-problem"><span>{{ s.problem_line }}:</span> <strong data-output="problem" x-text="config.problem_values[problem]"></strong></p>
+            </div>
+          </div>
+          <noscript><p class="disclaimer mt-6">{{ trans(key="simulation_nojs", lang=lang) }}</p></noscript>
+        </section>
+
+        {{ <library.references ids={x.references} lang={lang} /> }}
+        {{ <evidence.page_claims path="methods/index.md" lang={lang} /> }}
+        <div class="mt-12">{{ <library.disclaimer lang={lang} /> }}</div>
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock content %}

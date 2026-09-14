@@ -8,8 +8,8 @@ const BASE = new URL(process.env.BASE_URL || 'http://127.0.0.1:4173/catharsis-as
 const PRODUCTION = Boolean(process.env.BASE_URL);
 const SCREENSHOTS = path.join('screenshots', PRODUCTION ? 'production' : 'local');
 const LOCALES = [
-  { code: 'en', path: '', about: 'About' },
-  { code: 'cs', path: 'cs/', about: 'O projektu' },
+  { code: 'en', path: '', about: 'About', glossary: 'glossary/' },
+  { code: 'cs', path: 'cs/', about: 'O projektu', glossary: 'slovnik/' },
 ];
 const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844 },
@@ -150,7 +150,12 @@ for (const locale of LOCALES) {
     'artifacts/catharsis-as-a-service/',
     'research/relief-is-not-resolution/',
     'research/method-majordomus/',
+    'research/music-and-emotion-regulation/',
     'advice/after-trauma/',
+    'methods/',
+    'evidence/',
+    'status/',
+    locale.glossary,
   ]) {
     test(`${locale.code}: /${relative} renders`, async ({ page }) => {
       const problems = watch(page);
@@ -493,6 +498,140 @@ test('guides have a working table of contents in both languages', async ({ page 
     const targets = await links.evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')));
     for (const target of targets) {
       await expect(page.locator(String(target))).toHaveCount(1);
+    }
+  }
+});
+
+test('the landing page states the thesis, the venting evidence and the clinical boundary', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, '');
+  await expect(page.locator('[data-hero-line]')).toHaveText('relief detected ≠ cause resolved');
+  await expect(page.locator('#experience .kind-artistic')).toBeVisible();
+  await expect(page.locator('#thesis-title')).toContainText('The body can change state');
+  await expect(page.locator('#venting')).toContainText('10,189');
+  await expect(page.locator('#venting')).toContainText('g = −0.63');
+  await expect(page.locator('#questions .question-list li')).toHaveCount(6);
+  await expect(page.locator('#boundary [role="note"]')).toContainText('emergency services');
+  await expect(page.locator('#observability .badge')).toHaveText(/Artistic/);
+  await expect(page.locator('#making .screen-label')).toHaveText(/illustrative data/i);
+  expect(problems).toEqual([]);
+});
+
+test('claims show their grade and open their sources (Alpine), and stay open without JavaScript', async ({ page, browser }) => {
+  const problems = watch(page);
+  await open(page, 'evidence/');
+  const cards = page.locator('#claims .claim-card');
+  expect(await cards.count()).toBeGreaterThan(20);
+  const card = page.locator('#claims .claim-card:has(.claim-toggle)').first();
+  await expect(card.locator('.claim-badges .level-badge')).toBeVisible();
+  await expect(card.locator('.claim-badges .confidence-badge')).toBeVisible();
+  const panel = card.locator('.claim-sources');
+  const toggle = card.locator('.claim-toggle');
+  await expect(panel).toBeHidden();
+  await toggle.click();
+  await expect(panel).toBeVisible();
+  await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  await expect(panel.locator('.source-item').first()).toBeVisible();
+  await expect(page.locator('#sources tbody tr')).not.toHaveCount(0);
+  await expect(page.locator('#changelog li').first()).toBeVisible();
+  expect(problems).toEqual([]);
+
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const noJs = await context.newPage();
+  await noJs.goto(url('evidence/'));
+  await expect(noJs.locator('#claims .claim-sources').first()).toBeVisible();
+  await context.close();
+});
+
+test('research notes list the ledger claims they make', async ({ page }) => {
+  for (const locale of LOCALES) {
+    await open(page, `${locale.path}research/venting-hypothesis/`);
+    await expect(page.locator('.page-claims .claim-card').first()).toBeVisible();
+    await expect(page.locator('.page-claims a[href*="evidence/"]')).toHaveCount(1);
+  }
+});
+
+test('the detection simulation is labelled and never claims more than it can', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, 'methods/');
+  const sim = page.locator('#simulation');
+  await expect(sim.locator('.sim-banner')).toHaveText(/not biometric analysis/i);
+  const out = (name) => sim.locator(`[data-output="${name}"]`);
+  await expect(out('phase')).toHaveAttribute('data-phase', 'discharge');
+  await expect(out('problem')).toHaveText('false');
+  await expect(out('confidence')).toHaveText('LOW');
+
+  await sim.locator('#sim-relief').fill('2');
+  await expect(out('phase')).toHaveAttribute('data-phase', 'peak');
+  await expect(out('problem')).toHaveText('unknown');
+
+  await sim.locator('#sim-heart_rate').fill('0');
+  await sim.locator('#sim-eda').fill('1');
+  await expect(out('phase')).toHaveAttribute('data-phase', 'baseline');
+
+  await sim.locator('#sim-cause').check();
+  await expect(out('cause')).toContainText(/reported/);
+  await sim.getByRole('button', { name: /reset/i }).click();
+  await expect(out('phase')).toHaveAttribute('data-phase', 'discharge');
+  await expect(sim.locator('#sim-cause')).not.toBeChecked();
+
+  for (const id of ['detection-chain', 'temporal-model', 'detection-matrix', 'uncertainty', 'errors', 'architecture']) {
+    await expect(page.locator(`#${id}`)).toHaveCount(1);
+  }
+  await expect(page.locator('#architecture [data-status="not-planned"]').first()).toBeVisible();
+  expect(problems).toEqual([]);
+});
+
+test('the glossary is bilingual, anchored and described as a DefinedTermSet', async ({ page }) => {
+  for (const locale of LOCALES) {
+    await open(page, `${locale.path}${locale.glossary}`);
+    await expect(page.locator('html')).toHaveAttribute('lang', locale.code);
+    expect(await page.locator('article.term').count()).toBeGreaterThan(40);
+    await expect(page.locator('#catharsis dfn')).toBeVisible();
+    const letters = await page.locator('.letter-nav a').evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')));
+    for (const target of letters) await expect(page.locator(String(target))).toHaveCount(1);
+
+    expect(await page.locator('link[rel="alternate"][hreflang="en"]').getAttribute('href')).toBe(url('glossary/'));
+    expect(await page.locator('link[rel="alternate"][hreflang="cs"]').getAttribute('href')).toBe(url('cs/slovnik/'));
+    const graph = JSON.parse(await page.locator('script[type="application/ld+json"]').textContent())['@graph'];
+    const set = graph.find((node) => node['@type'] === 'DefinedTermSet');
+    expect(set.hasDefinedTerm.length).toBeGreaterThan(40);
+  }
+});
+
+test('library pages are Articles with citations, never MedicalWebPage', async ({ page }) => {
+  for (const relative of ['research/venting-hypothesis/', 'advice/reappraise/', 'methods/', 'evidence/', 'about/', 'cs/research/measuring-emotion/']) {
+    await page.goto(url(relative));
+    const text = await page.locator('script[type="application/ld+json"]').textContent();
+    expect(text).not.toContain('MedicalWebPage');
+    const article = JSON.parse(String(text))['@graph'].find((node) => node['@type'] === 'Article');
+    expect(article, relative).toBeTruthy();
+    expect(article.url).toBe(url(relative));
+    if (relative.includes('research/')) expect(article.citation.length).toBeGreaterThan(0);
+  }
+});
+
+test('the footer carries the science note and build metadata; /status/ is generated', async ({ page }) => {
+  await open(page, 'status/');
+  const footer = page.locator('footer');
+  await expect(footer.locator('.footer-science')).toContainText('Nothing on this site measures');
+  await expect(footer.locator('[data-build="evidence-date"]')).toHaveText(/^\d{4}-\d{2}-\d{2}$/);
+  await expect(footer.locator('[data-build="version"]')).not.toBeEmpty();
+  expect(Number(await page.locator('[data-stat="claims"]').textContent())).toBeGreaterThan(20);
+  expect(Number(await page.locator('[data-stat="sources"]').textContent())).toBeGreaterThan(40);
+  await expect(page.locator('#next-reviews-title + .table-scroll tbody tr').first()).toBeVisible();
+  if (PRODUCTION) await expect(page.locator('main [data-build="revision"] a, main [data-build="revision"]').first()).not.toHaveText('local');
+});
+
+test('concept screens are labelled as illustrative wherever they appear', async ({ page }) => {
+  for (const relative of ['research/method-majordomus/', 'about/', 'cs/about/']) {
+    await open(page, relative);
+    const figure = page.locator('figure.screens');
+    await expect(figure.locator('.screen-label')).toBeVisible();
+    const images = figure.locator('img');
+    expect(await images.count()).toBeGreaterThan(1);
+    for (const alt of await images.evaluateAll((nodes) => nodes.map((node) => node.getAttribute('alt')))) {
+      expect(String(alt).length).toBeGreaterThan(40);
     }
   }
 });

@@ -23,6 +23,43 @@ from pathlib import Path
 
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+\s*\n?(.*)\Z", re.S)
 BANNED = ("festival poster", "festivalový plakát", "festivalovy plakat")
+# Medical and neuroscientific overreach (.ai/repo/rules/project/no-neuro-overreach.v1.md and
+# medical-claims.v1.md). Matched case-insensitively in content, data, templates, UI strings and docs.
+PROHIBITED = (
+    (r"\bproves? that\b", "proves that"),
+    (r"\bdetect(?:s|ed|ing)? emotions?\b", "detects emotion"),
+    (r"\bread(?:s|ing)? emotions?\b", "reads emotion"),
+    (r"\bdiagnos(?:e|es)\b", "diagnoses"),
+    (r"\bguarantee(?:s|d)?\b", "guarantees"),
+    (r"\bscientifically proven\b", "scientifically proven"),
+    (r"\bthe brain (?:does|decides|knows|wants|releases|tells|thinks|feels)\b", "the brain does X"),
+    (r"\bdokazuj(?:e|í),? že\b", "dokazuje, že"),
+    (r"\bdetekuj\w* emoc", "detekuje emoce"),
+    (r"\bčt(?:e|ou) emoc", "čte emoce"),
+    (r"\bdiagnostikuj\w*", "diagnostikuje"),
+    (r"\bgarantuj\w*", "garantuje"),
+    (r"\bvědecky prokázan\w*", "vědecky prokázáno"),
+    (r"\bmozek (?:dělá|ví|chce|rozhoduje|uvolňuje|cítí|říká)\b", "mozek dělá X"),
+)
+PROHIBITED_SCAN = ("content/**/*.md", "data/*.toml", "templates/**/*.html", "zola.toml", "README.md", "docs/**/*.md")
+# Documents that define the prohibited list have to quote it.
+PROHIBITED_EXEMPT = {"docs/CONTENT-STANDARDS.md"}
+
+
+def check_prohibited(root, errors):
+    patterns = [(re.compile(pattern, re.I), label) for pattern, label in PROHIBITED]
+    scanned = 0
+    for glob in PROHIBITED_SCAN:
+        for path in sorted(root.glob(glob)):
+            rel = path.relative_to(root).as_posix()
+            if rel in PROHIBITED_EXEMPT:
+                continue
+            scanned += 1
+            for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), start=1):
+                for pattern, label in patterns:
+                    if pattern.search(line):
+                        errors.append(f"{rel}:{number}: prohibited phrasing '{label}' ({pattern.search(line).group(0)!r})")
+    return scanned
 EVIDENCE_GRADES = {"meta-analytic", "replicated-experimental", "experimental", "observational", "theoretical"}
 COMMAND_PREFIXES = ("npm ", "npx ", "zola ", "majordomus ", "gh ", "cargo ", "git ", "python3 ", "scripts/", ".venv/bin/")
 DESCRIPTION_LENGTH = (50, 320)
@@ -147,8 +184,11 @@ def main():
             if not extra.get("related"):
                 errors.append(f"{rel}: advice entry needs at least one related research note")
 
+    scanned = check_prohibited(root, errors)
+
     print("CONTENT")
     print("────────────────────")
+    print(f"phrase-linted ..... {scanned} files")
     print(f"documents ......... {counters['documents']}")
     print(f"research notes .... {counters['research']}")
     print(f"advice entries .... {counters['advice']}")

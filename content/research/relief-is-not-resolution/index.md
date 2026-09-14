@@ -15,7 +15,7 @@ key_points = [
   "Experiential avoidance, the attempt to escape unwanted internal experience, is a common process across psychological difficulties (Hayes et al., 1996).",
   "Acute exercise reliably lifts positive affect for a short time (Reed & Ones, 2006), and remembered experiences are dominated by their peak and end (Fredrickson & Kahneman, 1993).",
 ]
-references = ["hayes-1996", "reed-ones-2006", "nolen-hoeksema-2008", "watkins-2008", "fredrickson-kahneman-1993", "kahneman-1993"]
+references = ["hayes-1996", "reed-ones-2006", "nolen-hoeksema-2008", "watkins-2008", "fredrickson-kahneman-1993", "kahneman-1993", "mcewen-1998", "kjaervik-bushman-2024"]
 
 [[extra.figures]]
 kind = "relief_loop"
@@ -56,6 +56,14 @@ Hayes and colleagues (1996) described *experiential avoidance* as the attempt to
 ## How the lift works, and how long it lasts
 
 A meta-analysis of experiments on acute aerobic exercise found a reliable increase in positive activated affect, such as feeling energetic or enthusiastic, after single sessions (Reed & Ones, 2006). Collective rhythm adds reward and social closeness ([Research note 03](@/research/collective-synchrony/index.md)). These are real effects, but they are acute: they describe how people feel during and after an episode, not changes in the conditions they return to.
+
+## The body can change state without the world changing with it
+
+Physiological recovery and resolution are easy to conflate because recovery is felt in the body. McEwen (1998) described stress responses as protective in the short term and introduced *allostatic load* for the cost of their repeated or prolonged activation, including responses that fail to shut off when a challenge has passed. In that framework, returning to a resting state after activation is valuable in itself. It is also, by definition, a change in the body's state rather than in the challenge.
+
+That is the point where relief and resolution separate. An evening of exertion and music, a good cry or a calming breathing exercise can bring heart rate, muscle tension and felt distress back toward [baseline](../../glossary/#baseline). If the conditions that triggered the response, a conflict, a debt, a loss, are still in place, the same response is likely to be engaged again on return to them. Recovery lowers the cost of each activation; only a change in conditions, or in how they are appraised, reduces how often activation happens.
+
+The distinction also clarifies what different kinds of discharge do. In a meta-analysis of anger management activities, activities that decrease arousal reduced anger and aggression, while activities that increase arousal, such as hitting a bag or running, were ineffective overall for those outcomes (Kjærvik & Bushman, 2024; see [Research note 02](@/research/venting-hypothesis/index.md)). The finding concerns anger and aggression, not whether any activity changed the situation that provoked them. The [temporal model on the methods page](../../methods/#temporal-model) separates these time scales, and the [evidence ledger](@/evidence/index.md) records how strongly each claim is supported.
 
 ## Repetitive thought
 

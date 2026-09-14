@@ -9,13 +9,25 @@ tags = ["metoda", "majordomus", "ověřování", "dodávka softwaru"]
 
 [extra]
 kicker = "Výzkumná poznámka 06"
+kind = "technical"
 summary = "Web se dostal z prázdného repozitáře na GitHubu k ověřenému vydání za 51 minut a 36 sekund a od inicializace Majordomu k tomuto vydání za 19 minut a 19 sekund. Tato poznámka uvádí zaznamenanou časovou osu, druhy zadání, které práci řídily, nálezy, které Majordomus nahlásil ještě před pushem, a limity jakéhokoli tvrzení o rychlosti."
 key_points = [
   "Naměřeno ze záznamů repozitáře a pipeline: repozitář vytvořen 14. září 2026 v 09:54:06 UTC, první vydání v0.1.0 ověřeno a publikováno v 10:45:42 UTC.",
   "Majordomus před prvním pushem nahlásil dvě chyby rozsahu úlohy a jedno selhání bootstrapu; první pipeline nasazení prošla všemi sedmi joby.",
   "Kontrolní podmínka neexistuje, proto se neuvádí žádný násobek zrychlení; záznamy ukazují, kde se čas neztratil, a každé tvrzení o dokončení lze ověřit.",
 ]
-figures = []
+figures = [
+  { kind = "screens", id = "majordomus-cockpit", caption = "Koncepční obrazovky cockpitu Majordomu: pohledy na sezení, pravidla, worktrees, issues, testy, dokumentaci, milníky a využití modelů. Všechna jména, čísla a data v nich jsou ilustrativní a nepopisují tento projekt; jeho skutečné záznamy uvádí časová osa v této poznámce.", items = [
+    { src = "assets/majordomus/cockpit-sessions.png", title = "Sezení", alt = "Koncepční obrazovka pohledu Sezení v cockpitu Majordomu: seznam pracovních sezení a časová osa jednoho sezení od začátku po aktualizaci dokumentace, se zdroji kontextu, které načetlo.", caption = "Každé sezení uchovává časovou osu, zdroje kontextu, rozhodnutí a předávku." },
+    { src = "assets/majordomus/cockpit-rules.png", title = "Pravidla", alt = "Koncepční obrazovka pohledu Pravidla v cockpitu Majordomu: seznam vynucovaných pravidel repozitáře s pokrytím, detail jednoho pravidla, stav jeho validace a místa, kde se vynucuje.", caption = "Spustitelná pravidla s místy vynucení: příkazová řádka, CI, pre-commit hook." },
+    { src = "assets/majordomus/cockpit-worktrees.png", title = "Worktrees", alt = "Koncepční obrazovka pohledu Worktrees v cockpitu Majordomu: paralelní větve se stavem, rozdíl změněných souborů, commity napřed a terminál.", caption = "Paralelní větve ve vlastních worktrees, každá navázaná na issue a sezení." },
+    { src = "assets/majordomus/cockpit-issues.png", title = "Issues", alt = "Koncepční obrazovka pohledu Issues v cockpitu Majordomu: seznam issues a detail jednoho z nich s navázaným worktree, sezením, pull requestem, testy a dokumentací.", caption = "Issue propojené s prací, která ho implementuje a ověřuje." },
+    { src = "assets/majordomus/cockpit-tests.png", title = "Testy", alt = "Koncepční obrazovka pohledu Testy v cockpitu Majordomu: počty úspěšných a neúspěšných testů, vývoj výsledků, pokrytí, kvalitativní brány a živý výstup testů.", caption = "Běhy testů, selhání a kvalitativní brány na jednom místě, propojené s issues a commity." },
+    { src = "assets/majordomus/cockpit-docs.png", title = "Dokumentace", alt = "Koncepční obrazovka pohledu Dokumentace v cockpitu Majordomu: strom dokumentů a záznam architektonického rozhodnutí s kontextem, rozhodnutím a důsledky.", caption = "Dokumentace a architektonická rozhodnutí vedle pravidel, která naplňují." },
+    { src = "assets/majordomus/cockpit-milestones.png", title = "Milníky", alt = "Koncepční obrazovka pohledu Milníky v cockpitu Majordomu: tři milníky s ukazateli postupu, graf kumulativního postupu, časová osa a závislosti.", caption = "Milníky s postupem, harmonogramem a závislostmi odvozenými z plánu issues." },
+    { src = "assets/majordomus/cockpit-models.png", title = "Modely", alt = "Koncepční obrazovka pohledu Modely v cockpitu Majordomu: poskytovatelé AI modelů s využitím, latencí, rozpisem nákladů a živými požadavky.", caption = "Které modely se použily k čemu, s jakou latencí a za jakou cenu." },
+  ] },
+]
 references = ["majordomus-2026", "repository-2026"]
 +++
 

@@ -109,7 +109,12 @@
     </ul>
     <h3 class="label mt-20 reveal">{{ block.notes_label }}</h3>
     <div class="mt-6 reveal">{{ <library.cards pages={research.pages[:6]} lang={lang} heading="h4" /> }}</div>
-    <a class="btn-ghost mt-10 reveal" href="{{ research.permalink }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+    <div class="mt-10 flex flex-wrap gap-3 reveal">
+      <a class="btn-ghost" href="{{ research.permalink }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="{{ get_url(path='@/evidence/index.md', lang=lang) }}">{{ block.cta_ledger }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="{{ get_url(path='@/methods/index.md', lang=lang) }}">{{ block.cta_methods }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="{{ get_url(path='@/glossary/index.md', lang=lang) }}">{{ block.cta_glossary }} <span aria-hidden="true">→</span></a>
+    </div>
   </div>
 </section>
 {% endcomponent landing.evidence %}
@@ -140,6 +145,9 @@
       </div>
       {%- endfor %}
     </dl>
+    {%- if block.screens is defined %}
+    <div class="mt-14 reveal">{{ <library.screens fig={block.screens} lang={lang} /> }}</div>
+    {%- endif %}
     <ul class="key-points mt-12 max-w-3xl reveal">
       {%- for point in block.points %}
       <li>{{ point }}</li>
@@ -176,3 +184,103 @@
   </div>
 </section>
 {% endcomponent landing.faq %}
+
+{#- The thesis in one sentence, with the formula the artwork's endpoint encodes. -#}
+{% component landing.statement(block: map, lang: string, idx: string) %}
+<section id="thesis" class="section section-alt" aria-labelledby="thesis-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="thesis" /> }}
+    <h2 id="thesis-title" class="display statement-display reveal">
+      {%- for line in block.lines %}<span class="block{% if loop.last %} text-blood{% endif %}">{{ line }}</span>{% endfor -%}
+    </h2>
+    <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
+      <p class="body-large lg:col-span-7 reveal">{{ block.text }}</p>
+      <div class="lg:col-span-5 reveal">
+        <p class="endpoint" data-formula><span>&gt; {{ block.formula }}</span></p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn-primary" href="{{ get_url(path='@/methods/index.md', lang=lang) }}#temporal-model">{{ block.cta_methods }} <span aria-hidden="true">→</span></a>
+          <a class="btn-ghost" href="{{ get_url(path='@/research/relief-is-not-resolution/index.md', lang=lang) }}">{{ block.cta_note }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.statement %}
+
+{#- Catharsis is not venting: the 2024 meta-analysis, numbers verified against the abstract (data/claims.toml). -#}
+{% component landing.venting(block: map, lang: string, idx: string) %}
+<section id="venting" class="section" aria-labelledby="venting-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="venting" /> }}
+    <h2 id="venting-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
+    <p class="lead mt-8 max-w-4xl reveal">{{ block.lead }}</p>
+    <div class="contrast-grid mt-14 reveal">
+      {%- for item in block.contrast %}
+      <div>
+        <p class="label text-blood">{{ item.label }}</p>
+        <h3 class="condensed contrast-title mt-3">{{ item.title }}</h3>
+        <p class="display stat-value mt-6">{{ item.value }}</p>
+        <p class="mt-4">{{ item.text }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+    <dl class="stat-grid mt-10 reveal">
+      {%- for stat in block.stats %}
+      <div class="stat"><dt class="label">{{ stat.label }}</dt><dd class="display stat-value">{{ stat.value }}</dd></div>
+      {%- endfor %}
+    </dl>
+    <p class="label mt-8 normal-case tracking-normal reveal">{{ block.source }}</p>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.meaning }}</p>
+    <div class="mt-10 flex flex-wrap gap-3 reveal">
+      <a class="btn-primary" href="{{ get_url(path='@/research/venting-hypothesis/index.md', lang=lang) }}">{{ block.cta_note }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="{{ get_url(path='@/advice/let-anger-cool/index.md', lang=lang) }}">{{ block.cta_advice }} <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.venting %}
+
+{% component landing.questions(block: map, idx: string) %}
+<section id="questions" class="section section-alt" aria-labelledby="questions-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="questions" /> }}
+    <h2 id="questions-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    <ol class="question-list mt-14 reveal">
+      {%- for item in block.items %}
+      <li>
+        <p class="question-instead">{{ item.instead }}</p>
+        <p class="question-better">{{ item.better }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+{% endcomponent landing.questions %}
+
+{#- Clinical boundary (.ai/repo/rules/project/medical-claims.v1.md). -#}
+{% component landing.boundary(block: map, lang: string, idx: string) %}
+<section id="boundary" class="section" aria-labelledby="boundary-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="boundary" /> }}
+    <div class="boundary reveal">
+      <div>
+        <h2 id="boundary-title" class="display display-md">{{ block.heading }}</h2>
+        <p class="mt-6">{{ block.text }}</p>
+      </div>
+      <div>
+        <h3 class="label">{{ block.signs_label }}</h3>
+        <ul class="key-points mt-4">
+          {%- for sign in block.signs %}
+          <li>{{ sign }}</li>
+          {%- endfor %}
+        </ul>
+        <p class="mt-6 font-bold text-blood" role="note">{{ block.urgent }}</p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a class="btn-ghost" href="{{ get_url(path='@/advice/after-trauma/index.md', lang=lang) }}">{{ block.cta_advice }} <span aria-hidden="true">→</span></a>
+          <a class="btn-ghost" href="{{ get_url(path='@/evidence/index.md', lang=lang) }}">{{ block.cta_evidence }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.boundary %}

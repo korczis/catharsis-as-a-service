@@ -22,7 +22,7 @@ problem_solved: false
 ## Intent
 
 An artwork and an evidence library about one confusion: the belief that feeling released means that
-something has been resolved. The poster presents collective euphoria; the site diagnoses it, explains what
+something has been resolved. The poster presents collective euphoria; the site examines it, explains what
 psychology and neuroscience can and cannot say about catharsis, and turns the evidence into graded advice.
 
 The site is educational. It is not a diagnostic or treatment tool, and no metric on it measures anyone.

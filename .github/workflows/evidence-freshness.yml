@@ -1,0 +1,54 @@
+name: Evidence freshness
+
+# Weekly, independent of pushes: claims and appraisals expire on their review dates, and
+# references can disappear from Crossref. A failure opens (or updates) an evidence-update issue.
+on:
+  schedule:
+    - cron: '17 6 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: evidence-freshness
+  cancel-in-progress: false
+
+jobs:
+  freshness:
+    name: Review dates and Crossref
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Claims, sources and glossary are consistent and within their review dates
+        run: python3 scripts/validate-claims.py --warn-days 30 | tee claims.txt
+      - name: References still resolve in Crossref with matching titles and years
+        if: always()
+        run: python3 scripts/check-references.py --online | tee references.txt
+      - name: Open or update an evidence-update issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "The weekly evidence check failed on $(date -u +%F)."
+            echo
+            echo "Run: $RUN_URL"
+            echo
+            echo '```text'
+            grep -hE '^(error|warn):' claims.txt references.txt 2>/dev/null | head -80
+            echo '```'
+            echo
+            echo "Review each claim against current literature, update data/claims.toml, data/sources.toml"
+            echo "and data/evidence_changelog.toml, then push. Dates move only after a review."
+          } > body.md
+          gh label create evidence-update --color B60205 \
+            --description "A claim, source or reference needs review" 2>/dev/null || echo "label exists"
+          existing="$(gh issue list --label evidence-update --state open --search 'Evidence review needed in:title' --json number --jq '.[0].number')"
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file body.md
+          else
+            gh issue create --title "Evidence review needed" --label evidence-update --body-file body.md
+          fi

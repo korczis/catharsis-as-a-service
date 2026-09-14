@@ -14,8 +14,9 @@ key_points = [
   "Synchronní ťukání zvýšilo sympatie k partnerovi (Hove & Risen, 2009) a synchronní činnost zvýšila pozdější spolupráci (Wiltermuth & Heath, 2009).",
   "Při skupinovém tanci synchronie i námaha nezávisle na sobě zvýšily práh bolesti, nepřímý ukazatel aktivity endorfinů, a synchronie zvýšila pocit sociální blízkosti (Tarr a kol., 2015).",
   "Vrcholné emoční okamžiky v hudbě doprovázelo uvolnění dopaminu ve striatu (Salimpoor a kol., 2011).",
+  "V 50 studiích souvisela uváděná kolektivní šumivost během shromáždění a demonstrací se sebepřesahujícími emocemi, skupinovou identitou, duševní pohodou a kolektivní účinností; souhrnné výsledky jsou korelace, nikoli prokázané účinky (Pizarro a kol., 2022).",
 ]
-references = ["hove-risen-2009", "wiltermuth-heath-2009", "tarr-2015", "salimpoor-2011", "janata-2012"]
+references = ["hove-risen-2009", "wiltermuth-heath-2009", "tarr-2015", "salimpoor-2011", "janata-2012", "pizarro-2022"]
 
 [[extra.figures]]
 kind = "synchrony"
@@ -48,6 +49,14 @@ Práh bolesti se v tomto výzkumu používá jako nepřímý ukazatel aktivity e
 Salimpoor a kolegové (2011) kombinovali pozitronovou emisní tomografii a funkční magnetickou rezonanci u posluchačů, kteří poslouchali hudbu, jež je spolehlivě dojímala a kterou si sami vybrali. Okamžiky vrcholné emoční reakce doprovázelo uvolnění dopaminu ve striatu. Aktivita v nucleus caudatus souvisela s očekáváním těchto okamžiků a aktivita v nucleus accumbens s jejich prožitím. Stavba gradace a dropu v elektronické taneční hudbě je zjevnou kulturní paralelou, i když tento žánr předmětem studie nebyl.
 
 Janata, Tomic a Haberman (2012) zkoumali *groove*, příjemné nutkání pohybovat se v rytmu hudby, a spojili ho se senzomotorickou vazbou mezi vnímáním rytmu a tělesným pohybem.
+
+## Kolektivní šumivost: shromáždění a demonstrace
+
+Výše uvedené studie manipulují synchronii v malých skupinách. Velká shromáždění, jako jsou demonstrace, rituály, obřady a oslavy, se experimentálně zkoumají obtížněji a výzkum se u nich opírá hlavně o to, co účastníci uvádějí. Pizarro a kolegové (2022) shrnuli jeden konstrukt z této literatury, *[kolektivní šumivost](../../slovnik/#collective-effervescence)* (collective effervescence): stav intenzivní sdílené emoční aktivace a pocitu jednoty, který vzniká během kolektivního chování. První část článku sleduje pojem od Durkheima přes Collinse, Moscoviciho a teorii sociální identity až k výzkumu sebepřesahu a navrhuje jeho jednotný popis.
+
+Druhou částí je metaanalytická integrace 50 studií s celkovým N = 182 738. Kolektivní šumivost silně souvisela s individuálními emocemi, zejména sebepřesahujícími, a s konstrukty společného sdílení, jako je skupinová identita a fúze identity; autoři to považují za doklad validity konstruktu. Ze vzdálenějších proměnných souvisela s kolektivními pozitivními emocemi, dlouhodobější sociální integrací, například oddaností vlastní skupině, se sociálními hodnotami a přesvědčeními a s proměnnými spojenými se zmocněním, včetně duševní pohody, kolektivní účinnosti a kolektivního sebevědomí. Konkrétně při demonstracích souvisela kolektivní šumivost se skupinovou identitou (souhrnné r = 0,52), kolektivní účinností (r = 0,37), negativními emocemi (r = 0,14), sebepřesahujícími emocemi (r = 0,58) a přesvědčeními souvisejícími s morálkou (r = 0,43).
+
+Meze vyplývají z povahy důkazů. Souhrnné odhady jsou korelace, popisují tedy, jak silně spolu měření souvisejí, nikoli zda prožitek výsledky způsobuje; lidé, kteří se s nějakou věcí už silně ztotožňují, mohou šumivost prožívat intenzivněji a zároveň uvádět vyšší účinnost. Konstrukt se měří dotazníkovými škálami, takže obě strany většiny vztahů závisejí na [sebeposouzení](../../slovnik/#self-report), což může korelace nadhodnocovat. Účastníci demonstrace nebo rituálu se rozhodli tam být, takže vzorky nereprezentují lidi obecně. Autoři zkoumali moderátory, jako je design studie, použitá škála a typ shromáždění, což ukazuje, že se výsledky podle těchto rysů lišily. Přehled podporuje tvrzení, že intenzivní sdílená emoce na shromážděních jde ruku v ruce se sounáležitostí, smyslem a pocitem kolektivní síly. Neukazuje, že účast na shromáždění tyto výsledky vyvolává ani že mění individuální potíže.
 
 ## Co tato zjištění vysvětlují
 
