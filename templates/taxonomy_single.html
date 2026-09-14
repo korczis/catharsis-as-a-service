@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero" aria-labelledby="tag-title">
+  <div class="shell">
+    <p class="eyebrow"><a class="no-underline" href="{{ get_taxonomy_url(kind='tags', term=term.name, lang=lang) | replace(from=term.slug ~ '/', to='') }}">{{ trans(key="nav_tags", lang=lang) }}</a> <span class="text-muted">// {{ term.pages | length }} {{ trans(key="documents", lang=lang) }}</span></p>
+    <h1 id="tag-title" class="display display-hero mt-7">#{{ term.name }}</h1>
+    <p class="lead mt-8 max-w-3xl">{{ trans(key="tag_description", lang=lang) }}</p>
+  </div>
+</section>
+<section class="section" aria-label="#{{ term.name }}">
+  <div class="shell">
+    {{ <library.cards pages={term.pages} lang={lang} /> }}
+  </div>
+</section>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section class="hero" aria-labelledby="library-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": section.title, "url": section.permalink}
+    ]} /> }}
+    <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ section.extra.kicker }}</span></p>
+    <h1 id="library-title" class="display display-hero mt-7">{{ section.title }}</h1>
+    <div class="prose-page mt-8">{{ section.content | safe }}</div>
+  </div>
+</section>
+<section class="section" aria-label="{{ section.title }}">
+  <div class="shell">
+    {{ <library.cards pages={section.pages} lang={lang} /> }}
+    <div class="mt-16">{{ <library.disclaimer lang={lang} /> }}</div>
+  </div>
+</section>
+{% endblock content %}

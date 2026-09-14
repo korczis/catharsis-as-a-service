@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{#- Rendered from data/commands.toml, the single registry every documented command must appear in. -#}
+{% block content %}
+{%- set registry = load_data(path="data/commands.toml") -%}
+<article class="hero" aria-labelledby="commands-title">
+  <div class="shell">
+    <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ trans(key="brand_tagline", lang=lang) }}</span></p>
+    <h1 id="commands-title" class="display display-hero mt-7">{{ page.title }}</h1>
+    <div class="prose-page mt-8">{{ page.content | safe }}</div>
+
+    {%- for group in registry.groups %}
+    <section class="mt-16" aria-labelledby="group-{{ group.id }}">
+      <h2 id="group-{{ group.id }}" class="condensed section-title">{{ group.title[lang] }}</h2>
+      <dl class="command-list">
+        {%- for entry in registry.commands %}{% if entry.group == group.id %}
+        <div class="command" id="{{ entry.id }}">
+          <dt><code>{{ entry.command }}</code> <a class="command-anchor" href="#{{ entry.id }}" aria-label="{{ entry.command }}">#</a></dt>
+          <dd>
+            <p>{{ entry.summary[lang] }}</p>
+            <p class="label mt-2 normal-case tracking-normal">
+              {{ trans(key="command_source", lang=lang) }}: <a href="{{ config.extra.repo_url }}/blob/main/{{ entry.source }}" rel="noopener" target="_blank">{{ entry.source }}</a>
+              · {{ trans(key="command_verified_by", lang=lang) }}: {{ entry.verified_by | join(sep=", ") }}
+            </p>
+          </dd>
+        </div>
+        {%- endif %}{% endfor %}
+      </dl>
+    </section>
+    {%- endfor %}
+  </div>
+</article>
+{% endblock content %}

@@ -1,0 +1,15 @@
+[workspace]
+resolver = "2"
+members = ["crates/caas-content", "crates/caas-cli"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85"
+publish = false
+repository = "https://github.com/korczis/catharsis-as-a-service"
+
+[workspace.dependencies]
+caas-content = { path = "crates/caas-content" }
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.151"

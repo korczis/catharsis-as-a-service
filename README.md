@@ -5,12 +5,11 @@
 [![Pages](https://github.com/korczis/catharsis-as-a-service/actions/workflows/pages.yml/badge.svg)](https://github.com/korczis/catharsis-as-a-service/actions/workflows/pages.yml)
 
 **Live:** https://korczis.github.io/catharsis-as-a-service/ ([čeština](https://korczis.github.io/catharsis-as-a-service/cs/)) ·
-**Repository:** https://github.com/korczis/catharsis-as-a-service ·
-**Releases:** https://github.com/korczis/catharsis-as-a-service/releases
+**Releases:** https://github.com/korczis/catharsis-as-a-service/releases ·
+**Commands:** https://korczis.github.io/catharsis-as-a-service/commands/ ·
+**API:** https://korczis.github.io/catharsis-as-a-service/api/v1/index.json
 
 ![Catharsis as a Service, desktop](docs/screenshot-desktop.png)
-
-A digital artifact combining industrial rave imagery, human-systems telemetry and API semantics.
 
 ```text
 INPUT    unresolved emotional state
@@ -20,145 +19,126 @@ OUTPUT   temporary relief
 problem_solved: false
 ```
 
-## Concept
+## Intent
 
-A festival campaign that sells catharsis at first glance and reveals, at second, that it is
-instrumenting it. The endpoint returns `200 OK`. The underlying condition is unchanged.
+An artwork and an evidence library about one confusion: the belief that feeling released means that
+something has been resolved. The poster presents collective euphoria; the site diagnoses it, explains what
+psychology and neuroscience can and cannot say about catharsis, and turns the evidence into graded advice.
 
-The poster is the anchor: a monumental red-lit stage, a dense crowd and one anonymous figure
-beneath a diagnostic overlay. The page around it exposes that overlay as a state transition, a
-crowd model, conceptual telemetry (artistic values, never measurements) and the raw API response.
+The site is educational. It is not a diagnostic or treatment tool, and no metric on it measures anyone.
 
-## Technology
+## What is inside
 
-| Layer | Choice | Version |
+| Area | Content | Source of truth |
 |---|---|---|
-| Site generator | [Zola](https://www.getzola.org/) (Tera templates, Markdown content, native i18n) | 0.23.6 (`.zola-version`) |
-| CSS | Tailwind CSS, CSS-first `@theme` tokens | 4.3.3 |
-| Interaction primitives | Flowbite (modal, drawer, tooltip) | 4.0.2 |
-| Client state | Alpine.js (header, view switch, copy feedback) | 3.17.2 |
-| Tests | Playwright (Chromium) | 1.63.0 |
-| Hosting | GitHub Pages via GitHub Actions | — |
-| Supervision | [Majordomus](https://majordomus.dev) | 0.6.0 |
+| Landing | intent, definition of catharsis, the relief loop, evidence highlights, FAQ, how it was made | `content/_index.md`, `content/_index.cs.md` |
+| Research | nine research notes with key points, figures and references | `content/research/` |
+| Advice | ten entries graded by strength of evidence, with practice steps and limits | `content/advice/` |
+| References | every citation, with Crossref-verified DOIs | `data/references.toml` |
+| Commands | every documented command, its source and the test that runs it | `data/commands.toml` |
+| API | versioned JSON export for other applications | `api/v1/` (generated) |
+| Tags | topic taxonomy in both languages | front matter `[taxonomies]` |
 
-No framework runtime, no CDN, no analytics. Fonts (Anton, JetBrains Mono, Barlow Condensed) and
-scripts are self-hosted.
+## How it was made
+
+Built in one working session by an AI coding agent directed by one person and supervised by
+[Majordomus](https://majordomus.dev). Recorded timeline of the first release (UTC, 14 September 2026):
+repository created 09:54:06, Majordomus initialised 10:26:23, release v0.1.0 verified and published 10:45:42.
+That is 51 min 36 s from an empty repository and 19 min 19 s from supervision start. The research note
+"Method" on the site documents the kinds of instructions, what Majordomus caught and what cannot be claimed.
 
 ## Architecture
 
 | Concern | Lives in |
 |---|---|
-| Content | `content/` Markdown + front matter, one file per locale (`index.md`, `index.cs.md`) |
-| UI strings | `zola.toml` `[translations]` and `[languages.cs.translations]`, read with `trans()` |
-| Presentation | `templates/` (base, partials, `macros/artifact.html`), `styles/app.css` |
-| Interaction | `static/js/app.js` (Alpine components, Flowbite instances), `static/js/locale.js` |
-| Validation | `scripts/validate.sh` and the checks it runs, `tests/site.spec.js` |
-| Deployment | `.github/workflows/pages.yml` (calls `ci.yml`), `scripts/release.sh` |
-| Artwork sources | `artwork/` (poster and social preview sources, original concept image) |
+| Content and landing blocks | Markdown front matter, one file per locale |
+| UI strings | `zola.toml` translations, read with `trans()` |
+| Presentation | Tera v2 components in `templates/components/`, Tailwind CSS 4 in `styles/app.css` |
+| Interaction | Alpine.js (header, view switch, copy), Flowbite (modal, drawer, tooltip, accordion) |
+| Metadata | `templates/partials/head.html` (Open Graph, Twitter, hreflang) and `structured-data.html` (JSON-LD) |
+| Validation | Python validators, Playwright, pytest, Rust contract tests |
+| Delivery | `.github/workflows/ci.yml` and `pages.yml` |
+| Supervision | `.ai/` (Majordomus policy, rules, workflows); `.githooks/` |
 
-Every artifact section (hero, diagnostic views, crowd, observability, poster, endpoint) is a macro
-that reads only the page's front matter. A new artifact is a Markdown file pair; listing, sitemap,
-language links and metadata follow from it.
-
-Ownership never overlaps: Alpine owns the header state, the view switch and copy feedback; Flowbite
-owns the artwork viewer, the mobile drawer and the tooltip; `locale.js` owns locale negotiation.
-
-## Repository structure
-
-```text
-.ai/                    Majordomus layer (policy, rules, workflows); .ai/local/ is never committed
-.github/workflows/      ci.yml (validate + e2e + supervision), pages.yml (deploy → verify → release)
-.githooks/              commit-msg (Conventional Commits), pre-commit / pre-push (Majordomus)
-artwork/                poster.html, social.html, bg.jpg, source/concept-1024x1536.png
-content/                _index, artifacts/, about/ — each in en and cs
-scripts/                validate.sh, validate-i18n.py, validate-html.py, smoke-production.sh,
-                        preview.sh, dev.sh, lint-commits.sh, release.sh, render-artwork.sh, vendor.mjs
-static/                 assets/ (poster master, social preview, icons), fonts/, js/, site.webmanifest
-styles/app.css          Tailwind entry and design tokens
-templates/              base.html, index.html, artifact.html, section.html, page.html, 404.html,
-                        partials/, macros/
-tests/site.spec.js      Playwright contract, local or production
-zola.toml               site config, locales, UI dictionaries
-```
+Flowbite provides mechanics only; markup follows the official component documentation and appearance comes from
+the project's design tokens.
 
 ## Local development
 
-Requirements: Node.js 22+, Python 3.11+, [Zola 0.23.6](https://github.com/getzola/zola/releases/tag/v0.23.6),
-and [Majordomus](https://majordomus.dev) for the commit hooks.
+Requirements: Node.js 22+, Python 3.11+, Zola 0.23.6, Rust 1.98.1 (via `rust-toolchain.toml`) and Majordomus.
 
 ```sh
-npm ci                  # installs pinned dependencies and wires .githooks
-npm run dev             # Tailwind watch + zola serve on http://127.0.0.1:1111
+npm ci
+python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+npm run dev
+npm run preview
 ```
 
-Production-like preview under the same `/catharsis-as-a-service/` subpath GitHub Pages uses:
+Setup: [`npm ci`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-ci) and
+[`python3 -m venv .venv`](https://korczis.github.io/catharsis-as-a-service/commands/#python-venv).
+Authoring: [`npm run dev`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-dev) serves the site with live
+reload; [`npm run preview`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-preview) serves a production
+build under the same subpath as GitHub Pages.
+
+## Quality gates
 
 ```sh
-npm run preview         # http://127.0.0.1:4173/catharsis-as-a-service/
+npm run validate
+npm run test:python
+npm test
+cargo fmt --all --check
+cargo clippy --workspace --all-targets -- -D warnings
+cargo test --workspace
+python3 scripts/check-references.py --online
 ```
 
-## Build and validation
+- [`npm run validate`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-validate): toolchain, assets,
+  JavaScript syntax, translation parity, content standards and command links, references, Zola check and build, API export,
+  HTML, JSON-LD, preview metadata, links, anchors and sitemap.
+- [`npm run test:python`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-test-python): validators, exporter
+  and command registry, including a real run of each registered command.
+- [`npm test`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-test): Playwright across viewports and both
+  languages (layout, previews, JSON-LD, feeds, accordion, modal, drawer, locale negotiation, print, API).
+- Rust: [`cargo fmt`](https://korczis.github.io/catharsis-as-a-service/commands/#cargo-fmt),
+  [`cargo clippy`](https://korczis.github.io/catharsis-as-a-service/commands/#cargo-clippy) and
+  [`cargo test`](https://korczis.github.io/catharsis-as-a-service/commands/#cargo-test).
+- [`python3 scripts/check-references.py --online`](https://korczis.github.io/catharsis-as-a-service/commands/#check-references):
+  every DOI, title and year against Crossref.
 
-```sh
-npm run build           # vendor bundles + Tailwind + zola build → public/
-npm run validate        # toolchain, assets, JS syntax, i18n parity, zola check, build, HTML/links
-npm test                # Playwright against the local subpath preview
-npm run test:production # the same suite against the live site
-npm run smoke           # HTTP smoke test of the live site
-```
+## Deployment and releases
 
-`validate` fails on a missing translation, a UI string missing in any locale, a changed front-matter
-shape between locales, a broken internal reference or anchor, a duplicate id, a missing alt text or a
-heading jump.
-
-## Deployment, verification and releases
-
-Every push to `main` runs `.github/workflows/pages.yml`:
-
-1. **validate**: `ci.yml` (Conventional Commit lint, Majordomus supervision check, `scripts/validate.sh`,
-   Playwright against the subpath preview). The validated `public/` is the artifact that ships.
-2. **deploy**: `actions/configure-pages` must report the same base URL as `zola.toml`, then the artifact is
-   deployed with `actions/deploy-pages`.
-3. **verify**: `scripts/smoke-production.sh` and the full Playwright suite run against the live URL.
-4. **release**: `scripts/release.sh` tags `vX.Y.Z` from the commits since the last tag (breaking → major,
-   `feat` → minor, anything else → patch) and publishes a GitHub Release with the poster attached.
-
-Enforcement:
-
-- local hooks: `commit-msg` rejects non-conventional subjects, `pre-commit` runs `majordomus doctor`,
-  `pre-push` runs `majordomus finish --check`
-- CI re-checks commit subjects and the Majordomus layer on every push and pull request
-- a repository ruleset on `main` blocks force pushes and deletion; `v*` tags are protected
-
-Pull requests run `ci.yml` only. Nothing deploys or releases without passing every stage before it.
-
-## Adding content
-
-1. Create `content/artifacts/<slug>/index.md` with the same front-matter shape as the existing artifact.
-2. Create `content/artifacts/<slug>/index.cs.md` with the translated copy.
-3. `npm run dev`, then `npm run validate && npm test`.
-4. Commit (`feat(content): …`) and push. The pipeline deploys, verifies and releases.
-
-## Adding a language
-
-1. Add `[languages.<code>]` with `title`, `description` and a complete `translations` table to `zola.toml`.
-2. Add `<code>` to `extra.locales`.
-3. Add `*.<code>.md` for every content file. `validate-i18n.py` lists anything missing.
-
-No template, script or workflow changes are needed.
+Every push to `main` runs CI (commits, supervision, validation, Python, Rust, references, end-to-end), deploys the
+validated build, verifies production with
+[`npm run smoke`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-smoke) and
+[`npm run test:production`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-test-production), and then cuts a
+release whose version is derived from Conventional Commits
+([`scripts/release.sh --dry-run`](https://korczis.github.io/catharsis-as-a-service/commands/#release-dry-run) previews it).
+Check recent runs with [`gh run list`](https://korczis.github.io/catharsis-as-a-service/commands/#gh-run-list).
 
 ## Supervision
 
-This repository is supervised by Majordomus. Agents start at [`AGENTS.md`](AGENTS.md) (Claude Code:
-[`CLAUDE.md`](CLAUDE.md)); both are generated from `.ai/repo/policy.yaml`. Project rules live in
+This repository is supervised by Majordomus; agents start at [`AGENTS.md`](AGENTS.md). The pre-commit hook runs
+[`majordomus doctor`](https://korczis.github.io/catharsis-as-a-service/commands/#majordomus-doctor) and the pre-push hook runs
+[`majordomus finish --check`](https://korczis.github.io/catharsis-as-a-service/commands/#majordomus-finish). Project rules live in
 `.ai/repo/rules/project/`.
+
+## Rust integration
+
+The content API under `api/v1` is produced by
+[`python3 scripts/export-api.py`](https://korczis.github.io/catharsis-as-a-service/commands/#export-api) and consumed by the
+`caas-content` crate; `caas` is a command-line client
+([`cargo run -p caas-cli`](https://korczis.github.io/catharsis-as-a-service/commands/#caas-cli)). See
+[docs/RUST-INTEGRATION.md](docs/RUST-INTEGRATION.md).
+
+## Adding content
+
+1. Create `content/<research|advice>/<slug>/index.md` and `index.cs.md` with the same front-matter structure.
+2. Cite registry ids from `data/references.toml`; add new references with verified DOIs.
+3. Link every command you mention to its entry on the commands page.
+4. Run [`npm run validate && npm test`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-validate), commit
+   (`feat(content): …`) and push.
 
 ## License status
 
-© 2026 Sig Nihl. All rights reserved: no open license is granted for the artwork, text or code.
-The bundled fonts are under the SIL Open Font License 1.1 (`static/fonts/LICENSES/`); Alpine.js and
-Flowbite are MIT-licensed and vendored at build time from `node_modules`.
-
-```text
-POST /v1/catharsis → 200 OK
-```
+© 2026 Sig Nihl. All rights reserved. Fonts are under the SIL Open Font License 1.1 (`static/fonts/LICENSES/`); Alpine.js,
+Flowbite and Tailwind CSS are MIT-licensed.

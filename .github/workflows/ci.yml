@@ -71,6 +71,56 @@ jobs:
           if-no-files-found: error
           retention-days: 7
 
+  python:
+    name: Python tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    env:
+      CAAS_REQUIRE_TOOLS: '1'
+      GH_TOKEN: ${{ github.token }}
+      MAJORDOMUS_VERSION: v0.6.0
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - uses: ./.github/actions/setup
+      - name: Install majordomus (pinned)
+        run: |
+          curl -fsSL https://majordomus.dev/install.sh | sh -s -- --version "$MAJORDOMUS_VERSION"
+          echo "$HOME/.local/bin" >> "$GITHUB_PATH"
+      - name: Python venv
+        run: python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+      - name: pytest
+        run: npm run test:python
+
+  rust:
+    name: Rust
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Toolchain from rust-toolchain.toml
+        run: rustup show active-toolchain || rustup toolchain install
+      - name: Export the content API
+        run: python3 scripts/export-api.py --out target/site
+      - name: cargo fmt
+        run: cargo fmt --all --check
+      - name: cargo clippy
+        run: cargo clippy --workspace --all-targets -- -D warnings
+      - name: cargo test
+        env:
+          CAAS_API_DIR: ${{ github.workspace }}/target/site/api/v1
+        run: cargo test --workspace
+
+  references:
+    name: References (Crossref)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Verify DOIs, titles and years against Crossref
+        run: python3 scripts/check-references.py --online
+
   e2e:
     name: End-to-end (subpath preview)
     runs-on: ubuntu-latest

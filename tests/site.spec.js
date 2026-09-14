@@ -139,7 +139,19 @@ for (const locale of LOCALES) {
     expect(problems).toEqual([]);
   });
 
-  for (const relative of ['about/', 'guides/', 'artifacts/', 'artifacts/catharsis-as-a-service/']) {
+  for (const relative of [
+    'about/',
+    'guides/',
+    'commands/',
+    'research/',
+    'advice/',
+    'tags/',
+    'artifacts/',
+    'artifacts/catharsis-as-a-service/',
+    'research/relief-is-not-resolution/',
+    'research/method-majordomus/',
+    'advice/after-trauma/',
+  ]) {
     test(`${locale.code}: /${relative} renders`, async ({ page }) => {
       const problems = watch(page);
       const response = await open(page, `${locale.path}${relative}`);
@@ -396,16 +408,63 @@ test('feeds, sitemap alternates, favicon and manifest icons are served', async (
   }
 
   const sitemap = await (await request.get(url('sitemap.xml'))).text();
-  const locations = sitemap.match(/<loc>/g) ?? [];
-  expect(locations.length).toBeGreaterThan(0);
-  for (const code of ['en', 'cs', 'x-default']) {
-    expect((sitemap.match(new RegExp(`hreflang="${code}"`, 'g')) ?? []).length, code).toBe(locations.length);
+  const entries = sitemap.match(/<url>[\s\S]*?<\/url>/g) ?? [];
+  expect(entries.length).toBeGreaterThan(0);
+  // Tag term pages have no translated counterpart, so only they may omit alternates.
+  for (const entry of entries) {
+    const loc = entry.match(/<loc>([^<]+)<\/loc>/)[1];
+    const isTerm = /\/tags\/[^/]+\/$/.test(loc);
+    for (const code of ['en', 'cs', 'x-default']) {
+      expect(entry.includes(`hreflang="${code}"`), `${loc} ${code}`).toBe(!isTerm);
+    }
   }
 
   expect((await request.get(url('favicon.ico'))).status()).toBe(200);
   const manifest = await (await request.get(url('site.webmanifest'))).json();
   for (const icon of manifest.icons) {
     expect((await request.get(url(icon.src))).status(), icon.src).toBe(200);
+  }
+});
+
+test('the content API is served next to the site', async ({ request }) => {
+  const index = await (await request.get(url('api/v1/index.json'))).json();
+  expect(index.api_version).toBe(1);
+  expect(index.endpoint).toEqual({ method: 'POST', path: '/v1/catharsis', status: 200, problem_solved: false });
+  for (const language of index.languages) {
+    const advice = await request.get(url(`api/v1/${index.collections.advice[language]}`));
+    expect(advice.status()).toBe(200);
+    const entries = await advice.json();
+    expect(entries.length).toBeGreaterThan(0);
+    for (const entry of entries) expect(entry.url.startsWith(index.site)).toBe(true);
+  }
+});
+
+test('the FAQ uses a working Flowbite accordion', async ({ page }) => {
+  await open(page, '');
+  const buttons = page.locator('#faq-accordion [data-accordion-target]');
+  expect(await buttons.count()).toBeGreaterThan(3);
+  await expect(page.locator('#faq-body-1')).toBeVisible();
+  await expect(page.locator('#faq-body-2')).toBeHidden();
+  await buttons.nth(1).click();
+  await expect(page.locator('#faq-body-2')).toBeVisible();
+  await expect(buttons.nth(1)).toHaveAttribute('aria-expanded', 'true');
+  await expect(page.locator('#faq-body-1')).toBeHidden();
+});
+
+test('research and advice pages carry breadcrumbs, references and localized previews', async ({ page, request }) => {
+  for (const locale of LOCALES) {
+    for (const relative of ['research/what-is-catharsis/', 'advice/reappraise/']) {
+      await open(page, `${locale.path}${relative}`);
+      await expect(page.locator('nav.breadcrumb li')).toHaveCount(3);
+      await expect(page.locator('nav.breadcrumb [aria-current="page"]')).toHaveCount(1);
+      const references = page.locator('.references li');
+      expect(await references.count()).toBeGreaterThan(0);
+      const doi = page.locator('.references a[href^="https://doi.org/"]').first();
+      if ((await doi.count()) > 0) expect(await doi.getAttribute('href')).toMatch(/^https:\/\/doi\.org\/10\./);
+      const image = await page.locator('meta[property="og:image"]').getAttribute('content');
+      expect((await request.get(String(image))).status()).toBe(200);
+      await expect(page.locator('.tag-list a[rel="tag"]').first()).toBeVisible();
+    }
   }
 });
 

@@ -1,0 +1,98 @@
+{#- Library building blocks shared by research notes, advice entries, tag pages and the landing page. -#}
+
+{% component library.tags(tags: array, lang: string) %}
+{%- if tags | length > 0 %}
+<ul class="tag-list" aria-label="{{ trans(key='nav_tags', lang=lang) }}">
+  {%- for tag in tags %}
+  <li><a class="tag" href="{{ get_taxonomy_url(kind='tags', term=tag, lang=lang) }}" rel="tag">#{{ tag }}</a></li>
+  {%- endfor %}
+</ul>
+{%- endif %}
+{% endcomponent library.tags %}
+
+{% component library.cards(pages: array, lang: string, heading: string = "h2") %}
+<ul class="card-grid">
+  {%- for p in pages %}
+  <li>
+    <article class="card">
+      <p class="label text-blood">{{ p.extra.kicker }}{% if p.extra.evidence_label is defined %} · {{ p.extra.evidence_label }}{% endif %}</p>
+      <{{ heading }} class="card-title condensed"><a href="{{ p.permalink }}">{{ p.title }}</a></{{ heading }}>
+      <p class="card-text">{{ p.description }}</p>
+      <p class="label card-meta">{{ p.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
+      {{ <library.tags tags={p.taxonomies.tags or []} lang={lang} /> }}
+    </article>
+  </li>
+  {%- endfor %}
+</ul>
+{% endcomponent library.cards %}
+
+{% component library.key_points(points: array, lang: string) %}
+<section class="aside-block" aria-labelledby="key-points-title">
+  <h2 id="key-points-title" class="label">{{ trans(key="key_points", lang=lang) }}</h2>
+  <ul class="key-points">
+    {%- for point in points %}
+    <li>{{ point }}</li>
+    {%- endfor %}
+  </ul>
+</section>
+{% endcomponent library.key_points %}
+
+{#- References resolve through data/references.toml; documents cite registry ids only. -#}
+{% component library.references(ids: array, lang: string) %}
+{%- set registry = load_data(path="data/references.toml") -%}
+<section class="references" aria-labelledby="references-title">
+  <h2 id="references-title" class="condensed">{{ trans(key="references", lang=lang) }}</h2>
+  <ol>
+    {%- for id in ids %}
+    {%- set ref = registry.references[id] %}
+    {%- set year_key = "year_" ~ lang %}
+    {%- set title_key = "title_" ~ lang %}
+    <li id="ref-{{ id }}">
+      <span class="ref-authors">{{ ref.authors }}</span>
+      ({% if ref[year_key] is defined %}{{ ref[year_key] }}{% else %}{{ ref.year }}{% endif %}).
+      <cite>{% if ref[title_key] is defined %}{{ ref[title_key] }}{% else %}{{ ref.title }}{% endif %}</cite>.
+      {%- if ref.container != "" %} {{ ref.container }}{% if ref.volume != "" %}, {{ ref.volume }}{% endif %}{% if ref.issue != "" %}({{ ref.issue }}){% endif %}{% if ref.pages != "" %}, {{ ref.pages }}{% endif %}.{% elif ref.pages != "" %} {{ ref.pages }}.{% endif %}
+      {%- if ref.publisher != "" %} {{ ref.publisher }}.{% endif %}
+      {%- if ref.doi != "" %} <a href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">https://doi.org/{{ ref.doi }}</a>
+      {%- elif ref.url != "" %} <a href="{{ ref.url }}" rel="noopener" target="_blank">{{ ref.url }}</a>{% endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</section>
+{% endcomponent library.references %}
+
+{% component library.figures(figures: array) %}
+{%- for fig in figures %}
+{%- if fig.kind == "timeline" %}
+{{ <illustration.timeline id={fig.id} title={fig.title} description={fig.description} caption={fig.caption} items={fig.items} /> }}
+{%- elif fig.kind == "relief_loop" %}
+{{ <illustration.relief_loop id={fig.id} labels={fig} /> }}
+{%- elif fig.kind == "relief_curve" %}
+{{ <illustration.relief_curve id={fig.id} labels={fig} /> }}
+{%- elif fig.kind == "synchrony" %}
+{{ <illustration.synchrony id={fig.id} labels={fig} /> }}
+{%- else %}
+{{ throw(message="unknown figure kind: " ~ fig.kind) }}
+{%- endif %}
+{%- endfor %}
+{% endcomponent library.figures %}
+
+{#- Flowbite breadcrumb markup (flowbite.com/docs/components/breadcrumb) with project styling. -#}
+{% component library.breadcrumb(items: array, label: string) %}
+<nav class="breadcrumb" aria-label="{{ label }}">
+  <ol class="inline-flex flex-wrap items-center gap-2">
+    {%- for item in items %}
+    <li class="inline-flex items-center"{% if loop.last %} aria-current="page"{% endif %}>
+      {%- if not loop.first %}<svg class="breadcrumb-sep" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="square" stroke-width="2" d="m9 5 7 7-7 7"/></svg>{% endif %}
+      {%- if loop.last %}<span class="breadcrumb-current">{{ item.name }}</span>{% else %}<a class="breadcrumb-link" href="{{ item.url }}">{{ item.name }}</a>{% endif %}
+    </li>
+    {%- endfor %}
+  </ol>
+</nav>
+{% endcomponent library.breadcrumb %}
+
+{% component library.disclaimer(lang: string) %}
+<aside class="disclaimer" role="note">
+  <p>{{ trans(key="disclaimer", lang=lang) }}</p>
+</aside>
+{% endcomponent library.disclaimer %}

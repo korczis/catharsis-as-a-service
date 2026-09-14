@@ -1,6 +1,6 @@
 +++
 title = "Catharsis as a Service™"
-description = "Festivalový plakát, který na první pohled prodává euforii a na druhý ji diagnostikuje: opakování, synchronizace, výboj, dočasná úleva."
+description = "Vizuální studie kolektivní katarze modelované jako transakce služby: opakování, synchronizace a výboj přinášejí dočasnou úlevu, zatímco výchozí stav zůstává nezměněn."
 date = 2026-09-14
 weight = 1
 
@@ -85,7 +85,7 @@ mantra = ["Rave.", "Uvolnění.", "Reset.", "Znovu."]
 closing = ["Některé problémy se vyřešit nedají.", "Dají se jen protancovat."]
 +++
 
-Festivalový plakát, který na první pohled prodává euforii a na druhý ji diagnostikuje.
+Vizuální studie, která na první pohled předkládá kolektivní euforii a na druhý její diagnózu.
 
 Fotografie industriálního rave, brutalistní typografie a telemetrická vrstva Prismatic sdílejí jednu plochu. Dav dostane své uvolnění, systém zaloguje úspěšnou odpověď a výchozí stav zůstane přesně tam, kde byl.
 

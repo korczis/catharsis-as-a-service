@@ -211,9 +211,12 @@ def main():
             resolved = resolve(loc, base_url, public, sitemap)
             if resolved is None or not resolved[0].exists():
                 errors.append(f"sitemap.xml: {loc} is outside the site or missing")
-        expected_alternates = len(locs) * (len(set(re.findall(r'hreflang="([^"]+)"', text))))
-        if locs and len(alternates) != expected_alternates:
-            errors.append(f"sitemap.xml: expected {expected_alternates} hreflang alternates, found {len(alternates)}")
+        hreflangs = set(re.findall(r'hreflang="([^"]+)"', text))
+        for block in re.findall(r"<url>(.*?)</url>", text, re.S):
+            present = re.findall(r'hreflang="([^"]+)"', block)
+            if present and sorted(present) != sorted(hreflangs):
+                loc = SITEMAP_LOC.search(block).group(1)
+                errors.append(f"sitemap.xml: {loc} lists hreflang {sorted(present)}, expected all of {sorted(hreflangs)}")
     if not robots.exists():
         errors.append("robots.txt was not generated")
     elif f"{base_url}/sitemap.xml" not in robots.read_text(encoding="utf-8"):

@@ -34,7 +34,7 @@ To share a specific language, link to it directly: `/` for English, `/cs/` for C
 1. Create `content/artifacts/<slug>/index.md` by copying the existing artifact and keeping the same front-matter structure.
 2. Create `content/artifacts/<slug>/index.cs.md` with the translated copy. The structure must match; only the values change.
 3. Put the poster master under `static/assets/` and point `extra.poster` at it. Responsive WebP versions are generated at build time.
-4. Preview with `npm run dev`, then run `npm run validate` and `npm test`.
+4. Preview with [`npm run dev`](../commands/#npm-run-dev), then run [`npm run validate`](../commands/#npm-run-validate) and [`npm test`](../commands/#npm-test).
 5. Commit with a conventional message such as `feat(content): add <slug>` and push to `main`.
 
 **Why:** the listing, sitemap, feeds, language links, previews and structured data all derive from those two files. There is nothing else to update, so there is nothing to forget.
@@ -44,7 +44,7 @@ To share a specific language, link to it directly: `/` for English, `/cs/` for C
 1. Add `[languages.<code>]` to `zola.toml` with a title, a description and a complete `translations` table.
 2. Add the code to `extra.locales`.
 3. Add a `*.<code>.md` file next to every content file.
-4. Run `npm run validate`; the i18n check lists every missing file or string.
+4. Run [`npm run validate`](../commands/#npm-run-validate); the i18n check lists every missing file or string.
 
 No template, script or workflow has to change. That is a design constraint, not an accident: templates never branch on language, so a new language cannot need template work.
 
@@ -84,7 +84,7 @@ What it adds, and why it matters here:
 - **Scope** keeps a content change from quietly touching the pipeline, and makes accidental edits visible before a push.
 - **Checkpoints and handovers** let anyone, human or agent, resume from recorded facts.
 - **The finish contract** means "done" requires a passing verification command, which for this site is the live smoke test.
-- **Hooks** run `majordomus doctor` before every commit and `majordomus finish --check` before every push. When a hook refuses, read the finding: it names the file and the rule.
+- **Hooks** run [`majordomus doctor`](../commands/#majordomus-doctor) before every commit and [`majordomus finish --check`](../commands/#majordomus-finish) before every push. When a hook refuses, read the finding: it names the file and the rule.
 
 ## Releases
 

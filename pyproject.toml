@@ -1,0 +1,6 @@
+[tool.pytest.ini_options]
+testpaths = ["tests/python"]
+addopts = "-ra --strict-markers"
+markers = [
+  "slow: builds the site or starts a server",
+]

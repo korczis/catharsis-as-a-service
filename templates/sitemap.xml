@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-{#- Every URL lists all of its language editions. Translation parity is enforced by
-    scripts/validate-i18n.py, so each entry's twins exist by construction. -#}
+{#- Pages and sections list all of their language editions; translation parity is enforced by
+    scripts/validate-i18n.py, so those twins exist. Tag term pages are language-specific
+    (a Czech tag is not a translation of an English one), so they carry no alternates. -#}
 {%- set base = config.base_url ~ "/" -%}
 {%- for entry in entries %}
   {%- set_global relative = entry.permalink | replace(from=base, to="") -%}
@@ -10,15 +11,18 @@
       {%- set_global relative = relative[code | length + 1:] -%}
     {%- endif -%}
   {%- endfor %}
+  {%- set is_term_page = relative is starting_with(pat="tags/") and relative != "tags/" %}
   <url>
     <loc>{{ entry.permalink | escape_xml }}</loc>
     {%- if entry.updated %}
     <lastmod>{{ entry.updated }}</lastmod>
     {%- endif %}
+    {%- if not is_term_page %}
     {%- for code in config.extra.locales %}
     <xhtml:link rel="alternate" hreflang="{{ code }}" href="{{ base }}{% if code != config.default_language %}{{ code }}/{% endif %}{{ relative | escape_xml }}"/>
     {%- endfor %}
     <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ relative | escape_xml }}"/>
+    {%- endif %}
   </url>
 {%- endfor %}
 </urlset>

@@ -33,10 +33,10 @@ Statické HTML generované nástrojem [Zola](https://www.getzola.org/) z Markdow
 
 Web postavil AI agent pro programování pod dohledem nástroje [Majordomus](https://majordomus.dev), dozorové vrstvy mezi agentem a repozitářem. Majordomus web nepsal. Zajistil, aby práce byla doložená a dohledatelná:
 
-- **Úlohy s vymezeným rozsahem.** Každá změna běžela jako úloha s deklarovaným rozsahem. Když se soubory přesunuly mimo něj, `majordomus watch` a `majordomus check` nahlásily odchylku ještě před pushem a úloha se znovu spustila se správným rozsahem, místo aby se odchylka přešla.
+- **Úlohy s vymezeným rozsahem.** Každá změna běžela jako úloha s deklarovaným rozsahem. Když se soubory přesunuly mimo něj, [`majordomus watch`](../commands/#majordomus-watch) a [`majordomus check`](../commands/#majordomus-check) nahlásily odchylku ještě před pushem a úloha se znovu spustila se správným rozsahem, místo aby se odchylka přešla.
 - **Kontinuita.** Checkpointy a handovery zaznamenaly, co se změnilo a co následuje, takže se na práci dalo navázat podle zaznamenaných faktů, ne podle paměti.
 - **Smlouva o dokončení.** Úlohu lze uzavřít jako dokončenou, jen když projde její ověřovací příkaz. Tady je to smoke test proti živému webu, takže „hotovo“ znamená „živé a zkontrolované“.
-- **Zapojené vynucování.** Hook `pre-commit` spouští `majordomus doctor`, hook `pre-push` spouští `majordomus finish --check` a CI spouští stejnou kontrolu dozoru při každém pushi i pull requestu.
+- **Zapojené vynucování.** Hook `pre-commit` spouští [`majordomus doctor`](../commands/#majordomus-doctor), hook `pre-push` spouští [`majordomus finish --check`](../commands/#majordomus-finish) a CI spouští stejnou kontrolu dozoru při každém pushi i pull requestu.
 - **Pravidla vedle kódu.** Projektová pravidla (ověření živého webu před jakýmkoli tvrzením, Zola jako zdroj pravdy, vydání jen z ověřeného `main`) leží v `.ai/repo/rules/` a verzují se spolu s kódem, který řídí.
 
 Praktický výsledek: méně sebejistých tvrzení a víc ověřených.

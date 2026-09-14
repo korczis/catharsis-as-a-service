@@ -1,6 +1,6 @@
 +++
 title = "Catharsis as a Service™"
-description = "A festival poster that sells euphoria at first glance and diagnoses it at second: repetition, synchronization, discharge, temporary relief."
+description = "A visual study of collective catharsis modelled as a service transaction: repetition, synchronization and discharge produce temporary relief while the underlying condition stays unchanged."
 date = 2026-09-14
 weight = 1
 
@@ -85,9 +85,9 @@ mantra = ["Rave.", "Release.", "Reset.", "Repeat."]
 closing = ["Some problems can't be solved.", "They can only be danced through."]
 +++
 
-A festival poster that sells euphoria at first glance and diagnoses it at second.
+A visual study that presents collective euphoria at first glance and a diagnosis of it at second.
 
-Industrial rave photography, brutalist type and a Prismatic telemetry overlay share one surface. The crowd gets its release, the system logs a successful response, and the underlying condition stays exactly where it was.
+Photography of an industrial rave, brutalist typography and a Prismatic telemetry overlay share one surface. The crowd gets its release, the system logs a successful response, and the underlying condition stays exactly where it was.
 
 ## First glance, second glance
 

@@ -3,27 +3,29 @@
   class="site-header fixed inset-x-0 top-0 z-30 transition-transform duration-500">
   <nav aria-label="{{ trans(key='nav_label', lang=l) }}" class="shell flex items-center justify-between gap-6 py-2">
     <a href="{{ home_url }}" class="brand py-3">Catharsis as a Service<span aria-hidden="true">™</span></a>
-    <ul class="hidden items-center gap-7 lg:flex">
-      {%- for item in config.extra.nav %}
-      <li><a class="nav-link" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
-      {%- endfor %}
+    <ul class="hidden items-center gap-6 xl:flex">
+      <li><a class="nav-link" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ home_url }}#artifact">{{ trans(key="nav_artifact", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/about/index.md', lang=l) }}">{{ trans(key="nav_about", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/guides/index.md', lang=l) }}">{{ trans(key="nav_guides", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ config.extra.repo_url }}" target="_blank" rel="noopener">{{ trans(key="nav_source", lang=l) }} <span aria-hidden="true">↗</span></a></li>
       <li>{% include "partials/locale-switcher.html" %}</li>
     </ul>
-    <button type="button" class="btn-ghost lg:hidden" data-drawer-open data-requires-js
+    <button type="button" class="btn-ghost xl:hidden" data-drawer-open data-requires-js
       aria-controls="nav-drawer" aria-expanded="false">{{ trans(key="nav_menu", lang=l) }}</button>
   </nav>
   <div class="progress" aria-hidden="true"><span x-bind:style="'transform: scaleX(' + progress + ')'"></span></div>
 </header>
 <div id="nav-drawer" tabindex="-1" role="dialog" aria-modal="true" aria-label="{{ trans(key='nav_menu', lang=l) }}" inert
-  class="fixed top-0 right-0 z-40 flex h-dvh w-80 max-w-[85vw] translate-x-full flex-col gap-10 overflow-y-auto border-l border-line bg-ink p-6 transition-transform duration-500 lg:hidden">
+  class="fixed top-0 right-0 z-40 flex h-dvh w-80 max-w-[85vw] translate-x-full flex-col gap-10 overflow-y-auto border-l border-line bg-ink p-6 transition-transform duration-500 xl:hidden">
   <div class="flex items-center justify-between">
     <span class="eyebrow">{{ trans(key="nav_menu", lang=l) }}</span>
     <button type="button" class="btn-ghost" data-drawer-close>{{ trans(key="nav_close", lang=l) }}</button>
   </div>
-  <ul class="flex flex-col gap-5">
+  <ul class="flex flex-col gap-4">
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
     {%- for item in config.extra.nav %}
     <li><a class="condensed text-3xl no-underline" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
     {%- endfor %}

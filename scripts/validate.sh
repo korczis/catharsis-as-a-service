@@ -51,8 +51,11 @@ step toolchain zola_version
 step assets npm run --silent assets
 step javascript js_syntax
 step i18n python3 scripts/validate-i18n.py
+step content python3 scripts/validate-content.py
+step references python3 scripts/check-references.py
 step zola-check zola check --skip-external-links
 step zola-build zola build --base-url "$BASE_URL"
+step api python3 scripts/export-api.py --out public --base-url "$BASE_URL"
 step html python3 scripts/validate-html.py public "$BASE_URL"
 
 report

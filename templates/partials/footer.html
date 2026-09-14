@@ -10,6 +10,10 @@
     </div>
     <nav aria-label="{{ trans(key='footer_nav', lang=l) }}">
       <ul class="space-y-2">
+        <li><a class="nav-link" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/commands/index.md', lang=l) }}">{{ trans(key="nav_commands", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='tags/', lang=l) }}">{{ trans(key="nav_tags", lang=l) }}</a></li>
         {%- for item in config.extra.nav %}
         <li><a class="nav-link" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
         {%- endfor %}
@@ -22,6 +26,7 @@
       {% include "partials/locale-switcher.html" %}
       <p class="label mt-4">Catharsis as a Service™ · {{ config.extra.year }}</p>
       <p class="label mt-1">{{ trans(key="footer_privacy", lang=l) }}</p>
+      <p class="label mt-4"><a class="nav-link text-bone" href="https://majordomus.dev" target="_blank" rel="noopener">{{ trans(key="supervised_by", lang=l) }} · majordomus.dev <span aria-hidden="true">↗</span></a></p>
     </div>
   </div>
 </footer>

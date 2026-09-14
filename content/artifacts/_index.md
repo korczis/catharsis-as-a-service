@@ -1,6 +1,6 @@
 +++
 title = "Artifacts"
-description = "Index of Sig Nihl / Prismatic digital artifacts."
+description = "Index of Sig Nihl / Prismatic digital artifacts: posters, pages and diagnoses that treat human states as systems."
 template = "section.html"
 page_template = "artifact.html"
 sort_by = "weight"

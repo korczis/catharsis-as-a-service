@@ -34,7 +34,7 @@ Pokud chcete sdílet konkrétní jazyk, odkazujte přímo na něj: `/` pro angli
 1. Vytvořte `content/artifacts/<slug>/index.md` zkopírováním existujícího artefaktu a zachovejte stejnou strukturu front matter.
 2. Vytvořte `content/artifacts/<slug>/index.cs.md` s přeloženým textem. Struktura se musí shodovat; mění se jen hodnoty.
 3. Master plakátu dejte do `static/assets/` a nastavte na něj `extra.poster`. Responzivní verze WebP se generují při buildu.
-4. Náhled spusťte přes `npm run dev`, potom `npm run validate` a `npm test`.
+4. Náhled spusťte přes [`npm run dev`](../commands/#npm-run-dev), potom [`npm run validate`](../commands/#npm-run-validate) a [`npm test`](../commands/#npm-test).
 5. Commitněte s konvenční zprávou, například `feat(content): add <slug>`, a pushněte do `main`.
 
 **Proč:** výpis, sitemapa, feedy, jazykové odkazy, náhledy i strukturovaná data se odvozují z těch dvou souborů. Není co dalšího upravovat, takže není na co zapomenout.
@@ -44,7 +44,7 @@ Pokud chcete sdílet konkrétní jazyk, odkazujte přímo na něj: `/` pro angli
 1. Do `zola.toml` přidejte `[languages.<code>]` s názvem, popisem a úplnou tabulkou `translations`.
 2. Kód jazyka přidejte do `extra.locales`.
 3. Ke každému obsahovému souboru přidejte soubor `*.<code>.md`.
-4. Spusťte `npm run validate`; kontrola i18n vypíše každý chybějící soubor nebo řetězec.
+4. Spusťte [`npm run validate`](../commands/#npm-run-validate); kontrola i18n vypíše každý chybějící soubor nebo řetězec.
 
 Nemusí se měnit žádná šablona, skript ani workflow. Je to záměrné omezení návrhu, ne náhoda: šablony se nikdy nevětví podle jazyka, takže nový jazyk nemůže vyžadovat práci na šablonách.
 
@@ -84,7 +84,7 @@ Co přináší a proč na tom tady záleží:
 - **Rozsah úlohy** zabrání tomu, aby změna obsahu potichu sáhla na pipeline, a náhodné úpravy zviditelní ještě před pushem.
 - **Checkpointy a handovery** umožní komukoli, člověku i agentovi, navázat podle zaznamenaných faktů.
 - **Smlouva o dokončení** znamená, že „hotovo“ vyžaduje úspěšný ověřovací příkaz, což je u tohoto webu smoke test živé verze.
-- **Hooky** spouštějí `majordomus doctor` před každým commitem a `majordomus finish --check` před každým pushem. Když hook odmítne, přečtěte si nález: jmenuje soubor i pravidlo.
+- **Hooky** spouštějí [`majordomus doctor`](../commands/#majordomus-doctor) před každým commitem a [`majordomus finish --check`](../commands/#majordomus-finish) před každým pushem. Když hook odmítne, přečtěte si nález: jmenuje soubor i pravidlo.
 
 ## Vydávání verzí
 

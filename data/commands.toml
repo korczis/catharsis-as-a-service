@@ -1,0 +1,342 @@
+# Command registry: every command the site, README and docs mention.
+#
+# - `id` is the anchor on the commands page; documentation links to it.
+# - `match` is the prefix a mention must start with to count as this command.
+# - `verified_by` names the tests or CI jobs that execute the command; tests/python/test_commands.py
+#   fails if a name does not exist, and scripts/validate-commands.py fails if documentation mentions
+#   a command that is missing here or mentions it in prose without a link.
+
+[[groups]]
+id = "setup"
+title.en = "Setup"
+title.cs = "Příprava prostředí"
+
+[[groups]]
+id = "develop"
+title.en = "Develop and build"
+title.cs = "Vývoj a build"
+
+[[groups]]
+id = "validate"
+title.en = "Validate and test"
+title.cs = "Validace a testy"
+
+[[groups]]
+id = "release"
+title.en = "Deploy and release"
+title.cs = "Nasazení a vydání"
+
+[[groups]]
+id = "rust"
+title.en = "Rust integration"
+title.cs = "Integrace Rustu"
+
+[[groups]]
+id = "supervise"
+title.en = "Supervision with Majordomus"
+title.cs = "Dozor s Majordomem"
+
+[[groups]]
+id = "artwork"
+title.en = "Artwork and previews"
+title.cs = "Dílo a náhledy"
+
+[[commands]]
+id = "npm-ci"
+group = "setup"
+command = "npm ci"
+match = "npm ci"
+source = "package.json"
+summary.en = "Installs the pinned Node.js dependencies from package-lock.json and points Git at the repository hooks in .githooks."
+summary.cs = "Nainstaluje zafixované závislosti Node.js z package-lock.json a nasměruje Git na hooky repozitáře v .githooks."
+verified_by = ["ci:Validate and build", "ci:End-to-end (subpath preview)"]
+
+[[commands]]
+id = "python-venv"
+group = "setup"
+command = "python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt"
+match = "python3 -m venv"
+source = "requirements-dev.txt"
+summary.en = "Creates the project virtual environment and installs the pinned Python test tooling."
+summary.cs = "Vytvoří virtuální prostředí projektu a nainstaluje zafixované nástroje pro testy v Pythonu."
+verified_by = ["ci:Python tests"]
+
+[[commands]]
+id = "npm-run-dev"
+group = "develop"
+command = "npm run dev"
+match = "npm run dev"
+source = "scripts/dev.sh"
+summary.en = "Runs Tailwind in watch mode next to zola serve for local authoring with live reload."
+summary.cs = "Spustí Tailwind ve sledovacím režimu vedle zola serve pro lokální psaní s živým obnovováním."
+verified_by = ["pytest:test_dev_server_serves_the_site"]
+
+[[commands]]
+id = "npm-run-preview"
+group = "develop"
+command = "npm run preview"
+match = "npm run preview"
+source = "scripts/preview.sh"
+summary.en = "Builds the production site and serves it under the same repository subpath GitHub Pages uses."
+summary.cs = "Postaví produkční web a servíruje ho pod stejnou podcestou repozitáře, jakou používá GitHub Pages."
+verified_by = ["ci:End-to-end (subpath preview)"]
+
+[[commands]]
+id = "npm-run-build"
+group = "develop"
+command = "npm run build"
+match = "npm run build"
+source = "package.json"
+summary.en = "Copies the vendored browser bundles, compiles Tailwind and runs zola build into public/."
+summary.cs = "Zkopíruje přibalené knihovny pro prohlížeč, zkompiluje Tailwind a spustí zola build do public/."
+verified_by = ["pytest:test_build_produces_the_site"]
+
+[[commands]]
+id = "npm-run-validate"
+group = "validate"
+command = "npm run validate"
+match = "npm run validate"
+source = "scripts/validate.sh"
+summary.en = "Runs every static gate: toolchain, assets, JavaScript syntax, translation parity, content standards, command registry, Zola check and build, HTML and link checks."
+summary.cs = "Spustí všechny statické kontroly: nástroje, assety, syntaxi JavaScriptu, shodu překladů, obsahové standardy, rejstřík příkazů, kontrolu a build Zoly, HTML a odkazy."
+verified_by = ["ci:Validate and build"]
+
+[[commands]]
+id = "npm-run-test-python"
+group = "validate"
+command = "npm run test:python"
+match = "npm run test:python"
+source = "tests/python"
+summary.en = "Runs the pytest suite for the validators, exporters and the command registry."
+summary.cs = "Spustí sadu pytest pro validátory, exportéry a rejstřík příkazů."
+verified_by = ["ci:Python tests"]
+
+[[commands]]
+id = "npm-test"
+group = "validate"
+command = "npm test"
+match = "npm test"
+source = "tests/site.spec.js"
+summary.en = "Runs the Playwright browser suite against a local production build served under the Pages subpath."
+summary.cs = "Spustí prohlížečové testy Playwright proti lokálnímu produkčnímu buildu servírovanému pod podcestou Pages."
+verified_by = ["ci:End-to-end (subpath preview)"]
+
+[[commands]]
+id = "lint-commits"
+group = "validate"
+command = "scripts/lint-commits.sh <range>"
+match = "scripts/lint-commits.sh"
+source = "scripts/lint-commits.sh"
+summary.en = "Checks that commit subjects follow Conventional Commits; the same script backs the commit-msg hook."
+summary.cs = "Zkontroluje, že předměty commitů odpovídají Conventional Commits; stejný skript používá hook commit-msg."
+verified_by = ["ci:Conventional commits", "pytest:test_lint_commits_accepts_and_rejects"]
+
+[[commands]]
+id = "npm-run-test-production"
+group = "release"
+command = "npm run test:production"
+match = "npm run test:production"
+source = "package.json"
+summary.en = "Runs the full browser suite against the live GitHub Pages URL (BASE_URL overrides it)."
+summary.cs = "Spustí celou sadu prohlížečových testů proti živé URL na GitHub Pages (BASE_URL ji přepíše)."
+verified_by = ["ci:Verify production"]
+
+[[commands]]
+id = "npm-run-smoke"
+group = "release"
+command = "npm run smoke"
+match = "npm run smoke"
+source = "scripts/smoke-production.sh"
+summary.en = "Checks that every page, feed, preview image and asset of the live site answers with the expected status."
+summary.cs = "Zkontroluje, že každá stránka, feed, náhledový obrázek a asset živého webu odpovídá očekávaným stavem."
+verified_by = ["ci:Verify production"]
+
+[[commands]]
+id = "gh-run-list"
+group = "release"
+command = "gh run list --workflow pages.yml --limit 5"
+match = "gh run list"
+source = ".github/workflows/pages.yml"
+summary.en = "Lists the most recent runs of the Pages pipeline with their status."
+summary.cs = "Vypíše poslední běhy pipeline Pages a jejich stav."
+verified_by = ["pytest:test_gh_run_list_reads_the_pipeline"]
+
+[[commands]]
+id = "release-dry-run"
+group = "release"
+command = "scripts/release.sh --dry-run"
+match = "scripts/release.sh"
+source = "scripts/release.sh"
+summary.en = "Prints the next version and release notes derived from the commits since the last tag, without publishing."
+summary.cs = "Vypíše další verzi a poznámky k vydání odvozené z commitů od posledního tagu, aniž by cokoli publikoval."
+verified_by = ["ci:Release", "pytest:test_release_dry_run_computes_a_version"]
+
+[[commands]]
+id = "majordomus-start"
+group = "supervise"
+command = "majordomus start \"<task>\" --scope <paths>"
+match = "majordomus start"
+source = ".ai/repo/workflows/task-lifecycle.md"
+summary.en = "Begins a supervised task with a declared scope of paths the work may touch."
+summary.cs = "Zahájí dozorovanou úlohu s deklarovaným rozsahem cest, na které smí práce sáhnout."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-check"
+group = "supervise"
+command = "majordomus check"
+match = "majordomus check"
+source = ".ai/repo/workflows/task-lifecycle.md"
+summary.en = "Reports whether the active task is consistent with policy, scope and recorded state (read-only)."
+summary.cs = "Ohlásí, zda je aktivní úloha v souladu s politikou, rozsahem a zaznamenaným stavem (jen pro čtení)."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-checkpoint"
+group = "supervise"
+command = "majordomus checkpoint < note.md"
+match = "majordomus checkpoint"
+source = ".ai/repo/workflows/continuity.md"
+summary.en = "Records a short progress note for the active task."
+summary.cs = "Zaznamená krátkou poznámku o průběhu aktivní úlohy."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-finish"
+group = "supervise"
+command = "majordomus finish --outcome completed --verify-command \"npm run smoke\""
+match = "majordomus finish"
+source = ".githooks/pre-push"
+summary.en = "Evaluates the finish contract and closes the task only if the verification command passes; --check runs in the pre-push hook."
+summary.cs = "Vyhodnotí smlouvu o dokončení a uzavře úlohu, jen pokud projde ověřovací příkaz; --check běží v hooku pre-push."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-watch"
+group = "supervise"
+command = "majordomus watch"
+match = "majordomus watch"
+source = ".ai/repo/policy.yaml"
+summary.en = "Reports drift between the recorded task, its scope, the policy and the generated projections."
+summary.cs = "Ohlásí odchylky mezi zaznamenanou úlohou, jejím rozsahem, politikou a generovanými projekcemi."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-doctor"
+group = "supervise"
+command = "majordomus doctor"
+match = "majordomus doctor"
+source = ".githooks/pre-commit"
+summary.en = "Checks that the supervision layer is healthy and wired; runs in the pre-commit hook and in CI."
+summary.cs = "Zkontroluje, že dozorová vrstva je v pořádku a zapojená; běží v hooku pre-commit a v CI."
+verified_by = ["ci:Majordomus supervision"]
+
+[[commands]]
+id = "majordomus-history"
+group = "supervise"
+command = "majordomus history"
+match = "majordomus history"
+source = ".ai/README.md"
+summary.en = "Reads back the append-only ledger of task starts, checkpoints, handovers and finishes."
+summary.cs = "Vypíše ledger se záznamy o startech úloh, checkpointech, handoverech a dokončeních, do kterého se jen přidává."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-handover"
+group = "supervise"
+command = "majordomus handover < body.md"
+match = "majordomus handover"
+source = ".ai/repo/workflows/continuity.md"
+summary.en = "Writes a continuation record with the objective, current state and next action."
+summary.cs = "Zapíše záznam pro navázání s cílem, aktuálním stavem a dalším krokem."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "majordomus-decision"
+group = "supervise"
+command = "majordomus decision add \"<decision>\" --why \"<rationale>\""
+match = "majordomus decision"
+source = ".ai/README.md"
+summary.en = "Records a durable decision with its rationale, rejected alternatives and evidence."
+summary.cs = "Zaznamená trvalé rozhodnutí s odůvodněním, odmítnutými alternativami a důkazy."
+verified_by = ["pytest:test_majordomus_commands_are_available"]
+
+[[commands]]
+id = "npm-run-render-artwork"
+group = "artwork"
+command = "npm run render:artwork"
+match = "npm run render:artwork"
+source = "scripts/render-artwork.sh"
+summary.en = "Re-renders the poster master, the social preview cards and the icon set from the sources in artwork/."
+summary.cs = "Znovu vykreslí master plakátu, náhledové karty a sadu ikon ze zdrojů v adresáři artwork/."
+verified_by = ["pytest:test_render_artwork_check_mode"]
+
+[[commands]]
+id = "validate-content"
+group = "validate"
+command = "python3 scripts/validate-content.py"
+match = "python3 scripts/validate-content.py"
+source = "scripts/validate-content.py"
+summary.en = "Checks content standards (evidence fields, SEO descriptions, banned promotional phrasing) and that every documented command is registered and linked."
+summary.cs = "Zkontroluje obsahové standardy (pole důkazů, SEO popisy, zakázané propagační formulace) a to, že každý zdokumentovaný příkaz je v rejstříku a je na něj odkaz."
+verified_by = ["ci:Validate and build", "pytest:test_content_passes_on_repository"]
+
+[[commands]]
+id = "check-references"
+group = "validate"
+command = "python3 scripts/check-references.py --online"
+match = "python3 scripts/check-references.py"
+source = "scripts/check-references.py"
+summary.en = "Validates the reference registry offline; with --online it compares every DOI, title and year with Crossref."
+summary.cs = "Offline zkontroluje registr literatury; s --online porovná každé DOI, název a rok s Crossrefem."
+verified_by = ["ci:References (Crossref)", "pytest:test_references_pass_offline_on_repository"]
+
+[[commands]]
+id = "export-api"
+group = "rust"
+command = "python3 scripts/export-api.py --out public"
+match = "python3 scripts/export-api.py"
+source = "scripts/export-api.py"
+summary.en = "Exports research notes, advice, references and the command registry as the versioned JSON API under api/v1."
+summary.cs = "Vyexportuje výzkumné poznámky, rady, literaturu a rejstřík příkazů jako verzované JSON API v adresáři api/v1."
+verified_by = ["ci:Validate and build", "pytest:test_export_api_writes_the_contract"]
+
+[[commands]]
+id = "cargo-test"
+group = "rust"
+command = "cargo test --workspace"
+match = "cargo test"
+source = "Cargo.toml"
+summary.en = "Runs the Rust unit tests and the contract and CLI tests against the exported API."
+summary.cs = "Spustí jednotkové testy Rustu a testy kontraktu a CLI proti exportovanému API."
+verified_by = ["ci:Rust"]
+
+[[commands]]
+id = "cargo-clippy"
+group = "rust"
+command = "cargo clippy --workspace --all-targets -- -D warnings"
+match = "cargo clippy"
+source = "Cargo.toml"
+summary.en = "Lints the Rust workspace and treats every warning as an error."
+summary.cs = "Zkontroluje Rust workspace lintem a každé varování považuje za chybu."
+verified_by = ["ci:Rust"]
+
+[[commands]]
+id = "cargo-fmt"
+group = "rust"
+command = "cargo fmt --all --check"
+match = "cargo fmt"
+source = "rust-toolchain.toml"
+summary.en = "Checks that the Rust code is formatted with the pinned rustfmt."
+summary.cs = "Zkontroluje, že kód v Rustu je naformátovaný zafixovaným rustfmt."
+verified_by = ["ci:Rust"]
+
+[[commands]]
+id = "caas-cli"
+group = "rust"
+command = "cargo run -p caas-cli -- advice list --lang cs"
+match = "cargo run -p caas-cli"
+source = "crates/caas-cli/src/main.rs"
+summary.en = "Runs the caas command-line client: list or show advice, list research, check the library, print the endpoint response."
+summary.cs = "Spustí klienta caas pro příkazovou řádku: výpis a zobrazení rad, výpis výzkumu, kontrola knihovny, odpověď endpointu."
+verified_by = ["ci:Rust"]

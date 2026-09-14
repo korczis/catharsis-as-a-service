@@ -9,6 +9,33 @@ CHROME="${CHROME:-/Applications/Google Chrome.app/Contents/MacOS/Google Chrome}"
 LOCALES="$(python3 -c 'import tomllib; print(" ".join(tomllib.load(open("zola.toml", "rb"))["extra"]["locales"]))')"
 DEFAULT_LOCALE="$(python3 -c 'import tomllib; print(tomllib.load(open("zola.toml", "rb"))["default_language"])')"
 
+preview_for() {
+  if [[ "$1" == "$DEFAULT_LOCALE" ]]; then
+    echo static/assets/social-preview.png
+  else
+    echo "static/assets/social-preview.$1.png"
+  fi
+}
+
+# --check: verify sources and committed outputs without rendering anything.
+if [[ "${1:-}" == "--check" ]]; then
+  missing=0
+  expected=(artwork/poster.html artwork/social.html static/assets/favicon.svg static/assets/catharsis-as-a-service.png
+    static/favicon.ico static/assets/apple-touch-icon.png static/assets/icon-192.png static/assets/icon-512.png)
+  for code in $LOCALES; do
+    expected+=("$(preview_for "$code")")
+  done
+  for file in "${expected[@]}"; do
+    if [[ -s "$file" ]]; then
+      echo "ok      $file"
+    else
+      echo "missing $file"
+      missing=1
+    fi
+  done
+  exit "$missing"
+fi
+
 render() {
   local source="$1" size="$2" scale="$3" output="$4"
   "$CHROME" --headless=new --disable-gpu --hide-scrollbars --window-size="$size" \
@@ -21,11 +48,7 @@ magick static/assets/catharsis-as-a-service.png -strip -units PixelsPerInch -den
   static/assets/catharsis-as-a-service.png
 
 for code in $LOCALES; do
-  if [[ "$code" == "$DEFAULT_LOCALE" ]]; then
-    output=static/assets/social-preview.png
-  else
-    output="static/assets/social-preview.$code.png"
-  fi
+  output="$(preview_for "$code")"
   render "artwork/social.html?lang=$code" 1200,630 1 "$output"
   magick "$output" -strip "$output"
 done

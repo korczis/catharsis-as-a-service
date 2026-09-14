@@ -1,0 +1,178 @@
+{#- Landing page sections. Each reads one [extra.*] block from content/_index.md (per locale),
+    so the landing page is edited in Markdown front matter, not in templates. -#}
+
+{% component landing.intent(block: map, lang: string, idx: string) %}
+<section id="intent" class="section" aria-labelledby="intent-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="intent" /> }}
+    <div class="grid gap-14 lg:grid-cols-12 lg:gap-20">
+      <div class="lg:col-span-7">
+        <h2 id="intent-title" class="display display-lg reveal">{{ block.heading }}</h2>
+        <p class="lead mt-8 reveal">{{ block.lead }}</p>
+        <div class="mt-10 reveal">
+          <h3 class="label">{{ block.problem_label }}</h3>
+          <p class="body-large mt-3">{{ block.problem }}</p>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-3 reveal">
+          <a class="btn-primary" href="{{ get_url(path='@/research/_index.md', lang=lang) }}">{{ block.cta_research }} <span aria-hidden="true">→</span></a>
+          <a class="btn-ghost" href="{{ get_url(path='@/advice/_index.md', lang=lang) }}">{{ block.cta_advice }} <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+      <div class="space-y-10 lg:col-span-5 reveal">
+        <div class="aside-block">
+          <h3 class="label">{{ block.audience_label }}</h3>
+          <ul class="key-points">
+            {%- for item in block.audience %}
+            <li>{{ item }}</li>
+            {%- endfor %}
+          </ul>
+        </div>
+        <div class="aside-block">
+          <h3 class="label">{{ block.approach_label }}</h3>
+          <dl class="approach">
+            {%- for item in block.approach %}
+            <div><dt class="condensed">{{ item.title }}</dt><dd>{{ item.text }}</dd></div>
+            {%- endfor %}
+          </dl>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.intent %}
+
+{% component landing.concept(block: map, lang: string, idx: string) %}
+<section id="concept" class="section section-alt" aria-labelledby="concept-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="concept" /> }}
+    <h2 id="concept-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
+    <p class="lead mt-8 max-w-4xl reveal">{{ block.definition }}</p>
+    <ul class="lens-grid mt-14 reveal">
+      {%- for lens in block.lenses %}
+      <li class="lens">
+        <p class="label text-blood">{{ lens.years }}</p>
+        <h3 class="condensed lens-title">{{ lens.title }}</h3>
+        <p>{{ lens.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <div class="mt-14 grid gap-10 lg:grid-cols-12">
+      <div class="lg:col-span-8 reveal">
+        {{ <illustration.timeline id="landing-timeline" title={block.timeline_title} description={block.timeline_description} caption={block.timeline_caption} items={block.timeline} /> }}
+      </div>
+      <div class="lg:col-span-4 reveal">
+        <a class="btn-ghost" href="{{ get_url(path='@/' ~ block.link, lang=lang) }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.concept %}
+
+{% component landing.mechanism(block: map, idx: string) %}
+<section id="mechanism" class="section" aria-labelledby="mechanism-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="mechanism" /> }}
+    <h2 id="mechanism-title" class="display display-lg reveal">{{ block.heading }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    <ol class="stage-grid mt-14 reveal">
+      {%- for step in block.steps %}
+      <li>
+        <span class="label text-blood">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+        <h3 class="condensed stage-title">{{ step.name }}</h3>
+        <p>{{ step.text }}</p>
+      </li>
+      {%- endfor %}
+    </ol>
+    <div class="mt-16 grid gap-12 lg:grid-cols-2">
+      <div class="reveal">{{ <illustration.relief_loop id="landing-loop" labels={block.loop} /> }}</div>
+      <div class="reveal">{{ <illustration.relief_curve id="landing-curve" labels={block.curve} /> }}</div>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.mechanism %}
+
+{% component landing.evidence(block: map, research: map, lang: string, idx: string) %}
+<section id="evidence" class="section section-alt" aria-labelledby="evidence-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="evidence" /> }}
+    <h2 id="evidence-title" class="display display-lg reveal">{{ block.heading }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    <ul class="finding-grid mt-14 reveal">
+      {%- for finding in block.findings %}
+      <li class="finding">
+        <h3 class="condensed finding-title">{{ finding.title }}</h3>
+        <p>{{ finding.text }}</p>
+        <p class="label">{{ finding.source }}</p>
+        <a class="card-link" href="{{ get_url(path='@/' ~ finding.path, lang=lang) }}">{{ block.read }} <span aria-hidden="true">→</span></a>
+      </li>
+      {%- endfor %}
+    </ul>
+    <h3 class="label mt-20 reveal">{{ block.notes_label }}</h3>
+    <div class="mt-6 reveal">{{ <library.cards pages={research.pages[:6]} lang={lang} heading="h4" /> }}</div>
+    <a class="btn-ghost mt-10 reveal" href="{{ research.permalink }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+{% endcomponent landing.evidence %}
+
+{% component landing.library(block: map, advice: map, lang: string, idx: string) %}
+<section id="advice" class="section" aria-labelledby="advice-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="advice" /> }}
+    <h2 id="advice-title" class="display display-lg reveal">{{ block.heading }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    <div class="mt-14 reveal">{{ <library.cards pages={advice.pages[:6]} lang={lang} heading="h3" /> }}</div>
+    <a class="btn-primary mt-10 reveal" href="{{ advice.permalink }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+  </div>
+</section>
+{% endcomponent landing.library %}
+
+{% component landing.making(block: map, lang: string, idx: string) %}
+<section id="making" class="section section-alt" aria-labelledby="making-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="making" /> }}
+    <h2 id="making-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    <dl class="stat-grid mt-14 reveal">
+      {%- for stat in block.stats %}
+      <div class="stat">
+        <dt class="label">{{ stat.label }}</dt>
+        <dd class="display stat-value">{{ stat.value }}</dd>
+      </div>
+      {%- endfor %}
+    </dl>
+    <ul class="key-points mt-12 max-w-3xl reveal">
+      {%- for point in block.points %}
+      <li>{{ point }}</li>
+      {%- endfor %}
+    </ul>
+    <div class="mt-10 flex flex-wrap gap-3 reveal">
+      <a class="btn-primary" href="{{ get_url(path='@/research/method-majordomus/index.md', lang=lang) }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="https://majordomus.dev" target="_blank" rel="noopener">majordomus.dev <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+{% endcomponent landing.making %}
+
+{#- Flowbite accordion: markup and data attributes follow flowbite.com/docs/components/accordion.
+    Flowbite owns the open state; the answers stay visible without JavaScript (.no-js rule in app.css). -#}
+{% component landing.faq(block: map, idx: string) %}
+<section id="faq" class="section" aria-labelledby="faq-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="faq" /> }}
+    <h2 id="faq-title" class="display display-lg reveal">{{ block.heading }}</h2>
+    <div id="faq-accordion" class="faq mt-12 reveal" data-accordion="collapse" data-active-classes="faq-active" data-inactive-classes="faq-inactive">
+      {%- for item in block.items %}
+      <h3 id="faq-heading-{{ loop.index }}">
+        <button type="button" class="faq-button {% if loop.first %}faq-active{% else %}faq-inactive{% endif %}" data-accordion-target="#faq-body-{{ loop.index }}" aria-expanded="{% if loop.first %}true{% else %}false{% endif %}" aria-controls="faq-body-{{ loop.index }}">
+          <span>{{ item.question }}</span>
+          <svg data-accordion-icon class="faq-icon{% if loop.first %} rotate-180{% endif %}" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="square" stroke-width="2" d="m5 15 7-7 7 7"/></svg>
+        </button>
+      </h3>
+      <div id="faq-body-{{ loop.index }}" class="faq-body{% if not loop.first %} hidden{% endif %}" aria-labelledby="faq-heading-{{ loop.index }}">
+        <p>{{ item.answer }}</p>
+      </div>
+      {%- endfor %}
+    </div>
+  </div>
+</section>
+{% endcomponent landing.faq %}

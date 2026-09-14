@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="hero" aria-labelledby="advice-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": trans(key="nav_advice", lang=lang), "url": get_url(path="@/advice/_index.md", lang=lang)},
+      {"name": page.extra.kicker, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow"><a class="no-underline" href="{{ get_url(path='@/advice/_index.md', lang=lang) }}">{{ trans(key="nav_advice", lang=lang) }}</a> <span class="text-muted">// {{ page.extra.kicker }}</span></p>
+    <h1 id="advice-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="evidence mt-6"><span class="label">{{ trans(key="evidence", lang=lang) }}</span> <span class="evidence-grade" data-grade="{{ page.extra.evidence_grade }}">{{ page.extra.evidence_label }}</span></p>
+    <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+    <p class="lead mt-10 max-w-4xl">{{ page.extra.recommendation }}</p>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-8">
+        <section aria-labelledby="practice-title">
+          <h2 id="practice-title" class="condensed section-title">{{ trans(key="practice", lang=lang) }}</h2>
+          <ol class="practice">
+            {%- for step in page.extra.practice %}
+            <li>{{ step }}</li>
+            {%- endfor %}
+          </ol>
+        </section>
+        <div class="prose-page prose-wide mt-12">{{ page.content | safe }}</div>
+        <section class="mt-12" aria-labelledby="limits-title">
+          <h2 id="limits-title" class="condensed section-title">{{ trans(key="limits", lang=lang) }}</h2>
+          <ul class="limits">
+            {%- for limit in page.extra.limits %}
+            <li>{{ limit }}</li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {{ <library.references ids={page.extra.references} lang={lang} /> }}
+      </div>
+      <aside class="space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        <section class="aside-block" aria-labelledby="related-title">
+          <h2 id="related-title" class="label">{{ trans(key="related", lang=lang) }}</h2>
+          <ul class="mt-3 space-y-3">
+            {%- for path in page.extra.related %}
+            {%- set related = get_page(path=path, lang=lang) %}
+            <li><a href="{{ related.permalink }}">{{ related.title }}</a></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {{ <library.disclaimer lang={lang} /> }}
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock content %}

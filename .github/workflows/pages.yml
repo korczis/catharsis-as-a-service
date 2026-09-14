@@ -17,6 +17,9 @@ jobs:
   ci:
     name: CI
     uses: ./.github/workflows/ci.yml
+    permissions:
+      contents: read
+      actions: read
 
   deploy:
     name: Deploy
@@ -80,11 +83,11 @@ jobs:
           echo "production does not serve $GITHUB_SHA after 10 minutes" >&2
           exit 1
       - name: Smoke test
-        run: scripts/smoke-production.sh "$BASE_URL"
+        run: npm run smoke
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Playwright against production
-        run: npm test
+        run: npm run test:production
       - name: Upload production screenshots
         if: always()
         uses: actions/upload-artifact@v7

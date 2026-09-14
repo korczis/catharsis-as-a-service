@@ -62,11 +62,11 @@
 </section>
 {% endcomponent artifact.hero %}
 
-{% component artifact.diagnostic(a: map, lang: string) %}
+{% component artifact.diagnostic(a: map, lang: string, idx: string = "01") %}
 {%- set d = a.extra.diagnostic -%}
 <section id="diagnostic" class="section" aria-labelledby="diagnostic-title">
   <div class="shell">
-    {{ <artifact.section_head idx="01" label={d.label} id="diagnostic" /> }}
+    {{ <artifact.section_head idx={idx} label={d.label} id="diagnostic" /> }}
     <h2 id="diagnostic-title" class="display display-lg reveal">
       {%- for line in d.heading %}<span class="block{% if loop.last %} text-blood{% endif %}">{{ line }}</span>{% endfor -%}
     </h2>
@@ -103,11 +103,11 @@
 </section>
 {% endcomponent artifact.diagnostic %}
 
-{% component artifact.crowd(a: map) %}
+{% component artifact.crowd(a: map, idx: string = "02") %}
 {%- set c = a.extra.crowd -%}
 <section id="crowd" class="section" aria-labelledby="crowd-title">
   <div class="shell">
-    {{ <artifact.section_head idx="02" label={c.label} id="crowd" /> }}
+    {{ <artifact.section_head idx={idx} label={c.label} id="crowd" /> }}
     <div class="grid gap-14 lg:grid-cols-2 lg:gap-20">
       <ol class="sequence reveal">
         {%- for step in c.sequence %}
@@ -125,11 +125,11 @@
 </section>
 {% endcomponent artifact.crowd %}
 
-{% component artifact.observability(a: map, lang: string) %}
+{% component artifact.observability(a: map, lang: string, idx: string = "03") %}
 {%- set o = a.extra.observability -%}
 <section id="observability" class="section" aria-labelledby="observability-title">
   <div class="shell">
-    {{ <artifact.section_head idx="03" label={o.label} id="observability" /> }}
+    {{ <artifact.section_head idx={idx} label={o.label} id="observability" /> }}
     <div class="flex flex-wrap items-end justify-between gap-6">
       <h2 id="observability-title" class="display display-lg reveal">{{ o.heading }}</h2>
       <button type="button" class="badge" data-tooltip-target="tooltip-conceptual" data-tooltip-placement="bottom"
@@ -162,14 +162,14 @@
 </section>
 {% endcomponent artifact.observability %}
 
-{% component artifact.poster(a: map, lang: string) %}
+{% component artifact.poster(a: map, lang: string, idx: string = "04") %}
 {%- set meta = get_image_metadata(path=a.extra.poster) -%}
 {%- set s800 = resize_image(path=a.extra.poster, width=800, op="fit_width", format="webp", quality=86) -%}
 {%- set s1200 = resize_image(path=a.extra.poster, width=1200, op="fit_width", format="webp", quality=86) -%}
 {%- set s1800 = resize_image(path=a.extra.poster, width=1800, op="fit_width", format="webp", quality=88) -%}
 <section id="artifact" class="section" aria-labelledby="artifact-title">
   <div class="shell">
-    {{ <artifact.section_head idx="04" label={trans(key="nav_artifact", lang=lang)} id="artifact" /> }}
+    {{ <artifact.section_head idx={idx} label={trans(key="nav_artifact", lang=lang)} id="artifact" /> }}
     <div class="grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
       <figure class="reveal lg:col-span-7">
         <a href="{{ s1800.url }}" class="poster-frame" data-artwork-open>
@@ -196,14 +196,14 @@
 </section>
 {% endcomponent artifact.poster %}
 
-{% component artifact.endpoint(a: map, lang: string) %}
+{% component artifact.endpoint(a: map, lang: string, idx: string = "05") %}
 {%- set t = a.extra.terminal -%}
 {%- set copy_label = trans(key="copy", lang=lang) -%}
 {%- set copied_label = trans(key="copied", lang=lang) -%}
 {%- set failed_label = trans(key="copy_failed", lang=lang) -%}
 <section id="endpoint" class="section" aria-labelledby="endpoint-title">
   <div class="shell">
-    {{ <artifact.section_head idx="05" label={t.label} id="endpoint" /> }}
+    {{ <artifact.section_head idx={idx} label={t.label} id="endpoint" /> }}
     <h2 id="endpoint-title" class="display display-lg reveal">{{ t.heading }}</h2>
     <div class="terminal mt-12 reveal" x-data="copyButton">
       <div class="terminal-bar">
@@ -222,10 +222,10 @@
 </section>
 {% endcomponent artifact.endpoint %}
 
-{% component artifact.archive(index: map, lang: string) %}
+{% component artifact.archive(index: map, lang: string, idx: string = "06") %}
 <section id="archive" class="section" aria-labelledby="archive-title">
   <div class="shell">
-    {{ <artifact.section_head idx="06" label={trans(key="nav_archive", lang=lang)} id="archive" /> }}
+    {{ <artifact.section_head idx={idx} label={trans(key="nav_archive", lang=lang)} id="archive" /> }}
     <h2 id="archive-title" class="display display-lg reveal">{{ trans(key="archive_heading", lang=lang) }}</h2>
     <ol class="mt-12 reveal">
       {%- for p in index.pages %}

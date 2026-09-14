@@ -1,5 +1,11 @@
-{%- if page is defined -%}{%- set_global ctx = page -%}{%- elif section is defined -%}{%- set_global ctx = section -%}{%- endif -%}
 {%- if lang is defined -%}{%- set_global l = lang -%}{%- else -%}{%- set_global l = config.default_language -%}{%- endif -%}
+{#- ctx is the document the metadata describes. Taxonomy pages have no page or section,
+    so they get a minimal document with the same fields head.html reads. -#}
+{%- if page is defined -%}{%- set_global ctx = page -%}
+{%- elif section is defined -%}{%- set_global ctx = section -%}
+{%- elif term is defined -%}{%- set_global ctx = {"title": "#" ~ term.name, "description": trans(key="tag_description", lang=l) ~ " #" ~ term.name, "translations": [], "ancestors": []} -%}
+{%- elif taxonomy is defined -%}{%- set_global ctx = {"title": trans(key="nav_tags", lang=l), "description": trans(key="tags_description", lang=l), "translations": [], "ancestors": []} -%}
+{%- endif -%}
 {%- set_global home_url = get_url(path="@/_index.md", lang=l) -%}
 <!doctype html>
 <html lang="{{ l }}" dir="{{ text_direction(lang=l) }}" class="no-js"

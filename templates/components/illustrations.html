@@ -1,0 +1,107 @@
+{#- Illustrations as Tera components: inline SVG, localized through the labels passed in,
+    coloured by CSS tokens (see .illustration in styles/app.css) so they follow screen and print styles.
+    Each figure is an accessible image: role="img" with a title and a description. -#}
+
+{% component illustration.relief_loop(id: string, labels: map) %}
+<figure class="illustration" aria-labelledby="{{ id }}-caption">
+  <svg viewBox="0 0 720 420" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+    <title id="{{ id }}-title">{{ labels.title }}</title>
+    <desc id="{{ id }}-desc">{{ labels.description }}</desc>
+    <defs>
+      <marker id="{{ id }}-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" class="ill-fill"/>
+      </marker>
+      <marker id="{{ id }}-arrow-alert" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" class="ill-fill-alert"/>
+      </marker>
+    </defs>
+    <g class="ill-node">
+      <rect x="20" y="170" width="170" height="64"/>
+      <text x="105" y="198" text-anchor="middle" class="ill-label">{{ labels.input }}</text>
+      <text x="105" y="218" text-anchor="middle" class="ill-meta">INPUT</text>
+    </g>
+    <g class="ill-node">
+      <rect x="275" y="40" width="170" height="64"/>
+      <text x="360" y="68" text-anchor="middle" class="ill-label">{{ labels.repetition }}</text>
+      <text x="360" y="88" text-anchor="middle" class="ill-meta">01</text>
+    </g>
+    <g class="ill-node">
+      <rect x="530" y="170" width="170" height="64"/>
+      <text x="615" y="198" text-anchor="middle" class="ill-label">{{ labels.synchronization }}</text>
+      <text x="615" y="218" text-anchor="middle" class="ill-meta">02</text>
+    </g>
+    <g class="ill-node">
+      <rect x="275" y="300" width="170" height="64"/>
+      <text x="360" y="328" text-anchor="middle" class="ill-label">{{ labels.discharge }}</text>
+      <text x="360" y="348" text-anchor="middle" class="ill-meta">03</text>
+    </g>
+    <path d="M190 190 C 230 120, 240 80, 275 72" class="ill-line" marker-end="url(#{{ id }}-arrow)"/>
+    <path d="M445 72 C 500 80, 530 120, 560 170" class="ill-line" marker-end="url(#{{ id }}-arrow)"/>
+    <path d="M615 234 C 600 300, 500 330, 445 332" class="ill-line" marker-end="url(#{{ id }}-arrow)"/>
+    <path d="M275 332 C 200 330, 120 300, 105 234" class="ill-line-alert" marker-end="url(#{{ id }}-arrow-alert)"/>
+    <text x="360" y="204" text-anchor="middle" class="ill-label ill-alert">{{ labels.relief }}</text>
+    <text x="360" y="226" text-anchor="middle" class="ill-meta">200 OK</text>
+    <text x="118" y="318" text-anchor="middle" class="ill-meta ill-alert">{{ labels.loop }}</text>
+    <text x="118" y="336" text-anchor="middle" class="ill-meta ill-alert">problem_solved: false</text>
+  </svg>
+  <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
+</figure>
+{% endcomponent illustration.relief_loop %}
+
+{% component illustration.relief_curve(id: string, labels: map) %}
+<figure class="illustration" aria-labelledby="{{ id }}-caption">
+  <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+    <title id="{{ id }}-title">{{ labels.title }}</title>
+    <desc id="{{ id }}-desc">{{ labels.description }}</desc>
+    <line x1="70" y1="330" x2="690" y2="330" class="ill-axis"/>
+    <line x1="70" y1="330" x2="70" y2="30" class="ill-axis"/>
+    <text x="690" y="358" text-anchor="end" class="ill-meta">{{ labels.axis_time }}</text>
+    <text x="40" y="30" text-anchor="start" class="ill-meta" transform="rotate(-90 40 30)" dx="-150">{{ labels.axis_arousal }}</text>
+    <line x1="70" y1="120" x2="690" y2="120" class="ill-grid"/>
+    <text x="80" y="112" class="ill-meta">{{ labels.baseline }}</text>
+    <path d="M70 120 C 170 120, 200 118, 240 80 C 270 50, 290 40, 310 60 C 350 110, 380 250, 420 250 C 470 250, 520 150, 600 125 C 640 120, 670 120, 690 120" class="ill-curve-alert"/>
+    <path d="M70 120 C 180 122, 260 140, 340 175 C 430 215, 520 240, 690 246" class="ill-curve"/>
+    <circle cx="420" cy="250" r="5" class="ill-fill-alert"/>
+    <text x="430" y="274" class="ill-label ill-alert">{{ labels.discharge }}</text>
+    <text x="560" y="236" class="ill-label">{{ labels.processing }}</text>
+  </svg>
+  <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
+</figure>
+{% endcomponent illustration.relief_curve %}
+
+{% component illustration.synchrony(id: string, labels: map) %}
+<figure class="illustration" aria-labelledby="{{ id }}-caption">
+  <svg viewBox="0 0 720 360" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+    <title id="{{ id }}-title">{{ labels.title }}</title>
+    <desc id="{{ id }}-desc">{{ labels.description }}</desc>
+    <text x="40" y="36" class="ill-meta">{{ labels.before }}</text>
+    <text x="400" y="36" class="ill-meta">{{ labels.after }}</text>
+    <line x1="360" y1="50" x2="360" y2="330" class="ill-grid"/>
+    {%- for i in range(end=6) %}
+    {%- set y = 70 + i * 48 %}
+    {%- set shift = i * 17 %}
+    <path d="M40 {{ y }} q {{ 20 + shift }} -18 {{ 40 + shift }} 0 t {{ 40 + shift }} 0 t {{ 40 + shift }} 0" class="ill-wave{% if i == 2 %} ill-alert-stroke{% endif %}" transform="translate(0 0)" clip-path="url(#{{ id }}-left)"/>
+    <path d="M400 {{ y }} q 25 -18 50 0 t 50 0 t 50 0 t 50 0 t 50 0 t 50 0" class="ill-wave{% if i == 2 %} ill-alert-stroke{% endif %}"/>
+    {%- endfor %}
+    <defs>
+      <clipPath id="{{ id }}-left"><rect x="30" y="40" width="320" height="300"/></clipPath>
+    </defs>
+  </svg>
+  <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
+</figure>
+{% endcomponent illustration.synchrony %}
+
+{% component illustration.timeline(id: string, title: string, description: string, caption: string, items: array) %}
+<figure class="illustration" aria-labelledby="{{ id }}-caption">
+  <ol class="ill-timeline" aria-label="{{ title }}">
+    {%- for item in items %}
+    <li>
+      <span class="ill-timeline-year">{{ item.year }}</span>
+      <span class="ill-timeline-label">{{ item.label }}</span>
+    </li>
+    {%- endfor %}
+  </ol>
+  <p class="sr-only">{{ description }}</p>
+  <figcaption id="{{ id }}-caption" class="ill-caption">{{ caption }}</figcaption>
+</figure>
+{% endcomponent illustration.timeline %}

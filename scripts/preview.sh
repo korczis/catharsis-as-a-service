@@ -12,5 +12,6 @@ rm -rf "$OUT"
 mkdir -p "$OUT"
 npm run --silent assets
 zola build --base-url "http://127.0.0.1:$PORT/$SUBPATH" --output-dir "$OUT/$SUBPATH" --force
+python3 scripts/export-api.py --out "$OUT/$SUBPATH" --base-url "http://127.0.0.1:$PORT/$SUBPATH"
 echo "preview: http://127.0.0.1:$PORT/$SUBPATH/"
 exec python3 -m http.server "$PORT" --bind 127.0.0.1 --directory "$OUT"

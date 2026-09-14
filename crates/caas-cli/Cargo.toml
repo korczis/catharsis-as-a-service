@@ -1,0 +1,20 @@
+[package]
+name = "caas-cli"
+description = "Command-line client for the Catharsis as a Service content API"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+publish.workspace = true
+repository.workspace = true
+
+[[bin]]
+name = "caas"
+path = "src/main.rs"
+
+[dependencies]
+caas-content.workspace = true
+serde_json.workspace = true
+
+[dev-dependencies]
+caas-content.workspace = true
+serde_json.workspace = true

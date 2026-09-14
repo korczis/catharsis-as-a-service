@@ -5,8 +5,24 @@
 
 {% block content %}
 {%- set artifact = get_page(path=section.extra.featured, lang=lang) -%}
+{%- set research = get_section(path="research/_index.md", lang=lang) -%}
+{%- set advice = get_section(path="advice/_index.md", lang=lang) -%}
 {%- set index = get_section(path="artifacts/_index.md", lang=lang) -%}
-{{ <artifact.experience a={artifact} lang={lang} /> }}
-{{ <artifact.archive index={index} lang={lang} /> }}
+{%- set landing = section.extra -%}
+{{ <artifact.sidebars a={artifact} /> }}
+{{ <artifact.hero a={artifact} lang={lang} /> }}
+{{ <landing.intent block={landing.intent} lang={lang} idx="01" /> }}
+{{ <landing.concept block={landing.concept} lang={lang} idx="02" /> }}
+{{ <landing.mechanism block={landing.mechanism} idx="03" /> }}
+{{ <artifact.diagnostic a={artifact} lang={lang} idx="04" /> }}
+{{ <artifact.crowd a={artifact} idx="05" /> }}
+{{ <artifact.observability a={artifact} lang={lang} idx="06" /> }}
+{{ <landing.evidence block={landing.evidence} research={research} lang={lang} idx="07" /> }}
+{{ <landing.library block={landing.library} advice={advice} lang={lang} idx="08" /> }}
+{{ <artifact.poster a={artifact} lang={lang} idx="09" /> }}
+{{ <artifact.endpoint a={artifact} lang={lang} idx="10" /> }}
+{{ <landing.making block={landing.making} lang={lang} idx="11" /> }}
+{{ <landing.faq block={landing.faq} idx="12" /> }}
+{{ <artifact.archive index={index} lang={lang} idx="13" /> }}
 {{ <artifact.viewer a={artifact} lang={lang} /> }}
 {% endblock content %}

@@ -6,12 +6,14 @@ Strict by default. A document opts out only with `draft = true` or
 Exits non-zero on any gap.
 """
 
+import os
 import re
 import sys
 import tomllib
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+# CAAS_ROOT lets the test suite run the validator against a fixture repository.
+ROOT = Path(os.environ.get("CAAS_ROOT", Path(__file__).resolve().parent.parent)).resolve()
 CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+", re.S)
