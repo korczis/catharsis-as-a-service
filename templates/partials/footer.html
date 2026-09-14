@@ -14,6 +14,7 @@
         <li><a class="nav-link" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
         {%- endfor %}
         <li><a class="nav-link" href="{{ get_url(path='@/about/index.md', lang=l) }}">{{ trans(key="nav_about", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ get_url(path='@/guides/index.md', lang=l) }}">{{ trans(key="nav_guides", lang=l) }}</a></li>
         <li><a class="nav-link" href="{{ config.extra.repo_url }}" target="_blank" rel="noopener">{{ trans(key="nav_source", lang=l) }} <span aria-hidden="true">↗</span></a></li>
       </ul>
     </nav>

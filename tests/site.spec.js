@@ -139,7 +139,7 @@ for (const locale of LOCALES) {
     expect(problems).toEqual([]);
   });
 
-  for (const relative of ['about/', 'artifacts/', 'artifacts/catharsis-as-a-service/']) {
+  for (const relative of ['about/', 'guides/', 'artifacts/', 'artifacts/catharsis-as-a-service/']) {
     test(`${locale.code}: /${relative} renders`, async ({ page }) => {
       const problems = watch(page);
       const response = await open(page, `${locale.path}${relative}`);
@@ -330,4 +330,110 @@ test('unknown routes render the bespoke 404', async ({ page }) => {
   await expect(page.locator('h1')).toHaveText(/state transition failed/i);
   await expect(page.locator('body')).toContainText('problem_solved: false');
   expect(await page.evaluate(() => getComputedStyle(document.documentElement).backgroundColor)).toBe('rgb(5, 5, 5)');
+});
+
+test('structured data describes the site, the artwork and the breadcrumb', async ({ page, request }) => {
+  const graphOf = async (relative) => {
+    await page.goto(url(relative));
+    const blocks = await page.locator('script[type="application/ld+json"]').allTextContents();
+    expect(blocks).toHaveLength(1);
+    const document = JSON.parse(blocks[0]);
+    expect(document['@context']).toBe('https://schema.org');
+    return document['@graph'];
+  };
+  const byType = (graph, type) => graph.find((node) => node['@type'] === type);
+
+  const home = await graphOf('');
+  expect(home.map((node) => node['@type'])).toEqual(expect.arrayContaining(['WebSite', 'Person', 'VisualArtwork']));
+  const artwork = byType(home, 'VisualArtwork');
+  expect(artwork.width.value).toBe(4800);
+  expect(artwork.height.value).toBe(7200);
+  expect((await request.get(artwork.image)).status()).toBe(200);
+
+  const artifact = await graphOf('cs/artifacts/catharsis-as-a-service/');
+  expect(byType(artifact, 'WebSite').inLanguage).toBe('cs');
+  const crumbs = byType(artifact, 'BreadcrumbList').itemListElement;
+  expect(crumbs.map((crumb) => crumb.position)).toEqual([1, 2, 3]);
+  expect(crumbs[0].item).toBe(url('cs/'));
+  expect(crumbs[1].item).toBe(url('cs/artifacts/'));
+  expect(crumbs[2].item).toBe(url('cs/artifacts/catharsis-as-a-service/'));
+});
+
+test('link previews are localized and reachable', async ({ page, request }) => {
+  const preview = async (relative) => {
+    await page.goto(url(relative));
+    const read = (selector) => page.locator(selector).first().getAttribute('content');
+    return {
+      image: await read('meta[property="og:image"]'),
+      alt: await read('meta[property="og:image:alt"]'),
+      locale: await read('meta[property="og:locale"]'),
+      alternate: await read('meta[property="og:locale:alternate"]'),
+      card: await read('meta[name="twitter:card"]'),
+    };
+  };
+  const en = await preview('');
+  const cs = await preview('cs/');
+  expect([en.locale, en.alternate]).toEqual(['en_US', 'cs_CZ']);
+  expect([cs.locale, cs.alternate]).toEqual(['cs_CZ', 'en_US']);
+  expect(en.image).not.toBe(cs.image);
+  for (const card of [en, cs]) {
+    expect(card.card).toBe('summary_large_image');
+    expect(card.alt).toBeTruthy();
+    const response = await request.get(String(card.image));
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toContain('image/png');
+  }
+});
+
+test('feeds, sitemap alternates, favicon and manifest icons are served', async ({ request }) => {
+  for (const [relative, code] of [['atom.xml', 'en'], ['cs/atom.xml', 'cs']]) {
+    const response = await request.get(url(relative));
+    expect(response.status()).toBe(200);
+    const body = await response.text();
+    expect(body).toContain('<feed');
+    expect(body).toContain(`xml:lang="${code}"`);
+    expect(body).toContain('Catharsis as a Service');
+  }
+
+  const sitemap = await (await request.get(url('sitemap.xml'))).text();
+  const locations = sitemap.match(/<loc>/g) ?? [];
+  expect(locations.length).toBeGreaterThan(0);
+  for (const code of ['en', 'cs', 'x-default']) {
+    expect((sitemap.match(new RegExp(`hreflang="${code}"`, 'g')) ?? []).length, code).toBe(locations.length);
+  }
+
+  expect((await request.get(url('favicon.ico'))).status()).toBe(200);
+  const manifest = await (await request.get(url('site.webmanifest'))).json();
+  for (const icon of manifest.icons) {
+    expect((await request.get(url(icon.src))).status(), icon.src).toBe(200);
+  }
+});
+
+test('print styles turn the artifact into a paper document', async ({ page }) => {
+  await open(page, '');
+  await page.emulateMedia({ media: 'print' });
+  await expect(page.locator('header.site-header')).toBeHidden();
+  for (const name of ['experience', 'diagnostic', 'raw']) {
+    await expect(page.locator(`#panel-${name}`)).toBeVisible();
+  }
+  const paper = () =>
+    page.evaluate(() =>
+      [document.documentElement, document.body].map((node) => {
+        const style = getComputedStyle(node);
+        return `${style.backgroundColor}|${style.color}`;
+      }),
+    );
+  await expect.poll(paper).toEqual(['rgb(255, 255, 255)|rgb(0, 0, 0)', 'rgb(255, 255, 255)|rgb(0, 0, 0)']);
+});
+
+test('guides have a working table of contents in both languages', async ({ page }) => {
+  for (const locale of LOCALES) {
+    await open(page, `${locale.path}guides/`);
+    const links = page.locator('nav.toc a');
+    expect(await links.count()).toBeGreaterThan(4);
+    const targets = await links.evaluateAll((nodes) => nodes.map((node) => node.getAttribute('href')));
+    for (const target of targets) {
+      await expect(page.locator(String(target))).toHaveCount(1);
+    }
+  }
 });

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{#- Every URL lists all of its language editions. Translation parity is enforced by
+    scripts/validate-i18n.py, so each entry's twins exist by construction. -#}
+{%- set base = config.base_url ~ "/" -%}
+{%- for entry in entries %}
+  {%- set_global relative = entry.permalink | replace(from=base, to="") -%}
+  {%- for code in config.extra.locales -%}
+    {%- if code != config.default_language and relative is starting_with(pat=code ~ "/") -%}
+      {%- set_global relative = relative[code | length + 1:] -%}
+    {%- endif -%}
+  {%- endfor %}
+  <url>
+    <loc>{{ entry.permalink | escape_xml }}</loc>
+    {%- if entry.updated %}
+    <lastmod>{{ entry.updated }}</lastmod>
+    {%- endif %}
+    {%- for code in config.extra.locales %}
+    <xhtml:link rel="alternate" hreflang="{{ code }}" href="{{ base }}{% if code != config.default_language %}{{ code }}/{% endif %}{{ relative | escape_xml }}"/>
+    {%- endfor %}
+    <xhtml:link rel="alternate" hreflang="x-default" href="{{ base }}{{ relative | escape_xml }}"/>
+  </url>
+{%- endfor %}
+</urlset>

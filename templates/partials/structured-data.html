@@ -1,0 +1,57 @@
+{#- schema.org JSON-LD. The graph is built as template data and serialised with json_encode,
+    so no JSON escaping is ever written by hand. -#}
+{%- set site_url = get_url(path="@/_index.md", lang=l) -%}
+{%- set preview_url = get_url(path=trans(key="social_image", lang=l)) -%}
+{%- set_global graph = [
+  {
+    "@type": "WebSite",
+    "@id": site_url ~ "#website",
+    "url": site_url,
+    "name": config.title,
+    "description": config.description,
+    "inLanguage": l,
+    "publisher": {"@id": site_url ~ "#author"}
+  },
+  {"@type": "Person", "@id": site_url ~ "#author", "name": config.extra.author}
+] -%}
+
+{%- if page is defined and page.extra.poster is defined -%}
+  {%- set_global art = page -%}
+{%- elif section is defined and section.extra.featured is defined -%}
+  {%- set_global art = get_page(path=section.extra.featured, lang=l) -%}
+{%- endif -%}
+{%- if art is defined -%}
+  {%- set poster = get_image_metadata(path=art.extra.poster) -%}
+  {%- set_global graph = [...graph, {
+    "@type": "VisualArtwork",
+    "@id": art.permalink ~ "#artwork",
+    "url": art.permalink,
+    "name": art.title,
+    "description": art.description,
+    "image": get_url(path=art.extra.poster),
+    "thumbnailUrl": preview_url,
+    "artform": "Poster",
+    "artMedium": "Digital",
+    "width": {"@type": "QuantitativeValue", "value": poster.width, "unitCode": "E37"},
+    "height": {"@type": "QuantitativeValue", "value": poster.height, "unitCode": "E37"},
+    "dateCreated": art.date,
+    "inLanguage": l,
+    "creator": {"@id": site_url ~ "#author"},
+    "isPartOf": {"@id": site_url ~ "#website"}
+  }] -%}
+{%- endif -%}
+
+{%- if current_url is defined and current_url != site_url -%}
+  {%- set_global crumbs = [{"@type": "ListItem", "position": 1, "name": trans(key="breadcrumb_home", lang=l), "item": site_url}] -%}
+  {%- for ancestor in ctx.ancestors -%}
+    {%- set parent = get_section(path=ancestor | replace(from="." ~ l ~ ".md", to=".md"), lang=l, metadata_only=true) -%}
+    {%- if parent.permalink != site_url -%}
+      {%- set_global crumbs = [...crumbs, {"@type": "ListItem", "position": crumbs | length + 1, "name": parent.title, "item": parent.permalink}] -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- set_global crumbs = [...crumbs, {"@type": "ListItem", "position": crumbs | length + 1, "name": ctx.title, "item": current_url}] -%}
+  {%- set_global graph = [...graph, {"@type": "BreadcrumbList", "itemListElement": crumbs}] -%}
+{%- endif -%}
+
+{%- set document = {"@context": "https://schema.org", "@graph": graph} %}
+<script type="application/ld+json">{{ document | json_encode | safe }}</script>

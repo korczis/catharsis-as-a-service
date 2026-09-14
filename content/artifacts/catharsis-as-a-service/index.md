@@ -88,3 +88,27 @@ closing = ["Some problems can't be solved.", "They can only be danced through."]
 A festival poster that sells euphoria at first glance and diagnoses it at second.
 
 Industrial rave photography, brutalist type and a Prismatic telemetry overlay share one surface. The crowd gets its release, the system logs a successful response, and the underlying condition stays exactly where it was.
+
+## First glance, second glance
+
+Seen from across a street, it is a campaign: a red-lit stage, a sea of raised hands, a headline big enough to promise something. That reading is intended and it is not a trap. The night it advertises is real, and so is the relief.
+
+Seen up close, the poster starts filing a report. The overlay names an input, a process and an output. The status line reads as a success: `200 OK`. Underneath it, one field refuses to cooperate: `problem_solved: false`.
+
+## Why an API
+
+Service language is how we describe things meant to be consumed on demand, repeatably, with a guaranteed response. Putting catharsis behind an endpoint makes one uncomfortable property visible: the transaction can succeed completely without the request ever being resolved. The endpoint does exactly what it promises. The promise was just smaller than the need.
+
+## Relief is not resolution
+
+The artifact does not argue that dancing is useless or that collective release is fake. Repetition, synchronization and discharge are old and effective human technology. The claim is narrower: a temporary state transition and a removed root cause are different outcomes, and it is worth being able to tell which one you received.
+
+## Why the telemetry is conceptual
+
+Every metric on this page is an artistic value. Nothing is measured, collected or inferred about anyone who visits, and there is no analytics script to contradict that. A piece about instrumenting people should not quietly instrument its own audience.
+
+## How to use it
+
+- **As a mirror:** after the next night that felt like it fixed something, ask which field it actually changed.
+- **As a conversation starter:** the raw response is short enough to quote and specific enough to disagree with.
+- **As a design reference:** euphoria and diagnosis on one surface, with neither cancelling the other.

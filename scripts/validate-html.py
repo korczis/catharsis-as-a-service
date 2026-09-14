@@ -8,12 +8,15 @@ CSS, the sitemap and robots.txt resolves to a generated file (and anchor, when i
 usage: validate-html.py <public-dir> <base-url>
 """
 
+import json
 import re
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
+SITEMAP_ALTERNATE = re.compile(r"<xhtml:link[^>]*href=\"([^\"]+)\"")
+PREVIEW_META = ("og:title", "og:description", "og:url", "og:image", "og:image:alt", "og:locale", "twitter:card")
 CSS_URL = re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)")
 # Inline data URIs may contain url() of their own (an SVG filter reference); they are not files.
 CSS_DATA_URI = re.compile(r"url\(\s*(['\"])data:.*?\1\s*\)|url\(\s*data:[^)]*\)", re.S)
@@ -34,9 +37,14 @@ class Page(HTMLParser):
         self.title = ""
         self._in_title = False
         self._open_links = []
+        self.structured_data = []
+        self._in_structured_data = False
 
     def handle_starttag(self, tag, attrs):
         a = {key: (value or "") for key, value in attrs}
+        if tag == "script" and a.get("type") == "application/ld+json":
+            self._in_structured_data = True
+            self.structured_data.append("")
         if "id" in a:
             self.ids.append(a["id"])
         if tag == "html":
@@ -72,12 +80,16 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "title":
             self._in_title = False
+        elif tag == "script":
+            self._in_structured_data = False
         elif tag == "a" and self._open_links:
             self.links.append(self._open_links.pop())
 
     def handle_data(self, data):
         if self._in_title:
             self.title += data
+        if self._in_structured_data:
+            self.structured_data[-1] += data
         for link in self._open_links:
             link["text"] += data
 
@@ -116,7 +128,7 @@ def main():
         parser.feed(path.read_text(encoding="utf-8"))
         pages[path] = parser
 
-    anchors_checked = refs_checked = 0
+    anchors_checked = refs_checked = structured_nodes = 0
     for path, page in pages.items():
         rel = path.relative_to(public)
         is_404 = rel.name == "404.html" and rel.parent == Path(".")
@@ -144,6 +156,24 @@ def main():
             errors.append(f"{rel}: <html> has no lang")
         if not is_404 and not page.canonical:
             errors.append(f"{rel}: no canonical link")
+        if not is_404:
+            for name in PREVIEW_META:
+                if not page.meta.get(name, "").strip():
+                    errors.append(f"{rel}: link preview metadata '{name}' is missing or empty")
+            if len(page.structured_data) != 1:
+                errors.append(f"{rel}: expected one JSON-LD block, found {len(page.structured_data)}")
+            for block in page.structured_data:
+                try:
+                    document = json.loads(block)
+                except json.JSONDecodeError as error:
+                    errors.append(f"{rel}: JSON-LD does not parse: {error}")
+                    continue
+                if document.get("@context") != "https://schema.org" or not document.get("@graph"):
+                    errors.append(f"{rel}: JSON-LD needs @context https://schema.org and a non-empty @graph")
+                    continue
+                structured_nodes += len(document["@graph"])
+                if "WebSite" not in {node.get("@type") for node in document["@graph"]}:
+                    errors.append(f"{rel}: JSON-LD graph has no WebSite node")
 
         for ref in page.refs:
             resolved = resolve(ref, base_url, public, path)
@@ -175,10 +205,15 @@ def main():
         errors.append("sitemap.xml was not generated")
     else:
         locs = SITEMAP_LOC.findall(sitemap.read_text(encoding="utf-8"))
-        for loc in locs:
+        text = sitemap.read_text(encoding="utf-8")
+        alternates = SITEMAP_ALTERNATE.findall(text)
+        for loc in locs + alternates:
             resolved = resolve(loc, base_url, public, sitemap)
             if resolved is None or not resolved[0].exists():
                 errors.append(f"sitemap.xml: {loc} is outside the site or missing")
+        expected_alternates = len(locs) * (len(set(re.findall(r'hreflang="([^"]+)"', text))))
+        if locs and len(alternates) != expected_alternates:
+            errors.append(f"sitemap.xml: expected {expected_alternates} hreflang alternates, found {len(alternates)}")
     if not robots.exists():
         errors.append("robots.txt was not generated")
     elif f"{base_url}/sitemap.xml" not in robots.read_text(encoding="utf-8"):
@@ -191,6 +226,7 @@ def main():
     print(f"anchors ........... {anchors_checked}")
     print(f"css urls .......... {css_checked}")
     print(f"sitemap urls ...... {len(locs)}")
+    print(f"json-ld nodes ..... {structured_nodes}")
     for error in errors:
         print(f"error: {error}")
     print()

@@ -1,0 +1,25 @@
+# HTML5 Boilerplate baseline, reduced to the file types this repository contains.
+* text=auto eol=lf
+
+*.css      text
+*.html     text
+*.js       text
+*.mjs      text
+*.json     text
+*.md       text
+*.py       text
+*.sh       text eol=lf
+*.svg      text
+*.toml     text
+*.txt      text
+*.webmanifest text
+*.xml      text
+*.yaml     text
+*.yml      text
+
+*.ico      binary
+*.jpg      binary
+*.jpeg     binary
+*.png      binary
+*.webp     binary
+*.woff2    binary

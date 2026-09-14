@@ -8,7 +8,8 @@ default_language = "en"
 compile_sass = false
 minify_html = true
 build_search_index = false
-generate_feeds = false
+generate_feeds = true
+feed_filenames = ["atom.xml"]
 generate_sitemap = true
 generate_robots_txt = true
 
@@ -25,7 +26,6 @@ repo_url = "https://github.com/korczis/catharsis-as-a-service"
 theme_color = "#050505"
 year = 2026
 locales = ["en", "cs"]
-social_image = "assets/social-preview.png"
 
 [[extra.nav]]
 key = "nav_experience"
@@ -47,6 +47,11 @@ anchor = "archive"
 # scripts/validate-i18n.py fails the build otherwise.
 [translations]
 og_locale = "en_US"
+social_image = "assets/social-preview.png"
+feed_title = "Atom feed (English)"
+nav_guides = "Guides"
+toc_label = "Contents"
+breadcrumb_home = "Home"
 skip_to_content = "Skip to content"
 nav_label = "Primary"
 footer_nav = "Footer"
@@ -90,8 +95,15 @@ social_alt = "Catharsis as a Service poster beside the title and the line POST /
 title = "Catharsis as a Service™"
 description = "Catharsis as a Service™ je digitální artefakt, který zkoumá kolektivní katarzi jako přechod emočního stavu: opakování, synchronizace, výboj, dočasná úleva."
 
+generate_feeds = true
+
 [languages.cs.translations]
 og_locale = "cs_CZ"
+social_image = "assets/social-preview.cs.png"
+feed_title = "Atom feed (čeština)"
+nav_guides = "Návody"
+toc_label = "Obsah"
+breadcrumb_home = "Domů"
 skip_to_content = "Přeskočit na obsah"
 nav_label = "Hlavní navigace"
 footer_nav = "Patička"

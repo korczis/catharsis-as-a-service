@@ -16,6 +16,7 @@
   .top { display: flex; justify-content: space-between; font-size: 14px; font-weight: 700; letter-spacing: .3em; }
   h1 { margin: 0; font-family: Anton, Impact, sans-serif; font-weight: 400; font-size: 100px; line-height: .88; text-transform: uppercase; }
   h1 span { display: block; }
+  .tm { font-family: 'JetBrains Mono', monospace; font-size: 22px; vertical-align: super; }
   .red { color: #ef2929; }
   .sub { margin: 20px 0 0; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: .3em; text-transform: uppercase; }
   .api { display: inline-block; border: 1.5px solid rgb(233 228 216 / .6); padding: 12px 18px; font-size: 22px; }
@@ -28,8 +29,8 @@
   <div class="copy">
     <div class="top"><span>PRISMATIC</span><span>SIG NIHL</span></div>
     <div>
-      <h1><span class="red">Catharsis</span><span>as a Service™</span></h1>
-      <p class="sub">Emotional state transition endpoint</p>
+      <h1><span class="red">Catharsis</span><span>as a Service<span class="tm">™</span></span></h1>
+      <p class="sub" data-en="Emotional state transition endpoint" data-cs="Endpoint přechodu emočního stavu">Emotional state transition endpoint</p>
     </div>
     <div>
       <div class="api">&gt; POST /v1/catharsis → <span class="red">200 OK</span></div>
@@ -37,5 +38,13 @@
     </div>
   </div>
 </div>
+<script>
+  // Render a locale variant with ?lang=<code>; the API line stays English on purpose.
+  const lang = new URLSearchParams(location.search).get('lang') || 'en';
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-en]').forEach((node) => {
+    node.textContent = node.dataset[lang] || node.dataset.en;
+  });
+</script>
 </body>
 </html>

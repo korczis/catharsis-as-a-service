@@ -5,7 +5,19 @@
   <div class="shell">
     <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ trans(key="brand_tagline", lang=lang) }}</span></p>
     <h1 id="page-title" class="display display-hero mt-7">{{ page.title }}</h1>
-    <div class="prose-page mt-10">{{ page.content | safe }}</div>
+    <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      {%- if page.toc | length > 2 %}
+      <nav class="toc lg:col-span-3 lg:sticky lg:top-24 lg:self-start" aria-label="{{ trans(key='toc_label', lang=lang) }}">
+        <p class="label">{{ trans(key="toc_label", lang=lang) }}</p>
+        <ol class="mt-4 space-y-2 border-l border-line pl-4">
+          {%- for heading in page.toc %}
+          <li><a class="nav-link normal-case tracking-normal" href="#{{ heading.id }}">{{ heading.title }}</a></li>
+          {%- endfor %}
+        </ol>
+      </nav>
+      {%- endif %}
+      <div class="prose-page {% if page.toc | length > 2 %}lg:col-span-9{% else %}lg:col-span-12{% endif %}">{{ page.content | safe }}</div>
+    </div>
   </div>
 </article>
-{% endblock %}
+{% endblock content %}

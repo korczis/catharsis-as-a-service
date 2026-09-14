@@ -230,13 +230,15 @@
     <ol class="mt-12 reveal">
       {%- for p in index.pages %}
       <li>
+        {%- set thumb = resize_image(path=p.extra.poster, width=240, op="fit_width", format="webp", quality=82) %}
         <a href="{{ p.permalink }}" class="archive-row">
           <span class="label text-blood">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+          <img class="archive-thumb" src="{{ thumb.url }}" width="{{ thumb.width }}" height="{{ thumb.height }}" alt="" loading="lazy" decoding="async">
           <span>
             <span class="archive-title condensed block text-3xl transition-colors">{{ p.title | replace(from="™", to='<sup class="tm">™</sup>') | safe }}</span>
             <span class="label mt-2 block normal-case tracking-normal">{{ p.description }}</span>
           </span>
-          <span class="label col-start-2 md:col-start-auto">{% if p.date %}{{ p.date | date(format="%Y-%m-%d") }} · {% endif %}{{ trans(key="archive_open", lang=lang) }} →</span>
+          <span class="label col-start-3 md:col-start-auto">{% if p.date %}{{ p.date | date(format="%Y-%m-%d") }} · {% endif %}{{ trans(key="archive_open", lang=lang) }} →</span>
         </a>
       </li>
       {%- endfor %}

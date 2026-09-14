@@ -669,8 +669,9 @@
 
   .archive-row {
     display: grid;
-    grid-template-columns: 3rem 1fr;
-    gap: 0.25rem 1rem;
+    grid-template-columns: 2rem 4.5rem 1fr;
+    align-items: start;
+    gap: 0.5rem 1rem;
     border-top: 1px solid var(--color-line);
     padding-block: 1.5rem;
     text-decoration: none;
@@ -679,8 +680,21 @@
 
   @media (min-width: 768px) {
     .archive-row {
-      grid-template-columns: 3rem 1fr auto;
-      align-items: baseline;
+      grid-template-columns: 3rem 5.5rem 1fr auto;
+      align-items: center;
+    }
+  }
+
+  .archive-thumb {
+    grid-row: span 2;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 0 1px var(--color-line);
+  }
+
+  @media (min-width: 768px) {
+    .archive-thumb {
+      grid-row: auto;
     }
   }
 
@@ -734,6 +748,58 @@
     font-size: 0.85em;
   }
 
+  .prose-page h3 {
+    margin-top: 2rem;
+    font-family: var(--font-condensed);
+    font-size: 1.35rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .prose-page ul,
+  .prose-page ol {
+    margin-top: 1.1rem;
+    padding-left: 1.4rem;
+    color: rgb(233 228 216 / 0.88);
+  }
+
+  .prose-page ul {
+    list-style: square;
+  }
+
+  .prose-page ol {
+    list-style: decimal;
+  }
+
+  .prose-page li + li {
+    margin-top: 0.5rem;
+  }
+
+  .prose-page li::marker {
+    color: var(--color-blood);
+  }
+
+  .prose-page strong {
+    color: var(--color-bone);
+    font-weight: 700;
+  }
+
+  .prose-page pre {
+    margin-top: 1.25rem;
+    overflow-x: auto;
+    border: 1px solid var(--color-line);
+    background: var(--color-ink-2);
+    padding: 1rem 1.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.7;
+  }
+
+  .prose-page pre code {
+    border: 0;
+    padding: 0;
+    font-size: inherit;
+  }
+
   /* Motion */
 
   .js .reveal {
@@ -747,6 +813,89 @@
   .js .reveal.is-visible {
     opacity: 1;
     transform: none;
+  }
+}
+
+/* Print: the HTML5 Boilerplate print baseline, adapted so the artifact prints as a paper document.
+   Unlayered, so it outranks every Tailwind layer. */
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  .skip-link,
+  .site-header,
+  #nav-drawer,
+  #artwork-viewer,
+  .rail,
+  .tabs,
+  .meter,
+  [data-requires-js] {
+    display: none !important;
+  }
+
+  .hero,
+  .section {
+    padding-block: 1.5rem;
+    border-color: #999;
+  }
+
+  .js .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  [data-view-panel] {
+    display: block !important;
+  }
+
+  [data-view-panel] + [data-view-panel] {
+    margin-top: 1.5rem;
+  }
+
+  .hero-poster,
+  .poster-frame img {
+    max-height: 60vh;
+    width: auto;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  .prose-page a[href^='http']::after,
+  footer a[href^='http']::after {
+    content: ' (' attr(href) ')';
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  tr,
+  img,
+  figure {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
   }
 }
 
