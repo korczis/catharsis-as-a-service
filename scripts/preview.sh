@@ -11,6 +11,7 @@ OUT=".preview"
 rm -rf "$OUT"
 mkdir -p "$OUT"
 npm run --silent assets
+python3 scripts/generate-study-pages.py > /dev/null
 zola build --base-url "http://127.0.0.1:$PORT/$SUBPATH" --output-dir "$OUT/$SUBPATH" --force
 python3 scripts/export-api.py --out "$OUT/$SUBPATH" --base-url "http://127.0.0.1:$PORT/$SUBPATH"
 echo "preview: http://127.0.0.1:$PORT/$SUBPATH/"

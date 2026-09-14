@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{#- Every cited work, grouped by the level of evidence it was appraised at. The section and its pages are
+    generated from the ledger by scripts/generate-study-pages.py. -#}
+
+{% block content %}
+{%- set source_data = load_data(path="data/sources.toml") %}
+<section class="hero" aria-labelledby="studies-title">
+  <div class="shell">
+    <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ section.extra.kicker }}</span></p>
+    <h1 id="studies-title" class="display display-hero mt-7">{{ section.title }}</h1>
+    <p class="lead mt-8 max-w-4xl">{{ section.extra.intro }}</p>
+    <dl class="telemetry mt-12">
+      <dt class="label">{{ trans(key="studies_count", lang=lang) }}</dt>
+      <dd>{{ section.extra.total }}</dd>
+    </dl>
+  </div>
+</section>
+
+<section class="section" aria-label="{{ section.title }}">
+  <div class="shell">
+    {%- for level in section.extra.levels %}
+    <section class="mt-16 first:mt-0" aria-labelledby="level-{{ level | lower }}-title">
+      <h2 id="level-{{ level | lower }}-title" class="condensed section-title">
+        {{ trans(key="evidence_level", lang=lang) }} {{ level }} <span class="text-muted">// {{ section.extra.counts[level] }}</span>
+      </h2>
+      {%- set level_key = "level_" ~ (level | lower) %}
+      <p class="mt-3 max-w-4xl text-muted">{{ trans(key=level_key, lang=lang) }}</p>
+      <ul class="study-list mt-8">
+        {%- for study in section.pages %}
+        {%- if study.extra.level == level %}
+        {%- set source = source_data.sources[study.extra.reference] %}
+        <li class="study-row">
+          <a class="study-row-title condensed" href="{{ study.permalink }}">{{ study.title }}</a>
+          <p class="study-row-cite">{{ study.extra.citation }}</p>
+          <p class="study-row-meta">
+            {{ <evidence.design design={source.design} lang={lang} /> }}
+            <span class="text-muted">{{ study.extra.claims | length }} {{ trans(key="studies_claims_short", lang=lang) }}</span>
+            <span class="text-muted">{{ study.extra.cited_by | length }} {{ trans(key="studies_pages_short", lang=lang) }}</span>
+          </p>
+        </li>
+        {%- endif %}
+        {%- endfor %}
+      </ul>
+    </section>
+    {%- endfor %}
+  </div>
+</section>
+{% endblock content %}

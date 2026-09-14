@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{#- One cited work. Everything on this page is read from data/references.toml, data/sources.toml and
+    data/claims.toml through the page's generated front matter (scripts/generate-study-pages.py), so the
+    page cannot say more about a study than the ledger does. -#}
+
+{% block content %}
+{%- set reference_data = load_data(path="data/references.toml") %}
+{%- set source_data = load_data(path="data/sources.toml") %}
+{%- set claim_data = load_data(path="data/claims.toml") %}
+{%- set id = page.extra.reference %}
+{%- set ref = reference_data.references[id] %}
+{%- set source = source_data.sources[id] %}
+{#- The section is reached through the page's own ancestors, as the essay template does. -#}
+{%- set parent_path = page.ancestors | last | replace(from="." ~ lang ~ ".md", to=".md") %}
+{%- set parent = get_section(path=parent_path, lang=lang, metadata_only=true) %}
+<article class="hero" aria-labelledby="study-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": parent.title, "url": parent.permalink},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow"><a class="no-underline" href="{{ parent.permalink }}">{{ parent.title }}</a> <span class="text-muted">// {{ trans(key="study_kicker", lang=lang) }}</span></p>
+    <h1 id="study-title" class="display display-md mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="study-cite mt-6">{{ page.extra.citation }}</p>
+    <p class="study-badges mt-5">
+      {{ <evidence.level level={source.level} lang={lang} /> }}
+      {{ <evidence.design design={source.design} lang={lang} /> }}
+      {%- if ref.doi != "" %}
+      <a class="btn-ghost" href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">doi:{{ ref.doi }} <span aria-hidden="true">↗</span></a>
+      {%- elif ref.url != "" %}
+      <a class="btn-ghost" href="{{ ref.url }}" rel="noopener" target="_blank">{{ trans(key="study_source_link", lang=lang) }} <span aria-hidden="true">↗</span></a>
+      {%- endif %}
+    </p>
+
+    <div class="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="min-w-0 lg:col-span-8">
+        <section aria-labelledby="appraisal-title">
+          <h2 id="appraisal-title" class="condensed section-title">{{ trans(key="study_appraisal", lang=lang) }}</h2>
+          <p class="lead mt-5">{{ source.appraisal[lang] }}</p>
+          <dl class="claim-facts mt-8">
+            <div><dt class="label">{{ trans(key="study_population", lang=lang) }}</dt><dd>{{ source.population[lang] }}</dd></div>
+            {%- set design_key = "design_" ~ (source.design | replace(from="-", to="_")) %}
+            {%- set level_key = "level_" ~ (source.level | lower) %}
+            <div><dt class="label">{{ trans(key="study_design_label", lang=lang) }}</dt><dd>{{ trans(key=design_key, lang=lang) }}</dd></div>
+            <div><dt class="label">{{ trans(key="study_level_label", lang=lang) }}</dt><dd>{{ trans(key=level_key, lang=lang) }}</dd></div>
+          </dl>
+        </section>
+
+        <section class="mt-14" aria-labelledby="claims-title">
+          <h2 id="claims-title" class="condensed section-title">{{ trans(key="study_claims", lang=lang) }}</h2>
+          {%- if page.extra.claims | length > 0 %}
+          <p class="mt-4 text-muted">{{ trans(key="study_claims_intro", lang=lang) }}</p>
+          <div class="claim-list mt-8">
+            {%- for claim in claim_data.claims %}
+            {%- if claim.id in page.extra.claims %}
+            {{ <evidence.claim claim={claim} lang={lang} /> }}
+            {%- endif %}
+            {%- endfor %}
+          </div>
+          {%- else %}
+          <p class="mt-4 text-muted">{{ trans(key="study_claims_none", lang=lang) }}</p>
+          {%- endif %}
+        </section>
+      </div>
+
+      <aside class="space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        <section class="aside-block" aria-labelledby="cited-title">
+          <h2 id="cited-title" class="label">{{ trans(key="study_cited_by", lang=lang) }}</h2>
+          {%- if page.extra.cited_by | length > 0 %}
+          <ul class="mt-3 space-y-3">
+            {%- for path in page.extra.cited_by %}
+            {%- set cited = get_page(path=path, lang=lang) %}
+            <li><a href="{{ cited.permalink }}">{{ cited.title }}</a></li>
+            {%- endfor %}
+          </ul>
+          {%- else %}
+          <p class="mt-3 text-muted">{{ trans(key="study_cited_none", lang=lang) }}</p>
+          {%- endif %}
+        </section>
+        <section class="aside-block" aria-labelledby="record-title">
+          <h2 id="record-title" class="label">{{ trans(key="study_record", lang=lang) }}</h2>
+          <dl class="claim-facts mt-3">
+            <div><dt class="label">{{ trans(key="last_reviewed", lang=lang) }}</dt><dd>{{ source.last_reviewed }}</dd></div>
+            <div><dt class="label">{{ trans(key="review_due", lang=lang) }}</dt><dd>{{ source.review_due }}</dd></div>
+          </dl>
+          <p class="mt-4 text-muted">{{ trans(key="study_record_note", lang=lang) }}</p>
+        </section>
+        {{ <library.disclaimer lang={lang} /> }}
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock content %}

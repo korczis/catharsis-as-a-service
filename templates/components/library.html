@@ -47,10 +47,12 @@
     {%- set ref = registry.references[id] %}
     {%- set year_key = "year_" ~ lang %}
     {%- set title_key = "title_" ~ lang %}
+    {#- Every reference has a page of its own: the appraisal, the claims resting on it and where it is cited. -#}
+    {%- set study_path = "@/studies/" ~ id ~ "/index.md" %}
     <li id="ref-{{ id }}">
       <span class="ref-authors">{{ ref.authors }}</span>
       ({% if ref[year_key] is defined %}{{ ref[year_key] }}{% else %}{{ ref.year }}{% endif %}).
-      <cite>{% if ref[title_key] is defined %}{{ ref[title_key] }}{% else %}{{ ref.title }}{% endif %}</cite>.
+      <cite><a href="{{ get_url(path=study_path, lang=lang) }}">{% if ref[title_key] is defined %}{{ ref[title_key] }}{% else %}{{ ref.title }}{% endif %}</a></cite>.
       {%- if ref.container != "" %} {{ ref.container }}{% if ref.volume != "" %}, {{ ref.volume }}{% endif %}{% if ref.issue != "" %}({{ ref.issue }}){% endif %}{% if ref.pages != "" %}, {{ ref.pages }}{% endif %}.{% elif ref.pages != "" %} {{ ref.pages }}.{% endif %}
       {%- if ref.publisher != "" %} {{ ref.publisher }}.{% endif %}
       {%- if ref.doi != "" %} <a href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">https://doi.org/{{ ref.doi }}</a>

@@ -14,6 +14,7 @@ public/
 static/css/app.css
 static/js/vendor/
 static/processed_images/
+content/studies/
 
 # test output
 test-results/

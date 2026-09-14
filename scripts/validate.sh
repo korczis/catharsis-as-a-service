@@ -52,6 +52,7 @@ js_syntax() {
 
 step toolchain zola_version
 step assets npm run --silent assets
+step studies python3 scripts/generate-study-pages.py
 step javascript js_syntax
 step i18n python3 scripts/validate-i18n.py
 step content python3 scripts/validate-content.py
