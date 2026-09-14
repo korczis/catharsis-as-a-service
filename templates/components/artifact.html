@@ -96,7 +96,7 @@
         </div>
         <div role="tabpanel" id="panel-raw" aria-labelledby="tab-raw" data-view-panel="raw"
           x-show="view === 'raw'" x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
-          <pre class="code" tabindex="0"><code>{{ a.extra.raw }}</code></pre>
+          <pre class="code"><code>{{ a.extra.raw }}</code></pre>
         </div>
       </div>
     </div>
@@ -138,7 +138,7 @@
       <div id="tooltip-conceptual" role="tooltip" class="tooltip-box invisible absolute z-20 inline-block opacity-0 transition-opacity duration-300">{{ o.disclaimer }}</div>
     </div>
     <p id="observability-disclaimer" class="label mt-6 max-w-2xl normal-case tracking-normal">{{ o.disclaimer }}</p>
-    <div class="mt-12 overflow-x-auto reveal">
+    <div class="mt-12 reveal">
       <table class="metrics">
         <caption class="sr-only">{{ o.heading }}</caption>
         <thead>

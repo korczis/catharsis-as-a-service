@@ -591,6 +591,7 @@
     text-align: left;
     font-weight: 400;
     vertical-align: middle;
+    overflow-wrap: anywhere;
   }
 
   .metrics thead th {
@@ -1372,35 +1373,37 @@
     fill: var(--color-blood);
   }
 
-  /* Curves and pipeline figures scroll sideways below their minimum drawing width, so labels stay
-     legible on a phone and the page itself never scrolls (tests/site.spec.js checks both). */
+  /* Figures scale to their column and never scroll (project.no-scroll-containers). A drawing scaled to a
+     phone would shrink its labels out of legibility, so below 40rem each kind has a narrow treatment:
+     curves drop the labels inside the plot and show the key below, a pipeline is replaced by the stack. */
 
   .ill-canvas {
-    /* contain: inline-size stops the drawing's minimum width from sizing the ancestors: without it the
-       column around the figure grows to the drawing and the page scrolls sideways instead of the figure. */
-    contain: inline-size;
     max-width: 100%;
-    overflow-x: auto;
-    overscroll-behavior-x: contain;
   }
 
   .ill-canvas svg {
-    min-width: 34rem;
+    display: block;
+    width: 100%;
+    height: auto;
   }
 
-  .ill-canvas-wide svg {
-    min-width: 44rem;
-  }
-
-  /* Scrolled down to its minimum width the drawing renders at about three quarters of its own scale,
-     which would put the mono metadata below a readable size; it is set larger there instead. */
+  /* The drawing is about half its own scale on a phone, so type inside it is set in user units that land
+     back at a readable size: 24 user units read as roughly 12 px at 390 px wide. */
   @media (width <= 40rem) {
     .ill-canvas .ill-meta {
-      font-size: 15px;
+      font-size: 24px;
+      letter-spacing: 0.08em;
     }
 
-    .ill-canvas .ill-label-sm {
-      font-size: 17px;
+    .ill-canvas-curves .ill-label {
+      display: none;
+    }
+  }
+
+  /* A 320px screen scales the drawing to about two fifths, so the metadata is set larger again there. */
+  @media (width <= 24rem) {
+    .ill-canvas .ill-meta {
+      font-size: 28px;
     }
   }
 
@@ -1425,16 +1428,68 @@
     vertical-align: middle;
   }
 
-  /* The key repeats the series labels only where the drawing is wider than its column and scrolls. */
-  @media (width <= 34rem) {
+  /* The key carries the series labels wherever they are hidden inside the drawing. */
+  @media (width <= 40rem) {
     .ill-key {
       display: flex;
     }
   }
 
-  .ill-canvas:focus-visible {
-    outline: 1px solid var(--color-blood);
-    outline-offset: 4px;
+  /* The stack replaces a pipeline drawing on a phone: the same nodes, one per line, at text size. */
+
+  .ill-stack {
+    display: none;
+    margin-top: 0.5rem;
+    border: 1px solid var(--color-line);
+  }
+
+  .ill-stack-node {
+    padding: 0.75rem 1rem;
+    border-top: 1px solid var(--color-line);
+  }
+
+  .ill-stack-node:first-of-type {
+    border-top: 0;
+  }
+
+  .ill-stack-node.is-alert {
+    border-left: 2px solid var(--color-blood);
+  }
+
+  .ill-stack-label {
+    font-family: var(--font-condensed);
+    font-size: 1.05rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .ill-stack-mark,
+  .ill-stack-meta,
+  .ill-stack-loop {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .ill-stack-node.is-alert .ill-stack-mark {
+    color: var(--color-blood);
+  }
+
+  .ill-stack-loop {
+    margin-top: 0.5rem;
+    color: var(--color-blood);
+  }
+
+  @media (width <= 40rem) {
+    .ill-canvas-flow {
+      display: none;
+    }
+
+    .ill-stack {
+      display: block;
+    }
   }
 
   /* Series and node styles for curves and pipeline figures (docs/FIGURES.md): bone, alert, muted. */
@@ -1654,11 +1709,12 @@
     overflow: visible !important;
   }
 
-  .ill-canvas svg {
-    min-width: 0 !important;
+  .ill-canvas-flow {
+    display: block !important;
   }
 
-  .ill-key {
+  .ill-key,
+  .ill-stack {
     display: none !important;
   }
 

@@ -115,9 +115,9 @@
 {%- set n = labels.series[0]["values"] | length %}
 {%- set step = 620 / (n - 1) %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
-  {#- Below the drawing's minimum width the figure scrolls sideways inside its own region rather than
-      shrinking the labels out of legibility; the region is focusable so it can be scrolled by keyboard. -#}
-  <div class="ill-canvas" tabindex="0" role="group" aria-label="{{ labels.title }}">
+  {#- The drawing scales to the column and never scrolls (project.no-scroll-containers). Below 40rem the
+      series labels inside it would be too small to read, so CSS hides them and shows the key below. -#}
+  <div class="ill-canvas ill-canvas-curves">
   <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
@@ -152,8 +152,7 @@
     {%- endfor %}
   </svg>
   </div>
-  {#- On a narrow screen the series labels sit in the scrolled-off part of the drawing, so the key is
-      repeated below it; CSS shows this only where the figure scrolls. -#}
+  {#- On a narrow screen the labels inside the drawing are hidden, so the key below carries them. -#}
   <p class="ill-key" aria-hidden="true">
     {%- for s in labels.series %}
     {%- if s.style is defined %}{% set style = s.style %}{% else %}{% set style = "bone" %}{% endif %}
@@ -171,8 +170,9 @@
 {%- set w = (680 - 28 * (n - 1)) / n %}
 {%- if labels.loop is defined %}{% set height = 320 %}{% else %}{% set height = 206 %}{% endif %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
-  {#- See illustration.curves: the same scroll region, widened once a row carries more than three nodes. -#}
-  <div class="ill-canvas{% if n > 3 %} ill-canvas-wide{% endif %}" tabindex="0" role="group" aria-label="{{ labels.title }}">
+  {#- A row of nodes cannot shrink to a phone and stay readable, so below 40rem CSS hides the drawing and
+      shows the stack below instead — the same nodes, one per line, at text size. Neither one scrolls. -#}
+  <div class="ill-canvas ill-canvas-flow">
   <svg viewBox="0 0 720 {{ height }}" role="img" aria-labelledby="{{ id }}-title" aria-describedby="{{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
@@ -217,6 +217,22 @@
     {%- endif %}
   </svg>
   </div>
+  <ol class="ill-stack">
+    <li class="sr-only">{{ labels.description }}</li>
+    {%- for node in labels.nodes %}
+    {%- set alert = node.alert is defined and node.alert %}
+    <li class="ill-stack-node{% if alert %} is-alert{% endif %}">
+      {%- if node.mark is defined %}
+      <p class="ill-stack-mark">{{ node.mark }}</p>
+      {%- endif %}
+      <p class="ill-stack-label">{{ node.label | replace(from="|", to=" ") }}</p>
+      <p class="ill-stack-meta">{{ node.meta }}</p>
+    </li>
+    {%- endfor %}
+  </ol>
+  {%- if labels.loop is defined %}
+  <p class="ill-stack-loop">{{ labels.loop.label }}{% if labels.loop.meta is defined %} · {{ labels.loop.meta }}{% endif %}</p>
+  {%- endif %}
   <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
 </figure>
 {% endcomponent illustration.pipeline %}
