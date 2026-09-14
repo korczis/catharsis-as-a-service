@@ -1,8 +1,9 @@
 //! Typed access to the Catharsis as a Service content API.
 //!
-//! The site exports its research notes, advice entries, references and command registry as
-//! versioned JSON under `api/v1` (written by `scripts/export-api.py`). This crate is the Rust side
-//! of that contract: it deserializes the files and checks the invariants other applications rely on.
+//! The site exports its research notes, advice entries, references, command registry, evidence
+//! ledger and glossary as versioned JSON under `api/v1` (written by `scripts/export-api.py`). This
+//! crate is the Rust side of that contract: it deserializes the files and checks the invariants
+//! other applications rely on.
 
 use std::collections::{BTreeMap, BTreeSet};
 use std::fmt;
@@ -15,6 +16,9 @@ use serde::{Deserialize, Serialize};
 /// The API version this crate understands.
 pub const API_VERSION: u32 = 1;
 
+/// Text in every site language, keyed by language code.
+pub type Localized = BTreeMap<String, String>;
+
 /// `api/v1/index.json`: the entry point that names every other file.
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 pub struct ApiIndex {
@@ -25,6 +29,10 @@ pub struct ApiIndex {
     pub collections: Collections,
     pub references: String,
     pub commands: String,
+    pub claims: String,
+    pub sources: String,
+    pub glossary: String,
+    pub evidence_changelog: String,
     pub endpoint: Endpoint,
 }
 
@@ -134,6 +142,132 @@ pub struct Command {
     pub verified_by: Vec<String>,
 }
 
+/// Evidence level of a source or claim, strongest (A) first.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+pub enum EvidenceLevel {
+    /// Meta-analysis or systematic review of controlled studies.
+    A,
+    /// Randomized or controlled experiments.
+    B,
+    /// Longitudinal, prospective or quasi-experimental studies.
+    C,
+    /// Cross-sectional, correlational or qualitative studies, narrative reviews, theory.
+    D,
+    /// Classical texts, expert opinion, project records, artistic material.
+    E,
+}
+
+impl fmt::Display for EvidenceLevel {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.pad(match self {
+            Self::A => "A",
+            Self::B => "B",
+            Self::C => "C",
+            Self::D => "D",
+            Self::E => "E",
+        })
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "SCREAMING_SNAKE_CASE")]
+pub enum Confidence {
+    High,
+    Moderate,
+    Low,
+    Unknown,
+}
+
+impl fmt::Display for Confidence {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.pad(match self {
+            Self::High => "HIGH",
+            Self::Moderate => "MODERATE",
+            Self::Low => "LOW",
+            Self::Unknown => "UNKNOWN",
+        })
+    }
+}
+
+#[derive(Debug, Clone, Copy, PartialEq, Eq, PartialOrd, Ord, Hash, Serialize, Deserialize)]
+#[serde(rename_all = "kebab-case")]
+pub enum ClaimType {
+    Empirical,
+    Theoretical,
+    Historical,
+    ClinicalBoundary,
+    Technical,
+    Artistic,
+}
+
+impl ClaimType {
+    pub fn as_str(self) -> &'static str {
+        match self {
+            Self::Empirical => "empirical",
+            Self::Theoretical => "theoretical",
+            Self::Historical => "historical",
+            Self::ClinicalBoundary => "clinical-boundary",
+            Self::Technical => "technical",
+            Self::Artistic => "artistic",
+        }
+    }
+}
+
+impl fmt::Display for ClaimType {
+    fn fmt(&self, formatter: &mut fmt::Formatter<'_>) -> fmt::Result {
+        formatter.pad(self.as_str())
+    }
+}
+
+/// One public claim from the evidence ledger (`data/claims.toml`).
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Claim {
+    pub id: String,
+    pub statement: Localized,
+    pub claim_type: ClaimType,
+    pub evidence_level: EvidenceLevel,
+    pub confidence: Confidence,
+    pub sources: Vec<String>,
+    pub scope: Localized,
+    pub caveat: Localized,
+    /// Content paths (English file names) where the claim is made.
+    pub used_in: Vec<String>,
+    /// ISO 8601 date.
+    pub last_reviewed: String,
+    /// ISO 8601 date after which the claim is stale.
+    pub review_due: String,
+}
+
+/// The appraisal of one reference (`data/sources.toml`).
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct Source {
+    pub design: String,
+    pub level: EvidenceLevel,
+    pub population: Localized,
+    pub appraisal: Localized,
+    pub last_reviewed: String,
+    pub review_due: String,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct GlossaryTerm {
+    pub id: String,
+    pub term: Localized,
+    pub definition: Localized,
+    pub kind: String,
+    pub see_also: Vec<String>,
+    pub links: Vec<String>,
+    pub references: Vec<String>,
+}
+
+#[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
+pub struct ChangelogEntry {
+    pub date: String,
+    pub kind: String,
+    pub summary: Localized,
+    pub claims: Vec<String>,
+}
+
 #[derive(Debug)]
 pub enum Error {
     Read {
@@ -199,6 +333,10 @@ pub struct Library {
     pub advice: BTreeMap<String, Vec<AdviceEntry>>,
     pub references: BTreeMap<String, Reference>,
     pub commands: Vec<Command>,
+    pub claims: Vec<Claim>,
+    pub sources: BTreeMap<String, Source>,
+    pub glossary: Vec<GlossaryTerm>,
+    pub changelog: Vec<ChangelogEntry>,
 }
 
 fn read_json<T: DeserializeOwned>(path: &Path) -> Result<T, Error> {
@@ -248,12 +386,20 @@ impl Library {
 
         let references = read_json(&dir.join(&index.references))?;
         let commands = read_json(&dir.join(&index.commands))?;
+        let claims = read_json(&dir.join(&index.claims))?;
+        let sources = read_json(&dir.join(&index.sources))?;
+        let glossary = read_json(&dir.join(&index.glossary))?;
+        let changelog = read_json(&dir.join(&index.evidence_changelog))?;
         Ok(Self {
             index,
             research,
             advice,
             references,
             commands,
+            claims,
+            sources,
+            glossary,
+            changelog,
         })
     }
 
@@ -272,6 +418,25 @@ impl Library {
         self.advice(language)
             .iter()
             .find(|entry| entry.slug == slug)
+    }
+
+    pub fn claim(&self, id: &str) -> Option<&Claim> {
+        self.claims.iter().find(|claim| claim.id == id)
+    }
+
+    pub fn term(&self, id: &str) -> Option<&GlossaryTerm> {
+        self.glossary.iter().find(|term| term.id == id)
+    }
+
+    /// Claims whose review is due on or before `date` (ISO 8601, compared lexically).
+    pub fn claims_due_by(&self, date: &str) -> Vec<&Claim> {
+        let mut due: Vec<&Claim> = self
+            .claims
+            .iter()
+            .filter(|claim| claim.review_due.as_str() <= date)
+            .collect();
+        due.sort_by(|a, b| a.review_due.cmp(&b.review_due).then(a.id.cmp(&b.id)));
+        due
     }
 
     /// Integrity problems an application should refuse to run with. Empty when the library is sound.
@@ -376,6 +541,56 @@ impl Library {
                 }
             }
         }
+
+        problems.extend(self.ledger_problems());
+        problems
+    }
+
+    fn ledger_problems(&self) -> Vec<String> {
+        let mut problems = Vec::new();
+        for id in self.references.keys() {
+            if !self.sources.contains_key(id) {
+                problems.push(format!("sources: reference {id} has no appraisal"));
+            }
+        }
+        for claim in &self.claims {
+            let best = claim
+                .sources
+                .iter()
+                .filter_map(|id| self.sources.get(id).map(|source| source.level))
+                .min()
+                .unwrap_or(EvidenceLevel::E);
+            for id in &claim.sources {
+                if !self.sources.contains_key(id) {
+                    problems.push(format!("claims/{}: unknown source {id}", claim.id));
+                }
+            }
+            if claim.evidence_level < best {
+                problems.push(format!(
+                    "claims/{}: level {} is stronger than its best source ({best})",
+                    claim.id, claim.evidence_level
+                ));
+            }
+            if claim.review_due < claim.last_reviewed {
+                problems.push(format!(
+                    "claims/{}: review_due precedes last_reviewed",
+                    claim.id
+                ));
+            }
+            for language in &self.index.languages {
+                if !claim.statement.contains_key(language) {
+                    problems.push(format!("claims/{}: no statement in {language}", claim.id));
+                }
+            }
+        }
+        let term_ids: BTreeSet<&str> = self.glossary.iter().map(|term| term.id.as_str()).collect();
+        for term in &self.glossary {
+            for other in &term.see_also {
+                if !term_ids.contains(other.as_str()) {
+                    problems.push(format!("glossary/{}: unknown see_also {other}", term.id));
+                }
+            }
+        }
         problems
     }
 }
@@ -402,6 +617,18 @@ mod tests {
     #[test]
     fn grades_order_from_strongest_to_weakest() {
         assert!(EvidenceGrade::MetaAnalytic < EvidenceGrade::Theoretical);
+        assert!(EvidenceLevel::A < EvidenceLevel::E);
+    }
+
+    #[test]
+    fn ledger_vocabulary_uses_the_exported_spelling() {
+        let kind: ClaimType = serde_json::from_str("\"clinical-boundary\"").expect("type parses");
+        assert_eq!(kind, ClaimType::ClinicalBoundary);
+        let confidence: Confidence =
+            serde_json::from_str("\"MODERATE\"").expect("confidence parses");
+        assert_eq!(confidence.to_string(), "MODERATE");
+        let level: EvidenceLevel = serde_json::from_str("\"B\"").expect("level parses");
+        assert_eq!(format!("{level:<2}|"), "B |");
     }
 
     #[test]

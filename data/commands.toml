@@ -282,6 +282,16 @@ summary.cs = "Zkontroluje obsahové standardy (pole důkazů, SEO popisy, zakáz
 verified_by = ["ci:Validate and build", "pytest:test_content_passes_on_repository"]
 
 [[commands]]
+id = "validate-claims"
+group = "validate"
+command = "python3 scripts/validate-claims.py"
+match = "python3 scripts/validate-claims.py"
+source = "scripts/validate-claims.py"
+summary.en = "Checks the evidence ledger: every reference appraised, claims graded no higher than their sources, review intervals and dates, coverage of every research note and advice entry, and the glossary."
+summary.cs = "Zkontroluje registr důkazů: ohodnocení všech zdrojů, úroveň tvrzení nejvýš podle zdrojů, intervaly a data revizí, pokrytí každé výzkumné poznámky a rady a slovník pojmů."
+verified_by = ["ci:Validate and build", "pytest:test_ledger_passes_on_repository"]
+
+[[commands]]
 id = "check-references"
 group = "validate"
 command = "python3 scripts/check-references.py --online"
@@ -334,9 +344,9 @@ verified_by = ["ci:Rust"]
 [[commands]]
 id = "caas-cli"
 group = "rust"
-command = "cargo run -p caas-cli -- advice list --lang cs"
+command = "cargo run -p caas-cli -- claims list --due-by 2027-03-31"
 match = "cargo run -p caas-cli"
 source = "crates/caas-cli/src/main.rs"
-summary.en = "Runs the caas command-line client: list or show advice, list research, check the library, print the endpoint response."
-summary.cs = "Spustí klienta caas pro příkazovou řádku: výpis a zobrazení rad, výpis výzkumu, kontrola knihovny, odpověď endpointu."
+summary.en = "Runs the caas command-line client: list or show advice, list research, list claims due for review, show a claim or glossary term, check the library, print the endpoint response."
+summary.cs = "Spustí klienta caas pro příkazovou řádku: výpis a zobrazení rad, výpis výzkumu, tvrzení k revizi, zobrazení tvrzení nebo pojmu, kontrola knihovny, odpověď endpointu."
 verified_by = ["ci:Rust"]

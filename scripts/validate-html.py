@@ -21,6 +21,9 @@ CSS_URL = re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)")
 # Inline data URIs may contain url() of their own (an SVG filter reference); they are not files.
 CSS_DATA_URI = re.compile(r"url\(\s*(['\"])data:.*?\1\s*\)|url\(\s*data:[^)]*\)", re.S)
 SITEMAP_LOC = re.compile(r"<loc>([^<]+)</loc>")
+# Library pages must describe themselves as Article; no page may claim to be a medical resource.
+ARTICLE_PAGES = re.compile(r"^(cs/)?(research/[^/]+/|advice/[^/]+/|methods/|evidence/|glossary/|slovnik/|about/)index\.html$")
+FORBIDDEN_TYPES = {"MedicalWebPage", "MedicalScholarlyArticle", "MedicalCondition"}
 
 
 class Page(HTMLParser):
@@ -129,6 +132,7 @@ def main():
         pages[path] = parser
 
     anchors_checked = refs_checked = structured_nodes = 0
+    titles = {}
     for path, page in pages.items():
         rel = path.relative_to(public)
         is_404 = rel.name == "404.html" and rel.parent == Path(".")
@@ -172,8 +176,18 @@ def main():
                     errors.append(f"{rel}: JSON-LD needs @context https://schema.org and a non-empty @graph")
                     continue
                 structured_nodes += len(document["@graph"])
-                if "WebSite" not in {node.get("@type") for node in document["@graph"]}:
+                types = {node.get("@type") for node in document["@graph"]}
+                if "WebSite" not in types:
                     errors.append(f"{rel}: JSON-LD graph has no WebSite node")
+                if FORBIDDEN_TYPES & types:
+                    errors.append(f"{rel}: JSON-LD uses {sorted(FORBIDDEN_TYPES & types)}; the site is educational (medical-claims rule)")
+                if ARTICLE_PAGES.match(rel.as_posix()) and "Article" not in types:
+                    errors.append(f"{rel}: library page has no Article node")
+            if not rel.as_posix().startswith(("tags/", "cs/tags/")):
+                key = (page.lang, page.title.strip())
+                if key in titles:
+                    errors.append(f"{rel}: <title> duplicates {titles[key]}")
+                titles[key] = rel
 
         for ref in page.refs:
             resolved = resolve(ref, base_url, public, path)

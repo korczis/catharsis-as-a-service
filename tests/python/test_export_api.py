@@ -33,6 +33,25 @@ def test_export_api_writes_the_contract(tmp_path):
         assert all(slugs == slug_sets[0] for slugs in slug_sets), f"{collection} differs between languages"
 
 
+def test_export_api_includes_the_evidence_ledger_and_glossary(tmp_path):
+    assert run(["python3", "scripts/export-api.py", "--out", str(tmp_path)]).returncode == 0
+    api = tmp_path / "api" / "v1"
+    index = json.loads((api / "index.json").read_text(encoding="utf-8"))
+    claims = json.loads((api / index["claims"]).read_text(encoding="utf-8"))
+    sources = json.loads((api / index["sources"]).read_text(encoding="utf-8"))
+    references = json.loads((api / index["references"]).read_text(encoding="utf-8"))
+    glossary = json.loads((api / index["glossary"]).read_text(encoding="utf-8"))
+    changelog = json.loads((api / index["evidence_changelog"]).read_text(encoding="utf-8"))
+
+    assert set(sources) == set(references)
+    assert claims and glossary and changelog
+    for claim in claims:
+        assert len(claim["review_due"]) == 10 and claim["review_due"] > claim["last_reviewed"]
+        assert all(source in sources for source in claim["sources"])
+        assert set(claim["statement"]) >= set(index["languages"])
+    assert {term["id"] for term in glossary} >= {"catharsis", "venting", "reappraisal"}
+
+
 def test_export_api_is_deterministic(tmp_path):
     first, second = tmp_path / "a", tmp_path / "b"
     for out in (first, second):

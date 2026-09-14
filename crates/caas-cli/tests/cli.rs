@@ -112,6 +112,49 @@ fn unknown_commands_and_languages_are_usage_errors() {
 }
 
 #[test]
+fn claims_list_prints_the_ledger_and_filters_by_review_date() {
+    let library = Library::load(api_dir()).expect("library loads");
+    let output = caas(&["claims", "list"]);
+    assert!(output.status.success());
+    let text = stdout(&output);
+    assert_eq!(text.lines().count(), library.claims.len());
+    assert!(text.contains("clinical-boundary"));
+
+    let everything = caas(&["claims", "list", "--due-by", "9999-12-31"]);
+    assert_eq!(stdout(&everything).lines().count(), library.claims.len());
+    let nothing = caas(&["claims", "list", "--due-by", "2000-01-01"]);
+    assert!(nothing.status.success());
+    assert_eq!(stdout(&nothing).lines().count(), 0);
+}
+
+#[test]
+fn claims_show_prints_the_localized_claim_with_its_sources() {
+    let library = Library::load(api_dir()).expect("library loads");
+    let claim = library
+        .claims
+        .iter()
+        .find(|claim| !claim.sources.is_empty())
+        .expect("a sourced claim");
+    let output = caas(&["claims", "show", &claim.id, "--lang", "cs"]);
+    assert!(output.status.success());
+    let text = stdout(&output);
+    assert!(text.contains(&claim.statement["cs"]));
+    assert!(text.contains(&format!("level {}", claim.evidence_level)));
+    assert!(text.contains(&claim.sources[0]));
+}
+
+#[test]
+fn glossary_show_prints_the_term() {
+    let library = Library::load(api_dir()).expect("library loads");
+    let term = library.term("catharsis").expect("catharsis is defined");
+    let output = caas(&["glossary", "show", "catharsis", "--lang", "cs"]);
+    assert!(output.status.success());
+    assert!(stdout(&output).contains(&term.term["cs"]));
+    let missing = caas(&["glossary", "show", "no-such-term"]);
+    assert_eq!(missing.status.code(), Some(2));
+}
+
+#[test]
 fn help_exits_successfully() {
     let output = caas(&["--help"]);
     assert!(output.status.success());

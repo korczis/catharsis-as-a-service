@@ -5,11 +5,13 @@ The contract is documented in docs/RUST-INTEGRATION.md and implemented on the Ru
 crates/caas-content. Output is deterministic: no timestamps, stable ordering.
 
 usage: export-api.py --out <dir> [--base-url <url>] [--root <repo>]
-writes <dir>/api/v1/index.json, references.json, commands.json,
-       research.<lang>.json and advice.<lang>.json for every configured language
+writes <dir>/api/v1/index.json, references.json, commands.json, claims.json, sources.json,
+       glossary.json, evidence_changelog.json, and research.<lang>.json and advice.<lang>.json
+       for every configured language
 """
 
 import argparse
+import datetime as dt
 import json
 import re
 import sys
@@ -90,6 +92,18 @@ def export(root, out, base_url):
     references = tomllib.loads((root / "data" / "references.toml").read_text(encoding="utf-8"))["references"]
     write(api / "references.json", dict(sorted(references.items())))
 
+    # Evidence ledger and glossary. TOML dates become ISO 8601 strings.
+    def data(name):
+        return tomllib.loads((root / "data" / name).read_text(encoding="utf-8"))
+
+    def iso(entry):
+        return {key: value.isoformat() if isinstance(value, dt.date) else value for key, value in entry.items()}
+
+    write(api / "claims.json", [iso(claim) for claim in data("claims.toml")["claims"]])
+    write(api / "sources.json", {ident: iso(entry) for ident, entry in sorted(data("sources.toml")["sources"].items())})
+    write(api / "glossary.json", data("glossary.toml")["terms"])
+    write(api / "evidence_changelog.json", [iso(entry) for entry in data("evidence_changelog.toml")["entries"]])
+
     registry = tomllib.loads((root / "data" / "commands.toml").read_text(encoding="utf-8"))
     commands = [
         {key: entry[key] for key in ("id", "group", "command", "summary", "source", "verified_by")}
@@ -105,6 +119,10 @@ def export(root, out, base_url):
         "collections": collections,
         "references": "references.json",
         "commands": "commands.json",
+        "claims": "claims.json",
+        "sources": "sources.json",
+        "glossary": "glossary.json",
+        "evidence_changelog": "evidence_changelog.json",
         "endpoint": {"method": "POST", "path": "/v1/catharsis", "status": 200, "problem_solved": False},
     }
     write(api / "index.json", index)

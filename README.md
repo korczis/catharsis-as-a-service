@@ -34,6 +34,10 @@ The site is educational. It is not a diagnostic or treatment tool, and no metric
 | Landing | intent, definition of catharsis, the relief loop, evidence highlights, FAQ, how it was made | `content/_index.md`, `content/_index.cs.md` |
 | Research | nine research notes with key points, figures and references | `content/research/` |
 | Advice | ten entries graded by strength of evidence, with practice steps and limits | `content/advice/` |
+| Methods | detection model, temporal model, detection matrix, uncertainty vocabulary, architecture status, a labelled simulation | `content/methods/` |
+| Evidence ledger | every public claim graded by level and confidence, with sources and review dates | `data/claims.toml`, `data/sources.toml` |
+| Glossary | psychological, physiological and methodological terms (`/glossary/`, `/cs/slovnik/`) | `data/glossary.toml` |
+| Status | build revision, content version, ledger statistics, next reviews | generated at build time |
 | References | every citation, with Crossref-verified DOIs | `data/references.toml` |
 | Commands | every documented command, its source and the test that runs it | `data/commands.toml` |
 | API | versioned JSON export for other applications | `api/v1/` (generated) |
@@ -90,6 +94,7 @@ cargo fmt --all --check
 cargo clippy --workspace --all-targets -- -D warnings
 cargo test --workspace
 python3 scripts/check-references.py --online
+python3 scripts/validate-claims.py
 ```
 
 - [`npm run validate`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-validate): toolchain, assets,
@@ -104,6 +109,9 @@ python3 scripts/check-references.py --online
   [`cargo test`](https://korczis.github.io/catharsis-as-a-service/commands/#cargo-test).
 - [`python3 scripts/check-references.py --online`](https://korczis.github.io/catharsis-as-a-service/commands/#check-references):
   every DOI, title and year against Crossref.
+- [`python3 scripts/validate-claims.py`](https://korczis.github.io/catharsis-as-a-service/commands/#validate-claims):
+  the evidence ledger (levels, confidence, review intervals, staleness, coverage) and the glossary. A weekly
+  workflow repeats it with Crossref and opens an `evidence-update` issue when anything has expired.
 
 ## Deployment and releases
 
@@ -130,12 +138,21 @@ The content API under `api/v1` is produced by
 ([`cargo run -p caas-cli`](https://korczis.github.io/catharsis-as-a-service/commands/#caas-cli)). See
 [docs/RUST-INTEGRATION.md](docs/RUST-INTEGRATION.md).
 
+## Documentation
+
+- [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md): layers, routes and validation stages
+- [docs/EVIDENCE.md](docs/EVIDENCE.md): the evidence ledger, grading and review workflow
+- [docs/CONTENT-STANDARDS.md](docs/CONTENT-STANDARDS.md): register, uncertainty vocabulary, prohibited phrasing, medical policy
+- [docs/SEO.md](docs/SEO.md): metadata, previews and structured data
+- [docs/RUST-INTEGRATION.md](docs/RUST-INTEGRATION.md): the content API, the crate and the CLI
+
 ## Adding content
 
 1. Create `content/<research|advice>/<slug>/index.md` and `index.cs.md` with the same front-matter structure.
-2. Cite registry ids from `data/references.toml`; add new references with verified DOIs.
-3. Link every command you mention to its entry on the commands page.
-4. Run [`npm run validate && npm test`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-validate), commit
+2. Cite registry ids from `data/references.toml`; add new references with verified DOIs and an appraisal in `data/sources.toml`.
+3. Record every substantive claim in `data/claims.toml` (see [docs/EVIDENCE.md](docs/EVIDENCE.md)).
+4. Link every command you mention to its entry on the commands page.
+5. Run [`npm run validate && npm test`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-validate), commit
    (`feat(content): …`) and push.
 
 ## License status

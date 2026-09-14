@@ -12,6 +12,10 @@ commands:
   advice list              list advice entries with their evidence grade
   advice show <slug>       show one advice entry with its practice steps
   research list            list research notes
+  claims list [--due-by <YYYY-MM-DD>]
+                           list ledger claims with type, level, confidence and review date
+  claims show <id>         show one claim with its scope, caveat and appraised sources
+  glossary show <id>       show one glossary term in the chosen language
   check                    verify the integrity of the exported library (exit 1 on problems)
   endpoint                 print the POST /v1/catharsis response
 
@@ -21,8 +25,13 @@ The language defaults to the site's default language.";
 struct Options {
     api: PathBuf,
     language: Option<String>,
+    due_by: Option<String>,
     words: Vec<String>,
     help: bool,
+}
+
+fn text<'a>(values: &'a caas_content::Localized, language: &str) -> &'a str {
+    values.get(language).map_or("", String::as_str)
 }
 
 fn parse(args: &[String]) -> Result<Options, String> {
@@ -30,6 +39,7 @@ fn parse(args: &[String]) -> Result<Options, String> {
         api: env::var_os("CAAS_API_DIR")
             .map_or_else(|| PathBuf::from("public/api/v1"), PathBuf::from),
         language: None,
+        due_by: None,
         words: Vec::new(),
         help: false,
     };
@@ -47,6 +57,12 @@ fn parse(args: &[String]) -> Result<Options, String> {
                     .next()
                     .ok_or_else(|| "--lang needs a language code".to_owned())?;
                 options.language = Some(code.clone());
+            }
+            "--due-by" => {
+                let date = iter
+                    .next()
+                    .ok_or_else(|| "--due-by needs a date (YYYY-MM-DD)".to_owned())?;
+                options.due_by = Some(date.clone());
             }
             "-h" | "--help" => options.help = true,
             _ => options.words.push(arg.clone()),
@@ -115,16 +131,75 @@ fn run(args: &[String]) -> Result<ExitCode, String> {
             }
             Ok(ExitCode::SUCCESS)
         }
+        ["claims", "list"] => {
+            let claims: Vec<_> = match options.due_by.as_deref() {
+                Some(date) => library.claims_due_by(date),
+                None => library.claims.iter().collect(),
+            };
+            for claim in claims {
+                println!(
+                    "{:<48} {:<18} {} {:<9} {}",
+                    claim.id,
+                    claim.claim_type,
+                    claim.evidence_level,
+                    claim.confidence,
+                    claim.review_due
+                );
+            }
+            Ok(ExitCode::SUCCESS)
+        }
+        ["claims", "show", id] => {
+            let claim = library.claim(id).ok_or_else(|| format!("no claim {id}"))?;
+            println!("{}", text(&claim.statement, language));
+            println!(
+                "{} · level {} · confidence {}",
+                claim.claim_type, claim.evidence_level, claim.confidence
+            );
+            println!();
+            println!("scope:  {}", text(&claim.scope, language));
+            println!("caveat: {}", text(&claim.caveat, language));
+            println!(
+                "reviewed {} · due {}",
+                claim.last_reviewed, claim.review_due
+            );
+            for source in &claim.sources {
+                let level = library
+                    .sources
+                    .get(source)
+                    .map_or_else(|| "?".to_owned(), |appraisal| appraisal.level.to_string());
+                let reference = library.references.get(source);
+                let cite = reference.map_or_else(String::new, |reference| {
+                    format!("{} ({})", reference.authors, reference.year)
+                });
+                println!("  [{level}] {source}: {cite}");
+            }
+            Ok(ExitCode::SUCCESS)
+        }
+        ["glossary", "show", id] => {
+            let term = library
+                .term(id)
+                .ok_or_else(|| format!("no glossary term {id}"))?;
+            println!("{} ({})", text(&term.term, language), term.kind);
+            println!();
+            println!("{}", text(&term.definition, language));
+            if !term.see_also.is_empty() {
+                println!();
+                println!("see also: {}", term.see_also.join(", "));
+            }
+            Ok(ExitCode::SUCCESS)
+        }
         ["check"] => {
             let problems = library.problems();
             if problems.is_empty() {
                 println!(
-                    "library ok: {} languages, {} research notes, {} advice entries, {} references, {} commands",
+                    "library ok: {} languages, {} research notes, {} advice entries, {} references, {} commands, {} claims, {} glossary terms",
                     library.index.languages.len(),
                     library.research(language).len(),
                     library.advice(language).len(),
                     library.references.len(),
-                    library.commands.len()
+                    library.commands.len(),
+                    library.claims.len(),
+                    library.glossary.len()
                 );
                 Ok(ExitCode::SUCCESS)
             } else {

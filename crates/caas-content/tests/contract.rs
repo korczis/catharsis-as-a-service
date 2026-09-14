@@ -7,7 +7,7 @@ use std::path::{Path, PathBuf};
 use std::process::Command;
 use std::sync::OnceLock;
 
-use caas_content::{EvidenceGrade, Library};
+use caas_content::{ClaimType, EvidenceGrade, EvidenceLevel, Library};
 
 fn api_dir() -> &'static Path {
     static DIR: OnceLock<PathBuf> = OnceLock::new();
@@ -101,6 +101,31 @@ fn advice_with_the_strongest_grade_exists() {
             .iter()
             .any(|entry| entry.evidence_grade == EvidenceGrade::MetaAnalytic)
     );
+}
+
+#[test]
+fn the_ledger_covers_every_claim_type_and_grades_within_its_sources() {
+    let library = library();
+    assert!(!library.claims.is_empty());
+    assert_eq!(library.sources.len(), library.references.len());
+    for kind in [
+        ClaimType::Empirical,
+        ClaimType::ClinicalBoundary,
+        ClaimType::Artistic,
+    ] {
+        assert!(
+            library.claims.iter().any(|claim| claim.claim_type == kind),
+            "no {kind} claim"
+        );
+    }
+    for claim in &library.claims {
+        assert!(claim.review_due > claim.last_reviewed, "{}", claim.id);
+        if claim.sources.is_empty() {
+            assert_eq!(claim.evidence_level, EvidenceLevel::E, "{}", claim.id);
+        }
+    }
+    assert!(library.term("catharsis").is_some());
+    assert!(!library.changelog.is_empty());
 }
 
 #[test]
