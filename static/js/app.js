@@ -241,6 +241,19 @@
       const paged = triggers.length > 1;
       let index = 0;
       let trigger = null;
+      let visible = false;
+
+      // Every screen has an address, #<figure id>-<n> (1-based), matching the id of its list item:
+      // an open preview can be bookmarked and shared, Back closes it and Forward reopens it.
+      const prefix = `#${figure.id}-`;
+      const hashFor = (position) => `${prefix}${position + 1}`;
+      const positionFromHash = () => {
+        if (!window.location.hash.startsWith(prefix)) return -1;
+        const n = Number(window.location.hash.slice(prefix.length));
+        return Number.isInteger(n) && n >= 1 && n <= triggers.length ? n - 1 : -1;
+      };
+      let pushed = false; // this dialog added the current history entry, so closing goes back
+      let syncing = false; // the URL already changed, so closing must not touch history
 
       // A single screen has nothing to page through; disabled also keeps the buttons out of the focus trap.
       [prev, next].forEach((node) => {
@@ -274,6 +287,12 @@
         warm.src = url;
       };
 
+      // Paging inside an open preview replaces the address instead of adding history entries.
+      const turn = (position) => {
+        show(position);
+        window.history.replaceState(window.history.state, '', hashFor(index));
+      };
+
       const PAGING_KEYS = {
         ArrowRight: () => index + 1,
         ArrowLeft: () => index - 1,
@@ -283,7 +302,7 @@
       const onKey = (event) => {
         if (paged && event.key in PAGING_KEYS) {
           event.preventDefault();
-          show(PAGING_KEYS[event.key]());
+          turn(PAGING_KEYS[event.key]());
         } else {
           trapFocus(el, event);
         }
@@ -303,7 +322,7 @@
         const dy = event.clientY - stroke.y;
         stroke = null;
         if (Math.abs(dx) < SWIPE_MIN_PX || Math.abs(dx) <= Math.abs(dy)) return;
-        show(index + (dx < 0 ? 1 : -1));
+        turn(index + (dx < 0 ? 1 : -1));
       });
 
       const modal = new window.Modal(
@@ -314,29 +333,68 @@
           backdropClasses: 'viewer-backdrop fixed inset-0 z-40',
           closable: true,
           onShow: () => {
+            visible = true;
             el.addEventListener('keydown', onKey);
             el.querySelector('[data-screen-close]')?.focus();
           },
           onHide: () => {
+            visible = false;
             el.removeEventListener('keydown', onKey);
             trigger?.focus({ preventScroll: true });
+            if (syncing) {
+              syncing = false;
+              return;
+            }
+            if (positionFromHash() < 0) return;
+            if (pushed) {
+              pushed = false;
+              window.history.back();
+            } else {
+              const { pathname, search } = window.location;
+              window.history.replaceState(window.history.state, '', `${pathname}${search}`);
+            }
           },
         },
         { id: el.id, override: true },
       );
 
+      // fromHistory: the address already names this screen (a bookmark, Back or Forward).
+      const open = (position, fromHistory) => {
+        trigger = triggers[position];
+        show(position);
+        if (fromHistory) {
+          pushed = window.history.state?.screen === figure.id;
+        } else {
+          window.history.pushState({ screen: figure.id }, '', hashFor(index));
+          pushed = true;
+        }
+        modal.show();
+      };
+
       triggers.forEach((node, position) => {
         node.addEventListener('click', (event) => {
           if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
           event.preventDefault();
-          trigger = node;
-          show(position);
-          modal.show();
+          open(position, false);
         });
       });
-      prev.addEventListener('click', () => show(index - 1));
-      next.addEventListener('click', () => show(index + 1));
+      prev.addEventListener('click', () => turn(index - 1));
+      next.addEventListener('click', () => turn(index + 1));
       el.querySelector('[data-screen-close]')?.addEventListener('click', () => modal.hide());
+
+      window.addEventListener('popstate', () => {
+        const position = positionFromHash();
+        if (position >= 0) {
+          if (visible) show(position);
+          else open(position, true);
+        } else if (visible) {
+          syncing = true;
+          pushed = false;
+          modal.hide();
+        }
+      });
+      const initial = positionFromHash();
+      if (initial >= 0) open(initial, true);
     });
   };
 

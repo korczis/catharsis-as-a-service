@@ -638,8 +638,10 @@ const SCREEN_UI = {
 };
 
 function screenViewer(page) {
-  const viewer = page.locator('[data-screen-viewer]');
+  const viewer = page.locator('[data-screen-viewer]:not(.poster-viewer)');
   return {
+    page,
+    figure: page.locator('figure.screens'),
     triggers: page.locator('figure.screens [data-screen-open]'),
     viewer,
     close: viewer.locator('[data-screen-close]'),
@@ -653,9 +655,12 @@ function screenViewer(page) {
   };
 }
 
-// The dialog shows exactly what the thumbnail at `position` shows, with its full-size image loaded.
+// The dialog shows exactly what the thumbnail at `position` shows, with its full-size image loaded,
+// and the address names that screen.
 async function expectScreen(s, position, total) {
   const trigger = s.triggers.nth(position);
+  const id = String(await s.figure.getAttribute('id'));
+  await expect(s.page).toHaveURL(new RegExp(`#${id}-${position + 1}$`));
   await expect(s.count).toHaveText(`${position + 1} / ${total}`);
   await expect(s.title).toHaveText(String(await trigger.getAttribute('data-title')));
   await expect(s.caption).toHaveText(String(await trigger.getAttribute('data-caption')));
@@ -672,7 +677,7 @@ for (const { relative, total, lang } of SCREEN_PAGES) {
     await open(page, relative);
     const s = screenViewer(page);
     await expect(s.triggers).toHaveCount(total);
-    await expect(page.locator('body > [data-screen-viewer]')).toHaveCount(1);
+    await expect(page.locator('body > [data-screen-viewer]:not(.poster-viewer)')).toHaveCount(1);
     await expect(s.viewer).toBeHidden();
     await expect(s.prev).toHaveAttribute('aria-label', ui.previous);
     await expect(s.next).toHaveAttribute('aria-label', ui.next);
@@ -687,7 +692,6 @@ for (const { relative, total, lang } of SCREEN_PAGES) {
     await expect(s.viewer).toHaveAttribute('aria-modal', 'true');
     await expect(s.close).toBeFocused();
     await expect(page.locator('body')).toHaveClass(/overflow-hidden/);
-    expect(page.url()).toBe(url(relative));
     await expectScreen(s, 1, total);
     const labelledBy = String(await s.viewer.getAttribute('aria-labelledby'));
     await expect(page.locator(`[id="${labelledBy}"]`)).toHaveText(String(await trigger.getAttribute('data-title')));
@@ -708,9 +712,53 @@ for (const { relative, total, lang } of SCREEN_PAGES) {
     await expect(s.viewer).toBeHidden();
     await expect(trigger).toBeFocused();
     await expect(page.locator('body')).not.toHaveClass(/overflow-hidden/);
+    await expect(page).toHaveURL(url(relative));
     expect(problems).toEqual([]);
   });
 }
+
+test('concept screen preview: the address names the open screen; Back, Forward and bookmarks work', async ({ page }) => {
+  const problems = watch(page);
+  const relative = 'research/method-majordomus/';
+  const total = 8;
+  await open(page, relative);
+  const s = screenViewer(page);
+  const id = String(await s.figure.getAttribute('id'));
+
+  await s.triggers.nth(1).scrollIntoViewIfNeeded();
+  await s.triggers.nth(1).click();
+  await expectScreen(s, 1, total);
+  await s.next.click();
+  await expectScreen(s, 2, total);
+  await page.goBack();
+  await expect(s.viewer).toBeHidden();
+  await expect(page).toHaveURL(url(relative));
+  await page.goForward();
+  await expect(s.viewer).toBeVisible();
+  await expectScreen(s, 2, total);
+  await s.close.click();
+  await expect(s.viewer).toBeHidden();
+  await expect(page).toHaveURL(url(relative));
+
+  // A bookmarked address opens its screen on load; closing it keeps the reader on the page.
+  await open(page, 'about/');
+  await open(page, `${relative}#${id}-5`);
+  await expect(s.viewer).toBeVisible();
+  await expectScreen(s, 4, total);
+  await page.keyboard.press('Escape');
+  await expect(s.viewer).toBeHidden();
+  await expect(page).toHaveURL(url(relative));
+  await expect(s.triggers.nth(4)).toBeFocused();
+
+  // Addresses that name no screen leave the page as it is.
+  for (const hash of [`#${id}-0`, `#${id}-${total + 1}`, `#${id}-x`, '#references-title']) {
+    await open(page, 'about/');
+    await open(page, `${relative}${hash}`);
+    await expect(s.viewer).toBeHidden();
+    await expect(page).toHaveURL(url(`${relative}${hash}`));
+  }
+  expect(problems).toEqual([]);
+});
 
 test('concept screen preview: keyboard opening, focus trap, print and backdrop close', async ({ page }) => {
   const problems = watch(page);
@@ -791,18 +839,36 @@ test('concept screen preview: Home and End, touch swipe and neighbour preloading
   expect(problems).toEqual([]);
 });
 
-test('concept screen preview: modified clicks keep the link to the original PNG', async ({ page, context }) => {
+test('concept screen preview: modified and non-primary clicks keep the link behaviour', async ({ page }) => {
   const problems = watch(page);
   await open(page, 'about/');
   const s = screenViewer(page);
   const trigger = s.triggers.first();
-  const href = String(await trigger.evaluate((node) => node.href));
-  expect(href).toMatch(/\/assets\/majordomus\/cockpit-[a-z]+\.png$/);
+  await expect(trigger).toHaveAttribute('href', /\/assets\/majordomus\/cockpit-[a-z]+\.png$/);
 
-  const [tab] = await Promise.all([context.waitForEvent('page'), trigger.click({ modifiers: ['ControlOrMeta'] })]);
-  await tab.waitForLoadState();
-  expect(tab.url()).toBe(href);
-  await tab.close();
+  // Whether a new tab opens depends on the operating system and browser, so this checks the page's own
+  // decision instead: a window listener, which runs after the link's, records whether the preview
+  // cancelled the click and then cancels it so that nothing navigates.
+  const clickWith = (init) =>
+    trigger.evaluate((node, options) => {
+      let prevented = null;
+      const record = (event) => {
+        prevented = event.defaultPrevented;
+        event.preventDefault();
+      };
+      window.addEventListener('click', record, { once: true });
+      node.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true, button: 0, ...options }));
+      return prevented;
+    }, init);
+
+  for (const init of [{ ctrlKey: true }, { metaKey: true }, { shiftKey: true }, { altKey: true }, { button: 1 }]) {
+    expect(await clickWith(init), JSON.stringify(init)).toBe(false);
+    await expect(s.viewer).toBeHidden();
+    await expect(page).toHaveURL(url('about/'));
+  }
+  expect(await clickWith({})).toBe(true);
+  await expect(s.viewer).toBeVisible();
+  await page.keyboard.press('Escape');
   await expect(s.viewer).toBeHidden();
   expect(problems).toEqual([]);
 });
@@ -813,7 +879,7 @@ test('concept screens without JavaScript link to the original PNG and keep the d
   await page.goto(url('research/method-majordomus/'));
   const triggers = page.locator('figure.screens [data-screen-open]');
   await expect(triggers).toHaveCount(8);
-  await expect(page.locator('[data-screen-viewer]')).toBeHidden();
+  await expect(page.locator('[data-screen-viewer]:not(.poster-viewer)')).toBeHidden();
 
   const assets = await triggers.evaluateAll((nodes) => nodes.map((node) => ({ png: node.href, webp: node.dataset.full })));
   for (const { png, webp } of assets) {
@@ -824,6 +890,13 @@ test('concept screens without JavaScript link to the original PNG and keep the d
     expect(preview.status(), webp).toBe(200);
     expect(preview.headers()['content-type'], webp).toContain('image/webp');
   }
+
+  // The screen addresses are plain anchors, so a bookmark still lands on the screen without JavaScript.
+  const id = String(await page.locator('figure.screens').getAttribute('id'));
+  await expect(page.locator(`figure.screens li[id="${id}-3"]`)).toHaveCount(1);
+  await page.goto(url(`research/method-majordomus/#${id}-3`));
+  await expect(page.locator(`[id="${id}-3"]`)).toBeInViewport();
+  await expect(page.locator('[data-screen-viewer]:not(.poster-viewer)')).toBeHidden();
 
   const [tab] = await Promise.all([context.waitForEvent('page'), triggers.first().click()]);
   await tab.waitForLoadState();

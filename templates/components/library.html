@@ -73,7 +73,7 @@
     {%- set large = resize_image(path=item.src, width=1200, op="fit_width", format="webp", quality=84) %}
     {%- set small = resize_image(path=item.src, width=768, op="fit_width", format="webp", quality=82) %}
     {%- set full = resize_image(path=item.src, width=1536, op="fit_width", format="webp", quality=88) %}
-    <li class="screen">
+    <li class="screen" id="{{ fig.id }}-{{ loop.index }}">
       <a class="screen-frame" href="{{ get_url(path=item.src) }}" target="_blank" rel="noopener"
         data-screen-open data-full="{{ full.url }}" data-width="{{ full.width }}" data-height="{{ full.height }}"
         data-title="{{ item.title }}" data-caption="{{ item.caption }}">
