@@ -1,0 +1,250 @@
+# Audiences, lenses and the epistemic vocabulary they read the site with.
+#
+# An audience is not a persona and not a segment: it is a question somebody arrives with and
+# the depth at which an honest answer has to be given. Nothing here forks the content. The
+# same claim, the same model and the same source serve every audience; a lens decides how
+# much of the apparatus around them is unfolded.
+#
+# The one rule this file exists to keep: a lens changes information density, never what is
+# claimed. A statement that is true under one lens is true under all of them, and a lens that
+# hid a limitation would be a different truth for a different reader, which is the thing this
+# project is about not doing.
+#
+# Fields: id (kebab-case, stable, used by data/models.toml `audiences` and by ?view=),
+# label/summary/question (bilingual), lens (an id from [[lenses]]), reveals (the disclosure
+# slots a lens unfolds; the components render exactly these), entry (a content path that is a
+# meaningful starting point, checked to exist), never (what must not happen for that reader).
+#
+# scripts/validate-audiences.py enforces the shape, the parity and the cross-references.
+# docs/AUDIENCES.md explains the architecture; ?view=<lens id> selects a lens.
+
+default_lens = "essential"
+
+# ── Lenses ────────────────────────────────────────────────────────────────────────────────
+# Six lenses, not ten. A selector with one entry per audience would be a persona menu; these
+# are the distinct depths the material actually has. The mapping from audience to lens is in
+# [[audiences]] below, so a reader never has to identify themselves to be served.
+
+[[lenses]]
+id = "essential"
+label = { en = "Essential", cs = "Základní" }
+summary = { en = "The question, something to try, what it means in plain language, and the one limit that matters most.", cs = "Otázka, něco k vyzkoušení, co to znamená běžnou řečí a jedno omezení, na kterém záleží nejvíc." }
+question = { en = "I want to understand what catharsis actually is.", cs = "Chci pochopit, co katarze vlastně je." }
+entry = "faq/what-is-catharsis/index.md"
+reveals = ["question", "demonstration", "plain_language", "key_limitation"]
+
+[[lenses]]
+id = "practice"
+label = { en = "Practice", cs = "Praxe" }
+summary = { en = "What the evidence supports, in which population, with which limits, how strong it is and when it was last reviewed.", cs = "Co důkazy podporují, u jaké populace, s jakými limity, jak silné jsou a kdy byly naposledy ověřeny." }
+question = { en = "I work with people and need to know what is supported.", cs = "Pracuji s lidmi a potřebuji vědět, co je podložené." }
+entry = "evidence/index.md"
+reveals = ["question", "plain_language", "population", "evidence_level", "limits", "review_date", "gaps", "disclaimer"]
+
+[[lenses]]
+id = "research"
+label = { en = "Research", cs = "Výzkum" }
+summary = { en = "The rules a model applies, the assumptions behind them, where each parameter came from, and the studies underneath.", cs = "Pravidla, která model uplatňuje, předpoklady za nimi, odkud pochází každý parametr a studie pod tím vším." }
+question = { en = "I want to inspect the research.", cs = "Chci prozkoumat výzkum." }
+entry = "evidence/index.md"
+reveals = ["question", "mechanism", "assumptions", "parameters", "parameter_source", "evidence_level", "citations", "limits"]
+
+[[lenses]]
+id = "design"
+label = { en = "Design", cs = "Design" }
+summary = { en = "The mechanism as something that can be designed for: arousal, synchrony, endings, belonging, and what the effect is not.", cs = "Mechanismus jako něco, s čím lze pracovat při návrhu: vzrušení, synchronie, konce, sounáležitost, a co ten účinek není." }
+question = { en = "I design intense collective experiences.", cs = "Navrhuji intenzivní kolektivní zážitky." }
+entry = "research/collective-synchrony/index.md"
+reveals = ["question", "demonstration", "mechanism", "plain_language", "limits", "ethics"]
+
+[[lenses]]
+id = "technical"
+label = { en = "Technical", cs = "Technický" }
+summary = { en = "The model as code: its identifier, its inputs and outputs, the implementation, the tests that hold it and the seed that makes a run repeatable.", cs = "Model jako kód: jeho identifikátor, vstupy a výstupy, implementace, testy, které ho drží, a seed, díky němuž je běh zopakovatelný." }
+question = { en = "I want to inspect the models and the implementation.", cs = "Chci si prohlédnout modely a implementaci." }
+entry = "models/index.md"
+reveals = ["question", "model_id", "schema", "implementation", "tests", "seed", "json", "provenance"]
+
+[[lenses]]
+id = "epistemic"
+label = { en = "Epistemic", cs = "Epistemický" }
+summary = { en = "What was observed, what was derived from it, what is only inferred, what is assumed, what is illustrative and what stays unknown.", cs = "Co bylo pozorováno, co z toho odvozeno, co je jen odvozováno jako domněnka, co předpokládáno, co ilustrativní a co zůstává neznámé." }
+question = { en = "I care about what can actually be inferred from signals.", cs = "Zajímá mě, co se ze signálů vlastně dá vyvodit." }
+entry = "detection-sandbox/index.md"
+reveals = ["question", "observed", "derived", "inferred", "assumed", "illustrative", "unknown", "alternatives", "confidence"]
+
+# ── Audiences ─────────────────────────────────────────────────────────────────────────────
+# Ten arrivals, mapped onto the six lenses. The mapping is the architecture: it is what lets
+# the site serve a therapist and an epistemics researcher without writing the material twice.
+
+[[audiences]]
+id = "general-reader"
+lens = "essential"
+label = { en = "Someone who wants to understand", cs = "Kdo chce porozumět" }
+description = { en = "A person interested in catharsis, a person looking for relief from stress or a strong emotion, a reader who arrived from the poster or from social media.", cs = "Člověk, který se zajímá o katarzi, člověk hledající úlevu od stresu nebo silné emoce, čtenář, který přišel od plakátu nebo ze sociálních sítí." }
+questions = [
+  { en = "What is catharsis?", cs = "Co je katarze?" },
+  { en = "Why can relief feel like resolution?", cs = "Proč může úleva působit jako vyřešení?" },
+  { en = "What actually changes after an intense emotional experience?", cs = "Co se po intenzivním emočním zážitku vlastně změní?" },
+  { en = "When is expressing an emotion useful?", cs = "Kdy je vyjádření emoce užitečné?" },
+]
+entry = "faq/what-is-catharsis/index.md"
+never = { en = "Nothing on this site assesses a visitor, infers anybody's mental health from how they use a page, or tells a reader what they are doing wrong.", cs = "Nic na tomto webu nikoho neposuzuje, nevyvozuje z používání stránky ničí duševní stav a neříká čtenáři, co dělá špatně." }
+
+[[audiences]]
+id = "educator"
+lens = "essential"
+label = { en = "Educator and science communicator", cs = "Pedagog a popularizátor" }
+description = { en = "Somebody who has to show the idea to other people: a teacher, a lecturer, a science communicator preparing a demonstration.", cs = "Kdo má myšlenku ukázat dalším lidem: učitel, přednášející, popularizátor chystající ukázku." }
+questions = [
+  { en = "Can I show this idea in two minutes?", cs = "Dá se tahle myšlenka ukázat za dvě minuty?" },
+  { en = "What exactly does the demonstration demonstrate, and what does it not?", cs = "Co přesně ukázka ukazuje a co ne?" },
+  { en = "Can I link to a configured experiment and get it back the same way?", cs = "Můžu odkázat na nastavený pokus a dostat ho zpět stejný?" },
+]
+entry = "models/index.md"
+never = { en = "A demonstration is never presented as a measurement of the people watching it.", cs = "Ukázka se nikdy nepředkládá jako měření lidí, kteří ji sledují." }
+
+[[audiences]]
+id = "helping-professional"
+lens = "practice"
+label = { en = "Psychologist, therapist, counsellor, crisis worker", cs = "Psycholog, terapeut, poradce, krizový pracovník" }
+description = { en = "Somebody whose work touches distress and who needs to know what the literature supports, in which population and with what limits.", cs = "Kdo se ve své práci setkává s tísní a potřebuje vědět, co literatura podporuje, u jaké populace a s jakými limity." }
+questions = [
+  { en = "What is supported by evidence, and how strongly?", cs = "Co je podložené důkazy a jak silně?" },
+  { en = "Which population does the evidence concern?", cs = "Jaké populace se důkazy týkají?" },
+  { en = "Which claims are theoretical and which are empirical?", cs = "Která tvrzení jsou teoretická a která empirická?" },
+  { en = "What is known about venting, arousal reduction, disclosure and reinforcement?", cs = "Co víme o ventilování, snižování vzrušení, sdílení a posilování?" },
+  { en = "Where is the evidence still missing?", cs = "Kde důkazy stále chybí?" },
+]
+entry = "evidence/index.md"
+never = { en = "This is educational material, not clinical guidance, not a protocol and not a substitute for assessment. Every research note and advice entry carries the clinical disclaimer.", cs = "Jde o vzdělávací materiál, nikoli o klinické doporučení, protokol nebo náhradu posouzení. Každá výzkumná poznámka i rada nese klinické upozornění." }
+
+[[audiences]]
+id = "researcher"
+lens = "research"
+label = { en = "Researcher, academic, student", cs = "Badatel, akademik, student" }
+description = { en = "Somebody who reads for the method: what a model assumes, which parameters are fitted and which invented, and what the cited work actually reported.", cs = "Kdo čte kvůli metodě: co model předpokládá, které parametry jsou odhadnuté a které vymyšlené a co citovaná práce skutečně uvádí." }
+questions = [
+  { en = "What does this model assume, and where does each parameter come from?", cs = "Co tento model předpokládá a odkud pochází každý parametr?" },
+  { en = "Which values are empirical and which are illustrative?", cs = "Které hodnoty jsou empirické a které ilustrativní?" },
+  { en = "Can I reproduce the output?", cs = "Můžu výstup zopakovat?" },
+  { en = "Which study is this claim resting on, and what is its DOI?", cs = "O kterou studii se tvrzení opírá a jaké má DOI?" },
+]
+entry = "methods/index.md"
+never = { en = "A curve that behaves plausibly is never offered as evidence; the evidence is the cited study, and the model says so.", cs = "Věrohodně vypadající křivka se nikdy nenabízí jako důkaz; důkazem je citovaná studie a model to říká." }
+
+[[audiences]]
+id = "investigative-reader"
+lens = "research"
+label = { en = "The reader who asks why they should believe it", cs = "Čtenář, který se ptá, proč tomu věřit" }
+description = { en = "Somebody who does not take a statement on trust and wants the route from the sentence on the screen to the study it rests on.", cs = "Kdo nebere tvrzení na důvěru a chce cestu od věty na obrazovce ke studii, o kterou se opírá." }
+questions = [
+  { en = "Why does this appear on the page?", cs = "Proč se tohle na stránce objevuje?" },
+  { en = "Which claim is it, how strong is it, and when was it last reviewed?", cs = "O které tvrzení jde, jak je silné a kdy bylo naposledy ověřeno?" },
+  { en = "Can I link somebody directly to the evidence?", cs = "Můžu někomu poslat odkaz přímo na důkazy?" },
+]
+entry = "evidence/index.md"
+never = { en = "No statement is left without a route to its basis, and a claim with no source is graded as having none.", cs = "Žádné tvrzení nezůstává bez cesty ke svému podkladu a tvrzení bez zdroje je tak i ohodnoceno." }
+
+[[audiences]]
+id = "artist"
+lens = "design"
+label = { en = "Artist, performer, event designer", cs = "Umělec, performer, tvůrce akcí" }
+description = { en = "Somebody who builds collective experiences: musicians, club and festival organisers, theatre and performance makers, installation artists.", cs = "Kdo staví kolektivní zážitky: hudebníci, pořadatelé klubů a festivalů, divadlo a performance, tvůrci instalací." }
+questions = [
+  { en = "Why do collective experiences feel powerful?", cs = "Proč kolektivní zážitky působí tak silně?" },
+  { en = "What does moving in synchrony do?", cs = "Co dělá pohyb v souladu s druhými?" },
+  { en = "Why do endings shape memory out of proportion?", cs = "Proč konce utvářejí vzpomínku neúměrně silně?" },
+  { en = "What can a night plausibly do, and what should it not claim to do?", cs = "Co může jedna noc věrohodně udělat a co by si neměla nárokovat?" },
+]
+entry = "research/collective-synchrony/index.md"
+never = { en = "An aesthetic or social effect is never described as a therapeutic one.", cs = "Estetický nebo sociální účinek se nikdy nepopisuje jako terapeutický." }
+
+[[audiences]]
+id = "product-designer"
+lens = "design"
+label = { en = "Product, UX and behavioural designer", cs = "Produktový, UX a behaviorální designér" }
+description = { en = "Somebody who builds things people come back to, and who has to tell a loop that helps from a loop that only repeats.", cs = "Kdo staví věci, ke kterým se lidé vracejí, a musí rozlišit smyčku, která pomáhá, od smyčky, která se jen opakuje." }
+questions = [
+  { en = "What reinforcement loop does relief create?", cs = "Jakou posilující smyčku úleva vytváří?" },
+  { en = "Can a product optimise for repeated relief while the cause stays untouched?", cs = "Může produkt optimalizovat opakovanou úlevu, zatímco příčina zůstává nedotčená?" },
+  { en = "How does the peak and the ending shape what gets remembered?", cs = "Jak vrchol a konec utvářejí to, co si člověk zapamatuje?" },
+  { en = "Where is the ethical line between engagement and usefulness?", cs = "Kde je etická hranice mezi zapojením a užitečností?" },
+]
+entry = "models/index.md"
+never = { en = "The material does not conclude that engagement is bad; it separates a loop that changes a condition from one that only restores a feeling.", cs = "Materiál netvrdí, že zapojení je špatné; odděluje smyčku, která mění podmínky, od té, která jen obnovuje pocit." }
+
+[[audiences]]
+id = "engineer"
+lens = "technical"
+label = { en = "Engineer, data and AI practitioner", cs = "Inženýr, datař, praktik AI" }
+description = { en = "Somebody who wants to see the computation: which values are observed, which generated, which inferred, and whether the output can be reproduced.", cs = "Kdo chce vidět výpočet: které hodnoty jsou pozorované, které vygenerované, které odvozené a zda lze výstup zopakovat." }
+questions = [
+  { en = "How is this value computed, and from what?", cs = "Jak se tahle hodnota počítá a z čeho?" },
+  { en = "Where is the implementation and where are its tests?", cs = "Kde je implementace a kde jsou její testy?" },
+  { en = "Is the run deterministic?", cs = "Je běh deterministický?" },
+  { en = "Can I read the same data the page reads?", cs = "Můžu si přečíst stejná data jako stránka?" },
+]
+entry = "models/index.md"
+never = { en = "Nothing about a visitor is computed, stored or sent anywhere; every model runs in the browser on values the visitor set.", cs = "O návštěvníkovi se nic nepočítá, neukládá ani nikam neposílá; každý model běží v prohlížeči nad hodnotami, které zadal." }
+
+[[audiences]]
+id = "epistemic-researcher"
+lens = "epistemic"
+label = { en = "AI and epistemic systems researcher", cs = "Badatel o AI a epistemických systémech" }
+description = { en = "Somebody interested in the distance between a signal and a conclusion, and in systems that state which is which.", cs = "Kdo se zajímá o vzdálenost mezi signálem a závěrem a o systémy, které říkají, co je co." }
+questions = [
+  { en = "Which parts of this are observed and which are inferred?", cs = "Které části jsou pozorované a které odvozené?" },
+  { en = "What else would explain the same signals?", cs = "Co jiného by tytéž signály vysvětlilo?" },
+  { en = "What does the system say it does not know?", cs = "Co systém sám označuje za neznámé?" },
+  { en = "How much does context change the interpretation of unchanged signals?", cs = "Nakolik kontext mění výklad nezměněných signálů?" },
+]
+entry = "detection-sandbox/index.md"
+never = { en = "No inferred state is presented as ground truth, and no classifier here pretends to identify an emotion.", cs = "Žádný odvozený stav se nepředkládá jako jistota a žádný zdejší klasifikátor nepředstírá, že emoci rozpozná." }
+
+[[audiences]]
+id = "evaluator"
+lens = "technical"
+label = { en = "Majordomus and Prismatic evaluator", cs = "Hodnotitel Majordomu a Prismaticu" }
+description = { en = "Somebody evaluating the project as a case study in supervised AI-assisted delivery rather than as a text about catharsis.", cs = "Kdo projekt hodnotí jako případovou studii dozorované práce s AI, ne jako text o katarzi." }
+questions = [
+  { en = "What does the build enforce, and what does it refuse?", cs = "Co build vynucuje a co odmítne?" },
+  { en = "Where are the claims, the tests, the commands and the releases?", cs = "Kde jsou tvrzení, testy, příkazy a vydání?" },
+  { en = "Can a statement be traced from the interface to the source?", cs = "Lze tvrzení dohledat od rozhraní až ke zdroji?" },
+]
+entry = "status/index.md"
+never = { en = "Engineering detail never displaces the reading experience: it is one lens away, not in everybody's way.", cs = "Technické detaily nikdy nevytlačí čtení: jsou na jedno přepnutí, ne všem v cestě." }
+
+# ── The epistemic vocabulary ──────────────────────────────────────────────────────────────
+# The six words every model, figure and sandbox classifies its parts with. They are a closed
+# set: data/models.toml may use no other value, and scripts/validate-models.py refuses one.
+
+[[epistemic_kinds]]
+id = "observed"
+label = { en = "Observed", cs = "Pozorováno" }
+definition = { en = "Recorded by an instrument or reported by a person. On this site nothing about a visitor is observed; a model's observed inputs are the values the visitor typed in, and a study's observed values are what its authors measured.", cs = "Zaznamenáno přístrojem nebo uvedeno člověkem. Na tomto webu se o návštěvníkovi nepozoruje nic; pozorovanými vstupy modelu jsou hodnoty, které sám zadal, a pozorovanými hodnotami studie to, co změřili její autoři." }
+
+[[epistemic_kinds]]
+id = "derived"
+label = { en = "Derived", cs = "Odvozeno" }
+definition = { en = "Computed from observed values by a stated rule. A derived value adds no knowledge: it restates the inputs in another form, and the rule can be read.", cs = "Vypočteno z pozorovaných hodnot podle uvedeného pravidla. Odvozená hodnota nepřidává poznání: jen jinak vyjadřuje vstupy a pravidlo si lze přečíst." }
+
+[[epistemic_kinds]]
+id = "inferred"
+label = { en = "Inferred", cs = "Vyvozeno" }
+definition = { en = "A conclusion that goes beyond the values at hand and could be wrong. Every inference on this site is shown with the alternatives it competes with.", cs = "Závěr, který jde za dostupné hodnoty a může být mylný. Každé vyvození se tu ukazuje spolu s alternativami, s nimiž soupeří." }
+
+[[epistemic_kinds]]
+id = "assumed"
+label = { en = "Assumed", cs = "Předpokládáno" }
+definition = { en = "Taken as given so that a model can run at all. An assumption is not a finding, and changing it changes the output.", cs = "Bráno jako dané, aby model vůbec mohl běžet. Předpoklad není zjištění a jeho změna mění výstup." }
+
+[[epistemic_kinds]]
+id = "illustrative"
+label = { en = "Illustrative", cs = "Ilustrativní" }
+definition = { en = "Invented to make a relationship visible. An illustrative number carries a direction, never a magnitude, and must not be quoted as data.", cs = "Vymyšleno, aby byl vztah vidět. Ilustrativní číslo nese směr, nikdy velikost, a nesmí se citovat jako data." }
+
+[[epistemic_kinds]]
+id = "unknown"
+label = { en = "Unknown", cs = "Neznámé" }
+definition = { en = "Not available from anything the model has, and named rather than quietly omitted. What a person means, why they feel it and whether anything was resolved are usually here.", cs = "Z ničeho, co model má, to nelze zjistit, a proto se to pojmenuje, místo aby se to tiše vynechalo. Co člověk míní, proč to cítí a zda se něco vyřešilo, bývá právě zde." }

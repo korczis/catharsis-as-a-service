@@ -131,6 +131,16 @@ def export(root, out, base_url):
     write(api / "claims.json", [iso(claim) for claim in data("claims.toml")["claims"]])
     write(api / "sources.json", {ident: iso(entry) for ident, entry in sorted(data("sources.toml")["sources"].items())})
     write(api / "glossary.json", data("glossary.toml")["terms"])
+    # The audience taxonomy is part of the public contract: a client that renders this
+    # library needs the lenses, the audiences that map onto them and the six epistemic words,
+    # and it should read them from here rather than copy them.
+    audiences = data("audiences.toml")
+    write(api / "audiences.json", {
+        "default_lens": audiences["default_lens"],
+        "lenses": audiences["lenses"],
+        "audiences": audiences["audiences"],
+        "epistemic_kinds": audiences["epistemic_kinds"],
+    })
     write(api / "evidence_changelog.json", [iso(entry) for entry in data("evidence_changelog.toml")["entries"]])
 
     registry = tomllib.loads((root / "data" / "commands.toml").read_text(encoding="utf-8"))
@@ -151,6 +161,7 @@ def export(root, out, base_url):
         "claims": "claims.json",
         "sources": "sources.json",
         "glossary": "glossary.json",
+        "audiences": "audiences.json",
         "evidence_changelog": "evidence_changelog.json",
         "search": search,
         "endpoint": {"method": "POST", "path": "/v1/catharsis", "status": 200, "problem_solved": False},

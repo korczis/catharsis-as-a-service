@@ -292,6 +292,16 @@ faq_related = "Related questions"
 faq_all = "All questions"
 faq_groups = "Question groups"
 
+
+# The audience lens: ?view= selects one, data/audiences.toml defines them.
+lens_label = "View"
+lens_note = "A view changes how much detail is unfolded, never what is claimed."
+audiences_label = "Audiences"
+audiences_heading = "For different questions."
+audiences_intro = "The same claims, models and sources serve every reader here. What changes with the view you pick is how much of the apparatus around them is unfolded: the assumptions, the populations, the equations, the implementation, or what the signals cannot settle."
+audiences_start = "Start here"
+audiences_same = "Nothing is hidden from any view and no view has its own facts. A statement that is true under one is true under all of them; the view decides how much of its basis is shown at once."
+
 [languages.cs]
 title = "Catharsis as a Service™"
 description = "Catharsis as a Service™ je digitální artefakt, který zkoumá kolektivní katarzi jako přechod emočního stavu: opakování, synchronizace, výboj, dočasná úleva."
@@ -522,3 +532,12 @@ faq_full_answer = "Celá odpověď"
 faq_related = "Související otázky"
 faq_all = "Všechny otázky"
 faq_groups = "Skupiny otázek"
+
+# Pohled podle publika: ?view= jeden vybírá, data/audiences.toml je vymezuje.
+lens_label = "Pohled"
+lens_note = "Pohled mění, kolik podrobností se rozbalí, nikdy ne to, co se tvrdí."
+audiences_label = "Publika"
+audiences_heading = "Na různé otázky."
+audiences_intro = "Táž tvrzení, modely a zdroje slouží každému čtenáři. S vybraným pohledem se mění jen to, kolik se z aparátu kolem nich rozbalí: předpoklady, populace, rovnice, implementace nebo to, co signály nerozhodnou."
+audiences_start = "Začít tady"
+audiences_same = "Před žádným pohledem se nic neskrývá a žádný pohled nemá vlastní fakta. Co platí v jednom, platí ve všech; pohled rozhoduje jen o tom, kolik z podkladu je vidět naráz."

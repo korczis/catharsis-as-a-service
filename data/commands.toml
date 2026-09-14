@@ -312,6 +312,16 @@ summary.cs = "Zkontroluje registr důkazů: ohodnocení všech zdrojů, úroveň
 verified_by = ["ci:Validate and build", "pytest:test_ledger_passes_on_repository"]
 
 [[commands]]
+id = "validate-audiences"
+group = "validate"
+command = "python3 scripts/validate-audiences.py"
+match = "python3 scripts/validate-audiences.py"
+source = "scripts/validate-audiences.py"
+summary.en = "Checks the audience taxonomy: the six lenses and the audiences that map onto them, bilingual labels, starting points that exist, disclosure slots a component renders, and an epistemic vocabulary of exactly six words."
+summary.cs = "Zkontroluje taxonomii publik: šest pohledů a publika, která na ně vedou, dvojjazyčné popisky, existující výchozí stránky, sloty rozbalení, které nějaká komponenta vykresluje, a epistemický slovník přesně o šesti slovech."
+verified_by = ["ci:Validate and build", "pytest:test_audiences_pass_on_repository"]
+
+[[commands]]
 id = "render-social"
 group = "artwork"
 command = "python3 scripts/render-social.py"

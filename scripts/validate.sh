@@ -64,6 +64,7 @@ step layout python3 scripts/validate-layout.py
 step references python3 scripts/check-references.py
 step claims python3 scripts/validate-claims.py
 step models python3 scripts/validate-models.py
+step audiences python3 scripts/validate-audiences.py
 step case-study python3 scripts/export-case-study.py --check
 step social python3 scripts/render-social.py --check
 step zola-check zola check --skip-external-links

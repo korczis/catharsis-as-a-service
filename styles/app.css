@@ -2174,6 +2174,166 @@
     line-height: 1.55;
   }
 
+  /* ── The audience lens ────────────────────────────────────────────────────────────────────
+     A lens is one attribute on <html> and one attribute on a block. Everything a lens reveals
+     is in the document at every lens, so a crawler, a printer and a reader without JavaScript
+     receive the whole thing; only the unfolding differs. `data-lens-for` lists the lenses a
+     block belongs to, and `essential` is the lens a page renders as before any script runs. */
+
+  [data-lens-for] {
+    display: none;
+  }
+
+  html[data-lens='essential'] [data-lens-for~='essential'],
+  html[data-lens='practice'] [data-lens-for~='practice'],
+  html[data-lens='research'] [data-lens-for~='research'],
+  html[data-lens='design'] [data-lens-for~='design'],
+  html[data-lens='technical'] [data-lens-for~='technical'],
+  html[data-lens='epistemic'] [data-lens-for~='epistemic'] {
+    display: block;
+  }
+
+  /* A lens is a reading depth, not a filter on the truth: printing gives every one of them,
+     because paper has no switch. */
+  @media print {
+    [data-lens-for] {
+      display: block;
+    }
+  }
+
+  .lens-switch {
+    border-top: 1px solid var(--color-line);
+    padding-top: 1rem;
+  }
+
+  .lens-switch-title {
+    margin: 0;
+  }
+
+  .lens-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin: 0.6rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lens-option {
+    display: inline-block;
+    border: 1px solid var(--color-line);
+    padding: 0.3rem 0.7rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .lens-option:hover {
+    border-color: var(--color-blood);
+    color: var(--color-bone);
+  }
+
+  .lens-option[aria-current='true'] {
+    border-color: var(--color-bone);
+    color: var(--color-bone);
+  }
+
+  .lens-note {
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    max-width: 44ch;
+  }
+
+  .audience-entries {
+    display: grid;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+    list-style: none;
+    padding: 0;
+  }
+
+  .audience-entry {
+    background: var(--color-ink);
+    padding: 1.4rem 1.5rem;
+  }
+
+  @media (min-width: 48rem) {
+    .audience-entry {
+      display: grid;
+      grid-template-columns: minmax(0, 22rem) minmax(0, 1fr) auto;
+      gap: 1.5rem;
+      align-items: baseline;
+    }
+  }
+
+  .audience-question {
+    font-family: var(--font-condensed);
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+
+  .audience-answer {
+    margin-top: 0.4rem;
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  @media (min-width: 48rem) {
+    .audience-answer {
+      margin-top: 0;
+    }
+  }
+
+  .audience-links {
+    margin-top: 0.7rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: baseline;
+    white-space: nowrap;
+  }
+
+  @media (min-width: 48rem) {
+    .audience-links {
+      margin-top: 0;
+    }
+  }
+
+  .audience-lens {
+    border: 1px solid var(--color-line);
+    padding: 0.2rem 0.6rem;
+    font-size: 0.625rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+  }
+
+  .audience-start {
+    font-size: 0.8125rem;
+    text-decoration: none;
+  }
+
+  .audience-start:hover {
+    color: var(--color-blood);
+  }
+
+  .epistemic-key {
+    display: grid;
+    gap: 0.8rem;
+    font-size: 0.875rem;
+  }
+
+  .epistemic-key dd {
+    margin: 0.2rem 0 0;
+    color: var(--color-muted);
+  }
+
   .claim-card {
     display: flex;
     flex-direction: column;

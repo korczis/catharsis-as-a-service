@@ -1,0 +1,71 @@
+{#- The audience layer: a lens selector, the entry points a reader picks themselves, and the
+    key to the six epistemic words. All three read data/audiences.toml, which is the only
+    place the taxonomy exists; scripts/validate-audiences.py holds that file to its shape.
+
+    A lens changes what is unfolded, never what is claimed. Every lens's markup is in the
+    page at every lens — `data-lens-for` decides what CSS shows — so the document a crawler,
+    a printer and a reader without JavaScript receive is complete, and switching costs no
+    request. -#}
+
+{#- The selector. Real links, so it works before any script does and a lens can be sent to
+    somebody; lens.js upgrades them to an instant switch and keeps the address in step. -#}
+{% component audience.lens_switch(lang: string, compact: bool = false) %}
+{%- set data = load_data(path="data/audiences.toml") -%}
+<nav class="lens-switch{% if compact %} lens-switch-compact{% endif %}" aria-label="{{ trans(key='lens_label', lang=lang) }}">
+  <p class="label lens-switch-title">{{ trans(key="lens_label", lang=lang) }}</p>
+  <ul class="lens-options">
+    {%- for lens in data.lenses %}
+    <li>
+      <a class="lens-option" href="?view={{ lens.id }}" data-lens-option="{{ lens.id }}"
+        aria-current="{% if lens.id == data.default_lens %}true{% else %}false{% endif %}"
+        title="{{ lens.summary[lang] }}">{{ lens.label[lang] }}</a>
+    </li>
+    {%- endfor %}
+  </ul>
+  <p class="lens-note">{{ trans(key="lens_note", lang=lang) }}</p>
+</nav>
+{% endcomponent audience.lens_switch %}
+
+{#- Who this is for, as questions rather than job titles. Each line is a lens's own question
+    and routes to the starting point that lens declares, so the reader never has to identify
+    themselves — they pick the question they arrived with. -#}
+{% component audience.entry_points(lang: string, idx: string = "") %}
+{%- set data = load_data(path="data/audiences.toml") -%}
+<section id="audiences" class="section section-alt" aria-labelledby="audiences-title">
+  <div class="shell">
+    {%- if idx != "" %}
+    {{ <artifact.section_head idx={idx} label={trans(key="audiences_label", lang=lang)} id="audiences" /> }}
+    {%- endif %}
+    <h2 id="audiences-title" class="display display-lg max-w-5xl reveal">{{ trans(key="audiences_heading", lang=lang) }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ trans(key="audiences_intro", lang=lang) }}</p>
+    <ul class="audience-entries mt-14 reveal">
+      {%- for lens in data.lenses %}
+      <li class="audience-entry">
+        <p class="audience-question">{{ lens.question[lang] }}</p>
+        <p class="audience-answer">{{ lens.summary[lang] }}</p>
+        <p class="audience-links">
+          <a class="audience-lens" href="?view={{ lens.id }}" data-lens-option="{{ lens.id }}">{{ lens.label[lang] }}</a>
+          <a class="audience-start" href="{{ get_url(path='@/' ~ lens.entry, lang=lang) }}?view={{ lens.id }}">{{ trans(key="audiences_start", lang=lang) }} <span aria-hidden="true">→</span></a>
+        </p>
+      </li>
+      {%- endfor %}
+    </ul>
+    <p class="mt-10 max-w-3xl text-muted reveal">{{ trans(key="audiences_same", lang=lang) }}</p>
+  </div>
+</section>
+{% endcomponent audience.entry_points %}
+
+{#- The six words, defined once, wherever a page classifies what it shows. -#}
+{% component audience.epistemic_key(lang: string, kinds: array = []) %}
+{%- set data = load_data(path="data/audiences.toml") -%}
+<dl class="epistemic-key">
+  {%- for kind in data.epistemic_kinds %}
+  {%- if kinds | length == 0 or kind.id in kinds %}
+  <div>
+    <dt><span class="epistemic-tag" data-kind="{{ kind.id }}">{{ kind.label[lang] }}</span></dt>
+    <dd>{{ kind.definition[lang] }}</dd>
+  </div>
+  {%- endif %}
+  {%- endfor %}
+</dl>
+{% endcomponent audience.epistemic_key %}

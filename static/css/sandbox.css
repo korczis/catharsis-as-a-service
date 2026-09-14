@@ -1,0 +1,221 @@
+/* Detection sandbox. Plain CSS on the design tokens Tailwind emits (--color-*, --font-*),
+   loaded only by the page that uses it. An instrument panel, not a dashboard: no gradient,
+   no gauge, no verdict styled to look like a result. */
+
+.sandbox {
+  margin: 0;
+  border: 1px solid var(--color-line);
+  padding: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .sandbox {
+    padding: 1.75rem;
+  }
+}
+
+.sandbox-grid {
+  display: grid;
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 60rem) {
+  .sandbox-grid {
+    grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
+    gap: 2.5rem;
+  }
+}
+
+.sandbox-inputs {
+  border: 0;
+  border-top: 1px solid var(--color-line);
+  margin: 0;
+  padding: 1rem 0 0;
+}
+
+.sandbox-inputs legend {
+  padding: 0;
+}
+
+.sandbox-note {
+  margin-top: 0.6rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+.sandbox-derived {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.sandbox-derived > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0 1rem;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.6rem;
+}
+
+.sandbox-derived dt {
+  font-family: var(--font-condensed);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.sandbox-derived dd {
+  margin: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.sandbox-rule {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* The six words. A tag never decorates: it says which kind of thing the number beside it is. */
+.epistemic-tag {
+  margin-left: 0.5rem;
+  border: 1px solid var(--color-line);
+  padding: 0.1rem 0.4rem;
+  font-size: 0.625rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.epistemic-tag[data-kind='observed'] {
+  border-color: var(--color-bone);
+  color: var(--color-bone);
+}
+
+.epistemic-tag[data-kind='inferred'] {
+  border-color: var(--color-blood);
+  color: var(--color-blood);
+}
+
+.epistemic-tag[data-kind='unknown'] {
+  border-style: dashed;
+}
+
+.sandbox-readings {
+  margin-top: 1rem;
+  display: grid;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+
+.sandbox-reading-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: baseline;
+}
+
+.sandbox-reading-name {
+  font-family: var(--font-condensed);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.sandbox-reading-share {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+}
+
+.sandbox-reading .bar {
+  display: block;
+  height: 6px;
+  margin-top: 0.4rem;
+  background: var(--color-line);
+}
+
+.sandbox-reading .bar > span {
+  display: block;
+  width: var(--share);
+  height: 100%;
+  background: var(--color-blood);
+}
+
+/* The leading reading is drawn no louder than the rest: a ranking is not a verdict, and the
+   first row of a close ranking is the most misread object on a page like this. */
+.sandbox-reading:first-child .bar > span {
+  background: var(--color-bone);
+}
+
+.sandbox-reading-maths {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.sandbox-verdict {
+  margin-top: 1rem;
+  border-left: 2px solid var(--color-line);
+  padding-left: 0.9rem;
+  font-size: 0.875rem;
+}
+
+.sandbox-verdict[data-undecided='true'] {
+  border-left-color: var(--color-blood);
+}
+
+.sandbox-alternatives {
+  margin-top: 0.9rem;
+  display: grid;
+  gap: 0.5rem;
+  list-style: none;
+  padding: 0;
+  font-size: 0.875rem;
+}
+
+.sandbox-alternatives li {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) minmax(0, 1fr) auto;
+  gap: 0.75rem;
+  border-bottom: 1px solid var(--color-line);
+  padding-bottom: 0.4rem;
+}
+
+.sandbox-alt-context {
+  color: var(--color-muted);
+}
+
+.sandbox-alt-share {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+}
+
+.sandbox-vocabulary summary {
+  cursor: pointer;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.sandbox-vocabulary dl {
+  display: grid;
+  gap: 0.9rem;
+  font-size: 0.875rem;
+}
+
+.sandbox-vocabulary dt {
+  color: var(--color-bone);
+}
+
+.sandbox-vocabulary dd {
+  margin: 0.2rem 0 0;
+  color: var(--color-muted);
+}
+
+@media print {
+  .sandbox-inputs,
+  .sandbox-vocabulary {
+    display: none;
+  }
+}

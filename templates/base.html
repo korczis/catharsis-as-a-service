@@ -16,10 +16,16 @@
 {%- set_global ctx = {"title": trans(key="nav_tags", lang=l), "description": trans(key="tags_description", lang=l), "translations": tags_translations, "ancestors": []} -%}
 {%- endif -%}
 {%- set_global home_url = get_url(path="@/_index.md", lang=l) -%}
+{%- set_global audiences = load_data(path="data/audiences.toml") -%}
+{%- set_global lens_ids = [] -%}
+{%- for lens in audiences.lenses -%}{%- set_global lens_ids = [...lens_ids, lens.id] -%}{%- endfor -%}
 <!doctype html>
 <html lang="{{ l }}" dir="{{ text_direction(lang=l) }}" class="no-js"
   data-default-locale="{{ config.default_language }}"
   data-locales="{{ config.extra.locales | join(sep=',') }}"
+  data-lens="{{ audiences.default_lens }}"
+  data-lens-default="{{ audiences.default_lens }}"
+  data-lenses="{{ lens_ids | join(sep=',') }}"
   {%- for code in config.extra.locales %} data-home-{{ code }}="{{ get_url(path='@/_index.md', lang=code) }}"{% endfor %}
   {% block html_attrs %}{% endblock %}>
 <head>

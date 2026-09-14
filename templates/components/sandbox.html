@@ -1,0 +1,124 @@
+{#- The detection sandbox: five synthetic signals, one context, and every reading they
+    support at once. The component renders the epistemic classes from data/audiences.toml,
+    so the vocabulary on the page is the one the validator enforces and not a second copy.
+
+    Nothing here measures anybody. The inputs are values a reader sets; the shares are
+    illustrative weights; the readings are named as competing, never as a verdict. -#}
+{% component sandbox.panel(fig: map, lang: string) %}
+{%- set vocabulary = load_data(path="data/audiences.toml") -%}
+{%- set l = fig.labels -%}
+<figure class="sandbox" data-requires-js data-model="detection-sandbox" x-data="detectionSandbox"
+  data-labels="{{ l | json_encode }}" aria-labelledby="sandbox-title">
+  <figcaption id="sandbox-title" class="sr-only">{{ l.figure }}</figcaption>
+
+  <div class="sim-banner" role="note">{{ l.banner }}</div>
+
+  <div class="sandbox-grid">
+    {#- what a reader sets: observed, in the only sense this site allows -#}
+    <fieldset class="sandbox-inputs">
+      <legend class="label">{{ l.observed }} <span class="epistemic-tag" data-kind="observed">{{ l.kind_observed }}</span></legend>
+      <p class="sandbox-note">{{ l.observed_note }}</p>
+
+      <p class="model-field">
+        <label class="label" for="ds-context">{{ l.context }}</label>
+        <select id="ds-context" x-model="context">
+          {%- for id in ["concert", "protest", "sport", "emergency", "ritual"] %}
+          <option value="{{ id }}">{{ l["context_" ~ id] }}</option>
+          {%- endfor %}
+        </select>
+      </p>
+
+      {%- for field in [
+        {"id": "heart", "min": 50, "max": 190},
+        {"id": "movement", "min": 0, "max": 100},
+        {"id": "vocal", "min": 0, "max": 100},
+        {"id": "alignment", "min": 0, "max": 100},
+        {"id": "reported", "min": 0, "max": 100}
+      ] %}
+      <p class="model-field">
+        <label class="label" for="ds-{{ field.id }}">{{ l["signal_" ~ field.id] }}</label>
+        <input id="ds-{{ field.id }}" type="range" min="{{ field.min }}" max="{{ field.max }}" step="1"
+          x-model.number="{{ field.id }}" aria-describedby="ds-{{ field.id }}-value">
+        <output id="ds-{{ field.id }}-value" class="model-value" x-text="{{ field.id }}">{{ field.min }}</output>
+      </p>
+      {%- endfor %}
+
+      <p class="mt-4"><button type="button" class="btn-ghost" x-on:click="reset()">{{ l.reset }}</button></p>
+    </fieldset>
+
+    <div class="sandbox-readout">
+      {#- derived: the same inputs, restated by a rule that is printed next to them -#}
+      <section aria-labelledby="ds-derived-title">
+        <h3 id="ds-derived-title" class="label">{{ l.derived }} <span class="epistemic-tag" data-kind="derived">{{ l.kind_derived }}</span></h3>
+        <dl class="sandbox-derived">
+          <div><dt>{{ l.derived_arousal }}</dt><dd data-output="arousal" x-text="derived.arousal"></dd><dd class="sandbox-rule">{{ l.rule_arousal }}</dd></div>
+          <div><dt>{{ l.derived_synchrony }}</dt><dd data-output="synchrony" x-text="derived.synchrony"></dd><dd class="sandbox-rule">{{ l.rule_synchrony }}</dd></div>
+          <div><dt>{{ l.derived_effort }}</dt><dd data-output="effort" x-text="derived.effort"></dd><dd class="sandbox-rule">{{ l.rule_effort }}</dd></div>
+          <div><dt>{{ l.derived_gap }}</dt><dd data-output="gap" x-text="derived.gap"></dd><dd class="sandbox-rule">{{ l.rule_gap }}</dd></div>
+        </dl>
+      </section>
+
+      {#- inferred: every reading at once, with the arithmetic that produced each share -#}
+      <section class="mt-8" aria-labelledby="ds-readings-title">
+        <h3 id="ds-readings-title" class="label">{{ l.inferred }} <span class="epistemic-tag" data-kind="inferred">{{ l.kind_inferred }}</span></h3>
+        <p class="sandbox-note">{{ l.inferred_note }}</p>
+        <ul class="sandbox-readings" data-output="readings">
+          <template x-for="reading in readings" :key="reading.id">
+            <li class="sandbox-reading" :data-reading="reading.id">
+              <p class="sandbox-reading-head">
+                <span class="sandbox-reading-name" x-text="label('reading_' + reading.id)"></span>
+                <span class="sandbox-reading-share"><span x-text="reading.share"></span>%</span>
+              </p>
+              <span class="bar" role="presentation"><span :style="`--share: ${reading.share}%`"></span></span>
+              <p class="sandbox-reading-maths">
+                <span x-text="label('prior')"></span> <span x-text="reading.prior.toFixed(2)"></span>
+                × <span x-text="label('fit')"></span> <span x-text="reading.fit.toFixed(2)"></span>
+              </p>
+            </li>
+          </template>
+        </ul>
+        <p class="sandbox-verdict" data-output="separation" :data-undecided="undecided.toString()">
+          <span x-show="undecided" x-text="label('undecided')"></span>
+          <span x-show="!undecided" x-text="label('separated')"></span>
+        </p>
+      </section>
+
+      {#- the demonstration: the signals do not move, the reading does -#}
+      <section class="mt-8" aria-labelledby="ds-alternatives-title">
+        <h3 id="ds-alternatives-title" class="label">{{ l.alternatives }} <span class="epistemic-tag" data-kind="inferred">{{ l.kind_inferred }}</span></h3>
+        <p class="sandbox-note">{{ l.alternatives_note }}</p>
+        <ul class="sandbox-alternatives" data-output="alternatives">
+          <template x-for="other in others" :key="other.context">
+            <li>
+              <span class="sandbox-alt-context" x-text="label('context_' + other.context)"></span>
+              <span class="sandbox-alt-reading" x-text="label('reading_' + other.leading.id)"></span>
+              <span class="sandbox-alt-share"><span x-text="other.leading.share"></span>%</span>
+            </li>
+          </template>
+        </ul>
+      </section>
+
+      {#- unknown: named, not omitted -#}
+      <section class="mt-8" aria-labelledby="ds-unknown-title">
+        <h3 id="ds-unknown-title" class="label">{{ l.unknown }} <span class="epistemic-tag" data-kind="unknown">{{ l.kind_unknown }}</span></h3>
+        <ul class="key-points mt-3">
+          {%- for item in fig.unknown %}
+          <li>{{ item }}</li>
+          {%- endfor %}
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  {#- the vocabulary itself, from the canonical file both the validator and this page read -#}
+  <details class="sandbox-vocabulary mt-10">
+    <summary>{{ l.vocabulary }}</summary>
+    <dl class="mt-4">
+      {%- for kind in vocabulary.epistemic_kinds %}
+      <div><dt class="label" data-kind="{{ kind.id }}">{{ kind.label[lang] }}</dt><dd>{{ kind.definition[lang] }}</dd></div>
+      {%- endfor %}
+    </dl>
+  </details>
+</figure>
+<noscript><p class="disclaimer mt-6">{{ fig.labels.nojs }}</p></noscript>
+{% endcomponent sandbox.panel %}

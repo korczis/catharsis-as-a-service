@@ -1,0 +1,108 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ get_url(path='css/interactive.css', cachebust=true) }}">
+<link rel="stylesheet" href="{{ get_url(path='css/sandbox.css', cachebust=true) }}">
+{% endblock head_extra %}
+
+{% block scripts_extra %}
+<script src="{{ get_url(path='js/sandbox.js', cachebust=true) }}" defer></script>
+{% endblock scripts_extra %}
+
+{% block content %}
+{%- set x = page.extra -%}
+<article class="hero" aria-labelledby="sandbox-page-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ x.kicker }} <span class="text-muted">//</span> {{ <evidence.kind kind="technical" lang={lang} /> }}</p>
+    <h1 id="sandbox-page-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
+    <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+    <div class="mt-8 max-w-3xl">{{ <audience.lens_switch lang={lang} /> }}</div>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <aside class="aside-rail space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        <section class="aside-block" aria-labelledby="sandbox-abstract-title">
+          <h2 id="sandbox-abstract-title" class="label">{{ trans(key="abstract", lang=lang) }}</h2>
+          <p class="mt-3">{{ x.summary }}</p>
+        </section>
+        {{ <library.key_points points={x.key_points} lang={lang} /> }}
+        {{ <library.disclaimer lang={lang} /> }}
+      </aside>
+
+      <div class="lg:col-span-8">
+        <div class="prose-page prose-wide">{{ page.content | safe }}</div>
+
+        <section class="mt-12" aria-labelledby="sandbox-panel-title">
+          <h2 id="sandbox-panel-title" class="condensed section-title">{{ x.panel.heading }}</h2>
+          <p class="mt-3 max-w-3xl">{{ x.panel.intro }}</p>
+          {{ <sandbox.panel fig={x.panel} lang={lang} /> }}
+        </section>
+
+        <div data-lens-for="essential design" class="mt-12">
+          <h2 class="condensed section-title">{{ x.lenses.essential.heading }}</h2>
+          <p class="mt-3 max-w-3xl">{{ x.lenses.essential.body }}</p>
+        </div>
+
+        <div data-lens-for="practice" class="mt-12">
+          <h2 class="condensed section-title">{{ x.lenses.practice.heading }}</h2>
+          <p class="mt-3 max-w-3xl">{{ x.lenses.practice.body }}</p>
+          <div class="mt-6">{{ <library.disclaimer lang={lang} /> }}</div>
+        </div>
+
+        <div data-lens-for="research" class="mt-12">
+          <h2 class="condensed section-title">{{ x.lenses.research.heading }}</h2>
+          <p class="mt-3 max-w-3xl">{{ x.lenses.research.body }}</p>
+          <dl class="sandbox-derived mt-6">
+            {%- for rule in x.lenses.research.rules %}
+            <div><dt>{{ rule.name }}</dt><dd class="sandbox-rule">{{ rule.rule }}</dd></div>
+            {%- endfor %}
+          </dl>
+        </div>
+
+        <div data-lens-for="technical" class="mt-12">
+          <h2 class="condensed section-title">{{ x.lenses.technical.heading }}</h2>
+          <p class="mt-3 max-w-3xl">{{ x.lenses.technical.body }}</p>
+          <dl class="sandbox-derived mt-6">
+            <div><dt>{{ x.lenses.technical.model_label }}</dt><dd>detection-sandbox</dd></div>
+            <div><dt>{{ x.lenses.technical.implementation_label }}</dt><dd><a href="{{ config.extra.repo_url }}/blob/main/static/js/sandbox.js">static/js/sandbox.js</a></dd></div>
+            <div><dt>{{ x.lenses.technical.tests_label }}</dt><dd><a href="{{ config.extra.repo_url }}/blob/main/tests/sandbox.spec.js">tests/sandbox.spec.js</a></dd></div>
+            <div><dt>{{ x.lenses.technical.state_label }}</dt><dd><code>?ds-context=&amp;ds-heart=&amp;ds-movement=&amp;ds-vocal=&amp;ds-alignment=&amp;ds-reported=</code></dd></div>
+          </dl>
+        </div>
+
+        <div data-lens-for="epistemic" class="mt-12">
+          <h2 class="condensed section-title">{{ x.lenses.epistemic.heading }}</h2>
+          <p class="mt-3 max-w-3xl">{{ x.lenses.epistemic.body }}</p>
+          <div class="mt-6">{{ <audience.epistemic_key lang={lang} /> }}</div>
+        </div>
+
+        <section class="mt-14" aria-labelledby="sandbox-assumptions-title">
+          <h2 id="sandbox-assumptions-title" class="condensed section-title">{{ trans(key="model_assumptions", lang=lang) }}</h2>
+          <ul class="key-points mt-4">
+            {%- for item in x.assumptions %}
+            <li>{{ item }}</li>
+            {%- endfor %}
+          </ul>
+        </section>
+
+        <section class="mt-12" aria-labelledby="sandbox-limits-title">
+          <h2 id="sandbox-limits-title" class="condensed section-title">{{ trans(key="limits", lang=lang) }}</h2>
+          <ul class="limits mt-4">
+            {%- for item in x.limits %}
+            <li>{{ item }}</li>
+            {%- endfor %}
+          </ul>
+        </section>
+
+        {%- set claim_path = page.relative_path | replace(from="." ~ lang ~ ".md", to=".md") %}
+        {{ <evidence.page_claims path={claim_path} lang={lang} /> }}
+        {{ <library.references ids={x.references} lang={lang} /> }}
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock content %}

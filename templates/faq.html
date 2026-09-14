@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{#- One question, one page, one address. The short answer is the whole answer for a reader
+    who stops there; everything below it is the same answer with its evidence attached. -#}
+{% block content %}
+<article class="hero" aria-labelledby="faq-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": trans(key="nav_faq", lang=lang), "url": get_url(path="@/faq/_index.md", lang=lang)},
+      {"name": page.extra.kicker, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow"><a class="no-underline" href="{{ get_url(path='@/faq/_index.md', lang=lang) }}">{{ trans(key="nav_faq", lang=lang) }}</a> <span class="text-muted">// {{ page.extra.kicker }}</span></p>
+    <h1 id="faq-title" class="display display-md mt-7 max-w-5xl">{{ page.title }}</h1>
+    <div class="mt-6">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+
+    <div class="mt-12 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="lg:col-span-8">
+        <section class="answer-card" aria-labelledby="short-answer-title">
+          <h2 id="short-answer-title" class="label">{{ trans(key="faq_short_answer", lang=lang) }}</h2>
+          <p class="answer-short">{{ page.extra.short_answer }}</p>
+        </section>
+        <div class="prose-page prose-wide mt-12">{{ page.content | safe }}</div>
+        {%- if page.extra.figures is defined %}
+        <div class="figures mt-12">{{ <library.figures figures={page.extra.figures} lang={lang} /> }}</div>
+        {%- endif %}
+        {%- set claim_path = page.relative_path | replace(from="." ~ lang ~ ".md", to=".md") %}
+        {{ <evidence.page_claims path={claim_path} lang={lang} /> }}
+        {%- if page.extra.references is defined %}
+        {{ <library.references ids={page.extra.references} lang={lang} /> }}
+        {%- endif %}
+      </div>
+      <aside class="space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        {%- if page.extra.related_questions is defined %}
+        <section class="aside-block" aria-labelledby="related-questions-title">
+          <h2 id="related-questions-title" class="label">{{ trans(key="faq_related", lang=lang) }}</h2>
+          <ul class="mt-3 space-y-3">
+            {%- for path in page.extra.related_questions %}
+            {%- set other = get_page(path=path, lang=lang) %}
+            <li><a href="{{ other.permalink }}">{{ other.title }}</a></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endif %}
+        {%- if page.extra.read_next is defined %}
+        <section class="aside-block" aria-labelledby="read-next-title">
+          <h2 id="read-next-title" class="label">{{ trans(key="read_more", lang=lang) }}</h2>
+          <ul class="mt-3 space-y-3">
+            {%- for path in page.extra.read_next %}
+            {%- set target = get_page(path=path, lang=lang) %}
+            <li><a href="{{ target.permalink }}">{{ target.title }}</a></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endif %}
+        <p><a class="btn-ghost" href="{{ get_url(path='@/faq/_index.md', lang=lang) }}">{{ trans(key="faq_all", lang=lang) }} <span aria-hidden="true">→</span></a></p>
+        {{ <library.disclaimer lang={lang} /> }}
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock content %}
