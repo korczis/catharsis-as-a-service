@@ -623,6 +623,272 @@ test('the footer carries the science note and build metadata; /status/ is genera
   if (PRODUCTION) await expect(page.locator('main [data-build="revision"] a, main [data-build="revision"]').first()).not.toHaveText('local');
 });
 
+// Concept screen previews: every page that renders library.screens, in both locales.
+const SCREEN_PAGES = [
+  { relative: '', total: 3, lang: 'en' },
+  { relative: 'cs/', total: 3, lang: 'cs' },
+  { relative: 'research/method-majordomus/', total: 8, lang: 'en' },
+  { relative: 'cs/research/method-majordomus/', total: 8, lang: 'cs' },
+  { relative: 'about/', total: 2, lang: 'en' },
+  { relative: 'cs/about/', total: 2, lang: 'cs' },
+];
+const SCREEN_UI = {
+  en: { previous: 'Previous screen', next: 'Next screen', close: 'Close', original: 'Open original PNG' },
+  cs: { previous: 'Předchozí obrazovka', next: 'Další obrazovka', close: 'Zavřít', original: 'Otevřít originální PNG' },
+};
+
+function screenViewer(page) {
+  const viewer = page.locator('[data-screen-viewer]');
+  return {
+    triggers: page.locator('figure.screens [data-screen-open]'),
+    viewer,
+    close: viewer.locator('[data-screen-close]'),
+    prev: viewer.locator('[data-screen-prev]'),
+    next: viewer.locator('[data-screen-next]'),
+    count: viewer.locator('[data-screen-count]'),
+    title: viewer.locator('[data-screen-title]'),
+    caption: viewer.locator('[data-screen-caption]'),
+    image: viewer.locator('[data-screen-image]'),
+    original: viewer.locator('[data-screen-original]'),
+  };
+}
+
+// The dialog shows exactly what the thumbnail at `position` shows, with its full-size image loaded.
+async function expectScreen(s, position, total) {
+  const trigger = s.triggers.nth(position);
+  await expect(s.count).toHaveText(`${position + 1} / ${total}`);
+  await expect(s.title).toHaveText(String(await trigger.getAttribute('data-title')));
+  await expect(s.caption).toHaveText(String(await trigger.getAttribute('data-caption')));
+  await expect(s.image).toHaveAttribute('alt', String(await trigger.locator('img').getAttribute('alt')));
+  await expect(s.image).toHaveAttribute('src', String(await trigger.getAttribute('data-full')));
+  await expect(s.original).toHaveAttribute('href', String(await trigger.getAttribute('href')));
+  await expect.poll(() => s.image.evaluate((img) => img.complete && img.naturalWidth > 0)).toBe(true);
+}
+
+for (const { relative, total, lang } of SCREEN_PAGES) {
+  test(`concept screen preview on /${relative}: opens in place, pages through every screen, closes`, async ({ page }) => {
+    const problems = watch(page);
+    const ui = SCREEN_UI[lang];
+    await open(page, relative);
+    const s = screenViewer(page);
+    await expect(s.triggers).toHaveCount(total);
+    await expect(page.locator('body > [data-screen-viewer]')).toHaveCount(1);
+    await expect(s.viewer).toBeHidden();
+    await expect(s.prev).toHaveAttribute('aria-label', ui.previous);
+    await expect(s.next).toHaveAttribute('aria-label', ui.next);
+    await expect(s.close).toContainText(ui.close);
+    await expect(s.original).toContainText(ui.original);
+
+    const trigger = s.triggers.nth(1);
+    await trigger.scrollIntoViewIfNeeded();
+    await trigger.click();
+    await expect(s.viewer).toBeVisible();
+    await expect(s.viewer).toHaveAttribute('role', 'dialog');
+    await expect(s.viewer).toHaveAttribute('aria-modal', 'true');
+    await expect(s.close).toBeFocused();
+    await expect(page.locator('body')).toHaveClass(/overflow-hidden/);
+    expect(page.url()).toBe(url(relative));
+    await expectScreen(s, 1, total);
+    const labelledBy = String(await s.viewer.getAttribute('aria-labelledby'));
+    await expect(page.locator(`[id="${labelledBy}"]`)).toHaveText(String(await trigger.getAttribute('data-title')));
+
+    // Next visits every remaining screen and wraps to the first.
+    for (let step = 2; step <= total; step += 1) {
+      await s.next.click();
+      await expectScreen(s, step % total, total);
+    }
+    await page.keyboard.press('ArrowLeft');
+    await expectScreen(s, total - 1, total);
+    await page.keyboard.press('ArrowRight');
+    await expectScreen(s, 0, total);
+    await s.prev.click();
+    await expectScreen(s, total - 1, total);
+
+    await page.keyboard.press('Escape');
+    await expect(s.viewer).toBeHidden();
+    await expect(trigger).toBeFocused();
+    await expect(page.locator('body')).not.toHaveClass(/overflow-hidden/);
+    expect(problems).toEqual([]);
+  });
+}
+
+test('concept screen preview: keyboard opening, focus trap, print and backdrop close', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, '');
+  const s = screenViewer(page);
+  const trigger = s.triggers.first();
+  await trigger.focus();
+  await page.keyboard.press('Enter');
+  await expect(s.viewer).toBeVisible();
+  await expect(s.close).toBeFocused();
+  await expectScreen(s, 0, 3);
+
+  await page.keyboard.press('Tab');
+  await expect(s.original).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(s.prev).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(s.original).toBeFocused();
+  await s.prev.focus();
+  await page.keyboard.press('Enter');
+  await expectScreen(s, 2, 3);
+
+  await page.emulateMedia({ media: 'print' });
+  await expect(s.viewer).toBeHidden();
+  await page.emulateMedia({ media: 'screen' });
+  await expect(s.viewer).toBeVisible();
+
+  await page.mouse.click(10, 500);
+  await expect(s.viewer).toBeHidden();
+  await expect(trigger).toBeFocused();
+  expect(problems).toEqual([]);
+});
+
+test('concept screen preview: Home and End, touch swipe and neighbour preloading', async ({ page }) => {
+  const problems = watch(page);
+  const total = 8;
+  await open(page, 'research/method-majordomus/');
+  const s = screenViewer(page);
+  const fulls = await s.triggers.evaluateAll((nodes) => nodes.map((node) => node.dataset.full));
+  const fetched = () => page.evaluate(() => performance.getEntriesByType('resource').map((entry) => entry.name));
+
+  await s.triggers.nth(3).scrollIntoViewIfNeeded();
+  await s.triggers.nth(3).click();
+  await expectScreen(s, 3, total);
+  await expect.poll(fetched).toEqual(expect.arrayContaining([fulls[2], fulls[4]]));
+
+  await page.keyboard.press('End');
+  await expectScreen(s, total - 1, total);
+  await expect.poll(fetched).toEqual(expect.arrayContaining([fulls[0], fulls[total - 2]]));
+  await page.keyboard.press('Home');
+  await expectScreen(s, 0, total);
+
+  const stroke = async (pointerType, dx, dy) => {
+    const box = await s.image.boundingBox();
+    if (!box) throw new Error('preview image has no layout box');
+    const x = box.x + box.width / 2;
+    const y = box.y + box.height / 2;
+    const init = { pointerId: 7, isPrimary: true, pointerType, bubbles: true };
+    await s.image.dispatchEvent('pointerdown', { ...init, clientX: x, clientY: y });
+    await s.image.dispatchEvent('pointerup', { ...init, clientX: x + dx, clientY: y + dy });
+  };
+  await stroke('touch', -120, 10);
+  await expectScreen(s, 1, total);
+  await stroke('touch', 120, -10);
+  await expectScreen(s, 0, total);
+  await stroke('touch', 120, 0);
+  await expectScreen(s, total - 1, total);
+  await stroke('pen', -120, 0);
+  await expectScreen(s, 0, total);
+  // Too short, mostly vertical, or a mouse drag: no paging.
+  await stroke('touch', -30, 0);
+  await stroke('touch', -80, 140);
+  await stroke('mouse', -200, 0);
+  await expectScreen(s, 0, total);
+
+  await page.keyboard.press('Escape');
+  await expect(s.viewer).toBeHidden();
+  expect(problems).toEqual([]);
+});
+
+test('concept screen preview: modified clicks keep the link to the original PNG', async ({ page, context }) => {
+  const problems = watch(page);
+  await open(page, 'about/');
+  const s = screenViewer(page);
+  const trigger = s.triggers.first();
+  const href = String(await trigger.evaluate((node) => node.href));
+  expect(href).toMatch(/\/assets\/majordomus\/cockpit-[a-z]+\.png$/);
+
+  const [tab] = await Promise.all([context.waitForEvent('page'), trigger.click({ modifiers: ['ControlOrMeta'] })]);
+  await tab.waitForLoadState();
+  expect(tab.url()).toBe(href);
+  await tab.close();
+  await expect(s.viewer).toBeHidden();
+  expect(problems).toEqual([]);
+});
+
+test('concept screens without JavaScript link to the original PNG and keep the dialog hidden', async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto(url('research/method-majordomus/'));
+  const triggers = page.locator('figure.screens [data-screen-open]');
+  await expect(triggers).toHaveCount(8);
+  await expect(page.locator('[data-screen-viewer]')).toBeHidden();
+
+  const assets = await triggers.evaluateAll((nodes) => nodes.map((node) => ({ png: node.href, webp: node.dataset.full })));
+  for (const { png, webp } of assets) {
+    const original = await page.request.get(png);
+    expect(original.status(), png).toBe(200);
+    expect(original.headers()['content-type'], png).toContain('image/png');
+    const preview = await page.request.get(String(webp));
+    expect(preview.status(), webp).toBe(200);
+    expect(preview.headers()['content-type'], webp).toContain('image/webp');
+  }
+
+  const [tab] = await Promise.all([context.waitForEvent('page'), triggers.first().click()]);
+  await tab.waitForLoadState();
+  expect(tab.url()).toBe(assets[0].png);
+  await context.close();
+});
+
+test('concept screen preview fits a 390 px viewport', async ({ page }) => {
+  const problems = watch(page);
+  const viewport = { width: 390, height: 844 };
+  await page.setViewportSize(viewport);
+  await open(page, 'cs/');
+  const s = screenViewer(page);
+  await s.triggers.first().scrollIntoViewIfNeeded();
+  await s.triggers.first().click();
+  await expectScreen(s, 0, 3);
+  for (const control of [s.prev, s.next, s.close, s.image, s.title, s.original]) {
+    const box = await control.boundingBox();
+    if (!box) throw new Error('control has no layout box');
+    expect(box.x).toBeGreaterThanOrEqual(0);
+    expect(box.x + box.width).toBeLessThanOrEqual(viewport.width);
+    expect(box.y + box.height).toBeLessThanOrEqual(viewport.height);
+  }
+  expect(await overflow(page)).toBeLessThanOrEqual(0);
+  await s.close.click();
+  await expect(s.viewer).toBeHidden();
+  expect(problems).toEqual([]);
+});
+
+test('concept screen preview with a single screen hides paging and keeps focus inside', async ({ page }) => {
+  const problems = watch(page);
+  // No page ships a single screen, so drop all but the first from /about/ once the document is
+  // parsed and before the deferred app.js runs (readyState turns interactive before deferred scripts).
+  await page.addInitScript(() => {
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState !== 'interactive') return;
+      document.querySelectorAll('figure.screens li.screen:not(:first-child)').forEach((node) => node.remove());
+    });
+  });
+  await open(page, 'about/');
+  const s = screenViewer(page);
+  await expect(s.triggers).toHaveCount(1);
+
+  await s.triggers.first().click();
+  await expect(s.viewer).toBeVisible();
+  await expectScreen(s, 0, 1);
+  for (const control of [s.prev, s.next, s.count]) await expect(control).toBeHidden();
+  await expect(s.prev).toBeDisabled();
+  await expect(s.next).toBeDisabled();
+
+  await page.keyboard.press('ArrowRight');
+  await expectScreen(s, 0, 1);
+  await expect(s.close).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(s.original).toBeFocused();
+  await page.keyboard.press('Tab');
+  await expect(s.close).toBeFocused();
+  await page.keyboard.press('Shift+Tab');
+  await expect(s.original).toBeFocused();
+
+  await page.keyboard.press('Escape');
+  await expect(s.viewer).toBeHidden();
+  expect(problems).toEqual([]);
+});
+
 test('concept screens are labelled as illustrative wherever they appear', async ({ page }) => {
   for (const relative of ['research/method-majordomus/', 'about/', 'cs/about/']) {
     await open(page, relative);

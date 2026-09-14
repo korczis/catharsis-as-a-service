@@ -2,7 +2,7 @@
  * Progressive enhancement for Catharsis as a Service.
  * Content never depends on this file. Ownership is split so no DOM state has two owners:
  *   Alpine.js — header state, diagnostic view switch, copy feedback
- *   Flowbite  — artwork viewer (Modal), mobile navigation (Drawer), tooltip
+ *   Flowbite  — artwork viewer and screen previews (Modal), mobile navigation (Drawer), tooltip
  *   vanilla   — locale choice persistence, reveal-on-scroll, pointer light
  */
 (() => {
@@ -13,6 +13,7 @@
   const VIEWS = ['experience', 'diagnostic', 'raw'];
   const COPY_RESET_MS = 1800;
   const HEADER_REVEAL_OFFSET = 200;
+  const SWIPE_MIN_PX = 50;
   // Detector simulation thresholds (invented, documented on the methods page).
   const DETECTOR_HEART_RANGE = 40;
   const DETECTOR_EDA_RANGE = 12;
@@ -220,6 +221,125 @@
     });
   };
 
+  // Concept screen previews: one Modal per figure, moved to <body> so no transformed ancestor
+  // (.reveal) can clip a fixed-position dialog. Modified clicks keep the link's own behaviour.
+  const initScreens = () => {
+    if (typeof window.Modal !== 'function') return;
+    document.querySelectorAll('[data-screen-viewer]').forEach((el) => {
+      const figure = document.getElementById(el.getAttribute('data-screen-viewer'));
+      const triggers = figure ? [...figure.querySelectorAll('[data-screen-open]')] : [];
+      if (!triggers.length) return;
+      document.body.append(el);
+
+      const image = el.querySelector('[data-screen-image]');
+      const title = el.querySelector('[data-screen-title]');
+      const caption = el.querySelector('[data-screen-caption]');
+      const original = el.querySelector('[data-screen-original]');
+      const count = el.querySelector('[data-screen-count]');
+      const prev = el.querySelector('[data-screen-prev]');
+      const next = el.querySelector('[data-screen-next]');
+      const paged = triggers.length > 1;
+      let index = 0;
+      let trigger = null;
+
+      // A single screen has nothing to page through; disabled also keeps the buttons out of the focus trap.
+      [prev, next].forEach((node) => {
+        node.hidden = !paged;
+        node.disabled = !paged;
+      });
+      count.hidden = !paged;
+
+      const show = (position) => {
+        index = (position + triggers.length) % triggers.length;
+        const node = triggers[index];
+        image.src = node.dataset.full;
+        image.width = Number(node.dataset.width);
+        image.height = Number(node.dataset.height);
+        image.alt = node.querySelector('img')?.alt ?? '';
+        title.textContent = node.dataset.title;
+        caption.textContent = node.dataset.caption;
+        original.href = node.href;
+        count.textContent = `${index + 1} / ${triggers.length}`;
+        if (paged) [index + 1, index - 1].forEach(preload);
+      };
+
+      // Warm the neighbours so paging shows the next screen without waiting for the network.
+      const preloaded = new Set();
+      const preload = (position) => {
+        const url = triggers[(position + triggers.length) % triggers.length].dataset.full;
+        if (preloaded.has(url)) return;
+        preloaded.add(url);
+        const warm = new Image();
+        warm.decoding = 'async';
+        warm.src = url;
+      };
+
+      const PAGING_KEYS = {
+        ArrowRight: () => index + 1,
+        ArrowLeft: () => index - 1,
+        Home: () => 0,
+        End: () => triggers.length - 1,
+      };
+      const onKey = (event) => {
+        if (paged && event.key in PAGING_KEYS) {
+          event.preventDefault();
+          show(PAGING_KEYS[event.key]());
+        } else {
+          trapFocus(el, event);
+        }
+      };
+
+      // Touch and pen swipe on the image: a mostly horizontal stroke longer than SWIPE_MIN_PX pages.
+      let stroke = null;
+      image.addEventListener('pointerdown', (event) => {
+        stroke = event.pointerType === 'mouse' ? null : { x: event.clientX, y: event.clientY };
+      });
+      image.addEventListener('pointercancel', () => {
+        stroke = null;
+      });
+      image.addEventListener('pointerup', (event) => {
+        if (!stroke || !paged) return;
+        const dx = event.clientX - stroke.x;
+        const dy = event.clientY - stroke.y;
+        stroke = null;
+        if (Math.abs(dx) < SWIPE_MIN_PX || Math.abs(dx) <= Math.abs(dy)) return;
+        show(index + (dx < 0 ? 1 : -1));
+      });
+
+      const modal = new window.Modal(
+        el,
+        {
+          placement: 'center',
+          backdrop: 'dynamic',
+          backdropClasses: 'viewer-backdrop fixed inset-0 z-40',
+          closable: true,
+          onShow: () => {
+            el.addEventListener('keydown', onKey);
+            el.querySelector('[data-screen-close]')?.focus();
+          },
+          onHide: () => {
+            el.removeEventListener('keydown', onKey);
+            trigger?.focus({ preventScroll: true });
+          },
+        },
+        { id: el.id, override: true },
+      );
+
+      triggers.forEach((node, position) => {
+        node.addEventListener('click', (event) => {
+          if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+          event.preventDefault();
+          trigger = node;
+          show(position);
+          modal.show();
+        });
+      });
+      prev.addEventListener('click', () => show(index - 1));
+      next.addEventListener('click', () => show(index + 1));
+      el.querySelector('[data-screen-close]')?.addEventListener('click', () => modal.hide());
+    });
+  };
+
   const initDrawer = () => {
     const el = document.getElementById('nav-drawer');
     const openers = document.querySelectorAll('[data-drawer-open]');
@@ -319,6 +439,7 @@
 
   onReady(() => {
     initViewer();
+    initScreens();
     initDrawer();
     initLocaleChoice();
     initReveal();

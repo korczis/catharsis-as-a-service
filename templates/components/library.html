@@ -61,16 +61,22 @@
 </section>
 {% endcomponent library.references %}
 
-{#- Screenshots of concept interfaces. Always labelled as concept screens with illustrative data. -#}
+{#- Screenshots of concept interfaces. Always labelled as concept screens with illustrative data.
+    Without JavaScript each frame links to the original PNG; with it, the frame opens an in-page
+    preview (Flowbite Modal) that loads the full-size image only when shown. -#}
 {% component library.screens(fig: map, lang: string) %}
+{%- set count = fig.items | length %}
 <figure id="{{ fig.id }}" class="screens" aria-labelledby="{{ fig.id }}-caption">
   <p class="screen-label" role="note">{{ trans(key="cockpit_label", lang=lang) }}</p>
-  <ul class="screen-grid{% if fig.items | length == 1 %} is-single{% endif %}">
+  <ul class="screen-grid{% if count == 1 %} is-single{% endif %}">
     {%- for item in fig.items %}
     {%- set large = resize_image(path=item.src, width=1200, op="fit_width", format="webp", quality=84) %}
     {%- set small = resize_image(path=item.src, width=768, op="fit_width", format="webp", quality=82) %}
+    {%- set full = resize_image(path=item.src, width=1536, op="fit_width", format="webp", quality=88) %}
     <li class="screen">
-      <a class="screen-frame" href="{{ get_url(path=item.src) }}" target="_blank" rel="noopener">
+      <a class="screen-frame" href="{{ get_url(path=item.src) }}" target="_blank" rel="noopener"
+        data-screen-open data-full="{{ full.url }}" data-width="{{ full.width }}" data-height="{{ full.height }}"
+        data-title="{{ item.title }}" data-caption="{{ item.caption }}">
         <img src="{{ large.url }}" srcset="{{ small.url }} 768w, {{ large.url }} 1200w" sizes="(min-width: 1024px) 34vw, 92vw"
           width="{{ large.width }}" height="{{ large.height }}" alt="{{ item.alt }}" loading="lazy" decoding="async">
       </a>
@@ -79,6 +85,28 @@
     {%- endfor %}
   </ul>
   <figcaption id="{{ fig.id }}-caption" class="screen-figcaption">{{ fig.caption }}</figcaption>
+  {%- set first = fig.items | first %}
+  {%- set first_full = resize_image(path=first.src, width=1536, op="fit_width", format="webp", quality=88) %}
+  <div id="{{ fig.id }}-viewer" data-screen-viewer="{{ fig.id }}" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true"
+    aria-labelledby="{{ fig.id }}-viewer-title" class="viewer screen-viewer fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8">
+    <div class="screen-viewer-body relative flex flex-col gap-3">
+      <div class="flex flex-wrap items-center justify-between gap-3">
+        <p class="screen-label screen-viewer-label">{{ trans(key="cockpit_label", lang=lang) }}</p>
+        <div class="flex items-center gap-2">
+          <span class="label screen-viewer-count" data-screen-count aria-live="polite">1 / {{ count }}</span>
+          <button type="button" class="btn-ghost bg-ink" data-screen-prev aria-label="{{ trans(key='screen_previous', lang=lang) }}"><span aria-hidden="true">←</span></button>
+          <button type="button" class="btn-ghost bg-ink" data-screen-next aria-label="{{ trans(key='screen_next', lang=lang) }}"><span aria-hidden="true">→</span></button>
+          <button type="button" class="btn-ghost bg-ink" data-screen-close>{{ trans(key="poster_close", lang=lang) }} <span aria-hidden="true">✕</span></button>
+        </div>
+      </div>
+      <img data-screen-image src="{{ first_full.url }}" width="{{ first_full.width }}" height="{{ first_full.height }}" alt="{{ first.alt }}" loading="lazy" decoding="async">
+      <p class="screen-caption screen-viewer-caption">
+        <span id="{{ fig.id }}-viewer-title" class="condensed screen-title" data-screen-title>{{ first.title }}</span>
+        <span data-screen-caption>{{ first.caption }}</span>
+        <a href="{{ get_url(path=first.src) }}" target="_blank" rel="noopener" data-screen-original>{{ trans(key="screen_original", lang=lang) }} <span aria-hidden="true">↗</span></a>
+      </p>
+    </div>
+  </div>
 </figure>
 {% endcomponent library.screens %}
 

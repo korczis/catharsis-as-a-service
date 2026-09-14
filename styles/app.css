@@ -1437,6 +1437,7 @@
   .site-header,
   #nav-drawer,
   #artwork-viewer,
+  .screen-viewer,
   .rail,
   .tabs,
   .meter,
@@ -2346,6 +2347,51 @@
 
   .screen-frame:hover {
     border-color: var(--color-blood);
+  }
+
+  .js .screen-frame {
+    cursor: zoom-in;
+  }
+
+  .screen-viewer-body {
+    width: min(100%, 96rem);
+  }
+
+  .screen-viewer-body img {
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100dvh - 12rem);
+    margin-inline: auto;
+    object-fit: contain;
+    border: 1px solid var(--color-line);
+    /* Horizontal strokes belong to the swipe handler; vertical pan and pinch zoom stay native. */
+    touch-action: pan-y pinch-zoom;
+    user-select: none;
+  }
+
+  .screen-viewer-label {
+    margin-bottom: 0;
+  }
+
+  .screen-viewer-count {
+    margin-right: 0.5rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--color-muted);
+  }
+
+  .screen-viewer-caption {
+    max-width: 64rem;
+    margin-top: 0;
+  }
+
+  .screen-viewer-caption a {
+    color: var(--color-bone);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+
+  .screen-viewer-caption a:hover {
+    color: var(--color-blood);
   }
 
   .screen-caption {
