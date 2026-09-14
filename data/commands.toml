@@ -292,6 +292,16 @@ summary.cs = "Zkontroluje, že na webu nic neroluje uvnitř stránky: žádné r
 verified_by = ["ci:Validate and build", "pytest:test_layout_passes_on_repository"]
 
 [[commands]]
+id = "validate-models"
+group = "validate"
+command = "python3 scripts/validate-models.py"
+match = "python3 scripts/validate-models.py"
+source = "scripts/validate-models.py"
+summary.en = "Checks the interactive model registry against docs/MODELS.md: bilingual fields, claims and sources that resolve, an epistemic class for every part of the model, assumptions, limits, rules, an implementation and its tests."
+summary.cs = "Zkontroluje registr interaktivních modelů proti docs/MODELS.md: dvojjazyčná pole, dohledatelná tvrzení a zdroje, epistemickou třídu pro každou část modelu, předpoklady, limity, pravidla, implementaci a její testy."
+verified_by = ["ci:Validate and build", "pytest:test_registry_passes_on_the_repository"]
+
+[[commands]]
 id = "validate-claims"
 group = "validate"
 command = "python3 scripts/validate-claims.py"
