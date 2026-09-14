@@ -146,6 +146,8 @@ for (const locale of LOCALES) {
       `${locale.path}evidence/`,
       `${locale.path}status/`,
       `${locale.path}artifacts/catharsis-as-a-service/`,
+      `${locale.path}studies/`,
+      `${locale.path}terms/rumination/`,
     ];
     for (const width of [390, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
@@ -194,6 +196,9 @@ for (const locale of LOCALES) {
     'status/',
     'theory/',
     'artifacts/closure-as-a-service/',
+    'studies/',
+    'studies/watkins-2008/',
+    'terms/rumination/',
     locale.glossary,
     locale.models,
     locale.search,

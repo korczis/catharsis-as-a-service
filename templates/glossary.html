@@ -41,7 +41,9 @@
           {%- if initial == letter %}
           <article id="{{ t.id }}" class="term" aria-labelledby="{{ t.id }}-title">
             <div class="term-head">
-              <h3 id="{{ t.id }}-title" class="condensed term-title"><dfn>{{ t.term[lang] }}</dfn></h3>
+              {#- Each term also has a page of its own (scripts/generate-term-pages.py). -#}
+              {%- set term_path = "@/terms/" ~ t.id ~ "/index.md" %}
+              <h3 id="{{ t.id }}-title" class="condensed term-title"><a href="{{ get_url(path=term_path, lang=lang) }}"><dfn>{{ t.term[lang] }}</dfn></a></h3>
               {{ <evidence.kind kind={t.kind} lang={lang} /> }}
             </div>
             <p class="term-other label" lang="{{ other }}">{{ t.term[other] }}</p>
@@ -49,7 +51,7 @@
             {%- if t.see_also | length > 0 %}
             <p class="term-links"><span class="label">{{ trans(key="see_also", lang=lang) }}</span>
               {%- for ref_id in t.see_also %}
-              {%- for candidate in glossary.terms %}{% if candidate.id == ref_id %} <a href="#{{ ref_id }}">{{ candidate.term[lang] }}</a>{% if not loop.last %}{% endif %}{% endif %}{% endfor %}
+              {%- for candidate in glossary.terms %}{% if candidate.id == ref_id %}{% set see_path = "@/terms/" ~ ref_id ~ "/index.md" %} <a href="{{ get_url(path=see_path, lang=lang) }}">{{ candidate.term[lang] }}</a>{% endif %}{% endfor %}
               {%- endfor %}
             </p>
             {%- endif %}

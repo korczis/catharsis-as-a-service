@@ -1,4 +1,6 @@
-{%- if ctx is defined and ctx.title -%}{%- set_global meta_title = ctx.title -%}{%- else -%}{%- set_global meta_title = config.title -%}{%- endif -%}
+{#- A page may carry its own <title> when its heading alone would collide with another page's,
+    as a glossary term collides with a study of the same name; the heading stays the plain one. -#}
+{%- if ctx is defined and ctx.extra is defined and ctx.extra.meta_title is defined -%}{%- set_global meta_title = ctx.extra.meta_title -%}{%- elif ctx is defined and ctx.title -%}{%- set_global meta_title = ctx.title -%}{%- else -%}{%- set_global meta_title = config.title -%}{%- endif -%}
 {%- if ctx is defined and ctx.description -%}{%- set_global meta_description = ctx.description -%}{%- else -%}{%- set_global meta_description = config.description -%}{%- endif -%}
 {%- if ctx is not defined -%}{%- set_global meta_title = "404 · " ~ trans(key="not_found_title", lang=l) -%}{%- endif -%}
 {%- set_global social_image = get_url(path=trans(key="social_image", lang=l)) -%}

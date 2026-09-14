@@ -150,6 +150,16 @@ level_c = "Longitudinal and repeated-measures studies without random assignment.
 level_d = "Cross-sectional, observational, qualitative work and narrative reviews."
 level_e = "Theory, classical and historical texts, records and software: no empirical claim of their own."
 
+# Terms: one page per glossary entry, generated from data/glossary.toml (scripts/generate-term-pages.py).
+term_kicker = "Glossary term"
+term_used_by = "Where the site uses it"
+term_sources = "Studies behind it"
+term_sources_intro = "The works the definition rests on, with the level of evidence each was appraised at."
+term_see_also = "Related terms"
+term_in_glossary = "In the glossary"
+term_in_glossary_link = "See this term in the full glossary"
+term_in_glossary_note = "The glossary lists every term on one page, with the same definitions."
+
 scope = "Scope"
 caveat = "Caveat"
 last_reviewed = "Last reviewed"
@@ -364,6 +374,16 @@ level_b = "Kontrolované studie: randomizované a experimentální designy a syn
 level_c = "Longitudinální studie a opakovaná měření bez náhodného přiřazení."
 level_d = "Průřezové, observační a kvalitativní práce a narativní přehledy."
 level_e = "Teorie, klasické a historické texty, záznamy a software: samy o sobě netvrdí nic empirického."
+
+# Pojmy: jedna stránka na heslo slovníku, generováno z data/glossary.toml (scripts/generate-term-pages.py).
+term_kicker = "Pojem ze slovníku"
+term_used_by = "Kde jej web používá"
+term_sources = "Studie, o které se opírá"
+term_sources_intro = "Práce, na nichž definice stojí, s úrovní důkazů, na kterou byly posouzeny."
+term_see_also = "Související pojmy"
+term_in_glossary = "Ve slovníku"
+term_in_glossary_link = "Zobrazit pojem v celém slovníku"
+term_in_glossary_note = "Slovník uvádí všechny pojmy na jedné stránce se stejnými definicemi."
 
 scope = "Platnost"
 caveat = "Výhrada"

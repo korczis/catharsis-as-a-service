@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{#- One glossary term. Definition, kind, the pages that use it, the studies behind it and the terms next
+    to it, all read from data/glossary.toml through the generated front matter
+    (scripts/generate-term-pages.py). The glossary page remains the index of all of them. -#}
+
+{% block content %}
+{%- set glossary = load_data(path="data/glossary.toml") %}
+{%- set reference_data = load_data(path="data/references.toml") %}
+{%- set glossary_page = get_page(path="glossary/index.md", lang=lang, metadata_only=true) %}
+<article class="hero" aria-labelledby="term-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": glossary_page.title, "url": glossary_page.permalink},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow"><a class="no-underline" href="{{ glossary_page.permalink }}">{{ glossary_page.title }}</a> <span class="text-muted">// {{ trans(key="term_kicker", lang=lang) }}</span> {{ <evidence.kind kind={page.extra.kind} lang={lang} /> }}</p>
+    <h1 id="term-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+
+    <div class="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="min-w-0 lg:col-span-8">
+        <p class="lead">{{ page.extra.definition }}</p>
+
+        {%- if page.extra.used_by | length > 0 %}
+        <section class="mt-14" aria-labelledby="used-title">
+          <h2 id="used-title" class="condensed section-title">{{ trans(key="term_used_by", lang=lang) }}</h2>
+          <ul class="term-uses mt-6">
+            {%- for path in page.extra.used_by %}
+            {%- set used = get_page(path=path, lang=lang) %}
+            <li>
+              <a class="condensed term-use-title" href="{{ used.permalink }}">{{ used.title }}</a>
+              <p class="term-use-text">{{ used.description }}</p>
+            </li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endif %}
+
+        {%- if page.extra.references | length > 0 %}
+        <section class="mt-14" aria-labelledby="sources-title">
+          <h2 id="sources-title" class="condensed section-title">{{ trans(key="term_sources", lang=lang) }}</h2>
+          <p class="mt-3 text-muted">{{ trans(key="term_sources_intro", lang=lang) }}</p>
+          <ul class="source-list mt-6">
+            {%- for id in page.extra.references %}
+            {{ <evidence.source id={id} lang={lang} /> }}
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endif %}
+      </div>
+
+      <aside class="space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        {%- if page.extra.see_also | length > 0 %}
+        <section class="aside-block" aria-labelledby="see-also-title">
+          <h2 id="see-also-title" class="label">{{ trans(key="term_see_also", lang=lang) }}</h2>
+          <ul class="mt-3 space-y-3">
+            {%- for other in page.extra.see_also %}
+            {%- set other_page = get_page(path="terms/" ~ other ~ "/index.md", lang=lang, metadata_only=true) %}
+            <li><a href="{{ other_page.permalink }}">{{ other_page.title }}</a></li>
+            {%- endfor %}
+          </ul>
+        </section>
+        {%- endif %}
+        <section class="aside-block" aria-labelledby="term-glossary-title">
+          <h2 id="term-glossary-title" class="label">{{ trans(key="term_in_glossary", lang=lang) }}</h2>
+          <p class="mt-3"><a href="{{ glossary_page.permalink }}#{{ page.extra.term }}">{{ trans(key="term_in_glossary_link", lang=lang) }}</a></p>
+          <p class="mt-3 text-muted">{{ trans(key="term_in_glossary_note", lang=lang) }}</p>
+        </section>
+        {{ <library.disclaimer lang={lang} /> }}
+      </aside>
+    </div>
+  </div>
+</article>
+{% endblock content %}
