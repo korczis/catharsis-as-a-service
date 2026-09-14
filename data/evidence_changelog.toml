@@ -3,6 +3,12 @@
 [[entries]]
 date = 2026-09-14
 kind = "added"
+summary = { en = "The measuring-emotion note was expanded with six claims and eight newly appraised references: facial expression co-occurrence, self-report instruments, coherence across response systems, neuroimaging, ambulatory assessment and physiologically triggered experience sampling. Every added statement was checked against the PubMed abstract of its source, and no sample size is stated where the abstract gives none. Candidate sources whose abstract or text could not be retrieved were not used.", cs = "Poznámka o měření emocí byla rozšířena o šest tvrzení a osm nově hodnocených zdrojů: společný výskyt emocí a výrazů obličeje, nástroje sebeposouzení, soudržnost systémů odpovědí, neurozobrazování, ambulantní hodnocení a vzorkování zážitků spouštěné fyziologií. Každé doplněné tvrzení bylo ověřeno podle abstraktu zdroje v databázi PubMed a tam, kde abstrakt velikost vzorku neuvádí, se neuvádí ani zde. Kandidátní zdroje, jejichž abstrakt nebo text nebylo možné získat, nebyly použity." }
+claims = ["measuring-facial-expression-cooccurrence", "measuring-self-report-scale-properties", "measuring-response-coherence-limited", "measuring-no-discrete-brain-localization", "measuring-field-recordings-confounded", "measuring-physiological-patterns-vary"]
+
+[[entries]]
+date = 2026-09-14
+kind = "added"
 summary = { en = "Ledger created with 50 claims and an appraisal of all 56 references. Designs were checked against published abstracts; two sources without a retrievable abstract (Pennebaker & Beall, 1986; Reed & Ones, 2006) are marked unverified and no numbers are stated for them. Syntheses of correlational studies are graded by the design of the studies they pool.", cs = "Vytvořen registr s 50 tvrzeními a hodnocením všech 56 zdrojů. Designy byly ověřeny podle publikovaných abstraktů; dva zdroje bez dostupného abstraktu (Pennebaker a Beall, 1986; Reed a Ones, 2006) jsou označeny jako neověřené a neuvádějí se u nich žádná čísla. Syntézy korelačních studií jsou hodnoceny podle designu studií, které shrnují." }
 claims = ["catharsis-working-definition", "expressive-writing-coherence", "exercise-acute-positive-affect", "rumination-associated-symptoms", "collective-effervescence-associations", "relief-not-resolution-thesis", "telemetry-is-artistic", "no-analytics-trackers-cookies"]
 

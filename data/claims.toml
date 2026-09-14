@@ -677,3 +677,83 @@ caveat = { en = "Planning before the first recorded file is excluded, and durati
 used_in = ["_index.md", "research/method-majordomus/index.md"]
 last_reviewed = 2026-09-14
 review_due = 2028-09-13
+
+# ── Measuring emotion: expansion ──────────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "measuring-facial-expression-cooccurrence"
+statement = { en = "A meta-analysis found that six classic basic emotions did not reliably co-occur with their predicted facial expressions: average co-occurrence effect sizes were .13 for full expressions coded with FACS and .23 including partial expressions, and reported and expressed intensity correlated on average at .30.", cs = "Metaanalýza zjistila, že šest klasických základních emocí se spolehlivě nevyskytovalo společně se svými předpokládanými výrazy obličeje: průměrná velikost účinku společného výskytu byla 0,13 u úplných výrazů kódovaných systémem FACS a 0,23 po zahrnutí částečných výrazů a uváděná a vyjádřená intenzita spolu v průměru korelovaly 0,30." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["duran-2021", "barrett-2019"]
+scope = { en = "Studies that recorded both a reported emotion and facial behaviour for happiness, sadness, anger, disgust, fear and surprise.", cs = "Studie, které zaznamenaly uváděnou emoci i chování obličeje u radosti, smutku, hněvu, znechucení, strachu a překvapení." }
+caveat = { en = "Heterogeneity between samples was found, and co-occurrence was highest for disgust and lowest for surprise, so the averages do not describe every emotion equally.", cs = "Mezi vzorky byla zjištěna heterogenita a společný výskyt byl nejvyšší u znechucení a nejnižší u překvapení, takže průměry nepopisují všechny emoce stejně." }
+used_in = ["research/measuring-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "measuring-self-report-scale-properties"
+statement = { en = "Brief self-report instruments can measure consistently: the two 10-item PANAS scales were highly internally consistent, largely uncorrelated and stable over two months, and the three-judgement Self-Assessment Manikin correlated highly with an 18-rating semantic differential for pleasure and arousal.", cs = "Krátké nástroje sebeposouzení mohou měřit konzistentně: dvě desetipoložkové škály PANAS měly vysokou vnitřní konzistenci, navzájem převážně nekorelovaly a byly stabilní během dvou měsíců, a Self-Assessment Manikin se třemi úsudky vysoce koreloval se sémantickým diferenciálem s 18 hodnoceními u libosti a vzrušení." }
+claim_type = "technical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["watson-1988", "bradley-lang-1994"]
+scope = { en = "Research instruments for self-reported affect.", cs = "Výzkumné nástroje pro sebeposouzení afektu." }
+caveat = { en = "Reliability and agreement between rating methods show consistent measurement, not that a report is accurate about bodily change or about why a feeling arose.", cs = "Spolehlivost a shoda hodnoticích metod ukazují konzistentní měření, nikoli že výpověď přesně odráží tělesnou změnu nebo důvod, proč pocit vznikl." }
+used_in = ["research/measuring-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "measuring-response-coherence-limited"
+statement = { en = "Emotional responses are only partly coherent across systems: during a film inducing amusement and sadness, experience and facial behaviour were highly associated but physiology only modestly, and experiential, physiological and behavioural measures carry unique variance.", cs = "Emoční odpovědi jsou napříč systémy soudržné jen zčásti: během filmu vyvolávajícího pobavení a smutek spolu prožitek a chování obličeje úzce souvisely, fyziologie však jen mírně, a prožitková, fyziologická a behaviorální měřítka nesou vlastní variabilitu." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["mauss-2005", "mauss-robinson-2009"]
+scope = { en = "Laboratory emotion induction and research measures of emotion in general.", cs = "Laboratorní indukce emocí a výzkumná měřítka emocí obecně." }
+caveat = { en = "One laboratory film study and a narrative review; coherence can differ with emotion and intensity, as the difference between amusement and sadness already shows.", cs = "Jedna laboratorní filmová studie a narativní přehled; soudržnost se může lišit podle emoce a intenzity, jak ukazuje už rozdíl mezi pobavením a smutkem." }
+used_in = ["research/measuring-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "measuring-no-discrete-brain-localization"
+statement = { en = "A meta-analysis of human neuroimaging studies found little evidence that discrete emotion categories are consistently and specifically localised to distinct brain regions; interacting regions also involved in non-emotional operations were active across a range of emotion categories.", cs = "Metaanalýza neurozobrazovacích studií u lidí našla jen málo dokladů, že by samostatné kategorie emocí byly konzistentně a specificky lokalizovány do odlišných oblastí mozku; napříč řadou kategorií emocí byly aktivní vzájemně propojené oblasti, které se podílejí i na neemočních operacích." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["lindquist-2012"]
+scope = { en = "Human neuroimaging studies of emotion experience and perception available to a 2012 synthesis.", cs = "Neurozobrazovací studie prožívání a vnímání emocí u lidí dostupné pro syntézu z roku 2012." }
+caveat = { en = "The synthesis weighs two theoretical approaches and favours one; it does not settle the debate between them, and later imaging work is not assessed here.", cs = "Syntéza porovnává dva teoretické přístupy a jednomu dává přednost; spor mezi nimi neuzavírá a pozdější zobrazovací práce zde hodnoceny nejsou." }
+used_in = ["research/measuring-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "measuring-field-recordings-confounded"
+statement = { en = "Ambulatory assessment reduces retrospective bias and gains ecological validity, but physiological signs of emotion in daily life can be masked by social engagement, mental and physical workload, food intake and circadian and metabolic variation, and such monitoring raises acceptability, compliance, privacy and ethical issues.", cs = "Ambulantní hodnocení omezuje zkreslení zpětným vybavováním a získává ekologickou validitu, fyziologické známky emocí v každodenním životě však mohou zastřít sociální interakce, psychická i fyzická zátěž, příjem potravy a cirkadiánní i metabolické výkyvy, a takový monitoring otevírá otázky přijatelnosti, ochoty účastníků, soukromí a etiky." }
+claim_type = "technical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["wilhelm-grossman-2010", "trull-2013"]
+scope = { en = "Measurement of emotion outside the laboratory.", cs = "Měření emocí mimo laboratoř." }
+caveat = { en = "Methodological reviews: they describe what must be controlled, not how large each confound is.", cs = "Metodologické přehledy: popisují, co je třeba kontrolovat, nikoli jak velký je každý rušivý vliv." }
+used_in = ["research/measuring-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "measuring-physiological-patterns-vary"
+statement = { en = "In physiologically triggered experience sampling, the number and nature of recurring physiological patterns varied within individuals, as did the affect ratings and emotion labels associated with each pattern, although some broad patterns recurred across individuals.", cs = "Při vzorkování zážitků spouštěném fyziologií se počet a povaha opakujících se fyziologických vzorců u jednotlivců lišily, stejně jako hodnocení afektu a pojmenování emocí spojená s každým vzorcem, přestože se některé široké vzorce opakovaly napříč jednotlivci." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["hoemann-2020"]
+scope = { en = "Daily-life sampling triggered by substantial cardiac changes without movement.", cs = "Vzorkování v každodenním životě spouštěné výraznými srdečními změnami bez pohybu." }
+caveat = { en = "A single study using exploratory unsupervised clustering; the abstract does not report the sample size, and a 2021 erratum was not reviewed.", cs = "Jediná studie s exploračním shlukováním bez učitele; abstrakt neuvádí velikost vzorku a erratum z roku 2021 nebylo hodnoceno." }
+used_in = ["research/measuring-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14

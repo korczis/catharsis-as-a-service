@@ -483,3 +483,69 @@ population = { en = "Conceptual analysis of reverse inference in neuroimaging, w
 appraisal = { en = "Supports the argument that inferring a mental state from observed activity is weak unless that activity is selective; the site applies the argument to bodily signals by analogy.", cs = "Podporuje argument, že usuzovat na duševní stav z pozorované aktivity je slabé, pokud tato aktivita není selektivní; web argument analogicky vztahuje i na tělesné signály." }
 last_reviewed = 2026-09-14
 review_due = 2027-09-14
+
+# ── Measuring emotion: expansion (appraised against PubMed abstracts, 2026-09-14) ─────────────────
+
+[sources.duran-2021]
+design = "meta-analysis"
+level = "D"
+population = { en = "Random-effects meta-analyses of studies that recorded whether happiness, sadness, anger, disgust, fear and surprise co-occurred with their predicted facial expressions; the abstract does not state the number of studies.", cs = "Metaanalýzy s náhodnými efekty ze studií, které zaznamenávaly, zda se radost, smutek, hněv, znechucení, strach a překvapení vyskytovaly společně s předpokládanými výrazy obličeje; abstrakt neuvádí počet studií." }
+appraisal = { en = "Supports the claim that the six classic basic emotions did not reliably co-occur with their predicted facial signal: average co-occurrence effect sizes of .13 for full FACS-coded expressions and .23 including partial expressions, and an average intensity correlation of .30. It pools observational co-occurrence studies, so it is graded D; heterogeneity between samples was found.", cs = "Podporuje tvrzení, že šest klasických základních emocí se se svým předpokládaným signálem v obličeji spolehlivě nevyskytovalo: průměrná velikost účinku společného výskytu 0,13 u úplných výrazů kódovaných systémem FACS a 0,23 po zahrnutí částečných výrazů a průměrná korelace intenzit 0,30. Shrnuje observační studie společného výskytu, proto má úroveň D; mezi vzorky byla zjištěna heterogenita." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watson-1988]
+design = "cross-sectional"
+level = "D"
+population = { en = "Development and validation samples for two 10-item mood scales; the abstract does not state the sample sizes.", cs = "Vývojové a validační vzorky pro dvě desetipoložkové škály nálady; abstrakt neuvádí velikosti vzorků." }
+appraisal = { en = "Supports the claim that the PANAS scales were highly internally consistent, largely uncorrelated and stable over a two-month period. Psychometric evidence about the scales, not about the accuracy of any individual report.", cs = "Podporuje tvrzení, že škály PANAS měly vysokou vnitřní konzistenci, navzájem převážně nekorelovaly a byly stabilní během dvou měsíců. Psychometrický doklad o škálách, nikoli o přesnosti jednotlivé výpovědi." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bradley-lang-1994]
+design = "cross-sectional"
+level = "D"
+population = { en = "Participants rating pictures that varied in affective valence and intensity with two instruments; the abstract does not state the sample size.", cs = "Účastníci hodnotící dvěma nástroji obrázky lišící se afektivní valencí a intenzitou; abstrakt neuvádí velikost vzorku." }
+appraisal = { en = "Supports the claim that the three-judgement Self-Assessment Manikin correlated highly with an 18-rating semantic differential for pleasure and arousal. A comparison of rating methods: agreement between instruments, not validity against another channel.", cs = "Podporuje tvrzení, že Self-Assessment Manikin se třemi úsudky vysoce koreloval se sémantickým diferenciálem s 18 hodnoceními u libosti a vzrušení. Srovnání hodnoticích metod: shoda mezi nástroji, nikoli validita vůči jinému kanálu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.mauss-2005]
+design = "experiment"
+level = "D"
+population = { en = "Participants whose experience, facial behaviour and peripheral physiology were recorded second by second during a film inducing amusement and sadness; the abstract does not state the sample size.", cs = "Účastníci, jejichž prožitek, chování obličeje a periferní fyziologie byly zaznamenávány sekundu po sekundě během filmu vyvolávajícího pobavení a smutek; abstrakt neuvádí velikost vzorku." }
+appraisal = { en = "Supports the claim that experience and behaviour were highly associated while physiology was only modestly associated with both, and that amusement intensity, but not sadness intensity, went with greater behaviour–physiology coherence. A laboratory induction whose coherence estimates are correlational and have no comparison condition, so it is graded D rather than B.", cs = "Podporuje tvrzení, že prožitek a chování spolu úzce souvisely, zatímco fyziologie s oběma souvisela jen mírně, a že intenzita pobavení, nikoli smutku, šla ruku v ruce s větší soudržností chování a fyziologie. Laboratorní indukce, jejíž odhady soudržnosti jsou korelační a nemají srovnávací podmínku, proto má úroveň D, nikoli B." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lindquist-2012]
+design = "meta-analysis"
+level = "D"
+population = { en = "Meta-analytic summary of human neuroimaging studies of emotion experience and perception; the abstract does not state the number of studies.", cs = "Metaanalytické shrnutí neurozobrazovacích studií prožívání a vnímání emocí u lidí; abstrakt neuvádí počet studií." }
+appraisal = { en = "Supports the claim that there was little evidence for consistent and specific localisation of discrete emotion categories to distinct brain regions, and that interacting regions also involved in non-emotional operations were active across categories. Imaging findings are correlational with respect to emotion categories, so it is graded D; it was published with open peer commentaries, which were not reviewed here.", cs = "Podporuje tvrzení, že pro konzistentní a specifickou lokalizaci samostatných kategorií emocí do odlišných oblastí mozku bylo jen málo dokladů a že napříč kategoriemi byly aktivní vzájemně propojené oblasti podílející se i na neemočních operacích. Zobrazovací zjištění jsou vůči kategoriím emocí korelační, proto má úroveň D; vyšla s otevřenými odbornými komentáři, které zde hodnoceny nebyly." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.trull-2013]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of ambulatory assessment methods and their applications in clinical psychology.", cs = "Neuplatňuje se: přehled metod ambulantního hodnocení a jejich použití v klinické psychologii." }
+appraisal = { en = "Supports the claims that ambulatory assessment collects self-report, observational and physiological data in natural environments, minimises retrospective bias with ecologically valid data, and raises acceptability, compliance, privacy and ethical issues. Methods review, not evidence about any emotion category.", cs = "Podporuje tvrzení, že ambulantní hodnocení sbírá výpovědi, pozorování a fyziologická data v přirozeném prostředí, omezuje zkreslení zpětným vybavováním díky ekologicky validním datům a otevírá otázky přijatelnosti, ochoty účastníků, soukromí a etiky. Metodologický přehled, nikoli doklad o kategoriích emocí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.wilhelm-grossman-2010]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a methodological review of ambulatory assessment of emotion across experience, behaviour and physiology.", cs = "Neuplatňuje se: metodologický přehled ambulantního hodnocení emocí v prožitku, chování a fyziologii." }
+appraisal = { en = "Supports the claim that emotional effects in daily-life physiological data can be masked by social engagement, mental and physical workload, food intake and circadian and quasi-random metabolic variation, so interpretation needs detailed context. It describes what must be controlled, not how large each confound is.", cs = "Podporuje tvrzení, že emoční účinky ve fyziologických datech z každodenního života mohou zastřít sociální interakce, psychická i fyzická zátěž, příjem potravy a cirkadiánní i kvazináhodné metabolické výkyvy, takže interpretace vyžaduje podrobný kontext. Popisuje, co je třeba kontrolovat, nikoli jak velký je každý rušivý vliv." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hoemann-2020]
+design = "longitudinal"
+level = "D"
+population = { en = "Adults followed with physiologically triggered experience sampling in daily life; the abstract does not state the sample size.", cs = "Dospělí sledovaní v každodenním životě vzorkováním zážitků spouštěným fyziologií; abstrakt neuvádí velikost vzorku." }
+appraisal = { en = "Supports the claim that recurring physiological patterns varied in number and nature within individuals, as did the affect ratings and emotion labels attached to them, while some broad patterns recurred across individuals. Exploratory unsupervised clustering in repeated sampling, so it is graded D; an erratum was published in 2021 and was not reviewed here.", cs = "Podporuje tvrzení, že opakující se fyziologické vzorce se u jednotlivců lišily počtem i povahou, stejně jako k nim připojená hodnocení afektu a pojmenování emocí, zatímco některé široké vzorce se opakovaly napříč jednotlivci. Explorační shlukování bez učitele při opakovaném vzorkování, proto má úroveň D; v roce 2021 vyšlo erratum, které zde hodnoceno nebylo." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
