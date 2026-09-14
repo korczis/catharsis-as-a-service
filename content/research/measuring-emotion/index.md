@@ -80,6 +80,8 @@ Hoemann and colleagues (2020) used physiologically triggered experience sampling
 
 **Coherence.** The artifact is about the difference between a successful response and a solved problem. Producing confident numbers it cannot justify would repeat the very confusion it describes.
 
+The [detection sandbox](@/detection-sandbox/index.md) turns this argument into something you can operate. It takes five synthetic signals, shows the features derived from them and every reading they support at once, and lets you change only the setting to watch the leading reading change while the signals stay where they are. Nothing in it measures anyone.
+
 ## How to read the numbers on the page
 
 Every metric in the observability table is an artistic value, chosen to express a relationship rather than to report an observation. Relief is shown high but marked temporary. The root cause is shown at full scale and marked unchanged. The page states this next to the table, and the site contains no analytics, trackers or cookies, which can be verified in its source code.

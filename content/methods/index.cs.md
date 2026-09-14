@@ -355,6 +355,8 @@ Pohyby obličeje, často přidávané jako „další modalita“, mají stejné
 
 Za tím vším stojí problém [obrácené inference](../slovnik/#reverse-inference). Poldrack (2006) jej popsal pro zobrazování mozkové aktivity: usuzování, že proběhl určitý mentální proces, protože byla aktivní oblast s tímto procesem spojovaná. Takové závěry nejsou deduktivně platné, i když mohou přinést určitou evidenci, a jejich hodnotu omezuje to, jak selektivní pozorovaná aktivita je. Stejná logika platí pro tělesné signály. Arousal stoupá při strachu, ale i při radosti, námaze a v horku. Čím méně je signál selektivní, tím méně jeho přítomnost vypovídá o jakémkoli jednotlivém stavu, a přidání dalších neselektivních signálů žádný z nich selektivním neučiní.
 
+[Detekční pískoviště](@/detection-sandbox/index.cs.md) tento řetězec zpřístupňuje k prozkoumání. Každou část, kterou ukazuje, označí jako pozorovanou, odvozenou, vyvozenou nebo neznámou, řadí konkurující čtení týchž umělých signálů i s aritmetikou vedle nich a ukazuje, jak prostředí, které žádný senzor nezaznamenává, mění, které čtení vede.
+
 ## Sebevýpověď: nepostradatelná a nedokonalá
 
 [Sebevýpověď](../slovnik/#self-report) je jediný přístup k tomu, jak se prožitek jeví zevnitř. Fyziologická data mohou ukázat, že se něco změnilo; jen člověk sám může říct, zda změna působila jako uvolnění, úzkost, nuda, nebo nic zvláštního, a zda byla její [valence](../slovnik/#valence) příjemná, nebo nepříjemná. Každý seriózní model katarze proto sebevýpověď potřebuje a musí s ní zacházet jako s měřením, které má vlastní chyby.

@@ -355,6 +355,8 @@ Facial movement, often added as "one more modality", has the same limitation. Ba
 
 Behind all of this lies the problem of [reverse inference](../glossary/#reverse-inference). Poldrack (2006) described it for neuroimaging: concluding that a mental process was engaged because a region associated with that process was active. Such inferences are not deductively valid, although they can add some evidence, and their value is limited by how selective the observed activity is. The same logic applies to bodily signals. Arousal rises during fear, but also during joy, effort and heat. The less selective a signal, the less its presence says about any single state, and adding more unselective signals does not make any of them selective.
 
+The [detection sandbox](@/detection-sandbox/index.md) makes this chain inspectable. It labels each part it shows as observed, derived, inferred or unknown, ranks competing readings of the same synthetic signals with the arithmetic beside them, and shows how the setting, which no sensor records, changes which reading leads.
+
 ## Self-report: indispensable and imperfect
 
 [Self-report](../glossary/#self-report) is the only access to how an experience feels from the inside. Physiological data can show that something changed; only the person can say whether the change felt like release, dread, boredom or nothing in particular, and whether its [valence](../glossary/#valence) was pleasant or unpleasant. Any serious model of catharsis therefore needs self-report, and it needs to treat self-report as a measurement with errors of its own.

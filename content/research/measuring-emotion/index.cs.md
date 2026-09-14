@@ -80,6 +80,8 @@ Hoemannová a kolegové (2020) použili vzorkování zážitků spouštěné fyz
 
 **Soudržnost.** Artefakt je o rozdílu mezi úspěšnou odpovědí a vyřešeným problémem. Kdyby vytvářel sebejistá čísla, která nedokáže obhájit, opakoval by přesně tu záměnu, kterou popisuje.
 
+[Detekční pískoviště](@/detection-sandbox/index.cs.md) z tohoto argumentu dělá něco, co si lze vyzkoušet. Vezme pět umělých signálů, ukáže z nich odvozené veličiny a zároveň všechna čtení, která připouštějí, a nechá vás změnit jen prostředí, abyste viděli, jak se vedoucí čtení změní, zatímco signály zůstanou na místě. Nic v něm nikoho neměří.
+
 ## Jak číst čísla na stránce
 
 Každá metrika v tabulce pozorovatelnosti je umělecká hodnota zvolená tak, aby vyjádřila vztah, nikoli aby hlásila pozorování. Úleva je zobrazena vysoko, ale označena jako dočasná. Příčina je zobrazena v plném rozsahu a označena jako nezměněná. Stránka to uvádí přímo u tabulky a web neobsahuje žádnou analytiku, trackery ani cookies, což lze ověřit v jeho zdrojovém kódu.
