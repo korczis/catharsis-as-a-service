@@ -120,9 +120,18 @@ def check_online(registry):
         if record is None:
             errors.append(f"{ident}: DOI {doi} is not known to Crossref")
             continue
-        registered = normalise(entry["title"])
-        remote = normalise(" ".join(record.get("title") or [""]))
-        similarity = difflib.SequenceMatcher(None, registered, remote).ratio()
+        # Publishers deposit subtitles inconsistently: separately, inside the title, or not at all.
+        # Compare the full registered title and its main title against Crossref's title with and
+        # without the subtitle, and keep the best match.
+        title = " ".join(record.get("title") or [""])
+        subtitle = " ".join(record.get("subtitle") or [])
+        remote_forms = {normalise(title), normalise(f"{title} {subtitle}")}
+        registered_forms = {normalise(entry["title"]), normalise(entry["title"].split(":")[0])}
+        similarity, remote = max(
+            (difflib.SequenceMatcher(None, local, text).ratio(), text)
+            for local in registered_forms
+            for text in remote_forms
+        )
         year = str((record.get("issued", {}).get("date-parts") or [[None]])[0][0])
         status = "ok"
         if similarity < TITLE_SIMILARITY:
