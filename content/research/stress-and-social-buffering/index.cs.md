@@ -20,6 +20,7 @@ references = ["mcewen-1998", "ochsner-gross-2005", "cohen-wills-1985", "saarikal
 [[extra.figures]]
 kind = "curves"
 id = "fig-stress-termination"
+claims = ["allostatic-load"]
 title = "Stresová reakce, která se vypne, a reakce, která se nevypne"
 description = "Spojnicový graf s časem na vodorovné ose a stresovou reakcí na svislé ose. Obě křivky po stresoru stoupnou; jedna se vrátí na výchozí úroveň, druhá zůstane zvýšená."
 caption = "Obrázek 1. Stresové mediátory akutně chrání a při nedostatečném ukončení přispívají k alostatické zátěži (McEwen, 1998). Koncepční ilustrace, nikoli naměřená data."

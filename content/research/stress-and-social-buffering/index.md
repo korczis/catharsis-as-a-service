@@ -20,6 +20,7 @@ references = ["mcewen-1998", "ochsner-gross-2005", "cohen-wills-1985", "saarikal
 [[extra.figures]]
 kind = "curves"
 id = "fig-stress-termination"
+claims = ["allostatic-load"]
 title = "A stress response that switches off and one that does not"
 description = "Line chart with time on the horizontal axis and stress response on the vertical axis. Both lines rise after a stressor; one returns to baseline, the other stays elevated."
 caption = "Figure 1. Stress mediators protect acutely and contribute to allostatic load when poorly terminated (McEwen, 1998). Conceptual illustration, not measured data."

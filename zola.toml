@@ -160,6 +160,12 @@ term_in_glossary = "In the glossary"
 term_in_glossary_link = "See this term in the full glossary"
 term_in_glossary_note = "The glossary lists every term on one page, with the same definitions."
 
+# Provenance: the path from a drawing to the claim it was drawn from and the studies behind it.
+provenance_question = "Why does this drawing exist?"
+provenance_output = "What you are looking at"
+provenance_claim = "Claim it is drawn from"
+provenance_note = "Claims, their strength and their review dates are kept in the evidence ledger."
+
 scope = "Scope"
 caveat = "Caveat"
 last_reviewed = "Last reviewed"
@@ -384,6 +390,12 @@ term_see_also = "Související pojmy"
 term_in_glossary = "Ve slovníku"
 term_in_glossary_link = "Zobrazit pojem v celém slovníku"
 term_in_glossary_note = "Slovník uvádí všechny pojmy na jedné stránce se stejnými definicemi."
+
+# Provenience: cesta od obrázku k tvrzení, podle kterého vznikl, a ke studiím za ním.
+provenance_question = "Proč tento obrázek existuje?"
+provenance_output = "Na co se díváte"
+provenance_claim = "Tvrzení, podle kterého vznikl"
+provenance_note = "Tvrzení, jejich sílu a data revizí vede evidenční kniha."
 
 scope = "Platnost"
 caveat = "Výhrada"

@@ -22,6 +22,7 @@ references = ["gross-1998", "gross-2015", "gross-john-2003", "webb-2012", "shepp
 [[extra.figures]]
 kind = "pipeline"
 id = "fig-process-model"
+claims = ["venting-located-in-process-model"]
 title = "Five families of regulation strategies along an unfolding emotion"
 description = "Flow diagram of five stages from left to right: situation selection, situation modification, attentional deployment, cognitive change and response modulation. Distraction is marked at attentional deployment, reappraisal at cognitive change and venting at response modulation."
 caption = "Figure 1. The process model sorts strategies by where they act (Gross, 1998). Placing venting at response modulation is this site's interpretation. Conceptual illustration, not measured data."

@@ -20,6 +20,7 @@ references = ["hayes-1996", "reed-ones-2006", "nolen-hoeksema-2008", "watkins-20
 [[extra.figures]]
 kind = "relief_loop"
 id = "fig-relief-loop"
+claims = ["relief-negative-reinforcement"]
 title = "The relief loop"
 description = "An unresolved state leads to repetition, synchronization and discharge. Discharge produces temporary relief, and the unchanged state leads back to the start."
 caption = "Figure 1. The loop implied by negative reinforcement: relief makes the sequence more likely to repeat, while the unresolved state returns."
@@ -33,6 +34,7 @@ loop = "root cause unchanged"
 [[extra.figures]]
 kind = "relief_curve"
 id = "fig-relief-curve"
+claims = ["relief-not-resolution-thesis", "cathartic-method-relief-temporary"]
 title = "Two trajectories of distress over time"
 description = "Line chart with time on the horizontal axis and distress on the vertical axis. One curve rises to a peak, drops sharply during discharge and returns to the original baseline. The other declines gradually to a lower level."
 caption = "Figure 2. Discharge versus processing. Conceptual illustration of the argument, not a plot of measured data."

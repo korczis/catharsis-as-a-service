@@ -106,7 +106,7 @@ series = [{ label = "venting", style = "alert", values = [20, 60, 70] }]
 
 
 def test_content_accepts_valid_curves_figure(tmp_path):
-    root = _figure_fixture(tmp_path, CURVES)
+    root = _figure_fixture(tmp_path, CURVES.replace('axis_x = "time"', 'claims = ["katharsis-classical-meaning"]\naxis_x = "time"'))
     result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
     assert result.returncode == 0, result.stdout
 
@@ -139,6 +139,20 @@ loop = { from = 1, to = 4, label = "back" }
     result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
     assert result.returncode == 1
     assert "loop needs a label and from/to node indexes" in result.stdout
+
+
+def test_content_rejects_a_data_figure_without_claims(tmp_path):
+    root = _figure_fixture(tmp_path, CURVES)
+    result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
+    assert result.returncode == 1
+    assert "names the claims it is drawn from" in result.stdout
+
+
+def test_content_rejects_a_figure_naming_an_unknown_claim(tmp_path):
+    root = _figure_fixture(tmp_path, CURVES.replace('axis_x = "time"', 'claims = ["no-such-claim"]\naxis_x = "time"'))
+    result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
+    assert result.returncode == 1
+    assert "names a claim that is not in the ledger" in result.stdout
 
 
 def test_references_pass_offline_on_repository():

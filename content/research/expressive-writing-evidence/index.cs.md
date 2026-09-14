@@ -21,6 +21,7 @@ references = ["pennebaker-beall-1986", "pennebaker-1997", "smyth-1998", "frattar
 [[extra.figures]]
 kind = "curves"
 id = "fig-writing-distress"
+claims = ["writing-distress-unrelated-to-health-outcomes", "expressive-writing-small-average-effect"]
 title = "Distres během expresivního psaní a po něm"
 description = "Spojnicový graf s časem na vodorovné ose a distresem na svislé ose. Expresivní psaní zvyšuje distres během sezení a do následného sledování klesne mírně pod kontrolní psaní; kontrolní psaní zůstává téměř beze změny."
 caption = "Obrázek 1. Psaní bezprostředně zvyšuje distres, což s pozdějšími výsledky nesouvisí, a průměrný dlouhodobý rozdíl je malý (Smyth, 1998; Frattaroli, 2006). Koncepční ilustrace, nikoli naměřená data."

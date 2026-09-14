@@ -80,6 +80,61 @@
 </article>
 {% endcomponent evidence.claim %}
 
+{#- Provenance: why a drawing on this site looks the way it does. A figure or a model names the claims it
+    was drawn from; this renders the path from the drawing to the claim, to the studies behind it, and out
+    to the DOI. Data: data/claims.toml, data/sources.toml, data/references.toml. -#}
+{% component evidence.provenance(ids: array, lang: string, id: string, output: string) %}
+{%- set ledger = load_data(path="data/claims.toml") -%}
+{%- set source_data = load_data(path="data/sources.toml") -%}
+{%- set reference_data = load_data(path="data/references.toml") -%}
+{%- set_global claims = [] -%}
+{%- for c in ledger.claims %}{% if c.id in ids %}{% set_global claims = [...claims, c] %}{% endif %}{% endfor -%}
+{%- if claims | length > 0 %}
+<div class="provenance" x-data="{ open: false }">
+  <button type="button" class="provenance-toggle" data-requires-js aria-controls="{{ id }}-provenance" aria-expanded="false"
+    x-on:click="open = !open" x-bind:aria-expanded="open.toString()">
+    {{ trans(key="provenance_question", lang=lang) }} <span aria-hidden="true" x-text="open ? '−' : '+'">+</span>
+  </button>
+  <div id="{{ id }}-provenance" class="provenance-body hidden" x-bind:class="{ 'hidden': !open }">
+    <ol class="provenance-chain">
+      <li>
+        <p class="label">{{ trans(key="provenance_output", lang=lang) }}</p>
+        <p>{{ output }}</p>
+      </li>
+      {%- for claim in claims %}
+      <li>
+        <p class="label">{{ trans(key="provenance_claim", lang=lang) }} <a class="claim-id" href="{{ get_url(path='@/evidence/index.md', lang=lang) }}#claim-{{ claim.id }}">{{ claim.id }}</a></p>
+        <p class="provenance-statement">{{ claim.statement[lang] }}</p>
+        <p class="claim-badges mt-2">
+          {{ <evidence.kind kind={claim.claim_type} lang={lang} /> }}
+          {{ <evidence.level level={claim.evidence_level} lang={lang} /> }}
+          {{ <evidence.confidence value={claim.confidence} lang={lang} /> }}
+        </p>
+        {%- if claim.sources | length > 0 %}
+        <ul class="provenance-sources">
+          {%- for source_id in claim.sources %}
+          {%- set ref = reference_data.references[source_id] %}
+          {%- set appraisal = source_data.sources[source_id] %}
+          {%- set title_key = "title_" ~ lang %}
+          {%- set study_path = "@/studies/" ~ source_id ~ "/index.md" %}
+          {%- set design_key = "design_" ~ (appraisal.design | replace(from="-", to="_")) %}
+          <li>
+            <a href="{{ get_url(path=study_path, lang=lang) }}">{% if ref[title_key] is defined %}{{ ref[title_key] }}{% else %}{{ ref.title }}{% endif %}</a>
+            <span class="text-muted">{{ ref.authors | split(pat=",") | first }} ({{ ref.year }}) · {{ trans(key=design_key, lang=lang) }} · {{ trans(key="evidence_level", lang=lang) }} {{ appraisal.level }}</span>
+            {%- if ref.doi != "" %} <a class="provenance-doi" href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">doi <span aria-hidden="true">↗</span></a>{% endif %}
+          </li>
+          {%- endfor %}
+        </ul>
+        {%- endif %}
+      </li>
+      {%- endfor %}
+    </ol>
+    <p class="provenance-note">{{ trans(key="provenance_note", lang=lang) }} <a href="{{ get_url(path='@/evidence/index.md', lang=lang) }}">{{ trans(key="nav_evidence", lang=lang) }} →</a></p>
+  </div>
+</div>
+{%- endif %}
+{% endcomponent evidence.provenance %}
+
 {#- The ledger entries whose used_in names this page (path relative to content/, English file name). -#}
 {% component evidence.page_claims(path: string, lang: string) %}
 {%- set ledger = load_data(path="data/claims.toml") -%}

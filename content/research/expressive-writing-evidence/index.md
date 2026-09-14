@@ -21,6 +21,7 @@ references = ["pennebaker-beall-1986", "pennebaker-1997", "smyth-1998", "frattar
 [[extra.figures]]
 kind = "curves"
 id = "fig-writing-distress"
+claims = ["writing-distress-unrelated-to-health-outcomes", "expressive-writing-small-average-effect"]
 title = "Distress during and after expressive writing"
 description = "Line chart with time on the horizontal axis and distress on the vertical axis. Expressive writing raises distress during the sessions, then falls slightly below control writing by follow-up; control writing stays nearly flat."
 caption = "Figure 1. Writing tends to raise distress immediately, a rise unrelated to later outcomes, and the average long-term difference is small (Smyth, 1998; Frattaroli, 2006). Conceptual illustration, not measured data."

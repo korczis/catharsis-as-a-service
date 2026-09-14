@@ -21,6 +21,7 @@ references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gr
 [[extra.figures]]
 kind = "curves"
 id = "fig-venting-arousal"
+claims = ["venting-increases-anger", "arousal-increasing-activities-ineffective", "arousal-decreasing-activities-reduce-anger"]
 title = "Anger after a provocation: venting versus lowering arousal"
 description = "Line chart with time on the horizontal axis and anger on the vertical axis. After a provocation both lines rise to the same level; the venting line stays high while the arousal-lowering line declines."
 caption = "Figure 1. The direction reported by Bushman (2002) and Kjærvik and Bushman (2024): venting kept anger active, lowering arousal reduced it. Conceptual illustration, not measured data."

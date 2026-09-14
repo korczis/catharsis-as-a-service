@@ -114,6 +114,7 @@
 
 {% component library.figures(figures: array, lang: string = "en") %}
 {%- for fig in figures %}
+{%- set has_claims = fig.claims is defined and fig.claims | length > 0 %}
 {%- if fig.kind == "screens" %}
 {{ <library.screens fig={fig} lang={lang} /> }}
 {%- elif fig.kind == "posters" %}
@@ -132,6 +133,9 @@
 {{ <illustration.pipeline id={fig.id} labels={fig} /> }}
 {%- else %}
 {{ throw(message="unknown figure kind: " ~ fig.kind) }}
+{%- endif %}
+{%- if has_claims %}
+{{ <evidence.provenance ids={fig.claims} lang={lang} id={fig.id} output={fig.caption} /> }}
 {%- endif %}
 {%- endfor %}
 {% endcomponent library.figures %}

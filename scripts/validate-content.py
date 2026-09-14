@@ -47,6 +47,9 @@ FIGURE_KINDS = {"screens", "posters", "timeline", "relief_loop", "relief_curve",
 FIGURE_STYLES = {"bone", "alert", "muted"}
 FIGURE_CONCEPTUAL = re.compile(r"not (?:a plot of )?measured data|nikoli (?:graf )?naměřen(?:á|ých) dat", re.I)
 FIGURE_DATA_LIKE = {"curves", "relief_curve"}
+# Kinds that argue from evidence must say which claims they were drawn from, so a reader can follow the
+# path from the drawing to the ledger and out to the studies (the provenance disclosure renders it).
+FIGURE_NEEDS_CLAIMS = {"curves", "pipeline", "relief_loop", "relief_curve"}
 PROHIBITED_SCAN =("content/**/*.md", "data/*.toml", "templates/**/*.html", "zola.toml", "README.md", "docs/**/*.md")
 # Documents that define the prohibited list have to quote it.
 PROHIBITED_EXEMPT = {"docs/CONTENT-STANDARDS.md"}
@@ -173,7 +176,7 @@ def check_pipeline(where, fig, errors):
             errors.append(f"{where}: loop must return to a different node")
 
 
-def check_figures(rel, extra, errors):
+def check_figures(rel, extra, errors, claim_ids=frozenset()):
     seen = set()
     for number, fig in enumerate(extra.get("figures", []), start=1):
         kind = fig.get("kind")
@@ -185,6 +188,12 @@ def check_figures(rel, extra, errors):
         if not ident or ident in seen:
             errors.append(f"{where}: needs an id unique on the page")
         seen.add(ident)
+        claims = fig.get("claims", [])
+        for claim in claims:
+            if claim_ids and claim not in claim_ids:
+                errors.append(f"{where}: names a claim that is not in the ledger: {claim}")
+        if kind in FIGURE_NEEDS_CLAIMS and not claims:
+            errors.append(f"{where}: needs claims = [...]; a figure that argues from evidence names the claims it is drawn from")
         if kind not in {"curves", "pipeline"}:
             continue
         for key in ("title", "description", "caption"):
@@ -212,6 +221,10 @@ def main():
     for ident in sorted({i for i in ids if ids.count(i) > 1}):
         errors.append(f"data/commands.toml: duplicate id '{ident}'")
     counters = {"documents": 0, "research": 0, "advice": 0, "code": 0, "linked": 0}
+    ledger = root / "data" / "claims.toml"
+    claim_ids = frozenset(
+        claim["id"] for claim in tomllib.loads(ledger.read_text(encoding="utf-8"))["claims"]
+    ) if ledger.exists() else frozenset()
 
     content = sorted((root / "content").rglob("*.md"))
     documentation = [root / "README.md", *sorted((root / "docs").rglob("*.md"))] if (root / "docs").exists() else [root / "README.md"]
@@ -233,7 +246,7 @@ def main():
         if not low <= len(description) <= high:
             errors.append(f"{rel}: description has {len(description)} characters, expected {low}–{high}")
         extra = meta.get("extra", {})
-        check_figures(rel, extra, errors)
+        check_figures(rel, extra, errors, claim_ids)
         tags = meta.get("taxonomies", {}).get("tags", [])
         parts = rel.parts
 

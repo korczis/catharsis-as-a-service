@@ -1889,6 +1889,79 @@
     text-decoration-color: var(--color-blood-deep);
   }
 
+  /* Provenance disclosure (templates/components/evidence.html): the path from a drawing to its sources. */
+
+  .provenance {
+    margin-top: 1rem;
+    border-top: 1px solid var(--color-line);
+    padding-top: 0.9rem;
+  }
+
+  .provenance-toggle {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .provenance-toggle:hover {
+    color: var(--color-bone);
+  }
+
+  .provenance-body {
+    margin-top: 1rem;
+  }
+
+  .provenance-chain {
+    display: grid;
+    gap: 1rem;
+    border-left: 1px solid var(--color-line);
+    padding-left: 1.25rem;
+  }
+
+  .provenance-chain > li {
+    position: relative;
+  }
+
+  .provenance-chain > li::before {
+    content: '';
+    position: absolute;
+    top: 0.45rem;
+    left: -1.53rem;
+    width: 7px;
+    height: 7px;
+    background: var(--color-blood);
+  }
+
+  .provenance-statement {
+    margin-top: 0.3rem;
+    max-width: 60rem;
+  }
+
+  .provenance-sources {
+    margin-top: 0.6rem;
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.8125rem;
+  }
+
+  .provenance-doi {
+    white-space: nowrap;
+  }
+
+  .provenance-note {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--color-muted);
+  }
+
+  /* Tailwind's .hidden outranks components, and without JavaScript the chain must never be behind a
+     control that cannot open: the path from a drawing to its evidence stays reachable. */
+  .no-js .provenance-body.hidden {
+    display: block !important;
+  }
+
   /* Term pages (templates/term.html): one page per glossary entry. */
 
   .term-uses {

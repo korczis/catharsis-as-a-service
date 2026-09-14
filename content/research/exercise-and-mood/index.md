@@ -21,6 +21,7 @@ references = ["reed-ones-2006", "liao-2015", "ekkekakis-2011", "rebar-2015", "sc
 [[extra.figures]]
 kind = "curves"
 id = "fig-exercise-affect"
+claims = ["exercise-acute-positive-affect"]
 title = "Positive affect in the hours after physical activity"
 description = "Line chart with hours on the horizontal axis and positive affect on the vertical axis. After a session of activity the line rises and returns gradually; without activity the line stays flat."
 caption = "Figure 1. Activity was followed by higher positive, energetic affect over the next few hours; evidence for lower negative affect was inconsistent (Liao, Shonkoff & Dunton, 2015). Conceptual illustration, not measured data."

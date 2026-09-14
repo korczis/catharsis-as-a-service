@@ -21,6 +21,7 @@ references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gr
 [[extra.figures]]
 kind = "curves"
 id = "fig-venting-arousal"
+claims = ["venting-increases-anger", "arousal-increasing-activities-ineffective", "arousal-decreasing-activities-reduce-anger"]
 title = "Hněv po provokaci: ventilace versus snižování vzrušení"
 description = "Spojnicový graf s časem na vodorovné ose a hněvem na svislé ose. Po provokaci obě křivky vystoupají na stejnou úroveň; křivka ventilace zůstává vysoko, křivka snižování vzrušení klesá."
 caption = "Obrázek 1. Směr, který uvádějí Bushman (2002) a Kjærvik a Bushman (2024): ventilace udržovala hněv aktivní, snižování vzrušení ho tlumilo. Koncepční ilustrace, nikoli naměřená data."

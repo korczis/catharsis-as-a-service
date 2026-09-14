@@ -21,6 +21,7 @@ references = ["watkins-2008", "nolen-hoeksema-2008", "aldao-2010", "lyubomirsky-
 [[extra.figures]]
 kind = "pipeline"
 id = "fig-rumination-loop"
+claims = ["rumination-feels-like-processing", "concrete-repetitive-thought"]
 title = "Smyčka ruminace"
 description = "Tokový diagram: nevyřešený problém vede k abstraktním otázkám proč, k přehrávání a k horší náladě; přerušovaná šipka vede od horší nálady zpět k otázkám proč, aniž by přinesla novou informaci."
 caption = "Obrázek 1. Abstraktní opakující se myšlení jako smyčka: týká se problému, a proto se zdá jako zpracování, ale nepřináší novou informaci, rozhodnutí ani čin. Koncepční ilustrace podle Watkinse (2008) a Moberlyho a Watkinse (2008), nikoli naměřená data."

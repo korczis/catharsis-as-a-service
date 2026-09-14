@@ -21,6 +21,7 @@ references = ["palmer-2024", "tomaso-2021", "minkel-2012", "palmer-alfano-2017",
 [[extra.figures]]
 kind = "curves"
 id = "fig-sleep-threshold"
+claims = ["sleep-loss-lowers-stress-threshold"]
 title = "Reported stress after a mild stressor, rested and after sleep loss"
 description = "Line chart with time on the horizontal axis and reported stress on the vertical axis. After a mild stressor the line for a night without sleep rises higher and stays above the line for the rested state."
 caption = "Figure 1. A lowered threshold: after a night without sleep, a mild stressor was followed by more reported stress (Minkel et al., 2012). Meta-analytic results for negative affect are mixed. Conceptual illustration, not measured data."

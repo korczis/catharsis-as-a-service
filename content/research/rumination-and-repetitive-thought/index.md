@@ -21,6 +21,7 @@ references = ["watkins-2008", "nolen-hoeksema-2008", "aldao-2010", "lyubomirsky-
 [[extra.figures]]
 kind = "pipeline"
 id = "fig-rumination-loop"
+claims = ["rumination-feels-like-processing", "concrete-repetitive-thought"]
 title = "The rumination loop"
 description = "Flow diagram: an unresolved problem leads to abstract why-questions, replaying and lower mood; a dashed return arrow leads from lower mood back to the why-questions without new information."
 caption = "Figure 1. Abstract repetitive thought as a loop: it is about the problem, so it feels like processing, but it adds no new information, decision or action. Conceptual illustration of Watkins (2008) and Moberly and Watkins (2008), not measured data."

@@ -20,6 +20,7 @@ references = ["hayes-1996", "reed-ones-2006", "nolen-hoeksema-2008", "watkins-20
 [[extra.figures]]
 kind = "relief_loop"
 id = "fig-relief-loop"
+claims = ["relief-negative-reinforcement"]
 title = "Smyčka úlevy"
 description = "Nevyřešený stav vede k opakování, synchronizaci a výboji. Výboj přináší dočasnou úlevu a nezměněný stav vede zpět na začátek."
 caption = "Obrázek 1. Smyčka vyplývající z negativního posilování: úleva zvyšuje pravděpodobnost, že se posloupnost zopakuje, zatímco nevyřešený stav se vrací."
@@ -33,6 +34,7 @@ loop = "příčina beze změny"
 [[extra.figures]]
 kind = "relief_curve"
 id = "fig-relief-curve"
+claims = ["relief-not-resolution-thesis", "cathartic-method-relief-temporary"]
 title = "Dva průběhy tísně v čase"
 description = "Spojnicový graf s časem na vodorovné ose a tísní na svislé ose. Jedna křivka stoupá k vrcholu, během výboje prudce klesá a vrací se na původní úroveň. Druhá postupně klesá na nižší úroveň."
 caption = "Obrázek 2. Výboj versus zpracování. Koncepční ilustrace argumentu, nikoli graf naměřených dat."

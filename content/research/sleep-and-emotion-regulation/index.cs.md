@@ -21,6 +21,7 @@ references = ["palmer-2024", "tomaso-2021", "minkel-2012", "palmer-alfano-2017",
 [[extra.figures]]
 kind = "curves"
 id = "fig-sleep-threshold"
+claims = ["sleep-loss-lowers-stress-threshold"]
 title = "Uváděný stres po mírném stresoru, po spánku a po jeho ztrátě"
 description = "Spojnicový graf s časem na vodorovné ose a uváděným stresem na svislé ose. Po mírném stresoru stoupá křivka po noci beze spánku výše a zůstává nad křivkou odpočatého stavu."
 caption = "Obrázek 1. Nižší práh: po noci beze spánku následovalo po mírném stresoru více uváděného stresu (Minkel a kol., 2012). Metaanalytické výsledky pro negativní afekt jsou smíšené. Koncepční ilustrace, nikoli naměřená data."

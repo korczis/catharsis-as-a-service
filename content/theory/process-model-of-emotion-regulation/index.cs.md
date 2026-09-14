@@ -22,6 +22,7 @@ references = ["gross-1998", "gross-2015", "gross-john-2003", "webb-2012", "shepp
 [[extra.figures]]
 kind = "pipeline"
 id = "fig-process-model"
+claims = ["venting-located-in-process-model"]
 title = "Pět rodin regulačních strategií podél rozvíjející se emoce"
 description = "Tokový diagram pěti fází zleva doprava: výběr situace, úprava situace, zaměření pozornosti, kognitivní změna a modulace odpovědi. U zaměření pozornosti je vyznačeno rozptýlení, u kognitivní změny přehodnocení a u modulace odpovědi ventilace."
 caption = "Obrázek 1. Procesní model třídí strategie podle toho, kde působí (Gross, 1998). Zařazení ventilace k modulaci odpovědi je interpretací webu. Koncepční ilustrace, nikoli naměřená data."

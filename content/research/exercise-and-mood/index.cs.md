@@ -21,6 +21,7 @@ references = ["reed-ones-2006", "liao-2015", "ekkekakis-2011", "rebar-2015", "sc
 [[extra.figures]]
 kind = "curves"
 id = "fig-exercise-affect"
+claims = ["exercise-acute-positive-affect"]
 title = "Pozitivní afekt v hodinách po pohybové aktivitě"
 description = "Spojnicový graf s hodinami na vodorovné ose a pozitivním afektem na svislé ose. Po pohybu křivka stoupne a postupně se vrací; bez pohybu zůstává beze změny."
 caption = "Obrázek 1. Po pohybu následoval v dalších hodinách vyšší pozitivní, energický afekt; doklady o nižším negativním afektu byly nekonzistentní (Liao, Shonkoff a Dunton, 2015). Koncepční ilustrace, nikoli naměřená data."
