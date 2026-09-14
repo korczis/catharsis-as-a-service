@@ -1,0 +1,22 @@
+{%- if page is defined -%}{%- set_global ctx = page -%}{%- elif section is defined -%}{%- set_global ctx = section -%}{%- endif -%}
+{%- if lang is defined -%}{%- set_global l = lang -%}{%- else -%}{%- set_global l = config.default_language -%}{%- endif -%}
+{%- set_global home_url = get_url(path="@/_index.md", lang=l) -%}
+<!doctype html>
+<html lang="{{ l }}" dir="{{ text_direction(lang=l) }}" class="no-js"
+  data-default-locale="{{ config.default_language }}"
+  data-locales="{{ config.extra.locales | join(sep=',') }}"
+  {%- for code in config.extra.locales %} data-home-{{ code }}="{{ get_url(path='@/_index.md', lang=code) }}"{% endfor %}
+  {% block html_attrs %}{% endblock %}>
+<head>
+{% include "partials/head.html" %}
+</head>
+<body>
+<a href="#main" class="skip-link">{{ trans(key="skip_to_content", lang=l) }}</a>
+{% include "partials/nav.html" %}
+<main id="main" tabindex="-1">
+{% block content %}{% endblock %}
+</main>
+{% include "partials/footer.html" %}
+{% include "partials/scripts.html" %}
+</body>
+</html>

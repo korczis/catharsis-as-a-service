@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{#- Zola renders 404 without page, section or language context, so every locale is listed. -#}
+{% block content %}
+<section class="hero min-h-[80dvh]" aria-labelledby="not-found-title">
+  <div class="shell">
+    <p class="eyebrow text-blood">404</p>
+    <h1 id="not-found-title" class="display display-hero mt-6">{{ trans(key="not_found_title", lang=config.default_language) }}</h1>
+    {%- for code in config.extra.locales %}{% if code != config.default_language %}
+    <p class="subtitle mt-4 text-muted" lang="{{ code }}">{{ trans(key="not_found_title", lang=code) }}</p>
+    {%- endif %}{% endfor %}
+    <pre class="code mt-12 max-w-xl"><code>requested_resource: not_found
+recovery_available: true
+problem_solved: false</code></pre>
+    <ul class="mt-10 flex flex-wrap gap-3">
+      {%- for code in config.extra.locales %}
+      <li><a class="btn-ghost" href="{{ get_url(path='@/_index.md', lang=code) }}" hreflang="{{ code }}" lang="{{ code }}">{{ trans(key="not_found_return", lang=code) }} / {{ code | upper }}</a></li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endblock %}

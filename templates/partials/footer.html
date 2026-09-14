@@ -1,0 +1,26 @@
+<footer class="border-t border-line">
+  <div class="shell grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-4">
+    <div>
+      <p class="eyebrow font-bold">Sig Nihl</p>
+      <p class="label mt-2">{{ trans(key="footer_series", lang=l) }}</p>
+    </div>
+    <div>
+      <p class="eyebrow font-bold">Prismatic</p>
+      <p class="label mt-2">{{ trans(key="brand_tagline", lang=l) }}</p>
+    </div>
+    <nav aria-label="{{ trans(key='footer_nav', lang=l) }}">
+      <ul class="space-y-2">
+        {%- for item in config.extra.nav %}
+        <li><a class="nav-link" href="{{ home_url }}#{{ item.anchor }}">{{ trans(key=item.key, lang=l) }}</a></li>
+        {%- endfor %}
+        <li><a class="nav-link" href="{{ get_url(path='@/about/index.md', lang=l) }}">{{ trans(key="nav_about", lang=l) }}</a></li>
+        <li><a class="nav-link" href="{{ config.extra.repo_url }}" target="_blank" rel="noopener">{{ trans(key="nav_source", lang=l) }} <span aria-hidden="true">↗</span></a></li>
+      </ul>
+    </nav>
+    <div>
+      {% include "partials/locale-switcher.html" %}
+      <p class="label mt-4">Catharsis as a Service™ · {{ config.extra.year }}</p>
+      <p class="label mt-1">{{ trans(key="footer_privacy", lang=l) }}</p>
+    </div>
+  </div>
+</footer>

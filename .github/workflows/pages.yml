@@ -1,0 +1,113 @@
+name: Pages
+
+# main: validate → deploy → verify production → release. Each stage runs only if the previous one passed.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  ci:
+    name: CI
+    uses: ./.github/workflows/ci.yml
+
+  deploy:
+    name: Deploy
+    needs: ci
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    outputs:
+      page_url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v6
+      - name: Pages base URL matches zola.toml
+        env:
+          PAGES_BASE_URL: ${{ steps.pages.outputs.base_url }}
+        run: |
+          expected="$(python3 -c 'import tomllib; print(tomllib.load(open("zola.toml", "rb"))["base_url"])')"
+          echo "configure-pages: $PAGES_BASE_URL"
+          echo "zola.toml:       $expected"
+          test "${PAGES_BASE_URL%/}" = "${expected%/}"
+      - name: Download the validated site
+        uses: actions/download-artifact@v8
+        with:
+          name: site
+          path: site
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v5
+
+  verify:
+    name: Verify production
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ needs.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: ./.github/actions/setup
+        with:
+          zola: 'false'
+      - name: Wait until production serves this commit
+        run: |
+          for attempt in $(seq 1 40); do
+            if curl -fsS "${BASE_URL}?revision=${GITHUB_SHA}" | grep -q "$GITHUB_SHA"; then
+              echo "production serves $GITHUB_SHA (attempt $attempt)"
+              exit 0
+            fi
+            sleep 15
+          done
+          echo "production does not serve $GITHUB_SHA after 10 minutes" >&2
+          exit 1
+      - name: Smoke test
+        run: scripts/smoke-production.sh "$BASE_URL"
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Playwright against production
+        run: npm test
+      - name: Upload production screenshots
+        if: always()
+        uses: actions/upload-artifact@v7
+        with:
+          name: e2e-production
+          path: |
+            screenshots
+            test-results
+          if-no-files-found: ignore
+          retention-days: 30
+
+  release:
+    name: Release
+    needs: [deploy, verify]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PAGE_URL: ${{ needs.deploy.outputs.page_url }}
+        run: scripts/release.sh

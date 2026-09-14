@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+<article class="hero" aria-labelledby="page-title">
+  <div class="shell">
+    <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ trans(key="brand_tagline", lang=lang) }}</span></p>
+    <h1 id="page-title" class="display display-hero mt-7">{{ page.title }}</h1>
+    <div class="prose-page mt-10">{{ page.content | safe }}</div>
+  </div>
+</article>
+{% endblock %}

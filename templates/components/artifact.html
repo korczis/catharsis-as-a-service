@@ -1,0 +1,267 @@
+{#- Artifact building blocks (Tera v2 components, registered globally).
+    Every block reads only the artifact's front matter and UI strings,
+    so a new artifact is a new Markdown file pair, not a new template. -#}
+
+{% component artifact.section_head(idx: string, label: string, id: string) %}
+<div class="section-head">
+  <span class="idx">{{ idx }}</span>
+  <span class="line" aria-hidden="true"></span>
+  <a href="#{{ id }}">{{ label }}</a>
+</div>
+{% endcomponent artifact.section_head %}
+
+{% component artifact.tab(v: string, label: string) %}
+<button type="button" role="tab" id="tab-{{ v }}" x-ref="tab-{{ v }}" aria-controls="panel-{{ v }}"
+  class="tab"{% if v == "experience" %} aria-selected="true"{% else %} aria-selected="false" tabindex="-1"{% endif %}
+  x-bind:aria-selected="(view === '{{ v }}').toString()"
+  x-bind:tabindex="view === '{{ v }}' ? 0 : -1"
+  x-on:click="view = '{{ v }}'"
+  x-on:keydown="onKey($event)">{{ label }}</button>
+{% endcomponent artifact.tab %}
+
+{% component artifact.sidebars(a: map) %}
+<div class="rail rail-left" aria-hidden="true">{% for w in a.extra.sidebar_left %}<span>{{ w }}</span>{% endfor %}</div>
+<div class="rail rail-right" aria-hidden="true">{% for w in a.extra.sidebar_right %}<span>{{ w }}</span>{% endfor %}</div>
+{% endcomponent artifact.sidebars %}
+
+{% component artifact.hero(a: map, lang: string) %}
+{%- set d = a.extra.diagnostic -%}
+{%- set s800 = resize_image(path=a.extra.poster, width=800, op="fit_width", format="webp", quality=86) -%}
+{%- set s1200 = resize_image(path=a.extra.poster, width=1200, op="fit_width", format="webp", quality=86) -%}
+{%- set s1800 = resize_image(path=a.extra.poster, width=1800, op="fit_width", format="webp", quality=88) -%}
+<section id="experience" class="hero" data-pointer-light aria-labelledby="hero-title">
+  {#- Mobile order: title, poster, telemetry. Desktop: copy on the left, poster spanning both rows. -#}
+  <div class="shell grid gap-10 lg:grid-cols-2 lg:grid-rows-[auto_auto] lg:gap-x-16 lg:gap-y-8">
+    <div class="flex flex-col gap-7 lg:col-start-1 lg:row-start-1 lg:self-end">
+      <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ a.extra.kicker }}</span></p>
+      <h1 id="hero-title" class="display display-hero">
+        {%- for line in a.extra.title_lines %}<span class="block{% if loop.first %} text-blood{% endif %}">{{ line | replace(from="™", to='<sup class="tm">™</sup>') | safe }}</span>{% endfor -%}
+      </h1>
+      <p class="subtitle">{{ a.extra.subtitle }}</p>
+    </div>
+    <figure class="hero-poster lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:self-center">
+      <a href="{{ s1800.url }}" class="poster-frame" data-artwork-open>
+        <img src="{{ s1200.url }}" srcset="{{ s800.url }} 800w, {{ s1200.url }} 1200w, {{ s1800.url }} 1800w"
+          sizes="(min-width: 1024px) 56vh, 92vw" width="{{ s1200.width }}" height="{{ s1200.height }}"
+          alt="{{ a.extra.poster_alt }}" fetchpriority="high" decoding="async">
+        <span class="sr-only">{{ trans(key="poster_open", lang=lang) }}</span>
+      </a>
+    </figure>
+    <div class="flex flex-col gap-7 lg:col-start-1 lg:row-start-2 lg:self-start">
+      <dl class="telemetry">
+        <dt>{{ d.input_label }}:</dt><dd>{{ d.input }}</dd>
+        <dt>{{ d.process_label }}:</dt><dd>{{ d.process | join(sep=" → ") }}</dd>
+        <dt>{{ d.output_label }}:</dt><dd>{{ d.output }}</dd>
+      </dl>
+      <div class="flex flex-col items-start gap-3">
+        <p class="endpoint"><span>&gt; {{ a.extra.endpoint }}</span> <span aria-hidden="true">→</span> <strong class="text-blood">{{ a.extra.status }}</strong></p>
+        <p class="font-bold text-blood">problem_solved: {{ d.problem_solved }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent artifact.hero %}
+
+{% component artifact.diagnostic(a: map, lang: string) %}
+{%- set d = a.extra.diagnostic -%}
+<section id="diagnostic" class="section" aria-labelledby="diagnostic-title">
+  <div class="shell">
+    {{ <artifact.section_head idx="01" label={d.label} id="diagnostic" /> }}
+    <h2 id="diagnostic-title" class="display display-lg reveal">
+      {%- for line in d.heading %}<span class="block{% if loop.last %} text-blood{% endif %}">{{ line }}</span>{% endfor -%}
+    </h2>
+    <div x-data="viewSwitch" class="mt-14 reveal">
+      <div role="tablist" aria-label="{{ trans(key='view_label', lang=lang) }}" class="tabs">
+        {{ <artifact.tab v="experience" label={trans(key="view_experience", lang=lang)} /> }}
+        {{ <artifact.tab v="diagnostic" label={trans(key="view_diagnostic", lang=lang)} /> }}
+        {{ <artifact.tab v="raw" label={trans(key="view_raw", lang=lang)} /> }}
+      </div>
+      <div class="pt-12">
+        <div role="tabpanel" id="panel-experience" aria-labelledby="tab-experience" data-view-panel="experience"
+          x-show="view === 'experience'" x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+          <ol class="flow">
+            <li class="flow-step"><span class="label">{{ d.input_label }}</span><span class="flow-value">{{ d.input }}</span></li>
+            <li class="flow-step"><span class="label">{{ d.process_label }}</span><span class="flow-value">{{ d.process | join(sep=" · ") }}</span></li>
+            <li class="flow-step"><span class="label">{{ d.output_label }}</span><span class="flow-value">{{ d.output }}</span></li>
+          </ol>
+        </div>
+        <div role="tabpanel" id="panel-diagnostic" aria-labelledby="tab-diagnostic" data-view-panel="diagnostic"
+          x-show="view === 'diagnostic'" x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+          <dl class="status-grid">
+            {%- for cell in d.status_cells %}
+            <div class="status-cell{% if cell.alert %} is-alert{% endif %}"><dt class="label">{{ cell.label }}</dt><dd>{{ cell.value }}</dd></div>
+            {%- endfor %}
+          </dl>
+        </div>
+        <div role="tabpanel" id="panel-raw" aria-labelledby="tab-raw" data-view-panel="raw"
+          x-show="view === 'raw'" x-transition:enter="transition duration-500" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100">
+          <pre class="code" tabindex="0"><code>{{ a.extra.raw }}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent artifact.diagnostic %}
+
+{% component artifact.crowd(a: map) %}
+{%- set c = a.extra.crowd -%}
+<section id="crowd" class="section" aria-labelledby="crowd-title">
+  <div class="shell">
+    {{ <artifact.section_head idx="02" label={c.label} id="crowd" /> }}
+    <div class="grid gap-14 lg:grid-cols-2 lg:gap-20">
+      <ol class="sequence reveal">
+        {%- for step in c.sequence %}
+        <li><span>{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span><span>{{ step }}</span></li>
+        {%- endfor %}
+      </ol>
+      <div class="prose-lines reveal">
+        <h2 id="crowd-title" class="display display-md mb-10">{{ c.heading }}</h2>
+        {%- for line in c.body %}
+        <p>{{ line }}</p>
+        {%- endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent artifact.crowd %}
+
+{% component artifact.observability(a: map, lang: string) %}
+{%- set o = a.extra.observability -%}
+<section id="observability" class="section" aria-labelledby="observability-title">
+  <div class="shell">
+    {{ <artifact.section_head idx="03" label={o.label} id="observability" /> }}
+    <div class="flex flex-wrap items-end justify-between gap-6">
+      <h2 id="observability-title" class="display display-lg reveal">{{ o.heading }}</h2>
+      <button type="button" class="badge" data-tooltip-target="tooltip-conceptual" data-tooltip-placement="bottom"
+        aria-describedby="observability-disclaimer">{{ trans(key="metrics_badge", lang=lang) }}</button>
+      <div id="tooltip-conceptual" role="tooltip" class="tooltip-box invisible absolute z-20 inline-block opacity-0 transition-opacity duration-300">{{ o.disclaimer }}</div>
+    </div>
+    <p id="observability-disclaimer" class="label mt-6 max-w-2xl normal-case tracking-normal">{{ o.disclaimer }}</p>
+    <div class="mt-12 overflow-x-auto reveal">
+      <table class="metrics">
+        <caption class="sr-only">{{ o.heading }}</caption>
+        <thead>
+          <tr>
+            <th scope="col">{{ trans(key="metrics_signal", lang=lang) }}</th>
+            <th scope="col">{{ trans(key="metrics_value", lang=lang) }}</th>
+            <th scope="col" class="hidden w-1/3 sm:table-cell">{{ trans(key="metrics_level", lang=lang) }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for m in o.metrics %}
+          <tr{% if m.alert %} class="is-alert"{% endif %}>
+            <th scope="row">{{ m.label }}</th>
+            <td>{{ m.value }}</td>
+            <td class="hidden sm:table-cell"><span class="meter" aria-hidden="true"><span style="--level: {{ m.level }}%"></span></span></td>
+          </tr>
+          {%- endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+{% endcomponent artifact.observability %}
+
+{% component artifact.poster(a: map, lang: string) %}
+{%- set meta = get_image_metadata(path=a.extra.poster) -%}
+{%- set s800 = resize_image(path=a.extra.poster, width=800, op="fit_width", format="webp", quality=86) -%}
+{%- set s1200 = resize_image(path=a.extra.poster, width=1200, op="fit_width", format="webp", quality=86) -%}
+{%- set s1800 = resize_image(path=a.extra.poster, width=1800, op="fit_width", format="webp", quality=88) -%}
+<section id="artifact" class="section" aria-labelledby="artifact-title">
+  <div class="shell">
+    {{ <artifact.section_head idx="04" label={trans(key="nav_artifact", lang=lang)} id="artifact" /> }}
+    <div class="grid items-start gap-14 lg:grid-cols-12 lg:gap-20">
+      <figure class="reveal lg:col-span-7">
+        <a href="{{ s1800.url }}" class="poster-frame" data-artwork-open>
+          <img src="{{ s1200.url }}" srcset="{{ s800.url }} 800w, {{ s1200.url }} 1200w, {{ s1800.url }} 1800w"
+            sizes="(min-width: 1024px) 52vw, 92vw" width="{{ s1200.width }}" height="{{ s1200.height }}"
+            alt="{{ a.extra.poster_alt }}" loading="lazy" decoding="async">
+          <span class="sr-only">{{ trans(key="poster_open", lang=lang) }}</span>
+        </a>
+      </figure>
+      <div class="reveal lg:col-span-5 lg:sticky lg:top-24">
+        <h2 id="artifact-title" class="display display-md">{{ a.title | replace(from="™", to='<sup class="tm">™</sup>') | safe }}</h2>
+        <div class="prose-page mt-6">{{ a.content | safe }}</div>
+        <dl class="telemetry mt-10">
+          <dt>{{ trans(key="poster_dimensions", lang=lang) }}</dt><dd>{{ meta.width }} × {{ meta.height }} px</dd>
+          <dt>{{ trans(key="poster_format", lang=lang) }}</dt><dd>PNG</dd>
+        </dl>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <button type="button" class="btn-ghost" data-artwork-open data-requires-js>{{ trans(key="poster_open", lang=lang) }}</button>
+          <a class="btn-ghost" href="{{ get_url(path=a.extra.poster) }}" download>{{ trans(key="poster_download", lang=lang) }} <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endcomponent artifact.poster %}
+
+{% component artifact.endpoint(a: map, lang: string) %}
+{%- set t = a.extra.terminal -%}
+{%- set copy_label = trans(key="copy", lang=lang) -%}
+{%- set copied_label = trans(key="copied", lang=lang) -%}
+{%- set failed_label = trans(key="copy_failed", lang=lang) -%}
+<section id="endpoint" class="section" aria-labelledby="endpoint-title">
+  <div class="shell">
+    {{ <artifact.section_head idx="05" label={t.label} id="endpoint" /> }}
+    <h2 id="endpoint-title" class="display display-lg reveal">{{ t.heading }}</h2>
+    <div class="terminal mt-12 reveal" x-data="copyButton">
+      <div class="terminal-bar">
+        <span class="label">{{ trans(key="request", lang=lang) }}</span>
+        <button type="button" class="btn-ghost" data-requires-js x-on:click="copy()"
+          x-text="state === 'copied' ? '{{ copied_label }}' : (state === 'failed' ? '{{ failed_label }}' : '{{ copy_label }}')">{{ copy_label }}</button>
+      </div>
+      <pre x-ref="source" tabindex="0"><code>{{ t.command }}</code></pre>
+      <div class="terminal-bar border-t border-line"><span class="label">{{ trans(key="response", lang=lang) }}</span></div>
+      <pre tabindex="0"><code>{{ t.response }}</code></pre>
+      <p class="sr-only" aria-live="polite" x-text="state === 'copied' ? '{{ copied_label }}' : ''"></p>
+    </div>
+    <p class="mantra mt-24 reveal">{% for word in t.mantra %}<span class="block">{{ word }}</span>{% endfor %}</p>
+    <p class="subtitle mt-16 max-w-3xl leading-relaxed reveal">{% for line in t.closing %}<span class="block">{{ line }}</span>{% endfor %}</p>
+  </div>
+</section>
+{% endcomponent artifact.endpoint %}
+
+{% component artifact.archive(index: map, lang: string) %}
+<section id="archive" class="section" aria-labelledby="archive-title">
+  <div class="shell">
+    {{ <artifact.section_head idx="06" label={trans(key="nav_archive", lang=lang)} id="archive" /> }}
+    <h2 id="archive-title" class="display display-lg reveal">{{ trans(key="archive_heading", lang=lang) }}</h2>
+    <ol class="mt-12 reveal">
+      {%- for p in index.pages %}
+      <li>
+        <a href="{{ p.permalink }}" class="archive-row">
+          <span class="label text-blood">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
+          <span>
+            <span class="archive-title condensed block text-3xl transition-colors">{{ p.title | replace(from="™", to='<sup class="tm">™</sup>') | safe }}</span>
+            <span class="label mt-2 block normal-case tracking-normal">{{ p.description }}</span>
+          </span>
+          <span class="label col-start-2 md:col-start-auto">{% if p.date %}{{ p.date | date(format="%Y-%m-%d") }} · {% endif %}{{ trans(key="archive_open", lang=lang) }} →</span>
+        </a>
+      </li>
+      {%- endfor %}
+    </ol>
+  </div>
+</section>
+{% endcomponent artifact.archive %}
+
+{% component artifact.viewer(a: map, lang: string) %}
+{%- set big = resize_image(path=a.extra.poster, width=2400, op="fit_width", format="webp", quality=90) -%}
+<div id="artwork-viewer" tabindex="-1" aria-hidden="true" role="dialog" aria-modal="true" aria-label="{{ a.title }}"
+  class="viewer fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-8">
+  <figure class="viewer-figure relative flex flex-col items-center gap-3">
+    <button type="button" class="btn-ghost self-end bg-ink" data-artwork-close>{{ trans(key="poster_close", lang=lang) }} <span aria-hidden="true">✕</span></button>
+    <img src="{{ big.url }}" width="{{ big.width }}" height="{{ big.height }}" alt="{{ a.extra.poster_alt }}" loading="lazy" decoding="async">
+  </figure>
+</div>
+{% endcomponent artifact.viewer %}
+
+{% component artifact.experience(a: map, lang: string) %}
+{{ <artifact.sidebars a={a} /> }}
+{{ <artifact.hero a={a} lang={lang} /> }}
+{{ <artifact.diagnostic a={a} lang={lang} /> }}
+{{ <artifact.crowd a={a} /> }}
+{{ <artifact.observability a={a} lang={lang} /> }}
+{{ <artifact.poster a={a} lang={lang} /> }}
+{{ <artifact.endpoint a={a} lang={lang} /> }}
+{% endcomponent artifact.experience %}

@@ -1,0 +1,132 @@
+# Production URL as reported by `gh api repos/korczis/catharsis-as-a-service/pages --jq .html_url`.
+# The Pages workflow asserts that configure-pages returns the same value before deploying.
+base_url = "https://korczis.github.io/catharsis-as-a-service"
+title = "Catharsis as a Service™"
+description = "Catharsis as a Service™ is a digital artifact exploring collective catharsis as an emotional state transition: repetition, synchronization, discharge, temporary relief."
+default_language = "en"
+
+compile_sass = false
+minify_html = true
+build_search_index = false
+generate_feeds = false
+generate_sitemap = true
+generate_robots_txt = true
+
+[markdown]
+smart_punctuation = true
+
+[link_checker]
+internal_level = "error"
+external_level = "warn"
+
+[extra]
+author = "Sig Nihl"
+repo_url = "https://github.com/korczis/catharsis-as-a-service"
+theme_color = "#050505"
+year = 2026
+locales = ["en", "cs"]
+social_image = "assets/social-preview.png"
+
+[[extra.nav]]
+key = "nav_experience"
+anchor = "experience"
+
+[[extra.nav]]
+key = "nav_diagnostic"
+anchor = "diagnostic"
+
+[[extra.nav]]
+key = "nav_artifact"
+anchor = "artifact"
+
+[[extra.nav]]
+key = "nav_archive"
+anchor = "archive"
+
+# UI strings for the default language. Every key must exist in every locale;
+# scripts/validate-i18n.py fails the build otherwise.
+[translations]
+og_locale = "en_US"
+skip_to_content = "Skip to content"
+nav_label = "Primary"
+footer_nav = "Footer"
+nav_experience = "Experience"
+nav_diagnostic = "Diagnostic"
+nav_artifact = "Artifact"
+nav_archive = "Index"
+nav_about = "About"
+nav_source = "Source"
+nav_menu = "Menu"
+nav_close = "Close"
+lang_label = "Language"
+brand_tagline = "Human Systems Diagnostics"
+view_label = "View mode"
+view_experience = "Experience"
+view_diagnostic = "Diagnostic"
+view_raw = "Raw"
+metrics_badge = "Conceptual"
+metrics_signal = "Signal"
+metrics_value = "Value"
+metrics_level = "Level"
+poster_open = "Open artwork viewer"
+poster_close = "Close"
+poster_download = "Download master PNG"
+poster_dimensions = "Dimensions"
+poster_format = "Format"
+request = "Request"
+response = "Response"
+copy = "Copy"
+copied = "Copied"
+copy_failed = "Copy unavailable"
+archive_heading = "Artifact index"
+archive_open = "Open"
+footer_series = "A Sig Nihl / Prismatic digital artifact."
+footer_privacy = "No analytics. No trackers. No cookies."
+not_found_title = "State transition failed"
+not_found_return = "Return"
+social_alt = "Catharsis as a Service poster beside the title and the line POST /v1/catharsis → 200 OK, problem_solved: false."
+
+[languages.cs]
+title = "Catharsis as a Service™"
+description = "Catharsis as a Service™ je digitální artefakt, který zkoumá kolektivní katarzi jako přechod emočního stavu: opakování, synchronizace, výboj, dočasná úleva."
+
+[languages.cs.translations]
+og_locale = "cs_CZ"
+skip_to_content = "Přeskočit na obsah"
+nav_label = "Hlavní navigace"
+footer_nav = "Patička"
+nav_experience = "Prožitek"
+nav_diagnostic = "Diagnostika"
+nav_artifact = "Artefakt"
+nav_archive = "Rejstřík"
+nav_about = "O projektu"
+nav_source = "Zdroj"
+nav_menu = "Menu"
+nav_close = "Zavřít"
+lang_label = "Jazyk"
+brand_tagline = "Diagnostika lidských systémů"
+view_label = "Režim zobrazení"
+view_experience = "Prožitek"
+view_diagnostic = "Diagnostika"
+view_raw = "Surová data"
+metrics_badge = "Konceptuální"
+metrics_signal = "Signál"
+metrics_value = "Hodnota"
+metrics_level = "Úroveň"
+poster_open = "Otevřít prohlížeč díla"
+poster_close = "Zavřít"
+poster_download = "Stáhnout master PNG"
+poster_dimensions = "Rozměry"
+poster_format = "Formát"
+request = "Požadavek"
+response = "Odpověď"
+copy = "Kopírovat"
+copied = "Zkopírováno"
+copy_failed = "Kopírování nedostupné"
+archive_heading = "Rejstřík artefaktů"
+archive_open = "Otevřít"
+footer_series = "Digitální artefakt Sig Nihl / Prismatic."
+footer_privacy = "Žádná analytika. Žádné trackery. Žádné cookies."
+not_found_title = "Přechod stavu selhal"
+not_found_return = "Zpět"
+social_alt = "Plakát Catharsis as a Service vedle názvu a řádku POST /v1/catharsis → 200 OK, problem_solved: false."

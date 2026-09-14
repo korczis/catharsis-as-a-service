@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Conventional Commits drive the automatic release version, so the format is enforced at commit time.
+set -euo pipefail
+exec "$(git rev-parse --show-toplevel)/scripts/lint-commits.sh" --file "$1"

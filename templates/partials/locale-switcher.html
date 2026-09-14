@@ -1,0 +1,12 @@
+<ul class="locale-switcher flex gap-1" aria-label="{{ trans(key='lang_label', lang=l) }}">
+{%- for code in config.extra.locales %}
+  {%- set_global locale_href = get_url(path="@/_index.md", lang=code) %}
+  {%- if ctx is defined %}
+    {%- for t in ctx.translations %}
+      {%- if t.lang %}{% set tl = t.lang %}{% else %}{% set tl = config.default_language %}{% endif %}
+      {%- if tl == code %}{% set_global locale_href = t.permalink %}{% endif %}
+    {%- endfor %}
+  {%- endif %}
+  <li><a href="{{ locale_href }}" hreflang="{{ code }}" lang="{{ code }}" data-locale-choice="{{ code }}"{% if code == l %} aria-current="true"{% endif %}>{{ code | upper }}</a></li>
+{%- endfor %}
+</ul>

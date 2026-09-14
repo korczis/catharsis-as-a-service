@@ -1,0 +1,14 @@
+{
+  "name": "Catharsis as a Service™",
+  "short_name": "CaaS",
+  "description": "Emotional state transition endpoint. A Sig Nihl / Prismatic digital artifact.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "browser",
+  "theme_color": "#050505",
+  "background_color": "#050505",
+  "icons": [
+    { "src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "assets/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{#- The default-language home is the only neutral entry point for automatic locale negotiation. -#}
+{% block html_attrs %}{% if l == config.default_language %}data-neutral-entry="true"{% endif %}{% endblock html_attrs %}
+
+{% block content %}
+{%- set artifact = get_page(path=section.extra.featured, lang=lang) -%}
+{%- set index = get_section(path="artifacts/_index.md", lang=lang) -%}
+{{ <artifact.experience a={artifact} lang={lang} /> }}
+{{ <artifact.archive index={index} lang={lang} /> }}
+{{ <artifact.viewer a={artifact} lang={lang} /> }}
+{% endblock content %}

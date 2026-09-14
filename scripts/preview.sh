@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+# Serves a production build under the same repository subpath GitHub Pages uses,
+# so base-path mistakes fail locally instead of in production.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+PORT="${PORT:-4173}"
+SUBPATH="${SUBPATH:-catharsis-as-a-service}"
+OUT=".preview"
+
+rm -rf "$OUT"
+mkdir -p "$OUT"
+npm run --silent assets
+zola build --base-url "http://127.0.0.1:$PORT/$SUBPATH" --output-dir "$OUT/$SUBPATH" --force
+echo "preview: http://127.0.0.1:$PORT/$SUBPATH/"
+exec python3 -m http.server "$PORT" --bind 127.0.0.1 --directory "$OUT"
