@@ -41,6 +41,12 @@ PROHIBITED = (
     (r"\bvědecky prokázan\w*", "vědecky prokázáno"),
     (r"\bmozek (?:dělá|ví|chce|rozhoduje|uvolňuje|cítí|říká)\b", "mozek dělá X"),
 )
+# Figures (docs/FIGURES.md). Data-driven kinds are checked against their schema so every chart of a kind
+# renders with the same geometry; anything drawn like data must say that it is not measured.
+FIGURE_KINDS = {"screens", "posters", "timeline", "relief_loop", "relief_curve", "synchrony", "curves", "pipeline"}
+FIGURE_STYLES = {"bone", "alert", "muted"}
+FIGURE_CONCEPTUAL = re.compile(r"not (?:a plot of )?measured data|nikoli (?:graf )?naměřen(?:á|ých) dat", re.I)
+FIGURE_DATA_LIKE = {"curves", "relief_curve"}
 PROHIBITED_SCAN = ("content/**/*.md", "data/*.toml", "templates/**/*.html", "zola.toml", "README.md", "docs/**/*.md")
 # Documents that define the prohibited list have to quote it.
 PROHIBITED_EXEMPT = {"docs/CONTENT-STANDARDS.md"}
@@ -115,6 +121,85 @@ def check_commands(rel, body, registry, errors, counters):
             errors.append(f"{rel}: command `{text}` is mentioned without a link to its registry entry")
 
 
+def is_index(value, length):
+    return isinstance(value, int) and not isinstance(value, bool) and 0 <= value < length
+
+
+def check_curves(where, fig, errors):
+    series = fig.get("series", [])
+    if not 1 <= len(series) <= 3:
+        errors.append(f"{where}: curves needs 1–3 series, found {len(series)}")
+        return
+    lengths = {len(s.get("values", [])) for s in series}
+    if len(lengths) != 1 or not 3 <= next(iter(lengths)) <= 12:
+        errors.append(f"{where}: every series needs the same number of values, 3–12")
+        return
+    count = next(iter(lengths))
+    for number, s in enumerate(series, start=1):
+        at = f"{where} series {number}"
+        if not s.get("label"):
+            errors.append(f"{at}: needs a label")
+        if s.get("style", "bone") not in FIGURE_STYLES:
+            errors.append(f"{at}: style must be one of {sorted(FIGURE_STYLES)}")
+        if not all(isinstance(v, (int, float)) and not isinstance(v, bool) and 0 <= v <= 100 for v in s["values"]):
+            errors.append(f"{at}: values must be numbers from 0 to 100")
+        for key in ("marker", "label_at"):
+            if key in s and not is_index(s[key], count):
+                errors.append(f"{at}: {key} must be an index from 0 to {count - 1}")
+    for event in fig.get("events", []):
+        if not event.get("label") or not is_index(event.get("at"), count):
+            errors.append(f"{where}: every event needs a label and an index from 0 to {count - 1}")
+    if "baseline" in fig and not 0 <= fig.get("baseline_value", -1) <= 100:
+        errors.append(f"{where}: baseline needs baseline_value from 0 to 100")
+
+
+def check_pipeline(where, fig, errors):
+    nodes = fig.get("nodes", [])
+    if not 2 <= len(nodes) <= 5:
+        errors.append(f"{where}: pipeline needs 2–5 nodes, found {len(nodes)}")
+        return
+    for number, node in enumerate(nodes, start=1):
+        if not node.get("label") or "meta" not in node:
+            errors.append(f"{where} node {number}: needs label and meta")
+        elif node["label"].count("|") > 1:
+            errors.append(f"{where} node {number}: a label breaks onto at most two lines")
+    loop = fig.get("loop")
+    if loop is not None:
+        if not loop.get("label") or not is_index(loop.get("from"), len(nodes)) or not is_index(loop.get("to"), len(nodes)):
+            errors.append(f"{where}: loop needs a label and from/to node indexes")
+        elif loop["from"] == loop["to"]:
+            errors.append(f"{where}: loop must return to a different node")
+
+
+def check_figures(rel, extra, errors):
+    seen = set()
+    for number, fig in enumerate(extra.get("figures", []), start=1):
+        kind = fig.get("kind")
+        where = f"{rel}: figure {number} ({kind})"
+        if kind not in FIGURE_KINDS:
+            errors.append(f"{where}: kind must be one of {sorted(FIGURE_KINDS)}")
+            continue
+        ident = fig.get("id")
+        if not ident or ident in seen:
+            errors.append(f"{where}: needs an id unique on the page")
+        seen.add(ident)
+        if kind not in {"curves", "pipeline"}:
+            continue
+        for key in ("title", "description", "caption"):
+            if not fig.get(key):
+                errors.append(f"{where}: needs {key}")
+        if kind == "curves":
+            for key in ("axis_x", "axis_y"):
+                if not fig.get(key):
+                    errors.append(f"{where}: needs {key}")
+            check_curves(where, fig, errors)
+        else:
+            check_pipeline(where, fig, errors)
+    for number, fig in enumerate(extra.get("figures", []), start=1):
+        if fig.get("kind") in FIGURE_DATA_LIKE and not FIGURE_CONCEPTUAL.search(fig.get("caption", "")):
+            errors.append(f"{rel}: figure {number} looks like data; its caption must say it is not measured data")
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent.parent)
@@ -146,6 +231,7 @@ def main():
         if not low <= len(description) <= high:
             errors.append(f"{rel}: description has {len(description)} characters, expected {low}–{high}")
         extra = meta.get("extra", {})
+        check_figures(rel, extra, errors)
         tags = meta.get("taxonomies", {}).get("tags", [])
         parts = rel.parts
 

@@ -83,6 +83,64 @@ def test_content_rejects_banned_promotional_phrasing(tmp_path):
     assert "banned promotional phrasing" in result.stdout
 
 
+def _figure_fixture(tmp_path, figure):
+    root = _content_fixture(tmp_path, "")
+    write(
+        root / "content/guides/index.md",
+        '+++\ntitle = "Guides"\ndescription = "A description that is long enough to satisfy the SEO length rule."\n'
+        + "[extra]\n" + figure + "+++\n",
+    )
+    return root
+
+
+CURVES = """[[extra.figures]]
+kind = "curves"
+id = "fig-a"
+title = "A"
+description = "A chart."
+caption = "Figure 1. Conceptual illustration, not measured data."
+axis_x = "time"
+axis_y = "anger"
+series = [{ label = "venting", style = "alert", values = [20, 60, 70] }]
+"""
+
+
+def test_content_accepts_valid_curves_figure(tmp_path):
+    root = _figure_fixture(tmp_path, CURVES)
+    result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
+    assert result.returncode == 0, result.stdout
+
+
+def test_content_rejects_out_of_range_curve_values(tmp_path):
+    root = _figure_fixture(tmp_path, CURVES.replace("[20, 60, 70]", "[20, 160, 70]"))
+    result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
+    assert result.returncode == 1
+    assert "values must be numbers from 0 to 100" in result.stdout
+
+
+def test_content_rejects_curves_caption_without_conceptual_label(tmp_path):
+    root = _figure_fixture(tmp_path, CURVES.replace(" Conceptual illustration, not measured data.", ""))
+    result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
+    assert result.returncode == 1
+    assert "must say it is not measured data" in result.stdout
+
+
+def test_content_rejects_pipeline_loop_to_missing_node(tmp_path):
+    figure = """[[extra.figures]]
+kind = "pipeline"
+id = "fig-b"
+title = "B"
+description = "A flow."
+caption = "Figure 1."
+nodes = [{ label = "One", meta = "01" }, { label = "Two", meta = "02" }]
+loop = { from = 1, to = 4, label = "back" }
+"""
+    root = _figure_fixture(tmp_path, figure)
+    result = run([PY, str(ROOT / "scripts/validate-content.py"), "--root", str(root)])
+    assert result.returncode == 1
+    assert "loop needs a label and from/to node indexes" in result.stdout
+
+
 def test_references_pass_offline_on_repository():
     result = run([PY, "scripts/check-references.py"])
     assert result.returncode == 0, result.stdout

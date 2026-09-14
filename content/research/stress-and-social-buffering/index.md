@@ -15,8 +15,24 @@ key_points = [
   "Reappraisal engages prefrontal and cingulate control systems that modulate activity in emotion-generating regions such as the amygdala (Ochsner & Gross, 2005).",
   "Perceived social support buffers the effects of stress (Cohen & Wills, 1985), and adolescents describe discharge as one of several distinct ways they use music to regulate mood (Saarikallio & Erkkilä, 2007).",
 ]
-figures = []
 references = ["mcewen-1998", "ochsner-gross-2005", "cohen-wills-1985", "saarikallio-erkkila-2007", "tarr-2015", "reed-ones-2006"]
+
+[[extra.figures]]
+kind = "curves"
+id = "fig-stress-termination"
+title = "A stress response that switches off and one that does not"
+description = "Line chart with time on the horizontal axis and stress response on the vertical axis. Both lines rise after a stressor; one returns to baseline, the other stays elevated."
+caption = "Figure 1. Stress mediators protect acutely and contribute to allostatic load when poorly terminated (McEwen, 1998). Conceptual illustration, not measured data."
+axis_x = "time"
+axis_y = "stress response"
+baseline = "baseline"
+baseline_value = 20
+events = [{ at = 1, label = "stressor" }]
+series = [
+  { label = "poorly terminated", style = "alert", values = [20, 65, 60, 56, 54, 53, 52] },
+  { label = "switches off", style = "bone", values = [20, 65, 42, 28, 22, 20, 20] },
+]
+
 +++
 
 ## Stress as a physiological process

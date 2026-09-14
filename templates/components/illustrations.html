@@ -105,3 +105,102 @@
   <figcaption id="{{ id }}-caption" class="ill-caption">{{ caption }}</figcaption>
 </figure>
 {% endcomponent illustration.timeline %}
+
+{#- Data-driven figures. Geometry is fixed here and specified in docs/FIGURES.md; pages supply only data
+    and labels, so every chart of a kind is drawn the same way. Validated by scripts/validate-content.py. -#}
+
+{#- Line chart. Plot area x 70–690, y 30–330; a value v in 0–100 is drawn at y = 330 - 3v.
+    Consecutive points are joined by cubic segments whose control points sit halfway along x. -#}
+{% component illustration.curves(id: string, labels: map) %}
+{%- set n = labels.series[0]["values"] | length %}
+{%- set step = 620 / (n - 1) %}
+<figure class="illustration" aria-labelledby="{{ id }}-caption">
+  <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+    <title id="{{ id }}-title">{{ labels.title }}</title>
+    <desc id="{{ id }}-desc">{{ labels.description }}</desc>
+    <line x1="70" y1="330" x2="690" y2="330" class="ill-axis"/>
+    <line x1="70" y1="330" x2="70" y2="30" class="ill-axis"/>
+    <text x="690" y="358" text-anchor="end" class="ill-meta">{{ labels.axis_x }}</text>
+    <text x="40" y="330" text-anchor="start" class="ill-meta" transform="rotate(-90 40 330)">{{ labels.axis_y }}</text>
+    {%- if labels.baseline is defined %}
+    {%- set by = 330 - labels.baseline_value * 3 %}
+    <line x1="70" y1="{{ by }}" x2="690" y2="{{ by }}" class="ill-grid"/>
+    <text x="80" y="{{ by - 8 }}" class="ill-meta">{{ labels.baseline }}</text>
+    {%- endif %}
+    {%- if labels.events is defined %}
+    {%- for event in labels.events %}
+    {%- set ex = 70 + event.at * step %}
+    <line x1="{{ ex }}" y1="30" x2="{{ ex }}" y2="330" class="ill-grid"/>
+    <text x="{{ ex + 8 }}" y="44" class="ill-meta">{{ event.label }}</text>
+    {%- endfor %}
+    {%- endif %}
+    {%- for s in labels.series %}
+    {%- if s.style is defined %}{% set style = s.style %}{% else %}{% set style = "bone" %}{% endif %}
+    {#- Catmull–Rom through the points as cubic Béziers; the neighbours of the end points are the end points. -#}
+    {%- set vs = s["values"] %}
+    <path d="M70 {{ 330 - vs[0] * 3 }}{% for v in vs %}{% if not loop.last %}{% set i = loop.index0 %}{% if i == 0 %}{% set prev = vs[0] %}{% else %}{% set prev = vs[i - 1] %}{% endif %}{% set next = vs[i + 1] %}{% if i + 2 < n %}{% set after = vs[i + 2] %}{% else %}{% set after = next %}{% endif %}{% set x = 70 + i * step %} C{{ x + step / 3 }} {{ 330 - (v + (next - prev) / 6) * 3 }}, {{ x + step * 2 / 3 }} {{ 330 - (next - (after - v) / 6) * 3 }}, {{ x + step }} {{ 330 - next * 3 }}{% endif %}{% endfor %}" class="ill-curve-{{ style }}"/>
+    {%- if s.marker is defined %}
+    <circle cx="{{ 70 + s.marker * step }}" cy="{{ 330 - s["values"][s.marker] * 3 }}" r="5" class="ill-fill-{{ style }}"/>
+    {%- endif %}
+    {%- if s.label_at is defined %}{% set at = s.label_at %}{% else %}{% set at = n - 1 %}{% endif %}
+    {%- if s.label_dy is defined %}{% set dy = s.label_dy %}{% else %}{% set dy = -14 %}{% endif %}
+    {%- set lx = 70 + at * step %}
+    <text x="{% if at == n - 1 %}{{ lx }}{% else %}{{ lx + 10 }}{% endif %}" y="{{ 330 - s["values"][at] * 3 + dy }}"{% if at == n - 1 %} text-anchor="end"{% endif %} class="ill-label ill-text-{{ style }}">{{ s.label }}</text>
+    {%- endfor %}
+  </svg>
+  <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
+</figure>
+{% endcomponent illustration.curves %}
+
+{#- Flow diagram. Up to five nodes in one row between x 20 and 700 with a 28-unit gap; a label may break
+    onto two lines with "|". Optional: a time axis above, a mark above a node, and one dashed return loop. -#}
+{% component illustration.pipeline(id: string, labels: map) %}
+{%- set n = labels.nodes | length %}
+{%- set w = (680 - 28 * (n - 1)) / n %}
+<figure class="illustration" aria-labelledby="{{ id }}-caption">
+  <svg viewBox="0 0 720 320" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
+    <title id="{{ id }}-title">{{ labels.title }}</title>
+    <desc id="{{ id }}-desc">{{ labels.description }}</desc>
+    <defs>
+      <marker id="{{ id }}-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" class="ill-fill-bone"/>
+      </marker>
+      <marker id="{{ id }}-arrow-alert" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+        <path d="M0 0 L10 5 L0 10 z" class="ill-fill-alert"/>
+      </marker>
+    </defs>
+    {%- if labels.axis is defined %}
+    <line x1="20" y1="44" x2="700" y2="44" class="ill-line-muted" marker-end="url(#{{ id }}-arrow)"/>
+    <text x="20" y="32" class="ill-meta">{{ labels.axis }}</text>
+    {%- endif %}
+    {%- for node in labels.nodes %}
+    {%- set x = 20 + loop.index0 * (w + 28) %}
+    {%- set lines = node.label | split(pat="|") %}
+    {%- set alert = node.alert is defined and node.alert %}
+    <g class="ill-node{% if alert %} ill-node-alert{% endif %}">
+      <rect x="{{ x }}" y="110" width="{{ w }}" height="76"/>
+      {%- for line in lines %}
+      <text x="{{ x + w / 2 }}" y="{{ 144 - (lines | length - 1) * 10 + loop.index0 * 20 }}" text-anchor="middle" class="ill-label{% if n > 4 %} ill-label-sm{% endif %}{% if alert %} ill-alert{% endif %}">{{ line }}</text>
+      {%- endfor %}
+      <text x="{{ x + w / 2 }}" y="174" text-anchor="middle" class="ill-meta">{{ node.meta }}</text>
+    </g>
+    {%- if node.mark is defined %}
+    <text x="{{ x + w / 2 }}" y="96" text-anchor="middle" class="ill-meta{% if alert %} ill-alert{% endif %}">{{ node.mark }}</text>
+    {%- endif %}
+    {%- if not loop.last %}
+    <line x1="{{ x + w }}" y1="148" x2="{{ x + w + 26 }}" y2="148" class="ill-line" marker-end="url(#{{ id }}-arrow)"/>
+    {%- endif %}
+    {%- endfor %}
+    {%- if labels.loop is defined %}
+    {%- set fx = 20 + labels.loop.from * (w + 28) + w / 2 %}
+    {%- set tx = 20 + labels.loop.to * (w + 28) + w / 2 %}
+    <path d="M{{ fx }} 186 C {{ fx }} 270, {{ tx }} 270, {{ tx }} 190" class="ill-line-alert" marker-end="url(#{{ id }}-arrow-alert)"/>
+    <text x="{{ (fx + tx) / 2 }}" y="276" text-anchor="middle" class="ill-meta ill-alert">{{ labels.loop.label }}</text>
+    {%- if labels.loop.meta is defined %}
+    <text x="{{ (fx + tx) / 2 }}" y="294" text-anchor="middle" class="ill-meta ill-alert">{{ labels.loop.meta }}</text>
+    {%- endif %}
+    {%- endif %}
+  </svg>
+  <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
+</figure>
+{% endcomponent illustration.pipeline %}

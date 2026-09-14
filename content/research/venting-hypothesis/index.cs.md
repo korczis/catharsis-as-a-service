@@ -16,8 +16,24 @@ key_points = [
   "Přehodnocení a odstup od sebe snižují hněv i ruminaci, aniž by provokaci znovu přehrávaly.",
   "Metaanalýza 154 studií (10 189 účastníků) zjistila, že činnosti snižující vzrušení snižovaly hněv a agresi (g = -0,63), zatímco činnosti vzrušení zvyšující, včetně námahy ve stylu ventilace a běhu, byly celkově neúčinné (g = -0,02) (Kjærvik & Bushman, 2024).",
 ]
-figures = []
 references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gross-john-2003", "kross-ayduk-mischel-2005", "kjaervik-bushman-2024"]
+
+[[extra.figures]]
+kind = "curves"
+id = "fig-venting-arousal"
+title = "Hněv po provokaci: ventilace versus snižování vzrušení"
+description = "Spojnicový graf s časem na vodorovné ose a hněvem na svislé ose. Po provokaci obě křivky vystoupají na stejnou úroveň; křivka ventilace zůstává vysoko, křivka snižování vzrušení klesá."
+caption = "Obrázek 1. Směr, který uvádějí Bushman (2002) a Kjærvik a Bushman (2024): ventilace udržovala hněv aktivní, snižování vzrušení ho snižovalo. Koncepční ilustrace, nikoli naměřená data."
+axis_x = "čas"
+axis_y = "hněv"
+baseline = "výchozí úroveň"
+baseline_value = 20
+events = [{ at = 1, label = "provokace" }]
+series = [
+  { label = "ventilace", style = "alert", values = [20, 62, 70, 74, 71, 69, 67] },
+  { label = "snižování vzrušení", style = "bone", values = [20, 62, 52, 43, 36, 31, 28] },
+]
+
 +++
 
 ## Hypotéza

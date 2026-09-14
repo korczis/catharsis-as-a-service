@@ -16,8 +16,24 @@ key_points = [
   "Reappraisal and self-distancing reduce anger and rumination without rehearsing the provocation.",
   "A meta-analysis of 154 studies (10,189 participants) found that arousal-decreasing activities reduced anger and aggression (g = -0.63), while arousal-increasing activities, including venting-style exertion and running, were ineffective overall (g = -0.02) (Kjærvik & Bushman, 2024).",
 ]
-figures = []
 references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gross-john-2003", "kross-ayduk-mischel-2005", "kjaervik-bushman-2024"]
+
+[[extra.figures]]
+kind = "curves"
+id = "fig-venting-arousal"
+title = "Anger after a provocation: venting versus lowering arousal"
+description = "Line chart with time on the horizontal axis and anger on the vertical axis. After a provocation both lines rise to the same level; the venting line stays high while the arousal-lowering line declines."
+caption = "Figure 1. The direction reported by Bushman (2002) and Kjærvik and Bushman (2024): venting kept anger active, lowering arousal reduced it. Conceptual illustration, not measured data."
+axis_x = "time"
+axis_y = "anger"
+baseline = "baseline"
+baseline_value = 20
+events = [{ at = 1, label = "provocation" }]
+series = [
+  { label = "venting", style = "alert", values = [20, 62, 70, 74, 71, 69, 67] },
+  { label = "lowering arousal", style = "bone", values = [20, 62, 52, 43, 36, 31, 28] },
+]
+
 +++
 
 ## The hypothesis

@@ -122,6 +122,10 @@
 {{ <illustration.relief_curve id={fig.id} labels={fig} /> }}
 {%- elif fig.kind == "synchrony" %}
 {{ <illustration.synchrony id={fig.id} labels={fig} /> }}
+{%- elif fig.kind == "curves" %}
+{{ <illustration.curves id={fig.id} labels={fig} /> }}
+{%- elif fig.kind == "pipeline" %}
+{{ <illustration.pipeline id={fig.id} labels={fig} /> }}
 {%- else %}
 {{ throw(message="unknown figure kind: " ~ fig.kind) }}
 {%- endif %}

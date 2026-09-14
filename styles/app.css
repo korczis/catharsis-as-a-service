@@ -1355,6 +1355,50 @@
     fill: var(--color-blood);
   }
 
+  /* Series and node styles for curves and pipeline figures (docs/FIGURES.md): bone, alert, muted. */
+
+  .ill-curve-bone {
+    fill: none;
+    stroke: var(--color-bone);
+    stroke-width: 2;
+  }
+
+  .ill-curve-muted,
+  .ill-line-muted {
+    fill: none;
+    stroke: var(--color-muted);
+    stroke-width: 1.5;
+    stroke-dasharray: 3 5;
+  }
+
+  .ill-fill-bone {
+    fill: var(--color-bone);
+  }
+
+  .ill-fill-muted {
+    fill: var(--color-muted);
+  }
+
+  .ill-text-bone {
+    fill: var(--color-bone);
+  }
+
+  .ill-text-alert {
+    fill: var(--color-blood);
+  }
+
+  .ill-text-muted {
+    fill: var(--color-muted);
+  }
+
+  .ill-label-sm {
+    font-size: 15px;
+  }
+
+  .ill-node-alert rect {
+    stroke: var(--color-blood);
+  }
+
   .ill-caption {
     margin-top: 0.9rem;
     font-size: 0.75rem;
@@ -1520,6 +1564,9 @@
   .ill-line-alert,
   .ill-curve,
   .ill-curve-alert,
+  .ill-curve-bone,
+  .ill-curve-muted,
+  .ill-line-muted,
   .ill-wave,
   .ill-axis,
   .ill-grid {
@@ -1527,7 +1574,9 @@
   }
 
   .ill-fill,
-  .ill-fill-alert {
+  .ill-fill-alert,
+  .ill-fill-bone,
+  .ill-fill-muted {
     fill: #000 !important;
   }
 
