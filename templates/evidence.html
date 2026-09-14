@@ -1,5 +1,9 @@
 {% extends "base.html" %}
 
+{% block scripts_extra %}
+<script src="{{ get_url(path='js/evidence-explorer.js', cachebust=true) }}" defer></script>
+{% endblock scripts_extra %}
+
 {% block content %}
 {%- set x = page.extra -%}
 {%- set ledger = load_data(path="data/claims.toml") -%}
@@ -78,17 +82,58 @@
       </dl>
     </section>
 
-    <section id="claims" class="ledger-block" aria-labelledby="claims-title">
+    <section id="claims" class="ledger-block" aria-labelledby="claims-title" x-data="evidenceExplorer">
       <h2 id="claims-title" class="display display-md">{{ trans(key="claims_heading", lang=lang) }}</h2>
+      {#- The explorer filters claims already in the page; without JavaScript the whole ledger stays listed. -#}
+      <form class="explorer mt-10" data-requires-js role="search" aria-label="{{ trans(key='explorer_label', lang=lang) }}" x-on:submit.prevent>
+        <div class="explorer-field explorer-search">
+          <label class="label" for="explorer-q">{{ trans(key="explorer_search", lang=lang) }}</label>
+          <input id="explorer-q" type="search" x-model.debounce.150ms="q" autocomplete="off" spellcheck="false">
+        </div>
+        <div class="explorer-field">
+          <label class="label" for="explorer-type">{{ trans(key="claim_types_heading", lang=lang) }}</label>
+          <select id="explorer-type" x-model="type">
+            <option value="">{{ trans(key="explorer_any", lang=lang) }}</option>
+            {%- for type in x.claim_types %}
+            <option value="{{ type.id }}">{{ type.name }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <div class="explorer-field">
+          <label class="label" for="explorer-level">{{ trans(key="evidence_level", lang=lang) }}</label>
+          <select id="explorer-level" x-model="level">
+            <option value="">{{ trans(key="explorer_any", lang=lang) }}</option>
+            {%- for item in x.levels %}
+            <option value="{{ item.level }}">{{ item.level }} · {{ item.name }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <div class="explorer-field">
+          <label class="label" for="explorer-confidence">{{ trans(key="confidence", lang=lang) }}</label>
+          <select id="explorer-confidence" x-model="confidence">
+            <option value="">{{ trans(key="explorer_any", lang=lang) }}</option>
+            {%- for item in x.confidence %}
+            <option value="{{ item.value }}">{{ item.value }}</option>
+            {%- endfor %}
+          </select>
+        </div>
+        <p class="explorer-status" aria-live="polite">
+          <span x-text="shown">{{ ledger.claims | length }}</span> / <span x-text="total">{{ ledger.claims | length }}</span> {{ trans(key="claims_heading", lang=lang) }}
+          <button type="button" class="explorer-reset" x-show="active" x-on:click="reset()">{{ trans(key="explorer_reset", lang=lang) }}</button>
+        </p>
+      </form>
+      <p class="explorer-empty mt-10" data-requires-js x-show="shown === 0" x-cloak>{{ trans(key="explorer_empty", lang=lang) }}</p>
       {%- for type in x.claim_types %}
       {%- set_global members = [] -%}
       {%- for c in ledger.claims %}{% if c.claim_type == type.id %}{% set_global members = [...members, c] %}{% endif %}{% endfor -%}
       {%- if members | length > 0 %}
-      <section id="claims-{{ type.id }}" class="mt-14" aria-labelledby="claims-{{ type.id }}-title">
+      <section id="claims-{{ type.id }}" class="mt-14" aria-labelledby="claims-{{ type.id }}-title" data-claim-group>
         <h3 id="claims-{{ type.id }}-title" class="condensed ledger-subtitle">{{ type.name }} <span class="label">{{ members | length }}</span></h3>
         <div class="claim-list mt-6">
           {%- for c in members %}
-          {{ <evidence.claim claim={c} lang={lang} heading="h4" /> }}
+          <div data-claim data-type="{{ c.claim_type }}" data-level="{{ c.evidence_level }}" data-confidence="{{ c.confidence }}">
+            {{ <evidence.claim claim={c} lang={lang} heading="h4" /> }}
+          </div>
           {%- endfor %}
         </div>
       </section>

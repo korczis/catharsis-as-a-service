@@ -170,6 +170,13 @@ provenance_output = "What you are looking at"
 provenance_claim = "Claim it is drawn from"
 provenance_note = "Claims, their strength and their review dates are kept in the evidence ledger."
 
+# Evidence explorer: filters the claims ledger in place (static/js/evidence-explorer.js).
+explorer_label = "Filter the claims"
+explorer_search = "Search claims"
+explorer_any = "Any"
+explorer_reset = "Clear filters"
+explorer_empty = "No claim matches these filters. Clear a filter to see more."
+
 scope = "Scope"
 caveat = "Caveat"
 last_reviewed = "Last reviewed"
@@ -411,6 +418,13 @@ provenance_question = "Proč tento obrázek existuje?"
 provenance_output = "Na co se díváte"
 provenance_claim = "Tvrzení, podle kterého vznikl"
 provenance_note = "Tvrzení, jejich sílu a data revizí vede evidenční kniha."
+
+# Průzkumník důkazů: filtruje evidenci tvrzení přímo na stránce (static/js/evidence-explorer.js).
+explorer_label = "Filtrovat tvrzení"
+explorer_search = "Hledat v tvrzeních"
+explorer_any = "Jakékoli"
+explorer_reset = "Zrušit filtry"
+explorer_empty = "Žádné tvrzení neodpovídá těmto filtrům. Zrušte některý filtr, aby se zobrazilo víc."
 
 scope = "Platnost"
 caveat = "Výhrada"

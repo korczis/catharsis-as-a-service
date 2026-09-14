@@ -48,7 +48,7 @@ zola_version() {
 
 js_syntax() {
   local file
-  for file in static/js/app.js static/js/locale.js static/js/url-state.js static/js/models.js static/js/search.js static/js/case-study.js; do
+  for file in static/js/app.js static/js/locale.js static/js/url-state.js static/js/models.js static/js/search.js static/js/case-study.js static/js/evidence-explorer.js; do
     node --check "$file" || return 1
   done
 }

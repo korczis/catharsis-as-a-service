@@ -1159,3 +1159,36 @@ test('interactive state is bookmarkable: models, simulation, search filter and c
   await expect(page.locator(`#${id} .claim-sources`)).toBeVisible();
   expect(problems).toEqual([]);
 });
+
+test('evidence explorer filters the ledger in place, keeps its state in the URL and degrades to the full list', async ({ page, browser }) => {
+  const problems = watch(page);
+  await open(page, 'evidence/');
+  const claims = page.locator('[data-claim]');
+  const total = await claims.count();
+  expect(total).toBeGreaterThan(50);
+  await expect(page.locator('.explorer')).toBeVisible();
+
+  const levelA = await page.locator('[data-claim][data-level="A"]').count();
+  await page.locator('#explorer-level').selectOption('A');
+  await expect(page.locator('[data-claim]:not([hidden])')).toHaveCount(levelA);
+  await expect(page).toHaveURL(/[?&]ev-level=A/);
+
+  await page.reload();
+  await expect(page.locator('html')).toHaveAttribute('data-alpine', 'ready');
+  await expect(page.locator('#explorer-level')).toHaveValue('A');
+  await expect(page.locator('[data-claim]:not([hidden])')).toHaveCount(levelA);
+
+  await page.locator('#explorer-q').fill('zzzz-no-such-claim');
+  await expect(page.locator('.explorer-empty')).toBeVisible();
+  await page.locator('.explorer-reset').click();
+  await expect(page.locator('[data-claim]:not([hidden])')).toHaveCount(total);
+  await expect(page).not.toHaveURL(/ev-/);
+  expect(problems).toEqual([]);
+
+  const noScript = await browser.newContext({ javaScriptEnabled: false });
+  const plain = await noScript.newPage();
+  await plain.goto(url('evidence/'));
+  await expect(plain.locator('.explorer')).toBeHidden();
+  await expect(plain.locator('[data-claim]:not([hidden])')).toHaveCount(total);
+  await noScript.close();
+});
