@@ -115,6 +115,9 @@
 {%- set n = labels.series[0]["values"] | length %}
 {%- set step = 620 / (n - 1) %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
+  {#- Below the drawing's minimum width the figure scrolls sideways inside its own region rather than
+      shrinking the labels out of legibility; the region is focusable so it can be scrolled by keyboard. -#}
+  <div class="ill-canvas" tabindex="0" role="group" aria-label="{{ labels.title }}">
   <svg viewBox="0 0 720 400" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
@@ -148,6 +151,15 @@
     <text x="{% if at == n - 1 %}{{ lx }}{% else %}{{ lx + 10 }}{% endif %}" y="{{ 330 - s["values"][at] * 3 + dy }}"{% if at == n - 1 %} text-anchor="end"{% endif %} class="ill-label ill-text-{{ style }}">{{ s.label }}</text>
     {%- endfor %}
   </svg>
+  </div>
+  {#- On a narrow screen the series labels sit in the scrolled-off part of the drawing, so the key is
+      repeated below it; CSS shows this only where the figure scrolls. -#}
+  <p class="ill-key" aria-hidden="true">
+    {%- for s in labels.series %}
+    {%- if s.style is defined %}{% set style = s.style %}{% else %}{% set style = "bone" %}{% endif %}
+    <span class="ill-key-item ill-text-{{ style }}">{{ s.label }}</span>
+    {%- endfor %}
+  </p>
   <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
 </figure>
 {% endcomponent illustration.curves %}
@@ -158,6 +170,8 @@
 {%- set n = labels.nodes | length %}
 {%- set w = (680 - 28 * (n - 1)) / n %}
 <figure class="illustration" aria-labelledby="{{ id }}-caption">
+  {#- See illustration.curves: the same scroll region, widened once a row carries more than three nodes. -#}
+  <div class="ill-canvas{% if n > 3 %} ill-canvas-wide{% endif %}" tabindex="0" role="group" aria-label="{{ labels.title }}">
   <svg viewBox="0 0 720 320" role="img" aria-labelledby="{{ id }}-title {{ id }}-desc" preserveAspectRatio="xMidYMid meet">
     <title id="{{ id }}-title">{{ labels.title }}</title>
     <desc id="{{ id }}-desc">{{ labels.description }}</desc>
@@ -201,6 +215,7 @@
     {%- endif %}
     {%- endif %}
   </svg>
+  </div>
   <figcaption id="{{ id }}-caption" class="ill-caption">{{ labels.caption }}</figcaption>
 </figure>
 {% endcomponent illustration.pipeline %}

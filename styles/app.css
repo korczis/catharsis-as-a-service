@@ -1355,6 +1355,59 @@
     fill: var(--color-blood);
   }
 
+  /* Curves and pipeline figures scroll sideways below their minimum drawing width, so labels stay
+     legible on a phone and the page itself never scrolls (tests/site.spec.js checks both). */
+
+  .ill-canvas {
+    /* contain: inline-size stops the drawing's minimum width from sizing the ancestors: without it the
+       column around the figure grows to the drawing and the page scrolls sideways instead of the figure. */
+    contain: inline-size;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .ill-canvas svg {
+    min-width: 30rem;
+  }
+
+  .ill-canvas-wide svg {
+    min-width: 40rem;
+  }
+
+  .ill-key {
+    display: none;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.1rem;
+    margin-top: 0.7rem;
+    font-family: var(--font-condensed);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .ill-key-item::before {
+    content: '';
+    display: inline-block;
+    width: 1rem;
+    height: 2px;
+    margin-right: 0.45rem;
+    background: currentcolor;
+    vertical-align: middle;
+  }
+
+  /* The key repeats the series labels only where the drawing is wider than its column and scrolls. */
+  @media (width <= 34rem) {
+    .ill-key {
+      display: flex;
+    }
+  }
+
+  .ill-canvas:focus-visible {
+    outline: 1px solid var(--color-blood);
+    outline-offset: 4px;
+  }
+
   /* Series and node styles for curves and pipeline figures (docs/FIGURES.md): bone, alert, muted. */
 
   .ill-curve-bone {
@@ -1380,14 +1433,17 @@
   }
 
   .ill-text-bone {
+    color: var(--color-bone);
     fill: var(--color-bone);
   }
 
   .ill-text-alert {
+    color: var(--color-blood);
     fill: var(--color-blood);
   }
 
   .ill-text-muted {
+    color: var(--color-muted);
     fill: var(--color-muted);
   }
 
@@ -1563,6 +1619,18 @@
   .ill-line,
   .ill-line-alert,
   .ill-curve,
+  .ill-canvas {
+    overflow: visible !important;
+  }
+
+  .ill-canvas svg {
+    min-width: 0 !important;
+  }
+
+  .ill-key {
+    display: none !important;
+  }
+
   .ill-curve-alert,
   .ill-curve-bone,
   .ill-curve-muted,
