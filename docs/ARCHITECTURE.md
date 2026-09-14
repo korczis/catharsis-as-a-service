@@ -47,10 +47,19 @@ styles/app.css ─► Tailwind CSS 4 ───┘   scripts/export-api.py ─►
 ## Validation stages
 
 [`npm run validate`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-validate) runs, in order:
-toolchain, assets, JavaScript syntax, translations, content standards, references, evidence ledger, Zola check,
+toolchain, assets, JavaScript syntax, translations, content standards, layout, references, evidence ledger, Zola check,
 Zola build, API export and HTML. [`npm run test:python`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-run-test-python)
 tests the validators and registered commands, and [`npm test`](https://korczis.github.io/catharsis-as-a-service/commands/#npm-test)
 runs the browser suite.
+
+## Layout
+
+The page is the only scrolling surface: no figure, table, code block or panel carries a scrollbar of its
+own, and the body never scrolls sideways. Content that does not fit a width is re-laid out for it — a table
+stacks into one labelled record per row below 60rem, a `pipeline` figure becomes its stack and a `curves`
+figure moves its series labels into the key below 40rem, preformatted text wraps. The rule is
+`project.no-scroll-containers`; [scripts/validate-layout.py](../scripts/validate-layout.py) checks the
+sources and `tests/site.spec.js` checks the rendered pages at 390, 768 and 1440 px.
 
 ## Decisions
 

@@ -35,12 +35,18 @@ In print every stroke and text is forced to black on white (`@media print`).
 
 ## Narrow screens
 
-A `curves` or `pipeline` figure keeps a minimum drawing width (34rem, or 44rem for a row of more than three
-nodes) and scrolls sideways inside its own focusable region below it, rather than shrinking its labels until
-they cannot be read; at those widths the mono metadata is set larger, because the drawing is scaled down. The page body itself never scrolls sideways, and in print the region expands and the
-whole figure is drawn. Because a `curves` figure carries its series labels at the right edge of the drawing,
-where a narrow screen scrolls them out of view, the same labels are repeated as a key below the figure and
-CSS shows that key only at those widths. The fixed kinds used on the landing page are unaffected.
+Nothing on the site carries a scrollbar of its own (`project.no-scroll-containers`), so a figure scales to
+the column it sits in: `width: 100%` against a fixed 720-unit `viewBox`. On a phone that is about half
+scale, which would put the labels drawn inside the figure below a readable size, so each kind has a narrow
+treatment below 40rem instead:
+
+| Kind | Below 40rem |
+|------|-------------|
+| `curves` | The plot is kept and the series labels inside it are hidden; the key below the figure — the same labels, in the same series colours — carries them. Axis, baseline and event metadata is set in 24 user units, which reads as roughly 12px at that scale. |
+| `pipeline` | The drawing is hidden and replaced by the stack: the same nodes in order, one per line, each with its label, its mark and its mono metadata at text size. The stack is the accessible representation at that width, and the drawing is at every other. |
+
+In print the drawing is always the one shown: the stack and the key are hidden and the whole figure is
+drawn. The fixed kinds used on the landing page are unaffected.
 
 ## Kinds
 

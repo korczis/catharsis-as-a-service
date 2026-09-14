@@ -282,6 +282,16 @@ summary.cs = "Zkontroluje obsahové standardy (pole důkazů, SEO popisy, zakáz
 verified_by = ["ci:Validate and build", "pytest:test_content_passes_on_repository"]
 
 [[commands]]
+id = "validate-layout"
+group = "validate"
+command = "python3 scripts/validate-layout.py"
+match = "python3 scripts/validate-layout.py"
+source = "scripts/validate-layout.py"
+summary.en = "Checks that nothing on the site scrolls inside the page: no scrolling overflow in the stylesheets or templates and no minimum width inside a figure or table."
+summary.cs = "Zkontroluje, že na webu nic neroluje uvnitř stránky: žádné rolovací overflow ve stylech ani šablonách a žádná minimální šířka uvnitř obrázku nebo tabulky."
+verified_by = ["ci:Validate and build", "pytest:test_layout_passes_on_repository"]
+
+[[commands]]
 id = "validate-claims"
 group = "validate"
 command = "python3 scripts/validate-claims.py"

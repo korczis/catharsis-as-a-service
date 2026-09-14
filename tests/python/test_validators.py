@@ -209,3 +209,42 @@ def test_html_reports_invalid_structured_data(tmp_path):
     result = run([PY, str(ROOT / "scripts/validate-html.py"), str(tmp_path), base])
     assert result.returncode == 1
     assert "JSON-LD does not parse" in result.stdout
+
+
+def test_layout_passes_on_repository():
+    result = run([PY, "scripts/validate-layout.py"])
+    assert result.returncode == 0, result.stdout
+
+
+def _layout_fixture(tmp_path, css="", template=""):
+    for name in ("styles/app.css", "static/css/case-study.css", "static/css/interactive.css"):
+        write(tmp_path / name, css if name == "styles/app.css" else "")
+    write(tmp_path / "templates/page.html", template or "<div></div>\n")
+    return tmp_path
+
+
+def test_layout_reports_scrolling_declaration(tmp_path):
+    _layout_fixture(tmp_path, css=".table-frame {\n  overflow-x: auto;\n}\n")
+    result = run([PY, str(ROOT / "scripts/validate-layout.py")], env={"CAAS_ROOT": str(tmp_path)})
+    assert result.returncode == 1
+    assert "styles/app.css:2: scroll container" in result.stdout
+
+
+def test_layout_allows_hidden_overflow(tmp_path):
+    _layout_fixture(tmp_path, css=".masthead {\n  overflow: hidden;\n}\n")
+    result = run([PY, str(ROOT / "scripts/validate-layout.py")], env={"CAAS_ROOT": str(tmp_path)})
+    assert result.returncode == 0, result.stdout
+
+
+def test_layout_reports_minimum_width_on_a_figure(tmp_path):
+    _layout_fixture(tmp_path, css=".ill-canvas svg {\n  min-width: 34rem;\n}\n")
+    result = run([PY, str(ROOT / "scripts/validate-layout.py")], env={"CAAS_ROOT": str(tmp_path)})
+    assert result.returncode == 1
+    assert "min-width: 34rem" in result.stdout
+
+
+def test_layout_reports_scrolling_utility_in_a_template(tmp_path):
+    _layout_fixture(tmp_path, template='<div class="mt-12 overflow-x-auto">\n</div>\n')
+    result = run([PY, str(ROOT / "scripts/validate-layout.py")], env={"CAAS_ROOT": str(tmp_path)})
+    assert result.returncode == 1
+    assert "templates/page.html:1: scroll container — class overflow-x-auto" in result.stdout

@@ -52,6 +52,21 @@ async function open(page, relative) {
 const overflow = (page) =>
   page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
 
+// project.no-scroll-containers: the page scrolls, nothing inside it does. The mobile navigation drawer
+// is the one exception — a full-height panel whose scroll stands in for the page's own.
+const scrollContainers = (page) =>
+  page.evaluate(() =>
+    [...document.querySelectorAll('body *')]
+      .filter((el) => {
+        if (el.closest('#nav-drawer')) return false;
+        const style = getComputedStyle(el);
+        if (style.display === 'none' || style.visibility === 'hidden') return false;
+        const scrolls = (axis, size, client) =>
+          ['auto', 'scroll'].includes(style[axis]) && el[size] - el[client] > 1;
+        return scrolls('overflowX', 'scrollWidth', 'clientWidth') || scrolls('overflowY', 'scrollHeight', 'clientHeight');
+      })
+      .map((el) => `${el.tagName.toLowerCase()}${el.id ? `#${el.id}` : ''}.${el.className}`.trim().slice(0, 120)));
+
 async function scrollThrough(page) {
   await page.evaluate(async () => {
     for (let y = 0; y < document.documentElement.scrollHeight; y += 700) {
@@ -117,6 +132,28 @@ for (const locale of LOCALES) {
       await page.setViewportSize({ width, height: 900 });
       await open(page, locale.path);
       expect(await overflow(page), `overflow at ${width}px`).toBeLessThanOrEqual(0);
+    }
+    expect(problems).toEqual([]);
+  });
+
+  test(`${locale.code}: nothing inside the page scrolls`, async ({ page }) => {
+    const problems = watch(page);
+    const pages = [
+      locale.path,
+      `${locale.path}research/venting-hypothesis/`,
+      `${locale.path}research/stress-and-social-buffering/`,
+      `${locale.path}methods/`,
+      `${locale.path}evidence/`,
+      `${locale.path}status/`,
+      `${locale.path}artifacts/catharsis-as-a-service/`,
+    ];
+    for (const width of [390, 768, 1440]) {
+      await page.setViewportSize({ width, height: 900 });
+      for (const relative of pages) {
+        await open(page, relative);
+        expect(await scrollContainers(page), `scroll container on /${relative} at ${width}px`).toEqual([]);
+        expect(await overflow(page), `overflow on /${relative} at ${width}px`).toBeLessThanOrEqual(0);
+      }
     }
     expect(problems).toEqual([]);
   });
