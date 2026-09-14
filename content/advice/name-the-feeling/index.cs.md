@@ -23,9 +23,10 @@ limits = [
   "Hlavní neurozobrazovací důkazy pocházejí z laboratorních úloh se standardizovanými obrázky, nikoli z osobních událostí.",
   "Pojmenování se může změnit v ruminaci, pokud přejde v opakovaný abstraktní rozbor toho, proč pocit existuje.",
   "Pro některé lidi je obtížné emoce rozpoznat; jde o dovednost, kterou lze rozvíjet, a obtíže nejsou selháním.",
+  "Pojmenování tlumí i příjemné pocity a po expozici s pojmenováním byla nižší kožní vodivostní reakce, nikoli však uváděný strach (Lieberman a kol., 2011; Kircanski a kol., 2012).",
 ]
 related = ["research/crying-and-sharing/index.md", "research/measuring-emotion/index.md"]
-references = ["lieberman-2007", "kross-ayduk-2011", "gross-1998"]
+references = ["lieberman-2007", "kross-ayduk-2011", "gross-1998", "lieberman-2011", "torre-lieberman-2018", "kircanski-2012"]
 +++
 
 ## Proč to funguje
@@ -37,6 +38,12 @@ Pojmenování emoce posouvá zpracování od bezprostřední tělesné reakce k 
 Lieberman a kolegové (2007) žádali účastníky, aby pojmenovali emoci zobrazenou na fotografiích obličejů, pojmenovali jiný rys, například pohlaví, nebo se jen dívali. Pojmenování emoce souviselo s nižší aktivitou amygdaly a vyšší aktivitou pravého ventrolaterálního prefrontálního kortexu a obě hodnoty spolu nepřímo souvisely. Autoři popisují pojmenování afektu jako formu implicitní regulace emocí: pomáhá, i když lidé regulovat nezamýšlejí.
 
 Pojmenování také umožňuje odstup. Kross a Ayduk (2011) shrnuli důkazy, že uvažování o negativních zážitcích z perspektivy odstupu pomáhá lidem najít v nich smysl, aniž by je zahltily. Přesné pojmenování bývá prvním krokem k takové perspektivě.
+
+## Co dodává další výzkum
+
+Účinek pojmenování se neomezuje na zobrazování mozku. Ve čtyřech studiích byla uváděná tíseň nižší, když účastníci pojmenovávali emoci na negativních obrázcích, než když se na ně jen dívali, a pokles byl podobný jako při přehodnocení a při rozptýlení (Lieberman a kol., 2011). Účastníci přesto předpovídali, že jim pojmenování tíseň zvýší, a to i poté, co zažili opak. U pozitivních obrázků souviselo pojmenování s nižším uváděným potěšením, což naznačuje, že tlumí afektivní reakce obecně, a ne jen ulevuje od negativních pocitů. Torre a Lieberman (2018) tento výzkum shrnují jako doklad, že pojmenování afektu je formou implicitní regulace emocí, která se ve chvíli, kdy probíhá, nemusí jako regulace vůbec jevit.
+
+V klinickém použití absolvovali lidé se strachem z pavouků krátkou expozici živému pavoukovi (Kircanski, Lieberman a Craske, 2012). O týden později, s jiným pavoukem v jiném prostředí, měla skupina, která během expozice pojmenovávala své pocity, nižší kožní vodivostní reakci než skupiny, které přehodnocovaly, rozptylovaly se nebo absolvovaly jen expozici, v uváděném strachu se od nich však nelišila. Častější používání slov označujících úzkost a strach během expozice souviselo s větším poklesem strachových reakcí.
 
 ## Stručně
 

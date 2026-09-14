@@ -25,7 +25,7 @@ limits = [
   "If anger is frequent, intense or leads to harm, speak with a qualified professional.",
 ]
 related = ["research/venting-hypothesis/index.md", "research/what-is-catharsis/index.md"]
-references = ["bushman-baumeister-stack-1999", "bushman-2002", "kross-ayduk-mischel-2005"]
+references = ["bushman-baumeister-stack-1999", "bushman-2002", "kross-ayduk-mischel-2005", "ray-2008", "denson-2013", "del-vecchio-oleary-2004"]
 +++
 
 ## Why venting backfires
@@ -37,6 +37,12 @@ The hydraulic model predicts that expressing anger discharges it. The experiment
 Bushman, Baumeister and Stack (1999) found that people who were told that hitting a punching bag relieves anger were more inclined to choose that activity, and that venting was followed by more aggression toward the person who had provoked them. Bushman (2002) compared hitting a punching bag while thinking about the provocateur, hitting it while thinking about fitness, and sitting quietly. The rumination condition produced the most anger and aggression, and sitting quietly produced the least.
 
 Kross, Ayduk and Mischel (2005) showed that reflecting on an anger-provoking experience from a self-distanced perspective reduced emotional reactivity compared with reliving it from an immersed perspective. Distance allows the meaning of the event to be examined without re-igniting the emotion.
+
+## What further research adds
+
+Rumination makes anger worse even without physical venting. Ray, Wilhelm and Gross (2008) asked participants in two studies to recall a recent anger-provoking event and then either ruminate on it or reappraise it. Compared with reappraisal, rumination led to greater anger experience, more cognitive perseveration and greater sympathetic nervous system activation. Denson's (2013) review describes angry rumination as a risk factor for aggression that temporarily reduces self-control, which can increase aggression.
+
+For people whose anger is a recurring problem, a meta-analysis of 23 controlled treatment studies in non-institutionalised adults with anger established by standardised measures found medium to large effects across therapies (Del Vecchio & O'Leary, 2004). Analyses by type of anger supported cognitive therapies for driving anger, anger suppression and trait anger, and relaxation for state anger. These are structured treatments delivered in studies, not self-help, which is why frequent or harmful anger remains a reason to speak with a professional.
 
 ## In short
 

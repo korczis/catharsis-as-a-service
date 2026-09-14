@@ -549,3 +549,189 @@ population = { en = "Adults followed with physiologically triggered experience s
 appraisal = { en = "Supports the claim that recurring physiological patterns varied in number and nature within individuals, as did the affect ratings and emotion labels attached to them, while some broad patterns recurred across individuals. Exploratory unsupervised clustering in repeated sampling, so it is graded D; an erratum was published in 2021 and was not reviewed here.", cs = "Podporuje tvrzení, že opakující se fyziologické vzorce se u jednotlivců lišily počtem i povahou, stejně jako k nim připojená hodnocení afektu a pojmenování emocí, zatímco některé široké vzorce se opakovaly napříč jednotlivci. Explorační shlukování bez učitele při opakovaném vzorkování, proto má úroveň D; v roce 2021 vyšlo erratum, které zde hodnoceno nebylo." }
 last_reviewed = 2026-09-14
 review_due = 2027-09-14
+
+# ── Advice expansion (appraised against PubMed or OpenAlex abstracts, 2026-09-14) ─────────────────
+
+[sources.roberts-2019]
+design = "systematic-review"
+level = "A"
+population = { en = "61 randomised controlled trials of multiple-session psychological interventions beginning within three months of trauma exposure.", cs = "61 randomizovaných kontrolovaných studií psychologických intervencí o více sezeních zahájených do tří měsíců od vystavení traumatu." }
+appraisal = { en = "Supports the claims that no intervention showed a clinically important difference from usual care for people not screened for traumatic stress symptoms, and that trauma-focused CBT, cognitive therapy without exposure and EMDR showed clinically important benefits for people with symptoms, greatest for acute stress disorder and PTSD. Findings were rated with GRADE; the abstract does not give the ratings.", cs = "Podporuje tvrzení, že u lidí bez předchozího zjišťování příznaků traumatického stresu nevykázala žádná intervence klinicky významný rozdíl oproti běžné péči a že u lidí s příznaky přinesly klinicky významný prospěch KBT zaměřená na trauma, kognitivní terapie bez expozice a EMDR, nejvíce u akutní stresové poruchy a PTSP. Zjištění byla hodnocena metodou GRADE; abstrakt hodnocení neuvádí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bisson-2013]
+design = "systematic-review"
+level = "A"
+population = { en = "70 randomised controlled trials with 4,761 adults with chronic PTSD.", cs = "70 randomizovaných kontrolovaných studií se 4 761 dospělými s chronickou PTSP." }
+appraisal = { en = "Supports the claim that individual trauma-focused CBT and EMDR reduced clinician-assessed PTSD symptoms more than waitlist or usual care. The authors rated the evidence for every comparison as very low quality, reported more drop-out in active treatments and limited follow-up data, so claims citing it are held at moderate confidence.", cs = "Podporuje tvrzení, že individuální KBT zaměřená na trauma a EMDR snižovaly příznaky PTSP hodnocené klinikem více než čekací listina nebo běžná péče. Autoři hodnotili kvalitu dokladů u všech srovnání jako velmi nízkou, uvádějí častější předčasné ukončení v aktivní léčbě a omezená data z dalšího sledování, proto tvrzení, která se na přehled odvolávají, mají střední jistotu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.miethe-2023]
+design = "meta-analysis"
+level = "D"
+population = { en = "75 studies with 189 effect sizes on posttraumatic stress symptoms and emotion regulation strategies.", cs = "75 studií se 189 velikostmi účinku o příznacích posttraumatického stresu a strategiích regulace emocí." }
+appraisal = { en = "Supports the claim that posttraumatic stress symptoms were associated with rumination (r = .52), experiential avoidance (r = .48) and thought suppression (r = .29). It pools correlational studies, so it is graded D; the few longitudinal studies suggested somewhat smaller associations.", cs = "Podporuje tvrzení, že příznaky posttraumatického stresu souvisely s ruminací (r = 0,52), zážitkovým vyhýbáním (r = 0,48) a potlačováním myšlenek (r = 0,29). Shrnuje korelační studie, proto má úroveň D; několik longitudinálních studií naznačilo o něco slabší souvislosti." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kashdan-2006]
+design = "longitudinal"
+level = "D"
+population = { en = "Two studies, one with a 21-day daily monitoring period; the abstract does not state the sample sizes.", cs = "Dvě studie, z toho jedna s 21denním každodenním sledováním; abstrakt neuvádí velikosti vzorků." }
+appraisal = { en = "Supports the claim that experiential avoidance was associated with fewer positive and more negative daily experiences and was more predictive of everyday experience than cognitive reappraisal. The analyses are correlational mediation models, so the source is graded D rather than C.", cs = "Podporuje tvrzení, že zážitkové vyhýbání souviselo s menším počtem pozitivních a větším počtem negativních každodenních zážitků a předpovídalo každodenní prožívání lépe než kognitivní přehodnocení. Analýzy jsou korelační mediační modely, proto má zdroj úroveň D, nikoli C." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rode-2007]
+design = "cross-sectional"
+level = "D"
+population = { en = "Three studies comparing rated and recalled liking for dishes, two with actual meals and one with an imagined meal; the abstract does not state the sample sizes.", cs = "Tři studie porovnávající hodnocené a vzpomínané zalíbení v pokrmech, dvě se skutečným a jedna s představovaným jídlem; abstrakt neuvádí velikosti vzorků." }
+appraisal = { en = "Supports the claim that memories of meals showed consistent duration neglect but no peak, primacy or recency effects. It qualifies the peak-end rule for one domain of pleasant experience and does not test painful or emotional experiences.", cs = "Podporuje tvrzení, že vzpomínky na jídlo vykazovaly konzistentní přehlížení délky, ale žádný efekt vrcholu, prvenství ani posledního dojmu. Pravidlo vrcholu a konce omezuje pro jednu oblast příjemných zážitků a netestuje bolestné ani emoční zážitky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.holt-lunstad-2010]
+design = "meta-analysis"
+level = "C"
+population = { en = "148 studies with 308,849 participants linking social relationships to later mortality.", cs = "148 studií s 308 849 účastníky spojujících sociální vztahy s pozdější úmrtností." }
+appraisal = { en = "Supports the claim that stronger social relationships were associated with a 50% increased likelihood of survival (OR 1.50), consistent across age, sex, initial health, cause of death and follow-up, strongest for complex measures of integration. It pools studies with follow-up of survival, not experiments, so it is graded C and supports association, not cause.", cs = "Podporuje tvrzení, že silnější sociální vztahy souvisely s o 50 % vyšší pravděpodobností přežití (OR 1,50), konzistentně napříč věkem, pohlavím, výchozím zdravím, příčinou úmrtí i délkou sledování, nejsilněji u komplexních měřítek integrace. Shrnuje studie se sledováním přežití, nikoli experimenty, proto má úroveň C a podporuje souvislost, nikoli příčinu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bolger-2000]
+design = "longitudinal"
+level = "C"
+population = { en = "Couples in a daily diary study of support provision and receipt around a major stressor; the abstract does not state the sample size.", cs = "Páry v deníkové studii poskytování a přijímání opory v souvislosti se závažným stresorem; abstrakt neuvádí velikost vzorku." }
+appraisal = { en = "Supports the claims that many support transactions reported by supporters were not reported by recipients and that these invisible transactions promoted adjustment to a major stressor. A single diary study with one kind of stressor.", cs = "Podporuje tvrzení, že řadu projevů opory uváděných poskytovateli příjemci neuváděli a že tyto nepostřehnuté projevy podporovaly zvládání závažného stresoru. Jediná deníková studie s jedním druhem stresoru." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hogan-2002]
+design = "review"
+level = "D"
+population = { en = "Review of 100 studies evaluating social support interventions for problems ranging from cancer to birth preparation.", cs = "Přehled 100 studií hodnotících intervence sociální opory u problémů od rakoviny po přípravu na porod." }
+appraisal = { en = "Supports the claim that the review found some support for the overall usefulness of social support interventions but not enough evidence to conclude which work best for which problems. A narrative review; Crossref and PubMed list slightly different page ranges.", cs = "Podporuje tvrzení, že přehled našel určitou podporu celkové užitečnosti intervencí sociální opory, ale nedostatek dokladů pro závěr, které fungují nejlépe u jakých problémů. Narativní přehled; Crossref a PubMed uvádějí mírně odlišný rozsah stran." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watkins-2009]
+design = "experiment"
+level = "B"
+population = { en = "60 participants with dysphoria randomly allocated to concreteness training, bogus training or a waiting list.", cs = "60 účastníků s dysforií náhodně rozdělených do tréninku konkrétnosti, zdánlivého tréninku nebo na čekací listinu." }
+appraisal = { en = "Supports the claim that concreteness training reduced depressive symptoms more than both controls and rumination more than the waiting list. A small proof-of-principle trial in a non-clinical dysphoric sample.", cs = "Podporuje tvrzení, že trénink konkrétnosti snížil depresivní příznaky více než obě kontroly a ruminaci více než čekací listina. Malá studie ověřující princip u neklinického vzorku s dysforií." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watkins-2012]
+design = "experiment"
+level = "B"
+population = { en = "121 primary-care patients with current major depression randomly allocated to usual care, usual care plus concreteness training, or usual care plus relaxation training.", cs = "121 pacientů primární péče se současnou velkou depresí náhodně rozdělených do běžné péče, běžné péče s tréninkem konkrétnosti nebo běžné péče s relaxačním tréninkem." }
+appraisal = { en = "Supports the claims that adding concreteness training improved depressive symptoms at post-treatment and 3- and 6-month follow-ups, that it did not reduce symptoms more than relaxation training, and that it reduced rumination and overgeneralisation more than relaxation. A Phase II trial described by its authors as preliminary evidence.", cs = "Podporuje tvrzení, že doplnění tréninku konkrétnosti zlepšilo depresivní příznaky po léčbě a při sledování po 3 a 6 měsících, že příznaky nesnížilo více než relaxační trénink a že ruminaci a nadměrné zobecňování snížilo více než relaxace. Studie fáze II, kterou autoři označují za předběžný doklad." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.ray-2008]
+design = "experiment"
+level = "B"
+population = { en = "Two laboratory studies in which participants recalled a recent anger-provoking event and ruminated or reappraised; the abstract does not state the sample sizes.", cs = "Dvě laboratorní studie, v nichž si účastníci vybavili nedávnou událost vyvolávající hněv a ruminovali nebo přehodnocovali; abstrakt neuvádí velikosti vzorků." }
+appraisal = { en = "Supports the claim that, relative to reappraisal, rumination led to greater anger experience, more cognitive perseveration and greater sympathetic activation. Short-term laboratory outcomes.", cs = "Podporuje tvrzení, že ve srovnání s přehodnocením vedla ruminace k silnějšímu prožitku hněvu, většímu ulpívání myšlenek a vyšší sympatické aktivaci. Krátkodobé laboratorní výsledky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.denson-2013]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a review proposing a multiple systems model of angry rumination.", cs = "Neuplatňuje se: přehled navrhující model více systémů hněvivé ruminace." }
+appraisal = { en = "Supports the claims that angry rumination is a risk factor for aggression and temporarily reduces self-control, which can increase aggression. A theoretical synthesis; the individual findings are not appraised here.", cs = "Podporuje tvrzení, že hněvivá ruminace je rizikovým faktorem agrese a dočasně snižuje sebekontrolu, což může agresi zvyšovat. Teoretická syntéza; jednotlivá zjištění zde hodnocena nejsou." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.del-vecchio-oleary-2004]
+design = "meta-analysis"
+level = "A"
+population = { en = "23 controlled treatment studies (1980–2002) in non-institutionalised adults with anger established by standardised measures.", cs = "23 kontrolovaných léčebných studií (1980–2002) u neinstitucionalizovaných dospělých s hněvem doloženým standardizovanými měřítky." }
+appraisal = { en = "Supports the claims that anger treatments showed medium to large effects and that analyses by anger type supported cognitive therapies for driving anger, anger suppression and trait anger and relaxation for state anger. Treatment studies with control groups; the authors call for research with treatment-seeking and clinical populations.", cs = "Podporuje tvrzení, že léčba hněvu vykázala střední až velké účinky a že analýzy podle druhu hněvu podpořily kognitivní terapie u hněvu za volantem, potlačovaného hněvu a hněvu jako rysu a relaxaci u hněvu jako stavu. Léčebné studie s kontrolními skupinami; autoři volají po výzkumu s lidmi, kteří léčbu sami vyhledávají, a s klinickými populacemi." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rennung-goritz-2016]
+design = "meta-analysis"
+level = "A"
+population = { en = "60 published and unpublished experiments comparing an interpersonal synchrony condition with at least one control condition.", cs = "60 publikovaných i nepublikovaných experimentů srovnávajících podmínku interpersonální synchronie s alespoň jednou kontrolní podmínkou." }
+appraisal = { en = "Supports the claim that interpersonal synchrony had a medium effect on prosocial attitudes and behaviour, moderated by experimenter effects and intentionality. Laboratory experiments with short-term outcomes.", cs = "Podporuje tvrzení, že interpersonální synchronie měla střední účinek na prosociální postoje a chování, moderovaný vlivy experimentátora a záměrností. Laboratorní experimenty s krátkodobými výsledky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.koch-2019]
+design = "meta-analysis"
+level = "A"
+population = { en = "41 controlled intervention studies (N = 2,374) of dance movement therapy and dance, 2012–2018.", cs = "41 kontrolovaných intervenčních studií (N = 2 374) taneční a pohybové terapie a tance z let 2012–2018." }
+appraisal = { en = "Supports the claim of a medium overall effect on health-related psychological outcomes (d = 0.60) with high heterogeneity, larger effects from observational measures possibly indicating bias, and methodological shortcomings that limit the results. Held at moderate confidence because of heterogeneity and possible bias.", cs = "Podporuje tvrzení o středním celkovém účinku na psychologické výsledky související se zdravím (d = 0,60) s vysokou heterogenitou, s většími účinky z pozorovacích měřítek, které mohou naznačovat zkreslení, a s metodologickými nedostatky omezujícími výsledky. Kvůli heterogenitě a možnému zkreslení má střední jistotu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lieberman-2011]
+design = "experiment"
+level = "B"
+population = { en = "Four studies with negative and positive emotional pictures; the abstract does not state the sample sizes.", cs = "Čtyři studie s negativními a pozitivními emočními obrázky; abstrakt neuvádí velikosti vzorků." }
+appraisal = { en = "Supports the claims that affect labelling lowered self-reported distress about as much as reappraisal and distraction, that participants nonetheless predicted it would increase distress, and that it diminished self-reported pleasure for positive pictures. Laboratory tasks with standardised pictures.", cs = "Podporuje tvrzení, že pojmenování afektu snížilo uváděnou tíseň přibližně stejně jako přehodnocení a rozptýlení, že účastníci přesto předpovídali její zvýšení a že u pozitivních obrázků snížilo uváděné potěšení. Laboratorní úlohy se standardizovanými obrázky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.torre-lieberman-2018]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of affect labelling across experiential, autonomic, neural and behavioural effects.", cs = "Neuplatňuje se: přehled pojmenování afektu napříč prožitkovými, autonomními, neurálními a behaviorálními účinky." }
+appraisal = { en = "Supports the claims that putting feelings into words can attenuate emotional experience and may not feel like regulation as it occurs. A narrative review by researchers who produced much of the primary evidence.", cs = "Podporuje tvrzení, že vyjádření pocitů slovy může tlumit emoční prožitek a nemusí se ve chvíli, kdy probíhá, jevit jako regulace. Narativní přehled od badatelů, kteří vytvořili velkou část primárních dokladů." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kircanski-2012]
+design = "experiment"
+level = "B"
+population = { en = "Spider-fearful individuals in a between-subjects exposure experiment with four conditions; the abstract does not state the sample size.", cs = "Lidé se strachem z pavouků v expozičním experimentu se čtyřmi podmínkami a srovnáním mezi skupinami; abstrakt neuvádí velikost vzorku." }
+appraisal = { en = "Supports the claims that, one week after exposure, the affect-labelling group showed a lower skin conductance response than the other groups but did not differ in self-reported fear, and that greater use of anxiety and fear words was associated with greater reductions in fear responding. A brief exposure course in a specific fear.", cs = "Podporuje tvrzení, že týden po expozici měla skupina s pojmenováním afektu nižší kožní vodivostní reakci než ostatní skupiny, ale nelišila se v uváděném strachu, a že častější používání slov pro úzkost a strach souviselo s větším poklesem strachových reakcí. Krátká expozice u specifického strachu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.troy-2013]
+design = "cross-sectional"
+level = "D"
+population = { en = "170 participants with measured reappraisal ability, recent life stress, stressor controllability and depression.", cs = "170 účastníků se změřenou schopností přehodnocení, nedávným životním stresem, ovlivnitelností stresoru a depresí." }
+appraisal = { en = "Supports the claim that higher reappraisal ability was associated with lower depression under uncontrollable stress and with greater depression under controllable stress. Correlational; PubMed lists a 2016 erratum, which was not reviewed here.", cs = "Podporuje tvrzení, že vyšší schopnost přehodnocení souvisela s nižší depresí při neovlivnitelném stresu a s vyšší depresí při ovlivnitelném stresu. Korelační studie; PubMed uvádí erratum z roku 2016, které zde hodnoceno nebylo." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.ford-troy-2019]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review and conceptual framework of the costs of reappraisal.", cs = "Neuplatňuje se: přehled a koncepční rámec nákladů přehodnocení." }
+appraisal = { en = "Supports the claims that people are often unable to use reappraisal successfully and that successful reappraisal used to feel better is not always functional. A conceptual review.", cs = "Podporuje tvrzení, že lidé často nedokážou přehodnocení úspěšně použít a že úspěšné přehodnocení použité ke zlepšení pocitů není vždy funkční. Koncepční přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.moran-eyal-2022]
+design = "meta-analysis"
+level = "A"
+population = { en = "Two meta-analyses of experimental manipulations: psychological distance (k = 230) and level of abstraction (k = 98).", cs = "Dvě metaanalýzy experimentálních manipulací: psychologické vzdálenosti (k = 230) a úrovně abstrakce (k = 98)." }
+appraisal = { en = "Supports the claims that a distant perspective attenuated emotional experience (g = 0.52), less for high-level such as self-conscious emotions (g = 0.29) than for low-level emotions (g = 0.64), and that abstraction attenuated only low-level emotions. Mostly short-term experimental outcomes.", cs = "Podporuje tvrzení, že vzdálená perspektiva tlumila emoční prožitek (g = 0,52), méně u emocí vyšší úrovně, jako jsou sebeuvědomující emoce (g = 0,29), než u emocí nižší úrovně (g = 0,64), a že abstrakce tlumila jen emoce nižší úrovně. Převážně krátkodobé experimentální výsledky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kross-2014]
+design = "experiment"
+level = "B"
+population = { en = "Seven studies with 585 participants in total, including socially anxious people.", cs = "Sedm studií s celkem 585 účastníky, včetně lidí se sociální úzkostí." }
+appraisal = { en = "Supports the claims that non-first-person self-talk enhanced self-distancing and, under social stress, went with better rated performance, less distress and less maladaptive post-event processing, not moderated by trait social anxiety. Social-stress tasks in the laboratory.", cs = "Podporuje tvrzení, že mluvení k sobě jinak než v první osobě zvyšovalo odstup od sebe a při sociálním stresu šlo ruku v ruce s lépe hodnoceným výkonem, menší tísní a méně maladaptivním zpětným zpracováním, bez moderace sociální úzkostí jako rysem. Laboratorní úlohy se sociálním stresem." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.powers-labar-2019]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review proposing a taxonomy and neurocognitive model of distancing, with a supporting neuroimaging meta-analysis.", cs = "Neuplatňuje se: přehled navrhující taxonomii a neurokognitivní model odstupu s podpůrnou metaanalýzou neurozobrazovacích studií." }
+appraisal = { en = "Supports the claim that the neurocognitive mechanisms of distancing are unclear and that inconsistent terminology and methods make the literature difficult to synthesise. Its neurocognitive model is a proposal and is not cited as a finding.", cs = "Podporuje tvrzení, že neurokognitivní mechanismy odstupu jsou nejasné a že nejednotná terminologie a metody ztěžují souhrnné zpracování literatury. Jeho neurokognitivní model je návrh a necituje se jako zjištění." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14

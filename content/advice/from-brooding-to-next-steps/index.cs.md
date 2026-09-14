@@ -23,9 +23,10 @@ limits = [
   "Metaanalytické důkazy spojující ruminaci s příznaky jsou převážně korelační; ukazují souvislost, nikoli důkaz příčiny.",
   "Některé problémy nemají okamžité řešení; cílem je pak omezit opakující se myšlení, ne vynutit si plán.",
   "Přetrvávající ruminace spojená se smutnou náladou nebo úzkostí, která trvá týdny, vyžaduje odborné posouzení.",
+  "Ve studii s lidmi s velkou depresí nesnížil trénink konkrétnosti příznaky více než relaxační trénink, i když ruminaci snížil více (Watkins a kol., 2012).",
 ]
 related = ["research/relief-is-not-resolution/index.md", "research/clinical-perspectives/index.md"]
-references = ["aldao-2010", "nolen-hoeksema-2008", "watkins-2008"]
+references = ["aldao-2010", "nolen-hoeksema-2008", "watkins-2008", "watkins-2009", "watkins-2012"]
 +++
 
 ## Proč na tom záleží
@@ -37,6 +38,12 @@ Ruminace je opakované, pasivní soustředění na tíseň, její příčiny a d
 Aldao, Nolen-Hoeksema a Schweizer (2010) metaanalyticky zpracovali studie, které dávaly do souvislosti strategie regulace emocí s příznaky úzkosti, deprese, poruch příjmu potravy a poruch souvisejících s návykovými látkami. Ruminace měla ze všech zkoumaných strategií nejsilnější souvislost s psychopatologií. Řešení problémů a přehodnocení souvisely s méně příznaky.
 
 Watkins (2008) ukázal, že škodlivý je určitý styl opakujícího se myšlení. Abstraktní, hodnotící myšlení („proč jsem takový?“) bývá nekonstruktivní. Konkrétní myšlení zaměřené na průběh („jak přesně se to odehrálo a co bych mohl udělat jinak?“) může podporovat řešení problémů a zotavení. Stejné téma promýšlené v jiném režimu má jiné účinky.
+
+## Co dodává další výzkum
+
+Přechod od abstraktního ke konkrétnímu myšlení byl testován přímo. Watkins, Baeyens a Read (2009) náhodně rozdělili 60 lidí s dysforií do tréninku konkrétnosti, do jeho zdánlivé verze se stejným zdůvodněním, kontaktem s experimentátorem a délkou, ale bez aktivního nácviku konkrétního myšlení, nebo na čekací listinu. Trénink konkrétnosti snížil depresivní příznaky a zvýšil konkrétní myšlení více než obě kontrolní podmínky a ruminaci snížil více než čekací listina.
+
+Pozdější randomizovaná kontrolovaná studie fáze II v primární péči rozdělila 121 lidí se současnou velkou depresí do běžné péče, běžné péče doplněné tréninkem konkrétnosti formou řízené svépomoci, nebo běžné péče doplněné relaxačním tréninkem (Watkins a kol., 2012). Doplnění tréninku konkrétnosti zlepšilo depresivní příznaky po léčbě i při sledování po 3 a 6 měsících. Příznaky ale nesnížilo více než relaxační trénink, i když ruminaci a nadměrné zobecňování po léčbě snížilo více. Kroky v této radě vycházejí ze stejného principu, nejsou však testovaným tréninkovým programem.
 
 ## Vztah ke katarzi
 

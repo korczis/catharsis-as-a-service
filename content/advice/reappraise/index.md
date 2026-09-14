@@ -23,9 +23,10 @@ limits = [
   "Reappraisal is not denial. If a situation is genuinely unjust or dangerous, the goal is an accurate interpretation and appropriate action, not a comforting story.",
   "Under very high arousal, reappraisal is harder; lowering arousal first (pausing, slow breathing) can make it possible.",
   "The meta-analytic effects are small to medium on average and vary between people and situations.",
+  "When a stressor could be controlled, higher reappraisal ability was associated with more depression, so reappraisal should not replace action where action is possible (Troy et al., 2013).",
 ]
 related = ["research/clinical-perspectives/index.md", "research/venting-hypothesis/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["webb-2012", "gross-1998", "gross-john-2003", "ochsner-gross-2005", "uusberg-2023", "monachesi-2023"]
+references = ["webb-2012", "gross-1998", "gross-john-2003", "ochsner-gross-2005", "uusberg-2023", "monachesi-2023", "troy-2013", "ford-troy-2019"]
 +++
 
 ## Why it works
@@ -45,6 +46,12 @@ For catharsis, the implication is direct. The feeling that an emotion must be re
 "Think about it differently" can sound like a single move. Uusberg, Ford, Uusberg and Gross (2023) propose that it is better understood as a family of tactics. In their expanded reAppraisal framework, reappraisal consists of shifts in appraisal that arise either from changing the mental construal of a situation (*reconstrual*) or from changing the goals used to evaluate it (*repurposing*). Both can target the situation itself (object level) or one's own mental states, such as the emotion or thoughts about it (meta level). And both can work by loosening commitment to the dominant construal or goal (*decommitment*) or by building commitment to an alternative (*commitment*). Crossing these three distinctions gives a map of eight tactics, which the authors illustrate with examples from basic and clinical research.
 
 The framework is a theoretical proposal, not a test of which tactic works best. It is practically useful because it widens the options. The steps above mostly use reconstrual of the situation: finding other interpretations of the same facts. When no alternative interpretation is credible, repurposing, asking which goal matters most now, or reappraising the emotion itself ("this anger is information, not an instruction") are other routes within the same family.
+
+## When reappraisal is not the right tool
+
+Reappraisal does not help everywhere. Troy, Shallcross and Mauss (2013) measured cognitive-reappraisal ability, the severity of recent life stressors, how controllable those stressors were and the level of depression in 170 participants. For participants with uncontrollable stress, higher reappraisal ability was associated with lower depression; for participants with controllable stress, it was associated with greater depression. The authors conclude that the adaptiveness of a strategy depends on the context. The data are correlational, but they are a reason not to use reappraisal in place of action when a situation can be changed.
+
+Ford and Troy (2019) highlight two further drawbacks: people are often unable to use reappraisal successfully, and even when it succeeds, using reappraisal to feel better is not always functional. Whether it helps may depend on individual factors such as skill and on situational factors such as the intensity of the stressor.
 
 ## What imaging studies add, and what they do not
 

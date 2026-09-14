@@ -23,9 +23,10 @@ limits = [
   "The meta-analytic evidence linking rumination to symptoms is mostly correlational; it shows association, not proof of cause.",
   "Some problems have no immediate solution; the goal then is to reduce repetitive thinking, not to force a plan.",
   "Persistent rumination with low mood or anxiety that lasts for weeks warrants professional assessment.",
+  "In a trial with people with major depression, concreteness training did not reduce symptoms more than relaxation training, although it reduced rumination more (Watkins et al., 2012).",
 ]
 related = ["research/relief-is-not-resolution/index.md", "research/clinical-perspectives/index.md"]
-references = ["aldao-2010", "nolen-hoeksema-2008", "watkins-2008"]
+references = ["aldao-2010", "nolen-hoeksema-2008", "watkins-2008", "watkins-2009", "watkins-2012"]
 +++
 
 ## Why it matters
@@ -37,6 +38,12 @@ Rumination is a repetitive, passive focus on distress, its causes and its conseq
 Aldao, Nolen-Hoeksema and Schweizer (2010) meta-analysed studies relating emotion regulation strategies to symptoms across anxiety, depression, eating and substance-related disorders. Rumination had the largest association with psychopathology of all strategies examined. Problem solving and reappraisal were associated with fewer symptoms.
 
 Watkins (2008) showed that the harm lies in a particular style of repetitive thought. Abstract, evaluative thinking ("why am I like this?") tends to be unconstructive. Concrete, process-focused thinking ("how exactly did this unfold, and what could I do differently?") can support problem solving and recovery. The same topic, thought about in a different mode, has different effects.
+
+## What further research adds
+
+The shift from abstract to concrete thinking has been tested directly. Watkins, Baeyens and Read (2009) randomly allocated 60 people with dysphoria to concreteness training, to a bogus version matched for rationale, experimenter contact and duration but without active practice in concrete thinking, or to a waiting list. Concreteness training reduced depressive symptoms and increased concrete thinking more than both control conditions, and it reduced rumination more than the waiting list.
+
+A later Phase II randomised controlled trial in primary care allocated 121 people with current major depression to treatment as usual, to treatment as usual plus concreteness training as guided self-help, or to treatment as usual plus relaxation training (Watkins et al., 2012). Adding concreteness training improved depressive symptoms after treatment and at 3- and 6-month follow-ups. It did not reduce symptoms more than relaxation training, although it reduced rumination and overgeneralisation more after treatment. The steps in this entry follow the same principle, but they are not the tested training programme.
 
 ## Relation to catharsis
 

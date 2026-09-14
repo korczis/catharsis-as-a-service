@@ -23,9 +23,10 @@ limits = [
   "Laboratory findings on synchrony measure liking, cooperation, pain thresholds and closeness during or shortly after the activity, not long-term outcomes.",
   "The mood lift from exercise is acute and fades; it supports well-being but does not replace other care.",
   "Nightlife settings can involve alcohol, drugs, sleep loss and noise exposure, which carry their own risks.",
+  "In experiments, the effects of synchrony on prosociality were moderated by experimenter effects and intentionality (Rennung & Göritz, 2016).",
 ]
 related = ["research/collective-synchrony/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["tarr-2015", "wiltermuth-heath-2009", "hove-risen-2009", "reed-ones-2006", "pizarro-2022"]
+references = ["tarr-2015", "wiltermuth-heath-2009", "hove-risen-2009", "reed-ones-2006", "pizarro-2022", "rennung-goritz-2016", "koch-2019"]
 +++
 
 ## Why it works
@@ -37,6 +38,12 @@ Moving in time with others coordinates attention and action. It produces a sense
 Synchronous tapping increased liking for a partner (Hove & Risen, 2009), and groups that walked, sang or moved in synchrony cooperated more afterwards than groups that did not (Wiltermuth & Heath, 2009). In group dance, synchrony and exertion each independently raised pain thresholds, an indirect marker of endorphin activity, and synchrony increased reported closeness to the group (Tarr et al., 2015). A meta-analysis found that single sessions of aerobic exercise reliably increase positive activated affect (Reed & Ones, 2006).
 
 Outside the laboratory, a meta-analytic review of 50 studies found that reports of *collective effervescence*, intense shared emotion and a sense of unison during gatherings such as rituals, celebrations and demonstrations, were associated with group identity, collective positive emotions, well-being and collective efficacy (Pizarro et al., 2022). These are correlations based largely on self-report from people who chose to attend, so they describe what tends to go together rather than what attending causes ([Research note 03](@/research/collective-synchrony/index.md)).
+
+## What further research adds
+
+A meta-analysis of 60 published and unpublished experiments that compared an interpersonal synchrony condition with at least one control condition found a medium effect of synchrony on prosociality, in both attitudes and behaviour (Rennung & Göritz, 2016). Experimenter effects and intentionality moderated these effects, so the size of the benefit depends on how synchrony is produced and studied.
+
+Structured dance programmes have also been synthesised. A meta-analysis of 41 controlled intervention studies with 2,374 participants found a medium overall effect of dance movement therapy and dance interventions on health-related psychological outcomes (d = 0.60), with high heterogeneity (Koch et al., 2019). Larger effects came from observational measures, possibly indicating bias, and methodological shortcomings of many included studies limit the results; where follow-up data existed, most effects remained stable or slightly increased 22 weeks after the intervention. These are organised programmes, many in healthcare or preventive settings, not a night out dancing.
 
 ## What it does not do
 

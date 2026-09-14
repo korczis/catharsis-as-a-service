@@ -23,9 +23,10 @@ limits = [
   "The Cochrane review concerns single-session individual debriefing; it does not show that talking after trauma is harmful in general.",
   "This entry is general information and cannot assess an individual situation.",
   "Treatment choice depends on the person, the event and the clinical assessment.",
+  "In trials of early multiple-session interventions, people who had not been screened for symptoms gained no clinically important benefit over usual care; the benefits were found in people with traumatic stress symptoms (Roberts et al., 2019).",
 ]
 related = ["research/clinical-perspectives/index.md", "research/crying-and-sharing/index.md"]
-references = ["rose-2002", "foa-kozak-1986", "hofmann-2010"]
+references = ["rose-2002", "foa-kozak-1986", "hofmann-2010", "roberts-2019", "bisson-2013", "miethe-2023"]
 +++
 
 ## Why early forced disclosure is not recommended
@@ -37,6 +38,14 @@ Psychological debriefing, a single session soon after a traumatic event in which
 Emotional processing theory (Foa & Kozak, 1986) explains why structure matters. Change requires activating the traumatic memory together with information that corrects its threatening meaning, repeated over time within a safe, guided process. Treatments derived from this principle, such as prolonged exposure, differ fundamentally from one-off emotional release: they are planned, repeated and focused on new learning.
 
 Other structured approaches also have evidence. For example, mindfulness-based therapies moderately reduce symptoms of anxiety and depression, with larger effects in people with diagnosed anxiety and mood disorders (Hofmann et al., 2010). The right approach depends on clinical assessment.
+
+## What further research adds
+
+A later systematic review and meta-analysis of 61 randomised controlled trials examined multiple-session psychological interventions aimed at preventing or treating traumatic stress symptoms beginning within three months of a traumatic event (Roberts et al., 2019). For people exposed to trauma who had not been screened for traumatic stress symptoms, no intervention showed a clinically important difference from usual care. For people who reported traumatic stress symptoms, trauma-focused cognitive-behavioural therapy, cognitive therapy without exposure and eye movement desensitisation and reprocessing (EMDR) showed clinically important benefits, which were greatest for people diagnosed with acute stress disorder or PTSD. The evidence was strongest for trauma-focused cognitive-behavioural therapy.
+
+For chronic PTSD, a Cochrane review of 70 studies with 4,761 participants found that individual trauma-focused cognitive-behavioural therapy and EMDR reduced clinician-assessed symptoms more than a waiting list or usual care (Bisson et al., 2013). The same review rated the evidence for every comparison as very low quality, found more drop-out in active treatment groups and noted that limited follow-up data compromise conclusions about long-term effects.
+
+A meta-analysis of 75 studies found large associations between posttraumatic stress symptoms and both rumination (r = .52) and experiential avoidance (r = .48), and a medium association with thought suppression (r = .29) (Miethe et al., 2023). These are correlations, and the few longitudinal studies suggested somewhat smaller but still substantial associations. They do not show that any of these patterns causes symptoms.
 
 ## In short
 

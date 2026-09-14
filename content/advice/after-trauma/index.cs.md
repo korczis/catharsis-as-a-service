@@ -23,9 +23,10 @@ limits = [
   "Přehled Cochrane se týká jednorázového individuálního debriefingu; neukazuje, že by mluvení po traumatu obecně škodilo.",
   "Tato položka poskytuje obecné informace a nemůže posoudit individuální situaci.",
   "Volba léčby závisí na člověku, události a klinickém posouzení.",
+  "Ve studiích časných intervencí o více sezeních nezískali lidé, u nichž se předem nezjišťovaly příznaky, oproti běžné péči klinicky významný prospěch; přínosy se ukázaly u lidí s příznaky traumatického stresu (Roberts a kol., 2019).",
 ]
 related = ["research/clinical-perspectives/index.md", "research/crying-and-sharing/index.md"]
-references = ["rose-2002", "foa-kozak-1986", "hofmann-2010"]
+references = ["rose-2002", "foa-kozak-1986", "hofmann-2010", "roberts-2019", "bisson-2013", "miethe-2023"]
 +++
 
 ## Proč se časné vynucené sdílení nedoporučuje
@@ -37,6 +38,14 @@ Psychologický debriefing, jednorázové sezení krátce po traumatické událos
 Teorie emočního zpracování (Foa & Kozak, 1986) vysvětluje, proč záleží na struktuře. Změna vyžaduje aktivaci traumatické vzpomínky spolu s informací, která opravuje její ohrožující význam, a to opakovaně v čase v bezpečném, vedeném procesu. Léčebné postupy odvozené z tohoto principu, například prodloužená expozice, se od jednorázového emočního uvolnění zásadně liší: jsou plánované, opakované a zaměřené na nové učení.
 
 Důkazy mají i další strukturované přístupy. Například terapie založené na všímavosti středně snižují příznaky úzkosti a deprese, s většími účinky u lidí s diagnostikovanými úzkostnými poruchami a poruchami nálady (Hofmann a kol., 2010). Správný přístup závisí na klinickém posouzení.
+
+## Co dodává další výzkum
+
+Pozdější systematický přehled a metaanalýza 61 randomizovaných kontrolovaných studií zkoumaly psychologické intervence o více sezeních, jejichž cílem bylo předejít příznakům traumatického stresu nebo je léčit a které začínaly do tří měsíců po traumatické události (Roberts a kol., 2019). U lidí vystavených traumatu, u nichž se předem nezjišťovaly příznaky traumatického stresu, nevykázala žádná intervence klinicky významný rozdíl oproti běžné péči. U lidí, kteří příznaky traumatického stresu uváděli, přinesly klinicky významný prospěch kognitivně-behaviorální terapie zaměřená na trauma, kognitivní terapie bez expozice a desenzibilizace a přepracování pomocí očních pohybů (EMDR); přínosy byly největší u lidí s diagnózou akutní stresové poruchy nebo PTSP. Nejsilnější doklady měla kognitivně-behaviorální terapie zaměřená na trauma.
+
+U chronické PTSP zjistil přehled Cochrane ze 70 studií se 4 761 účastníky, že individuální kognitivně-behaviorální terapie zaměřená na trauma a EMDR snižovaly příznaky hodnocené klinikem více než čekací listina nebo běžná péče (Bisson a kol., 2013). Tentýž přehled však hodnotil kvalitu dokladů u všech srovnání jako velmi nízkou, v aktivních léčebných skupinách zjistil častější předčasné ukončení a upozornil, že omezená data z dalšího sledování oslabují závěry o dlouhodobých účincích.
+
+Metaanalýza 75 studií zjistila silné souvislosti příznaků posttraumatického stresu s ruminací (r = 0,52) i se zážitkovým vyhýbáním (r = 0,48) a střední souvislost s potlačováním myšlenek (r = 0,29) (Miethe a kol., 2023). Jde o korelace a několik longitudinálních studií naznačilo souvislosti o něco slabší, ale stále podstatné. Neukazují, že by kterýkoli z těchto vzorců příznaky způsoboval.
 
 ## Stručně
 

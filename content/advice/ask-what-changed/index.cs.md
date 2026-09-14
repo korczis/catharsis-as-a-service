@@ -23,9 +23,10 @@ limits = [
   "Tato rada stojí na ustálené teorii a na laboratorních zjištěních o paměti, nikoli na studiích právě tohoto postupu ohlédnutí.",
   "Úleva má hodnotu sama o sobě. Cílem je vidět jasně, ne kazit dobré zážitky.",
   "Využívat činnost ke zvládání neznamená automaticky vyhýbání; otázkou je, zda je to jediná používaná strategie.",
+  "Vzorec vrcholu a konce neplatí univerzálně: ve studiích o jídle vykazovalo vzpomínané zalíbení přehlížení délky, ale žádný efekt vrcholu ani konce (Rode a kol., 2007).",
 ]
 related = ["research/relief-is-not-resolution/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["hayes-1996", "fredrickson-kahneman-1993", "kahneman-1993"]
+references = ["hayes-1996", "fredrickson-kahneman-1993", "kahneman-1993", "kashdan-2006", "rode-2007"]
 +++
 
 ## Proč na tom záleží
@@ -39,3 +40,9 @@ Zpětné hodnocení zážitků ovládá jejich nejintenzivnější okamžik a to
 ## Co ohlédnutí dělá
 
 Čtyři otázky v této radě oddělují účinek zážitku na pocit od jeho účinku na porozumění, rozhodnutí a jednání. Zážitek nesoudí. Zviditelňují, zda úleva nezastupuje řešení, což je vzorec, který artefakt popisuje jako `problem_solved: false`.
+
+## Co dodává další výzkum
+
+Dvě linie výzkumu ohlédnutí zpřesňují. Kashdan, Barrios, Forsyth a Steger (2006) sledovali účastníky po dobu 21 dní. Zážitkové vyhýbání souviselo s menším počtem pozitivních každodenních prožitků a pozitivních událostí, s častějšími negativními událostmi a se silnějšími negativními afektivními prožitky, a kognitivní přehodnocení předpovídalo kvalitu každodenních zážitků mnohem hůře než zážitkové vyhýbání. Design ukazuje souvislosti, nikoli to, že by vyhýbání rozdíl způsobilo.
+
+Vzorec vrcholu a konce navíc neplatí univerzálně. Ve třech studiích o jídle, dvou se skutečným a jedné s představovaným jídlem, vykazovalo vzpomínané zalíbení konzistentní přehlížení délky, ale žádná ze studií nenašla efekt vrcholu, prvního ani posledního chodu (Rode, Rozin a Durlach, 2007). Nakolik vzpomínaný vrchol nebo konec ovlivňuje hodnocení zážitku, tak může záviset na druhu zážitku, a i to je důvod zapsat si druhý den, co se skutečně změnilo, místo spoléhání na paměť.

@@ -23,9 +23,10 @@ limits = [
   "Přehodnocení není popírání. Pokud je situace skutečně nespravedlivá nebo nebezpečná, cílem je přesný výklad a přiměřené jednání, ne uklidňující příběh.",
   "Při velmi vysokém vzrušení je přehodnocení těžší; nejprve snížit vzrušení (pauzou, pomalým dechem) ho může umožnit.",
   "Metaanalytické účinky jsou v průměru malé až střední a liší se mezi lidmi i situacemi.",
+  "Když bylo možné stresor ovlivnit, souvisela vyšší schopnost přehodnocení s vyšší depresí, a přehodnocení by proto nemělo nahrazovat jednání tam, kde je jednání možné (Troy a kol., 2013).",
 ]
 related = ["research/clinical-perspectives/index.md", "research/venting-hypothesis/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["webb-2012", "gross-1998", "gross-john-2003", "ochsner-gross-2005", "uusberg-2023", "monachesi-2023"]
+references = ["webb-2012", "gross-1998", "gross-john-2003", "ochsner-gross-2005", "uusberg-2023", "monachesi-2023", "troy-2013", "ford-troy-2019"]
 +++
 
 ## Proč to funguje
@@ -45,6 +46,12 @@ Pro katarzi je důsledek přímý. Pocit, že emoci je třeba vybít, předpokl�
 „Podívejte se na to jinak“ může znít jako jediný krok. Uusberg, Fordová, Uusbergová a Gross (2023) navrhují chápat přehodnocení spíše jako rodinu taktik. V jejich rozšířeném rámci reAppraisal spočívá přehodnocení v posunech hodnocení, které vznikají buď změnou mentálního pojetí situace (*rekonstrukce*), nebo změnou cílů, podle nichž se situace hodnotí (*přeorientování*). Obojí může mířit na samotnou situaci (objektová úroveň), nebo na vlastní mentální stavy, například na emoci či myšlenky o ní (metaúroveň). A obojí může fungovat tak, že uvolní vazbu na převládající pojetí nebo cíl (*odpoutání*), nebo že posílí vazbu na alternativu (*přimknutí*). Zkřížením těchto tří rozlišení vzniká mapa osmi taktik, kterou autoři ilustrují příklady ze základního i klinického výzkumu.
 
 Rámec je teoretický návrh, nikoli test toho, která taktika funguje nejlépe. Prakticky je užitečný tím, že rozšiřuje možnosti. Výše uvedené kroky většinou využívají rekonstrukci situace: hledání jiných výkladů stejných faktů. Když žádný alternativní výklad není věrohodný, jsou dalšími cestami v rámci téže rodiny přeorientování, tedy otázka, na kterém cíli teď záleží nejvíc, nebo přehodnocení samotné emoce („tento hněv je informace, ne pokyn“).
+
+## Kdy přehodnocení není správný nástroj
+
+Přehodnocení nepomáhá všude. Troy, Shallcross a Mauss (2013) změřili u 170 účastníků schopnost kognitivního přehodnocení, závažnost nedávných životních stresorů, míru jejich ovlivnitelnosti a úroveň deprese. U účastníků se stresem, který ovlivnit nemohli, souvisela vyšší schopnost přehodnocení s nižší depresí; u účastníků se stresem, který ovlivnit mohli, souvisela s vyšší depresí. Autoři uzavírají, že přizpůsobivost strategie závisí na kontextu. Data jsou korelační, jsou však důvodem nepoužívat přehodnocení místo jednání tam, kde situaci lze změnit.
+
+Ford a Troy (2019) upozorňují na další dvě nevýhody: lidé často nedokážou přehodnocení úspěšně použít, a i když se to podaří, přehodnocení použité k tomu, aby se člověk cítil lépe, není vždy funkční. Zda pomůže, může záviset na individuálních faktorech, jako je dovednost, i na situačních faktorech, jako je intenzita stresoru.
 
 ## Co přidávají zobrazovací studie a co ne
 

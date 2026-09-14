@@ -23,9 +23,10 @@ limits = [
   "This recommendation rests on established theory and on laboratory findings about memory, not on trials of this specific review routine.",
   "Relief has value on its own. The aim is to see clearly, not to spoil good experiences.",
   "Using an activity to cope is not automatically avoidance; the question is whether it is the only strategy in use.",
+  "The peak-end pattern is not universal: in studies of meals, remembered liking showed duration neglect but no peak or end effects (Rode et al., 2007).",
 ]
 related = ["research/relief-is-not-resolution/index.md", "research/stress-and-social-buffering/index.md"]
-references = ["hayes-1996", "fredrickson-kahneman-1993", "kahneman-1993"]
+references = ["hayes-1996", "fredrickson-kahneman-1993", "kahneman-1993", "kashdan-2006", "rode-2007"]
 +++
 
 ## Why it matters
@@ -39,3 +40,9 @@ Retrospective evaluations of experiences are dominated by their most intense mom
 ## What the review does
 
 The four questions in this entry separate the effect of an experience on feeling from its effect on understanding, decisions and actions. They do not judge the experience. They make visible whether relief is standing in for resolution, which is the pattern the artifact describes as `problem_solved: false`.
+
+## What further research adds
+
+Two lines of research sharpen the review. Kashdan, Barrios, Forsyth and Steger (2006) followed participants over a 21-day monitoring period. Experiential avoidance was associated with fewer positive daily experiences and positive events, more frequent negative events and greater negative affective experiences, and cognitive reappraisal was much less predictive of the quality of everyday experiences than experiential avoidance was. The design shows associations, not that avoidance caused the difference.
+
+The peak-end pattern is also not universal. In three studies of meals, two with actual meals and one with an imagined meal, remembered liking showed consistent duration neglect, but none of the studies found peak, primacy or recency effects (Rode, Rozin & Durlach, 2007). How much a remembered peak or ending shapes the evaluation of an experience may therefore depend on the kind of experience, which is one more reason to write down the next day what actually changed rather than rely on memory.

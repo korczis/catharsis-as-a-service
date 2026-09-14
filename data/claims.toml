@@ -757,3 +757,187 @@ caveat = { en = "A single study using exploratory unsupervised clustering; the a
 used_in = ["research/measuring-emotion/index.md"]
 last_reviewed = 2026-09-14
 review_due = 2027-09-14
+
+# ── Advice expansion ──────────────────────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "advice-early-trauma-help-for-symptoms"
+statement = { en = "Early multiple-session interventions showed no clinically important benefit over usual care for trauma-exposed people not screened for symptoms, whereas trauma-focused CBT, cognitive therapy without exposure and EMDR showed clinically important benefits for people with traumatic stress symptoms; for chronic PTSD, trauma-focused CBT and EMDR reduced clinician-assessed symptoms more than waitlist or usual care.", cs = "Časné intervence o více sezeních nepřinesly lidem vystaveným traumatu, u nichž se nezjišťovaly příznaky, klinicky významný prospěch oproti běžné péči, zatímco KBT zaměřená na trauma, kognitivní terapie bez expozice a EMDR přinesly klinicky významný prospěch lidem s příznaky traumatického stresu; u chronické PTSP snižovaly KBT zaměřená na trauma a EMDR příznaky hodnocené klinikem více než čekací listina nebo běžná péče." }
+claim_type = "clinical-boundary"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["roberts-2019", "bisson-2013"]
+scope = { en = "Randomised trials of psychological interventions after trauma in adults.", cs = "Randomizované studie psychologických intervencí po traumatu u dospělých." }
+caveat = { en = "The Cochrane review rated the evidence for every comparison as very low quality, drop-out was higher in active treatments and long-term follow-up is limited; treatment choice requires clinical assessment.", cs = "Přehled Cochrane hodnotil kvalitu dokladů u všech srovnání jako velmi nízkou, v aktivní léčbě bylo častější předčasné ukončení a dlouhodobé sledování je omezené; volba léčby vyžaduje klinické posouzení." }
+used_in = ["advice/after-trauma/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-03-13
+
+[[claims]]
+id = "advice-ptss-rumination-avoidance-association"
+statement = { en = "Posttraumatic stress symptoms are associated with rumination (r = .52), experiential avoidance (r = .48) and thought suppression (r = .29) across 75 studies.", cs = "Příznaky posttraumatického stresu souvisejí napříč 75 studiemi s ruminací (r = 0,52), zážitkovým vyhýbáním (r = 0,48) a potlačováním myšlenek (r = 0,29)." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["miethe-2023"]
+scope = { en = "Correlational studies of posttraumatic stress symptoms.", cs = "Korelační studie příznaků posttraumatického stresu." }
+caveat = { en = "Associations, not causes; the few longitudinal studies suggested somewhat smaller associations.", cs = "Souvislosti, nikoli příčiny; několik longitudinálních studií naznačilo o něco slabší souvislosti." }
+used_in = ["advice/after-trauma/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-experiential-avoidance-daily-life"
+statement = { en = "Over 21 days of monitoring, experiential avoidance was associated with fewer positive and more negative daily experiences and was more predictive of everyday experience than cognitive reappraisal.", cs = "Během 21 dní sledování souviselo zážitkové vyhýbání s menším počtem pozitivních a větším počtem negativních každodenních zážitků a předpovídalo každodenní prožívání lépe než kognitivní přehodnocení." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["kashdan-2006"]
+scope = { en = "Daily monitoring in non-clinical participants.", cs = "Každodenní sledování u neklinických účastníků." }
+caveat = { en = "Correlational mediation analyses in one publication; they do not show that avoidance caused the differences.", cs = "Korelační mediační analýzy v jedné publikaci; neukazují, že by rozdíly způsobilo vyhýbání." }
+used_in = ["advice/ask-what-changed/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-peak-end-not-universal"
+statement = { en = "In three studies of meals, remembered liking showed consistent duration neglect but no peak, primacy or recency effects, so the peak-end pattern does not hold for every kind of experience.", cs = "Ve třech studiích o jídle vykazovalo vzpomínané zalíbení konzistentní přehlížení délky, ale žádný efekt vrcholu, prvenství ani posledního dojmu, takže vzorec vrcholu a konce neplatí pro všechny druhy zážitků." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["rode-2007"]
+scope = { en = "Memory for pleasant eating experiences.", cs = "Paměť na příjemné zážitky z jídla." }
+caveat = { en = "One domain of pleasant experience; it does not test painful or emotional experiences.", cs = "Jedna oblast příjemných zážitků; netestuje bolestné ani emoční zážitky." }
+used_in = ["advice/ask-what-changed/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-relationships-survival-association"
+statement = { en = "Across 148 studies with 308,849 participants, stronger social relationships were associated with a 50% increased likelihood of survival, consistently across age, sex, initial health status, cause of death and follow-up period.", cs = "Napříč 148 studiemi s 308 849 účastníky souvisely silnější sociální vztahy s o 50 % vyšší pravděpodobností přežití, konzistentně napříč věkem, pohlavím, výchozím zdravotním stavem, příčinou úmrtí i délkou sledování." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "HIGH"
+sources = ["holt-lunstad-2010"]
+scope = { en = "Studies relating social relationships to later mortality.", cs = "Studie spojující sociální vztahy s pozdější úmrtností." }
+caveat = { en = "An association from non-experimental studies; it does not show that deliberately building relationships changes survival.", cs = "Souvislost z neexperimentálních studií; neukazuje, že by záměrné budování vztahů měnilo přežití." }
+used_in = ["advice/build-lasting-support/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-invisible-support"
+statement = { en = "Receiving support has not been reliably associated with adjustment to stress; in a daily diary study of couples, support transactions the recipient did not notice promoted adjustment to a major stressor, and a review of 100 support interventions found some support for their usefulness but not which work best for what.", cs = "Přijatá opora nebyla spolehlivě spojena se zvládáním stresu; v deníkové studii párů podporovaly zvládání závažného stresoru projevy opory, kterých si příjemce nevšiml, a přehled 100 intervencí opory našel určitou podporu jejich užitečnosti, nikoli však to, které fungují nejlépe u čeho." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["bolger-2000", "hogan-2002"]
+scope = { en = "Support between partners around a major stressor, and structured support interventions.", cs = "Opora mezi partnery kolem závažného stresoru a strukturované intervence opory." }
+caveat = { en = "One diary study and a narrative review; the kind of support that helps may differ across relationships and problems.", cs = "Jedna deníková studie a narativní přehled; druh opory, který pomáhá, se může lišit podle vztahu a problému." }
+used_in = ["advice/build-lasting-support/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-concreteness-training"
+statement = { en = "Training people to think more concretely reduced depressive symptoms and rumination in a randomised trial in dysphoria, and in a Phase II trial in major depression it improved symptoms when added to usual care but not more than relaxation training, while reducing rumination more.", cs = "Trénink konkrétnějšího myšlení snížil v randomizované studii u dysforie depresivní příznaky i ruminaci a ve studii fáze II u velké deprese zlepšil příznaky jako doplněk běžné péče, nikoli však více než relaxační trénink, přičemž ruminaci snížil více." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["watkins-2009", "watkins-2012"]
+scope = { en = "Structured concreteness training in adults with dysphoria or major depression.", cs = "Strukturovaný trénink konkrétnosti u dospělých s dysforií nebo velkou depresí." }
+caveat = { en = "Small and Phase II trials from one research group; the self-help steps on this site follow the principle but are not the tested programme.", cs = "Malé studie a studie fáze II od jedné výzkumné skupiny; svépomocné kroky na tomto webu vycházejí z principu, nejsou však testovaným programem." }
+used_in = ["advice/from-brooding-to-next-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-anger-rumination-versus-reappraisal"
+statement = { en = "Relative to reappraisal, ruminating on an anger-provoking event led to greater anger experience, more cognitive perseveration and greater sympathetic activation, and angry rumination is described as a risk factor for aggression that temporarily reduces self-control.", cs = "Ve srovnání s přehodnocením vedla ruminace o události vyvolávající hněv k silnějšímu prožitku hněvu, většímu ulpívání myšlenek a vyšší sympatické aktivaci a hněvivá ruminace je popisována jako rizikový faktor agrese, který dočasně snižuje sebekontrolu." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["ray-2008", "denson-2013"]
+scope = { en = "Laboratory recall of anger-provoking events and a theoretical synthesis.", cs = "Laboratorní vybavování událostí vyvolávajících hněv a teoretická syntéza." }
+caveat = { en = "Short-term laboratory outcomes; the self-control account comes from a theoretical model.", cs = "Krátkodobé laboratorní výsledky; výklad o sebekontrole pochází z teoretického modelu." }
+used_in = ["advice/let-anger-cool/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-anger-treatments-by-type"
+statement = { en = "A meta-analysis of 23 controlled studies in adults with anger established by standardised measures found medium to large treatment effects, supporting cognitive therapies for driving anger, anger suppression and trait anger and relaxation for state anger.", cs = "Metaanalýza 23 kontrolovaných studií u dospělých s hněvem doloženým standardizovanými měřítky zjistila střední až velké účinky léčby a podpořila kognitivní terapie u hněvu za volantem, potlačovaného hněvu a hněvu jako rysu a relaxaci u hněvu jako stavu." }
+claim_type = "clinical-boundary"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["del-vecchio-oleary-2004"]
+scope = { en = "Structured anger treatments in non-institutionalised adults, 1980–2002.", cs = "Strukturovaná léčba hněvu u neinstitucionalizovaných dospělých v letech 1980–2002." }
+caveat = { en = "Studies up to 2002 with few treatment-seeking or clinical participants; these are professional treatments, not self-help.", cs = "Studie do roku 2002 s malým počtem lidí, kteří léčbu sami vyhledali, nebo klinických účastníků; jde o odbornou léčbu, nikoli o svépomoc." }
+used_in = ["advice/let-anger-cool/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-03-13
+
+[[claims]]
+id = "advice-synchrony-prosocial-meta-analysis"
+statement = { en = "A meta-analysis of 60 experiments found a medium effect of interpersonal synchrony on prosocial attitudes and behaviour, moderated by experimenter effects and intentionality.", cs = "Metaanalýza 60 experimentů zjistila střední účinek interpersonální synchronie na prosociální postoje a chování, moderovaný vlivy experimentátora a záměrností." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["rennung-goritz-2016"]
+scope = { en = "Laboratory experiments comparing synchrony with control conditions.", cs = "Laboratorní experimenty srovnávající synchronii s kontrolními podmínkami." }
+caveat = { en = "Short-term outcomes; moderation by experimenter effects means part of the effect depends on how studies were run.", cs = "Krátkodobé výsledky; moderace vlivy experimentátora znamená, že část účinku závisí na tom, jak byly studie vedeny." }
+used_in = ["advice/move-together/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-dance-interventions-meta-analysis"
+statement = { en = "A meta-analysis of 41 controlled intervention studies found a medium overall effect of dance movement therapy and dance on health-related psychological outcomes (d = 0.60), with high heterogeneity and larger effects from observational measures that may indicate bias.", cs = "Metaanalýza 41 kontrolovaných intervenčních studií zjistila střední celkový účinek taneční a pohybové terapie a tance na psychologické výsledky související se zdravím (d = 0,60) s vysokou heterogenitou a s většími účinky z pozorovacích měřítek, které mohou naznačovat zkreslení." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["koch-2019"]
+scope = { en = "Structured dance and dance movement therapy programmes, many in healthcare or preventive settings.", cs = "Strukturované programy tance a taneční a pohybové terapie, mnohé ve zdravotnickém nebo preventivním prostředí." }
+caveat = { en = "Methodological shortcomings of many studies and heterogeneous outcome measures limit the results; the evidence concerns organised programmes, not recreational dancing.", cs = "Výsledky omezují metodologické nedostatky mnoha studií a různorodá měřítka výsledků; doklady se týkají organizovaných programů, nikoli rekreačního tance." }
+used_in = ["advice/move-together/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-affect-labeling-beyond-imaging"
+statement = { en = "Labelling emotions lowered self-reported distress about as much as reappraisal and distraction, although participants expected it to increase distress, and it also dampened pleasure; after exposure therapy with labelling, skin conductance responses were lower but self-reported fear was not.", cs = "Pojmenování emocí snížilo uváděnou tíseň přibližně stejně jako přehodnocení a rozptýlení, přestože účastníci očekávali její zvýšení, a tlumilo i potěšení; po expoziční terapii s pojmenováním byla nižší kožní vodivostní reakce, nikoli však uváděný strach." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["lieberman-2011", "kircanski-2012", "torre-lieberman-2018"]
+scope = { en = "Laboratory picture tasks and a brief exposure course for spider fear.", cs = "Laboratorní úlohy s obrázky a krátká expozice u strachu z pavouků." }
+caveat = { en = "Effects differ between self-report and physiology, and most evidence comes from one research group.", cs = "Účinky se liší mezi sebeposouzením a fyziologií a většina dokladů pochází od jedné výzkumné skupiny." }
+used_in = ["advice/name-the-feeling/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-reappraisal-depends-on-context"
+statement = { en = "Reappraisal is not adaptive everywhere: higher reappraisal ability was associated with lower depression under uncontrollable stress but greater depression under controllable stress, people are often unable to reappraise successfully, and reappraising to feel better is not always functional.", cs = "Přehodnocení není přizpůsobivé všude: vyšší schopnost přehodnocení souvisela s nižší depresí při neovlivnitelném stresu, ale s vyšší depresí při ovlivnitelném stresu, lidé často nedokážou přehodnocení úspěšně použít a přehodnocení za účelem lepších pocitů není vždy funkční." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["troy-2013", "ford-troy-2019"]
+scope = { en = "Everyday stress and depression in adults, and conceptual work on reappraisal.", cs = "Každodenní stres a deprese u dospělých a koncepční práce o přehodnocení." }
+caveat = { en = "One correlational study and a conceptual review; the experimental evidence that reappraisal reduces emotional responses still stands.", cs = "Jedna korelační studie a koncepční přehled; experimentální doklady, že přehodnocení snižuje emoční reakce, nadále platí." }
+used_in = ["advice/reappraise/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "advice-distancing-meta-analysis"
+statement = { en = "Across 230 effects, a distant perspective attenuated emotional experience (g = 0.52), less for self-conscious than for basic emotions, and non-first-person self-talk enhanced self-distancing and went with less distress under social stress.", cs = "Napříč 230 účinky tlumila vzdálená perspektiva emoční prožitek (g = 0,52), méně u sebeuvědomujících než u základních emocí, a mluvení k sobě jinak než v první osobě zvyšovalo odstup od sebe a šlo ruku v ruce s menší tísní při sociálním stresu." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["moran-eyal-2022", "kross-2014", "powers-labar-2019"]
+scope = { en = "Experimental manipulations of psychological distance and self-talk, mostly short-term.", cs = "Experimentální manipulace psychologické vzdálenosti a mluvení k sobě, převážně krátkodobé." }
+caveat = { en = "Mechanisms remain unclear and terminology is inconsistent across studies; effects depend on the kind of emotion.", cs = "Mechanismy zůstávají nejasné a terminologie se mezi studiemi liší; účinky závisejí na druhu emoce." }
+used_in = ["advice/reflect-from-a-distance/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
