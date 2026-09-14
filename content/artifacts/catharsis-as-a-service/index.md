@@ -84,6 +84,16 @@ response = '''HTTP/1.1 200 OK
 }'''
 mantra = ["Rave.", "Release.", "Reset.", "Repeat."]
 closing = ["Some problems can't be solved.", "They can only be danced through."]
+
+[extra.editions]
+id = "poster-editions"
+caption = "From the Catharsis as a Service poster series. Slogans and numbers on the posters belong to the artwork; they are not findings."
+items = [
+  { src = "assets/posters/catharsis-edition-en.png", title = "English edition", alt = "Poster: CATHARSIS AS A SERVICE™, emotional state transition endpoint, above a stage gate glowing red over a dense crowd; the left panel lists input, process, output and problem_solved: false; at the bottom POST /v1/catharsis → 200 OK and an artistic telemetry box.", caption = "Rave. Release. Reset. Repeat." },
+  { src = "assets/posters/catharsis-edition-cs.png", title = "Czech edition", alt = "Poster: CATHARSIS AS A SERVICE™ with the Czech subtitle Endpoint přechodu emočního stavu; industrial towers with a projected pair of figures rise above a red-lit crowd, and a Diagnostika panel lists individual signals, synchronization, collective oscillation, discharge and temporary equilibrium.", caption = "Same people. Different patterns. More data. Fewer illusions." },
+  { src = "assets/posters/catharsis-edition-sign.png", title = "Signal edition", alt = "Poster: CATHARSIS in red and AS A SERVICE™ in white above a stage framed by triangle-in-circle emblems and banners reading same people different patterns and more data less illusions; a figure raises both arms before the crowd; POST /v1/catharsis → 200 OK.", caption = "Some problems can't be solved. They can only be danced through." },
+]
+
 +++
 
 A visual study that presents collective euphoria at first glance and a diagnosis of it at second.

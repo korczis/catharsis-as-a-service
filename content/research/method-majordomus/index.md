@@ -5,7 +5,7 @@ date = 2026-09-14
 weight = 6
 
 [taxonomies]
-tags = ["method", "majordomus", "verification", "software delivery"]
+tags = ["methods", "majordomus", "verification", "software delivery"]
 
 [extra]
 kicker = "Research note 06"

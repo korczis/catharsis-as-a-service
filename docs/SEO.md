@@ -11,11 +11,19 @@ validators and browser tests fail the build when any of it is missing.
 | `<meta name="description">`, 50–320 characters | `description` front matter | `validate-content.py`, `validate-html.py` |
 | `<link rel="canonical">` | page permalink | `validate-html.py`, Playwright |
 | `hreflang` alternates for `en`, `cs`, `x-default` | Zola translations | `validate-html.py`, Playwright |
-| Open Graph: title, description, url, image (1200×630, localized), image alt, locale and alternate locale | `templates/partials/head.html` | `validate-html.py`, Playwright |
+| Open Graph: title, description, url, page-specific image (1200×630 JPEG), image alt, locale and alternate locale | `templates/partials/head.html`, `static/og/` | `validate-html.py`, `render-social.py --check`, Playwright |
 | Twitter card `summary_large_image` | same | same |
 | `article:published_time` on dated pages | `date` front matter | Playwright |
 | JSON-LD graph | `templates/partials/structured-data.html` | `validate-html.py`, Playwright |
 | One `<h1>`, ordered headings, alt text, resolvable links and anchors | templates and content | `validate-html.py` |
+
+## Social previews
+
+Every content page in every language has its own preview image, rendered from `artwork/og.html` (title, section, kicker,
+and the line "relief detected ≠ cause resolved") into `static/og/<content path>.jpg` by
+[`python3 scripts/render-social.py`](https://korczis.github.io/catharsis-as-a-service/commands/#render-social).
+`static/og/manifest.json` stores a hash of each image's inputs; the `social` validation step checks, without a browser,
+that no page lacks a preview and none is stale. The head template falls back to the site image only for tag listings.
 
 ## Structured data
 

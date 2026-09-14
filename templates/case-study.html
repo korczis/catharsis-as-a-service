@@ -1,0 +1,307 @@
+{% extends "base.html" %}
+
+{#- Case study: how Majordomus supervised the delivery of this site. Numbers and the timeline come from
+    data/case_study.json (scripts/export-case-study.py); structured blocks and UI strings come from the
+    page front matter. Everything renders without JavaScript; static/js/case-study.js adds filtering,
+    step selection and bookmarkable state (?tl-kind, ?tl-q, #event-<id>, #step-<id>). -#}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ get_url(path='css/case-study.css', cachebust=true) }}">
+{% endblock head_extra %}
+
+{% block scripts_extra %}
+<script src="{{ get_url(path='js/case-study.js', cachebust=true) }}" defer></script>
+{% endblock scripts_extra %}
+
+{% block content %}
+{%- set x = page.extra -%}
+{%- set ui = x.ui -%}
+{%- set record = load_data(path="data/case_study.json") -%}
+{%- set registry = load_data(path="data/commands.toml") -%}
+{%- set commands_url = get_url(path="@/commands/index.md", lang=lang) -%}
+{%- set counts = record.generated_from -%}
+{%- set milestones = record.milestones -%}
+{%- set repo = config.extra.repo_url -%}
+{%- set kinds = ["task", "checkpoint", "handover", "decision", "finish", "finding", "commit", "pipeline", "release"] -%}
+<article class="hero" aria-labelledby="case-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": trans(key="nav_case_study", lang=lang), "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ x.kicker }} <span class="text-muted">//</span> <span class="case-badge" data-case-badge>{{ x.badge }}</span> {{ <evidence.kind kind="technical" lang={lang} /> }}</p>
+    <h1 id="case-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
+    <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+    <p class="case-lead">{{ x.summary }}</p>
+
+    {%- set seconds = milestones.first_commit_to_first_release_seconds %}
+    {%- set supervised = milestones.majordomus_to_first_release_seconds %}
+    <dl class="case-metrics" id="metrics" aria-label="{{ ui.metrics_heading }}">
+      {%- for metric in [
+        ["tasks", ui.metric_tasks, counts.tasks],
+        ["checkpoints", ui.metric_checkpoints, counts.checkpoints],
+        ["handovers", ui.metric_handovers, counts.handovers],
+        ["decisions", ui.metric_decisions, counts.decisions],
+        ["findings", ui.metric_findings, counts.findings],
+        ["commits", ui.metric_commits, counts.commits],
+        ["pipelines", ui.metric_pipelines, counts.pipeline_runs],
+        ["releases", ui.metric_releases, counts.releases]
+      ] %}
+      <div class="case-metric" data-metric="{{ metric[0] }}"><dt>{{ metric[1] }}</dt><dd>{{ metric[2] }}</dd></div>
+      {%- endfor %}
+      <div class="case-metric is-wide" data-metric="first-release" data-seconds="{{ seconds }}">
+        <dt>{{ ui.metric_first_release }}</dt>
+        <dd>{{ (seconds / 60) | round(method="floor") }} min {{ seconds % 60 }} s
+          <small>{{ ui.metric_first_release_note }} {{ milestones.first_commit | date(format="%H:%M:%S") }} → {{ milestones.first_verified_release | date(format="%H:%M:%S") }} UTC · {{ ui.metric_supervised }} {{ (supervised / 60) | round(method="floor") }} min {{ supervised % 60 }} s</small>
+        </dd>
+      </div>
+    </dl>
+    <p class="case-snapshot">{{ ui.snapshot_prefix }} <time datetime="{{ counts.through }}">{{ counts.through | date(format="%Y-%m-%d %H:%M") }} UTC</time> · Majordomus {{ record.majordomus_version }} · <a class="link" href="{{ repo }}/blob/main/data/case_study.json">data/case_study.json</a></p>
+
+    <div class="case-layout mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <aside class="aside-rail space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        {{ <library.key_points points={x.key_points} lang={lang} /> }}
+        <nav class="toc aside-block" aria-label="{{ trans(key='toc_label', lang=lang) }}">
+          <p class="label">{{ trans(key="toc_label", lang=lang) }}</p>
+          <ol class="mt-3 space-y-2 border-l border-line pl-4">
+            <li><a class="nav-link normal-case tracking-normal" href="#lifecycle">{{ ui.lifecycle_heading }}</a></li>
+            <li><a class="nav-link normal-case tracking-normal" href="#timeline">{{ ui.timeline_heading }}</a></li>
+            {%- for heading in page.toc %}
+            <li><a class="nav-link normal-case tracking-normal" href="#{{ heading.id }}">{{ heading.title }}</a></li>
+            {%- endfor %}
+            {%- for anchor in [
+              ["features", ui.features_heading],
+              ["wiring", ui.wiring_heading],
+              ["findings", ui.findings_heading],
+              ["limits", ui.limits_heading],
+              ["screens", ui.screens_heading],
+              ["engineering", ui.engineering_heading],
+              ["sources", ui.sources_heading]
+            ] %}
+            <li><a class="nav-link normal-case tracking-normal" href="#{{ anchor[0] }}">{{ anchor[1] }}</a></li>
+            {%- endfor %}
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="lg:col-span-8">
+        {#- Lifecycle: every step is an anchor (#step-<id>); Alpine "caseLifecycle" shows one panel at a time. -#}
+        <section id="lifecycle" class="case-block mt-0" aria-labelledby="lifecycle-title" x-data="caseLifecycle">
+          <h2 id="lifecycle-title" class="condensed method-title">{{ ui.lifecycle_heading }}</h2>
+          <p class="mt-4">{{ ui.lifecycle_intro }}</p>
+          <ol class="case-steps" aria-label="{{ ui.lifecycle_heading }}">
+            {%- for step in x.lifecycle %}
+            <li><a href="#step-{{ step.id }}" data-step-link="{{ step.id }}" x-on:click.prevent="select('{{ step.id }}')" x-bind:aria-current="isActive('{{ step.id }}') ? 'step' : 'false'"><span class="case-step-number">{{ loop.index }}</span> <span class="condensed">{{ step.name }}</span></a></li>
+            {%- endfor %}
+          </ol>
+          {%- for step in x.lifecycle %}
+          <section id="step-{{ step.id }}" class="case-step-panel" data-step="{{ step.id }}" x-show="isActive('{{ step.id }}')" aria-labelledby="step-{{ step.id }}-title">
+            <h3 id="step-{{ step.id }}-title" class="condensed"><span class="case-step-number">{{ loop.index }} / {{ x.lifecycle | length }}</span> {{ step.name }}</h3>
+            <dl class="case-facts">
+              <dt>{{ ui.command }}</dt>
+              <dd>
+                {%- for entry in registry.commands %}{% if entry.id == step.command_id %}<a href="{{ commands_url }}#{{ entry.id }}" data-command-link><code class="case-code">{{ entry.command }}</code></a>{% endif %}{% endfor -%}
+              </dd>
+              <dt>{{ ui.what }}</dt>
+              <dd>{{ step.what }}</dd>
+              <dt>{{ ui.why }}</dt>
+              <dd>{{ step.why }}</dd>
+              {%- if step.example_event %}
+              {%- for e in record.events %}{% if e.id == step.example_event %}
+              <dt>{{ ui.example }}</dt>
+              <dd data-step-example="{{ e.id }}">
+                <a href="#event-{{ e.id }}">{{ e["title_" ~ lang] | default(value=e.title_en) }}</a>
+                <span class="case-count"><time datetime="{{ e.ts }}">{{ e.ts | date(format="%H:%M:%S") }} UTC</time></span>
+                {%- if e["detail_" ~ lang] is defined %}<br>{{ e["detail_" ~ lang] }}{% elif e.detail_en is defined %}<br><span lang="en">{{ e.detail_en }}</span>{% endif %}
+              </dd>
+              {%- endif %}{% endfor %}
+              {%- endif %}
+            </dl>
+          </section>
+          {%- endfor %}
+        </section>
+
+        {#- Timeline: the full list is server-rendered with an anchor per event (#event-<id>); Alpine "caseTimeline"
+            filters it and mirrors the filters into ?tl-kind and ?tl-q. -#}
+        <section id="timeline" class="case-block" aria-labelledby="timeline-title" x-data="caseTimeline">
+          <h2 id="timeline-title" class="condensed method-title">{{ ui.timeline_heading }}</h2>
+          <p class="mt-4">{{ ui.timeline_intro }}</p>
+          <div class="case-filters" data-requires-js>
+            <div class="case-chips" role="group" aria-label="{{ ui.filter_label }}">
+              <button type="button" class="case-chip" data-kind-chip="all" aria-pressed="true" x-on:click="kinds = []" x-bind:aria-pressed="kinds.length === 0 ? 'true' : 'false'">{{ ui.filter_all }} <span>{{ record.events | length }}</span></button>
+              {%- for kind in kinds %}
+              {%- set_global kind_count = 0 %}
+              {%- for e in record.events %}{% if e.kind == kind %}{% set_global kind_count = kind_count + 1 %}{% endif %}{% endfor %}
+              {%- if kind_count > 0 %}
+              <button type="button" class="case-chip" data-kind-chip="{{ kind }}" aria-pressed="false" x-on:click="toggle('{{ kind }}')" x-bind:aria-pressed="isKind('{{ kind }}') ? 'true' : 'false'">{{ ui["kind_" ~ kind] }} <span>{{ kind_count }}</span></button>
+              {%- endif %}
+              {%- endfor %}
+            </div>
+            <div class="case-search">
+              <label class="label" for="timeline-query">{{ ui.search_label }}</label>
+              <input id="timeline-query" type="search" name="tl-q" autocomplete="off" placeholder="{{ ui.search_placeholder }}" x-model="query" data-timeline-query>
+              <button type="button" class="btn-ghost" data-timeline-reset x-on:click="reset()">{{ ui.reset }}</button>
+              <p class="case-count" aria-live="polite"><span data-timeline-shown x-text="shown">{{ record.events | length }}</span> / <span data-timeline-total>{{ record.events | length }}</span> {{ ui.events_label }}</p>
+            </div>
+          </div>
+          <ol class="case-timeline" data-timeline>
+            {%- for e in record.events %}
+            {%- set title = e["title_" ~ lang] | default(value=e.title_en) %}
+            <li id="event-{{ e.id }}" class="case-event" data-event data-kind="{{ e.kind }}" data-search="{{ title | lower }} {{ e.title_en | lower }} {% if e.detail_en is defined %}{{ e.detail_en | lower }}{% endif %} {% if e['detail_' ~ lang] is defined %}{{ e['detail_' ~ lang] | lower }}{% endif %} {{ e.kind }} {{ e.id }}">
+              <details>
+                <summary>
+                  <time datetime="{{ e.ts }}">{{ e.ts | date(format="%Y-%m-%d %H:%M:%S") }} UTC</time>
+                  <span class="case-kind">{{ ui["kind_" ~ e.kind] }}</span>
+                  <span class="case-event-title"{% if e["title_" ~ lang] is not defined %} lang="en"{% endif %}>{{ title }}</span>
+                </summary>
+                <div class="case-event-body">
+                  {%- if e["detail_" ~ lang] is defined %}
+                  <p>{{ e["detail_" ~ lang] }}</p>
+                  {%- elif e.detail_en is defined %}
+                  <p lang="en">{{ e.detail_en }}</p>
+                  <p class="case-count">{{ ui.record_language_note }}</p>
+                  {%- endif %}
+                  <ul class="case-links">
+                    {%- for link in e.links %}
+                    <li><a href="{{ link.url }}" rel="noopener" data-event-link>{{ link.label }} <span aria-hidden="true">↗</span></a></li>
+                    {%- endfor %}
+                    <li><a href="#event-{{ e.id }}" data-event-permalink>{{ ui.permalink }}</a></li>
+                  </ul>
+                </div>
+              </details>
+            </li>
+            {%- endfor %}
+          </ol>
+          <p class="case-empty" data-requires-js hidden x-bind:hidden="shown !== 0">{{ ui.no_results }}</p>
+        </section>
+
+        <div class="prose-page prose-wide case-block">{{ page.content | safe }}</div>
+
+        <section id="features" class="case-block" aria-labelledby="features-title">
+          <h2 id="features-title" class="condensed method-title">{{ ui.features_heading }}</h2>
+          <div class="table-frame mt-8" role="region" aria-labelledby="features-title">
+            <table class="ledger-table case-table">
+              <thead>
+                <tr><th scope="col">{{ ui.feature }}</th><th scope="col">{{ ui.how_used }}</th><th scope="col">{{ ui.evidence }}</th></tr>
+              </thead>
+              <tbody>
+                {%- for feature in x.features %}
+                <tr data-feature>
+                  <th scope="row">{{ feature.name }}</th>
+                  <td data-label="{{ ui.how_used }}">{{ feature.how_used }}</td>
+                  <td data-label="{{ ui.evidence }}">{{ feature.evidence }}
+                    <ul class="case-links">
+                      {%- for link in feature.links %}
+                      <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+                      {%- endfor %}
+                    </ul>
+                  </td>
+                </tr>
+                {%- endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="wiring" class="case-block" aria-labelledby="wiring-title">
+          <h2 id="wiring-title" class="condensed method-title">{{ ui.wiring_heading }}</h2>
+          <p class="mt-4">{{ ui.wiring_intro }}</p>
+          <div class="table-frame mt-8" role="region" aria-labelledby="wiring-title">
+            <table class="ledger-table case-table">
+              <thead>
+                <tr><th scope="col">{{ ui.where }}</th><th scope="col">{{ ui.command }}</th><th scope="col">{{ ui.effect }}</th><th scope="col">{{ ui.file }}</th></tr>
+              </thead>
+              <tbody>
+                {%- for row in x.wiring %}
+                <tr data-wiring>
+                  <th scope="row">{{ row.where }}</th>
+                  <td data-label="{{ ui.command }}">
+                    {%- if row.command_id %}<a href="{{ commands_url }}#{{ row.command_id }}" data-command-link><code class="case-code">{{ row.command }}</code></a>
+                    {%- else %}<code class="case-code">{{ row.command }}</code>{% endif -%}
+                  </td>
+                  <td data-label="{{ ui.effect }}">{{ row.effect }}</td>
+                  <td data-label="{{ ui.file }}"><a href="{{ row.file_url }}">{{ row.file }}</a></td>
+                </tr>
+                {%- endfor %}
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="findings" class="case-block" aria-labelledby="findings-title">
+          <h2 id="findings-title" class="condensed method-title">{{ ui.findings_heading }}</h2>
+          <p class="mt-4">{{ ui.findings_intro }}</p>
+          <div class="case-cards">
+            {%- for finding in record.findings %}
+            <article id="finding-{{ finding.id }}" class="case-card" data-finding="{{ finding.id }}" aria-labelledby="finding-{{ finding.id }}-title">
+              <p class="case-meta"><time datetime="{{ finding.ts }}">{{ finding.ts | date(format="%Y-%m-%d %H:%M:%S") }} UTC</time></p>
+              <h3 id="finding-{{ finding.id }}-title" class="condensed">{{ finding["title_" ~ lang] | default(value=finding.title_en) }}</h3>
+              <p>{{ finding["detail_" ~ lang] | default(value=finding.detail_en) }}</p>
+              <p class="case-meta">{{ ui.caught_by }}:
+                {%- if finding.caught_by and finding.caught_by | truncate(length=3, end="") == "ci:" %}
+                <a href="{{ repo }}/actions/workflows/pages.yml">CI · {{ finding.caught_by | replace(from="ci:", to="") }}</a>
+                {%- elif finding.caught_by %}
+                {%- for entry in registry.commands %}{% if entry.id == finding.caught_by %} <a href="{{ commands_url }}#{{ entry.id }}" data-command-link><code class="case-code">{{ entry.command }}</code></a>{% endif %}{% endfor %}
+                {%- else %} {{ ui.no_catcher }}
+                {%- endif %}
+              </p>
+              <p class="case-meta">{{ ui.evidence_events }}</p>
+              <ul class="case-links">
+                {%- for ident in finding.evidence %}
+                {%- for e in record.events %}{% if e.id == ident %}
+                <li><a href="#event-{{ e.id }}" data-finding-evidence>{{ ui["kind_" ~ e.kind] }} · {{ e.ts | date(format="%H:%M:%S") }}</a></li>
+                {%- endif %}{% endfor %}
+                {%- endfor %}
+                {%- for link in finding.links %}
+                <li><a href="{{ link.url }}" rel="noopener">{{ link.label }} <span aria-hidden="true">↗</span></a></li>
+                {%- endfor %}
+              </ul>
+            </article>
+            {%- endfor %}
+          </div>
+        </section>
+
+        <section id="limits" class="case-block" aria-labelledby="limits-title">
+          <h2 id="limits-title" class="condensed method-title">{{ ui.limits_heading }}</h2>
+          <ul class="case-limits">
+            {%- for limit in x.limits %}
+            <li>{{ limit }}</li>
+            {%- endfor %}
+          </ul>
+        </section>
+
+        <section id="screens" class="case-block" aria-labelledby="screens-title">
+          <h2 id="screens-title" class="condensed method-title">{{ ui.screens_heading }}</h2>
+          {{ <case.screens fig={x.screens} lang={lang} /> }}
+          <p class="case-disclaimer" role="note">{{ ui.screens_disclaimer }}</p>
+        </section>
+
+        <section id="engineering" class="case-block case-read-next" aria-labelledby="engineering-title">
+          <h2 id="engineering-title" class="condensed method-title">{{ ui.engineering_heading }}</h2>
+          <p class="mt-4">{{ ui.engineering_text }}</p>
+          <ul class="case-links">
+            <li><a href="../engineering/" data-engineering-link>{{ ui.engineering_section }}</a></li>
+            <li><a href="../engineering/time-accounting/" data-engineering-link>{{ ui.engineering_time }}</a></li>
+          </ul>
+        </section>
+
+        <section id="sources" class="case-block" aria-labelledby="sources-title">
+          <h2 id="sources-title" class="condensed method-title">{{ ui.sources_heading }}</h2>
+          <ul class="case-links mt-6">
+            {%- for path in ["research/method-majordomus/index.md", "about/index.md", "status/index.md", "evidence/index.md", "methods/index.md", "commands/index.md"] %}
+            {%- set linked = get_page(path=path, lang=lang) %}
+            <li><a href="{{ linked.permalink }}">{{ linked.title }}</a></li>
+            {%- endfor %}
+            {%- for link in x.links %}
+            <li><a href="{{ link.url }}" rel="noopener">{{ link.label }} <span aria-hidden="true">↗</span></a></li>
+            {%- endfor %}
+          </ul>
+        </section>
+
+        {{ <library.references ids={x.references} lang={lang} /> }}
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock content %}

@@ -21,7 +21,7 @@ preview_for() {
 if [[ "${1:-}" == "--check" ]]; then
   missing=0
   expected=(artwork/poster.html artwork/social.html static/assets/favicon.svg static/assets/catharsis-as-a-service.png
-    static/favicon.ico static/assets/apple-touch-icon.png static/assets/icon-192.png static/assets/icon-512.png)
+    artwork/closure/poster.html static/assets/closure-as-a-service.png static/favicon.ico static/assets/apple-touch-icon.png static/assets/icon-192.png static/assets/icon-512.png)
   for code in $LOCALES; do
     expected+=("$(preview_for "$code")")
   done
@@ -45,7 +45,12 @@ render() {
 
 render "artwork/poster.html?print" 1200,1800 4 static/assets/catharsis-as-a-service.png
 magick static/assets/catharsis-as-a-service.png -strip -units PixelsPerInch -density 300 \
-  static/assets/catharsis-as-a-service.png
+  -define png:include-chunk=pHYs static/assets/catharsis-as-a-service.png
+
+render "artwork/closure/poster.html?print" 1200,1800 4 static/assets/closure-as-a-service.png
+# ImageMagick 7.1.2 drops pHYs after -strip unless the chunk is requested explicitly.
+magick static/assets/closure-as-a-service.png -strip -units PixelsPerInch -density 300 \
+  -define png:include-chunk=pHYs static/assets/closure-as-a-service.png
 
 for code in $LOCALES; do
   output="$(preview_for "$code")"

@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Closure as a Service</title>
+<meta name="description" content="Poster that sells a finished ending at first glance and instruments the request at second.">
+<link rel="stylesheet" href="../../static/fonts/fonts.css">
+<style>
+  :root {
+    --ink: #050505;
+    --blood: #ef2929;
+    --bone: #e9e4d8;
+    --mute: #8a847a;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--ink); color: var(--bone); }
+  body {
+    font: 14px/1.5 'JetBrains Mono', ui-monospace, Menlo, monospace;
+    padding: 32px 16px 48px;
+  }
+  main { max-width: 900px; margin: 0 auto; }
+  svg.poster { display: block; width: 100%; height: auto; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between;
+    margin-top: 20px; color: var(--mute); font-size: 12px; letter-spacing: 0.08em;
+  }
+  .meta a { color: var(--bone); }
+  .meta a:hover { color: var(--blood); }
+  body.print { padding: 0; }
+  body.print main { max-width: none; }
+  body.print .meta { display: none; }
+  body.print svg.poster { width: 1200px; height: 1800px; }
+</style>
+</head>
+<body>
+<main>
+<svg class="poster" viewBox="0 0 1200 1800" xmlns="http://www.w3.org/2000/svg"
+  role="img" aria-label="Closure as a Service poster">
+  <defs>
+    <filter id="ink" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="17" result="n"/>
+      <feDisplacementMap in="SourceGraphic" in2="n" scale="6" result="d"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.14" numOctaves="3" seed="23" result="s"/>
+      <feColorMatrix in="s" type="matrix"
+        values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  -14 0 0 0 10.6" result="holes"/>
+      <feComposite in="d" in2="holes" operator="in"/>
+    </filter>
+    <filter id="grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="1" seed="5"/>
+      <feColorMatrix type="saturate" values="0"/>
+    </filter>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6"/>
+    </filter>
+    <radialGradient id="ember" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#ef2929" stop-opacity="0.16"/>
+      <stop offset="0.55" stop-color="#ef2929" stop-opacity="0.05"/>
+      <stop offset="1" stop-color="#ef2929" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="1800" fill="#050505"/>
+
+  <!-- header -->
+  <g font-family="'JetBrains Mono', monospace" font-size="15" letter-spacing="4" fill="#e9e4d8">
+    <text x="60" y="52" font-weight="700">PRISMATIC</text>
+    <text x="600" y="52" text-anchor="middle" opacity="0.75">HUMAN SYSTEMS DIAGNOSTICS // ENDINGS.ARE.REQUESTS</text>
+    <text x="1140" y="52" text-anchor="end" font-weight="700">SIG NIHL</text>
+  </g>
+  <line x1="60" y1="74" x2="1140" y2="74" stroke="#e9e4d8" stroke-opacity="0.25"/>
+
+  <!-- headline -->
+  <g filter="url(#ink)">
+    <text x="60" y="392" font-family="Anton, Impact, sans-serif" font-size="318"
+      textLength="1080" lengthAdjust="spacingAndGlyphs" fill="#ef2929">CLOSURE</text>
+    <text x="60" y="612" font-family="Anton, Impact, sans-serif" font-size="228"
+      textLength="1010" lengthAdjust="spacingAndGlyphs" fill="#e9e4d8">AS A SERVICE</text>
+  </g>
+  <text x="1080" y="452" font-family="'Barlow Condensed', sans-serif" font-weight="700"
+    font-size="30" fill="#e9e4d8">™</text>
+
+  <text x="60" y="676" font-family="'Barlow Condensed', 'DIN Condensed', sans-serif"
+    font-weight="600" font-size="31" textLength="1080" lengthAdjust="spacing"
+    fill="#e9e4d8">GRIEF COMPLETION REQUEST ENDPOINT</text>
+  <line x1="60" y1="706" x2="1140" y2="706" stroke="#e9e4d8" stroke-opacity="0.25"/>
+
+  <!-- motif: a ring that does not close -->
+  <circle cx="600" cy="1010" r="330" fill="url(#ember)"/>
+  <g id="ticks"></g>
+  <path id="ring" fill="none" stroke="#e9e4d8" stroke-width="5" stroke-linecap="butt"/>
+  <g id="cap"></g>
+
+  <g font-family="'JetBrains Mono', monospace" text-anchor="middle" fill="#e9e4d8">
+    <text x="600" y="918" font-size="14" letter-spacing="5" opacity="0.6">ELAPSED SINCE REQUEST</text>
+    <text id="clock" x="600" y="1012" font-size="44" font-weight="700" letter-spacing="1">T+412d 07:33:18</text>
+    <line x1="420" y1="1046" x2="780" y2="1046" stroke="#e9e4d8" stroke-opacity="0.3"/>
+    <text x="600" y="1088" font-size="24" font-weight="700" fill="#ef2929">grief_resolved: pending</text>
+    <text x="600" y="1124" font-size="14" letter-spacing="5" opacity="0.6">COMPLETION NOT RETURNABLE</text>
+  </g>
+
+  <!-- candle marks: one baseline, most extinguished -->
+  <line x1="60" y1="1392" x2="1140" y2="1392" stroke="#e9e4d8" stroke-opacity="0.35"/>
+  <g id="candles"></g>
+
+  <!-- telemetry -->
+  <g font-family="'JetBrains Mono', monospace" font-size="21" fill="#e9e4d8">
+    <text x="60" y="1446"><tspan opacity="0.6">INPUT:</tspan><tspan x="196">loss that continues to matter</tspan></text>
+    <text x="60" y="1478"><tspan opacity="0.6">PROCESS:</tspan><tspan x="196">ritual → symbolic ending → routine</tspan></text>
+    <text x="60" y="1510"><tspan opacity="0.6">OUTPUT:</tspan><tspan x="196">a sense of order</tspan></text>
+    <text x="60" y="1542"><tspan opacity="0.6">STATUS:</tspan><tspan x="196" fill="#ef2929" font-weight="700">bond continues</tspan></text>
+  </g>
+
+  <!-- the offer -->
+  <g font-family="'Barlow Condensed', 'DIN Condensed', sans-serif" font-weight="700"
+    fill="#e9e4d8" text-anchor="end" letter-spacing="1">
+    <line x1="920" y1="1420" x2="1140" y2="1420" stroke="#ef2929" stroke-width="3"/>
+    <text x="1140" y="1466" font-size="38">ONE SESSION.</text>
+    <text x="1140" y="1506" font-size="38">ONE LETTER.</text>
+    <text x="1140" y="1546" font-size="38" fill="#ef2929">ONE ENDING.</text>
+  </g>
+
+  <!-- request -->
+  <rect x="230" y="1584" width="740" height="76" fill="#050505" stroke="#e9e4d8" stroke-width="1.5"/>
+  <text x="600" y="1634" text-anchor="middle" font-family="'JetBrains Mono', monospace"
+    font-size="32" fill="#e9e4d8">&gt; POST /v1/closure → <tspan fill="#ef2929" font-weight="700">202 ACCEPTED</tspan></text>
+
+  <line x1="60" y1="1694" x2="1140" y2="1694" stroke="#e9e4d8" stroke-opacity="0.2"/>
+  <g font-family="'JetBrains Mono', monospace" fill="#e9e4d8">
+    <g stroke-linecap="square" fill="none">
+      <line x1="60" y1="1745" x2="90" y2="1740" stroke="#e9e4d8" stroke-width="2"/>
+      <polygon points="104,1716 126,1760 82,1760" stroke="#e9e4d8" stroke-width="2.5"/>
+      <line x1="112" y1="1738" x2="140" y2="1749" stroke="#ef2929" stroke-width="3"/>
+    </g>
+    <text x="158" y="1734" font-size="15" font-weight="700" letter-spacing="4">PRISMATIC</text>
+    <text x="158" y="1756" font-size="11" letter-spacing="3" opacity="0.6">HONEST INTELLIGENCE</text>
+
+    <text x="1140" y="1734" text-anchor="end" font-size="15" font-weight="700" letter-spacing="4">SIG NIHL</text>
+    <text x="1140" y="1756" text-anchor="end" font-size="11" letter-spacing="3" opacity="0.6">BETTER QUESTIONS</text>
+    <line x1="1060" y1="1770" x2="1140" y2="1770" stroke="#ef2929" stroke-width="3"/>
+
+    <text x="600" y="1736" text-anchor="middle" font-size="12" letter-spacing="4" opacity="0.7">SOME ENDINGS ARE NOT COMPLETED.</text>
+    <text x="600" y="1756" text-anchor="middle" font-size="12" letter-spacing="4" opacity="0.7">THEY ARE CARRIED.</text>
+  </g>
+
+  <rect width="1200" height="1800" filter="url(#grain)" opacity="0.06" style="mix-blend-mode:screen"/>
+</svg>
+
+<div class="meta">
+  <span>CLOSURE AS A SERVICE™ — PRISMATIC × SIG NIHL</span>
+  <span><a href="../../static/assets/closure-as-a-service.png">PNG 4800×7200</a></span>
+</div>
+</main>
+
+<script>
+  const print = new URLSearchParams(location.search).has('print');
+  if (print) document.body.classList.add('print');
+
+  const NS = 'http://www.w3.org/2000/svg';
+  const CX = 600, CY = 1010, R = 262;
+  const GAP = 26; // degrees left open at the top
+
+  function rng(seed) {
+    return () => {
+      seed = (seed * 1664525 + 1013904223) % 4294967296;
+      return seed / 4294967296;
+    };
+  }
+
+  function el(name, attrs, parent) {
+    const node = document.createElementNS(NS, name);
+    for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+    parent.appendChild(node);
+    return node;
+  }
+
+  function polar(r, deg) {
+    const a = (deg - 90) * Math.PI / 180;
+    return [CX + r * Math.cos(a), CY + r * Math.sin(a)];
+  }
+
+  // The ring starts just right of twelve o'clock and stops just short of it.
+  const start = GAP / 2, end = 360 - GAP / 2;
+  const [sx, sy] = polar(R, start);
+  const [ex, ey] = polar(R, end);
+  document.getElementById('ring').setAttribute('d',
+    `M ${sx.toFixed(2)} ${sy.toFixed(2)} A ${R} ${R} 0 1 1 ${ex.toFixed(2)} ${ey.toFixed(2)}`);
+
+  // Minute-style ticks outside the ring, absent across the gap.
+  const ticks = document.getElementById('ticks');
+  for (let i = 0; i < 120; i++) {
+    const deg = i * 3;
+    if (deg < GAP / 2 + 3 || deg > 360 - GAP / 2 - 3) continue;
+    const major = i % 10 === 0;
+    const [x1, y1] = polar(R + 16, deg);
+    const [x2, y2] = polar(R + (major ? 40 : 26), deg);
+    el('line', {
+      x1: x1.toFixed(2), y1: y1.toFixed(2), x2: x2.toFixed(2), y2: y2.toFixed(2),
+      stroke: '#e9e4d8', 'stroke-width': major ? 2.5 : 1.2, 'stroke-opacity': major ? 0.7 : 0.32,
+    }, ticks);
+  }
+  // Inner hairline ring for depth.
+  el('circle', { cx: CX, cy: CY, r: R - 22, fill: 'none', stroke: '#e9e4d8', 'stroke-opacity': 0.12 }, ticks);
+
+  // End cap: the ring arrives at the gap and holds a live cursor.
+  const cap = document.getElementById('cap');
+  el('circle', { cx: ex.toFixed(2), cy: ey.toFixed(2), r: 16, fill: '#ef2929', opacity: 0.55, filter: 'url(#glow)' }, cap);
+  el('circle', { cx: ex.toFixed(2), cy: ey.toFixed(2), r: 9, fill: '#ef2929' }, cap);
+  el('line', { x1: sx.toFixed(2), y1: (sy - 14).toFixed(2), x2: sx.toFixed(2), y2: (sy + 14).toFixed(2),
+    stroke: '#e9e4d8', 'stroke-width': 3 }, cap);
+  const label = el('text', { x: CX, y: CY - R + 62, 'text-anchor': 'middle', 'font-family': "'JetBrains Mono', monospace",
+    'font-size': 15, 'letter-spacing': 4, fill: '#ef2929' }, cap);
+  label.textContent = 'close() → PENDING';
+
+  // Candle marks: thin vertical strokes on one baseline; a few still lit.
+  const candles = document.getElementById('candles');
+  const r = rng(31);
+  const base = 1392, count = 41, left = 72, right = 1128;
+  const step = (right - left) / (count - 1);
+  const lit = new Set([4, 17, 29, 36]);
+  for (let i = 0; i < count; i++) {
+    const x = left + i * step;
+    const dist = Math.abs(x - CX) / 540; // lower under the ring, taller toward the edges
+    const h = 18 + Math.pow(dist, 1.6) * 92 + r() * 26;
+    const top = base - h;
+    el('rect', { x: (x - 2.5).toFixed(2), y: top.toFixed(2), width: 5, height: h.toFixed(2),
+      fill: '#e9e4d8', opacity: (0.45 + r() * 0.4).toFixed(2) }, candles);
+    if (lit.has(i)) {
+      el('ellipse', { cx: x.toFixed(2), cy: (top - 12).toFixed(2), rx: 7, ry: 12, fill: '#ef2929', opacity: 0.5,
+        filter: 'url(#glow)' }, candles);
+      el('path', { d: `M ${x.toFixed(2)} ${(top - 20).toFixed(2)} q 4.5 9 0 15 q -4.5 -6 0 -15 z`, fill: '#ef2929' }, candles);
+    } else {
+      el('line', { x1: x.toFixed(2), y1: (top - 3).toFixed(2), x2: x.toFixed(2), y2: (top - 9).toFixed(2),
+        stroke: '#e9e4d8', 'stroke-width': 1, 'stroke-opacity': 0.35 }, candles);
+    }
+  }
+
+  // The timestamp keeps counting in the browser; the print render stays fixed.
+  const clock = document.getElementById('clock');
+  const origin = 412 * 86400 + 7 * 3600 + 33 * 60 + 18;
+  const pad = (n) => String(n).padStart(2, '0');
+  function show(total) {
+    const d = Math.floor(total / 86400);
+    const h = Math.floor(total / 3600) % 24;
+    const m = Math.floor(total / 60) % 60;
+    clock.textContent = `T+${d}d ${pad(h)}:${pad(m)}:${pad(total % 60)}`;
+  }
+  show(origin);
+  if (!print) {
+    const t0 = Date.now();
+    setInterval(() => show(origin + Math.floor((Date.now() - t0) / 1000)), 1000);
+  }
+
+  document.fonts.ready.then(() => document.body.setAttribute('data-ready', '1'));
+</script>
+</body>
+</html>

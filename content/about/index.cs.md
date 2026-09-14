@@ -4,6 +4,7 @@ description = "Co je Catharsis as a Service™ a proč vzniklo: motivace, psycho
 
 [extra]
 figures = [
+  { kind = "posters", id = "poster-about", caption = "Ze série plakátů Catharsis as a Service. Slogany a čísla na plakátech patří k dílu; nejsou to výzkumná zjištění.", items = [{ src = "assets/posters/informace-meni-moc.png", title = "Informace mění moc", alt = "Plakát: INFORMACE MĚNÍ MOC vedle popraskané antické kamenné hlavy; postava kráčí chodbou archivních obrazovek s nápisy people, companies, relationships, timelines, documents, patterns, anomalies, questions a answers k rudým dveřím.", caption = "Informovanější společnost se hůř manipuluje." }] },
   { kind = "screens", id = "about-cockpit", caption = "Koncepční obrazovky cockpitu Majordomu pro pravidla a worktrees. Data jsou ilustrativní a nepopisují tento projekt.", items = [
     { src = "assets/majordomus/cockpit-rules.png", title = "Pravidla", alt = "Koncepční obrazovka pohledu Pravidla v cockpitu Majordomu: seznam vynucovaných pravidel repozitáře s pokrytím, detail jednoho pravidla, stav jeho validace a místa, kde se vynucuje.", caption = "Spustitelná pravidla s místy vynucení: příkazová řádka, CI, pre-commit hook." },
     { src = "assets/majordomus/cockpit-worktrees.png", title = "Worktrees", alt = "Koncepční obrazovka pohledu Worktrees v cockpitu Majordomu: paralelní větve se stavem, rozdíl změněných souborů, commity napřed a terminál.", caption = "Paralelní větve ve vlastních worktrees, každá navázaná na issue a sezení." },

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Social preview</title>
+<!-- Per-page social preview, rendered at 1200×630 by scripts/render-social.py.
+     Query parameters: title, label, kicker, line, lang. -->
+<link rel="stylesheet" href="../static/fonts/fonts.css">
+<style>
+  html, body { margin: 0; width: 1200px; height: 630px; overflow: hidden; background: #050505; color: #e9e4d8; }
+  .frame { position: relative; box-sizing: border-box; width: 1200px; height: 630px; padding: 60px 72px 52px 104px; display: flex; flex-direction: column; }
+  .frame::after { content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: radial-gradient(900px 520px at 88% 12%, rgb(239 41 41 / 0.14), transparent 60%); }
+  .rule { position: absolute; left: 60px; top: 60px; bottom: 52px; width: 6px; background: #ef2929; }
+  .eyebrow { margin: 0; font: 700 21px/1.2 'JetBrains Mono', monospace; letter-spacing: 0.2em; text-transform: uppercase; color: #a19c94; }
+  .eyebrow b { color: #ef2929; }
+  .title-box { flex: 1; min-height: 0; display: flex; align-items: center; }
+  h1 { margin: 0; max-width: 1024px; font-family: 'Anton', Impact, sans-serif; font-weight: 400; font-size: 116px; line-height: 0.98;
+    text-transform: uppercase; letter-spacing: 0.005em; overflow-wrap: break-word; }
+  /* Czech capitals carry accents above the cap height; Anton needs extra leading so they clear the line above. */
+  :lang(cs) h1 { line-height: 1.24; padding-top: 0.08em; }
+  .foot { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; font: 500 21px/1.3 'JetBrains Mono', monospace; color: #a19c94; }
+  .kicker { text-transform: uppercase; letter-spacing: 0.14em; }
+  .line { color: #ef2929; font-weight: 700; white-space: nowrap; }
+</style>
+</head>
+<body>
+<div class="frame">
+  <div class="rule"></div>
+  <p class="eyebrow"><b>Catharsis as a Service™</b> <span id="label"></span></p>
+  <div class="title-box"><h1 id="title"></h1></div>
+  <div class="foot"><span class="kicker" id="kicker"></span><span class="line" id="line"></span></div>
+</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  document.documentElement.lang = params.get('lang') || 'en';
+  const set = (id, value) => { document.getElementById(id).textContent = value || ''; };
+  set('title', params.get('title'));
+  set('label', params.get('label') ? `// ${params.get('label')}` : '');
+  set('kicker', params.get('kicker'));
+  set('line', params.get('line'));
+  // Shrink the title until it fits its box, then signal completion for the renderer.
+  document.fonts.ready.then(() => {
+    const title = document.getElementById('title');
+    const box = title.parentElement;
+    let size = 116;
+    while ((title.scrollHeight > box.clientHeight || title.scrollWidth > box.clientWidth) && size > 44) {
+      size -= 4;
+      title.style.fontSize = `${size}px`;
+    }
+    document.body.dataset.ready = 'true';
+  });
+</script>
+</body>
+</html>

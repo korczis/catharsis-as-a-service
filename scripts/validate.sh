@@ -47,7 +47,10 @@ zola_version() {
 }
 
 js_syntax() {
-  node --check static/js/app.js && node --check static/js/locale.js
+  local file
+  for file in static/js/app.js static/js/locale.js static/js/url-state.js static/js/models.js static/js/search.js static/js/case-study.js; do
+    node --check "$file" || return 1
+  done
 }
 
 step toolchain zola_version
@@ -58,6 +61,8 @@ step i18n python3 scripts/validate-i18n.py
 step content python3 scripts/validate-content.py
 step references python3 scripts/check-references.py
 step claims python3 scripts/validate-claims.py
+step case-study python3 scripts/export-case-study.py --check
+step social python3 scripts/render-social.py --check
 step zola-check zola check --skip-external-links
 step zola-build zola build --base-url "$BASE_URL"
 step api python3 scripts/export-api.py --out public --base-url "$BASE_URL"

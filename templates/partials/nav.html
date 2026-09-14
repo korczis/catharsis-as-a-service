@@ -5,12 +5,15 @@
     <a href="{{ home_url }}" class="brand py-3">Catharsis as a Service<span aria-hidden="true">™</span></a>
     <ul class="hidden items-center gap-6 xl:flex">
       <li><a class="nav-link" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/theory/_index.md', lang=l) }}">{{ trans(key="nav_theory", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/models/index.md', lang=l) }}">{{ trans(key="nav_models", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/methods/index.md', lang=l) }}">{{ trans(key="nav_methods", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/evidence/index.md', lang=l) }}">{{ trans(key="nav_evidence", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/glossary/index.md', lang=l) }}">{{ trans(key="nav_glossary", lang=l) }}</a></li>
+      <li><a class="nav-link" href="{{ get_url(path='@/search/index.md', lang=l) }}" data-nav-search>{{ trans(key="nav_search", lang=l) }}</a></li>
       <li><a class="nav-link" href="{{ get_url(path='@/about/index.md', lang=l) }}">{{ trans(key="nav_about", lang=l) }}</a></li>
-      <li><a class="nav-link" href="{{ config.extra.repo_url }}" target="_blank" rel="noopener">{{ trans(key="nav_source", lang=l) }} <span aria-hidden="true">↗</span></a></li>
+      {#- Source stays in the drawer and footer only: with it the desktop row exactly fills 1280px. -#}
       <li>{% include "partials/locale-switcher.html" %}</li>
     </ul>
     <button type="button" class="btn-ghost xl:hidden" data-drawer-open data-requires-js
@@ -27,6 +30,11 @@
   <ul class="flex flex-col gap-4">
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/research/_index.md', lang=l) }}">{{ trans(key="nav_research", lang=l) }}</a></li>
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/advice/_index.md', lang=l) }}">{{ trans(key="nav_advice", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/theory/_index.md', lang=l) }}">{{ trans(key="nav_theory", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/models/index.md', lang=l) }}">{{ trans(key="nav_models", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/search/index.md', lang=l) }}">{{ trans(key="nav_search", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/case-study/index.md', lang=l) }}">{{ trans(key="nav_case_study", lang=l) }}</a></li>
+    <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/engineering/_index.md', lang=l) }}">{{ trans(key="nav_engineering", lang=l) }}</a></li>
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/methods/index.md', lang=l) }}">{{ trans(key="nav_methods", lang=l) }}</a></li>
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/evidence/index.md', lang=l) }}">{{ trans(key="nav_evidence", lang=l) }}</a></li>
     <li><a class="condensed text-3xl no-underline" href="{{ get_url(path='@/glossary/index.md', lang=l) }}">{{ trans(key="nav_glossary", lang=l) }}</a></li>

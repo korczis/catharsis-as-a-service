@@ -292,6 +292,16 @@ summary.cs = "Zkontroluje registr důkazů: ohodnocení všech zdrojů, úroveň
 verified_by = ["ci:Validate and build", "pytest:test_ledger_passes_on_repository"]
 
 [[commands]]
+id = "render-social"
+group = "artwork"
+command = "python3 scripts/render-social.py"
+match = "python3 scripts/render-social.py"
+source = "scripts/render-social.py"
+summary.en = "Renders a 1200×630 social preview for every content page and language from artwork/og.html; with --check, verifies without a browser that every page has an up-to-date preview."
+summary.cs = "Vykreslí náhled 1200×630 pro sociální sítě pro každou stránku a jazyk z artwork/og.html; s --check bez prohlížeče ověří, že každá stránka má aktuální náhled."
+verified_by = ["ci:Validate and build", "pytest:test_social_check_reports_a_missing_preview"]
+
+[[commands]]
 id = "check-references"
 group = "validate"
 command = "python3 scripts/check-references.py --online"
@@ -350,3 +360,33 @@ source = "crates/caas-cli/src/main.rs"
 summary.en = "Runs the caas command-line client: list or show advice, list research, list claims due for review, show a claim or glossary term, check the library, print the endpoint response."
 summary.cs = "Spustí klienta caas pro příkazovou řádku: výpis a zobrazení rad, výpis výzkumu, tvrzení k revizi, zobrazení tvrzení nebo pojmu, kontrola knihovny, odpověď endpointu."
 verified_by = ["ci:Rust"]
+
+[[commands]]
+id = "export-case-study"
+group = "supervise"
+command = "python3 scripts/export-case-study.py"
+match = "python3 scripts/export-case-study.py"
+source = "scripts/export-case-study.py"
+summary.en = "Exports the curated case-study snapshot (data/case_study.json) from the Majordomus ledger, Git and GitHub; --check validates the snapshot without local state or network."
+summary.cs = "Vyexportuje kurátorovaný snímek případové studie (data/case_study.json) z ledgeru Majordomu, Gitu a GitHubu; --check ověří snímek bez lokálního stavu a bez sítě."
+verified_by = ["pytest:test_case_study_check_passes_on_repository", "pytest:test_case_study_export_is_deterministic"]
+
+[[commands]]
+id = "majordomus-rules"
+group = "supervise"
+command = "majordomus rules list"
+match = "majordomus rules"
+source = ".ai/repo/rules/README.md"
+summary.en = "Lists the effective rule set (vendored baseline plus project rules) with class and the commands that enforce each rule (read-only)."
+summary.cs = "Vypíše platnou sadu pravidel (převzatý základ a projektová pravidla) s třídou a příkazy, které každé pravidlo vynucují (jen pro čtení)."
+verified_by = ["pytest:test_majordomus_read_only_commands_used_by_the_case_study"]
+
+[[commands]]
+id = "majordomus-adr"
+group = "supervise"
+command = "majordomus adr list"
+match = "majordomus adr"
+source = ".ai/repo/adrs/README.md"
+summary.en = "Lists architecture decision records with their status; acceptance stays a person's act (read-only)."
+summary.cs = "Vypíše záznamy architektonických rozhodnutí s jejich stavem; přijetí zůstává na člověku (jen pro čtení)."
+verified_by = ["pytest:test_majordomus_read_only_commands_used_by_the_case_study"]

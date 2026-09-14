@@ -295,6 +295,14 @@ confidence_value = "NÍZKÁ"
 confidence_note = "Bez ověřené osobní výchozí hodnoty, kontextu a opakovaných pozorování nemůže závěr o jednom člověku ze čtyř signálů přesáhnout nízkou jistotu."
 problem_line = "problem_solved"
 problem_values = { unknown = "unknown", false = "false" }
+
+[extra.poster_figure]
+id = "poster-methods"
+caption = "Ze série plakátů Catharsis as a Service. Slogany a čísla na plakátech patří k dílu; nejsou to výzkumná zjištění."
+items = [
+  { src = "assets/posters/emoce-jsou-data.png", title = "Emoce jsou data", alt = "Plakát: EMOCE JSOU DATA. nad detailem tváře se zavřenýma očima, po níž stéká rudé světlo, a nad davem u zářící brány pódia; boční panely opakují vstup, proces a výstup díla a ukazují umělecký panel telemetrie.", caption = "Umělecký slogan, ne metoda: tato stránka vysvětluje, proč signály neukazují, co člověk cítí." },
+]
+
 +++
 
 ## Proč tato stránka existuje

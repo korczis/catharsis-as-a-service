@@ -2,6 +2,18 @@
 {%- if ctx is defined and ctx.description -%}{%- set_global meta_description = ctx.description -%}{%- else -%}{%- set_global meta_description = config.description -%}{%- endif -%}
 {%- if ctx is not defined -%}{%- set_global meta_title = "404 · " ~ trans(key="not_found_title", lang=l) -%}{%- endif -%}
 {%- set_global social_image = get_url(path=trans(key="social_image", lang=l)) -%}
+{%- set_global social_type = "image/png" -%}
+{%- set_global social_alt = trans(key="social_alt", lang=l) -%}
+{#- Every content page has its own preview rendered by scripts/render-social.py; tag listings keep the site image. -#}
+{%- if ctx is defined and ctx.relative_path is defined -%}
+  {%- set og_candidate = "og/" ~ (ctx.relative_path | replace(from=".md", to=".jpg")) -%}
+  {%- set og_meta = get_image_metadata(path=og_candidate, allow_missing=true) -%}
+  {%- if og_meta -%}
+    {%- set_global social_image = get_url(path=og_candidate) -%}
+    {%- set_global social_type = "image/jpeg" -%}
+    {%- set_global social_alt = ctx.title ~ " · Catharsis as a Service™" -%}
+  {%- endif -%}
+{%- endif -%}
 {%- set_global feed_url = get_url(path="atom.xml") if l == config.default_language else get_url(path=l ~ "/atom.xml") -%}
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,10 +53,10 @@
 <meta property="og:locale:alternate" content="{{ trans(key='og_locale', lang=code) }}">
 {%- endif %}{% endfor %}
 <meta property="og:image" content="{{ social_image }}">
-<meta property="og:image:type" content="image/png">
+<meta property="og:image:type" content="{{ social_type }}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{{ trans(key='social_alt', lang=l) }}">
+<meta property="og:image:alt" content="{{ social_alt }}">
 {%- if page is defined and page.date %}
 <meta property="article:published_time" content="{{ page.date }}">
 <meta property="article:author" content="{{ config.extra.author }}">
@@ -53,7 +65,7 @@
 <meta name="twitter:title" content="{{ meta_title }}">
 <meta name="twitter:description" content="{{ meta_description }}">
 <meta name="twitter:image" content="{{ social_image }}">
-<meta name="twitter:image:alt" content="{{ trans(key='social_alt', lang=l) }}">
+<meta name="twitter:image:alt" content="{{ social_alt }}">
 
 {#- Icons follow the HTML5 Boilerplate set: ICO for legacy agents, SVG for modern ones, PNG for touch. -#}
 <link rel="icon" href="{{ get_url(path='favicon.ico') }}" sizes="any">

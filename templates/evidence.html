@@ -38,6 +38,7 @@
           <a class="btn-ghost mt-6" href="{{ config.extra.repo_url }}/issues/new?template=evidence-update.yml" target="_blank" rel="noopener">{{ x.report_label }} <span aria-hidden="true">↗</span></a>
         </section>
         {{ <library.disclaimer lang={lang} /> }}
+        {%- if x.poster_figure is defined %}{{ <posters.figure fig={x.poster_figure} lang={lang} /> }}{%- endif %}
       </aside>
     </div>
 
@@ -97,7 +98,7 @@
 
     <section id="sources" class="ledger-block" aria-labelledby="sources-title">
       <h2 id="sources-title" class="display display-md">{{ trans(key="sources_heading", lang=lang) }}</h2>
-      <div class="table-scroll mt-10" role="region" aria-labelledby="sources-title" tabindex="0">
+      <div class="table-frame mt-10" role="region" aria-labelledby="sources-title">
         <table class="ledger-table">
           <thead>
             <tr>
@@ -117,10 +118,10 @@
                 {%- if ref.doi != "" %} <a href="https://doi.org/{{ ref.doi }}" rel="noopener" target="_blank">doi</a>{% endif %}
                 <span class="source-appraisal block">{{ source.appraisal[lang] }}</span>
               </th>
-              <td>{{ <evidence.design design={source.design} lang={lang} /> }}</td>
-              <td>{{ <evidence.level level={source.level} lang={lang} /> }}</td>
-              <td><time datetime="{{ source.last_reviewed }}">{{ source.last_reviewed }}</time></td>
-              <td><time datetime="{{ source.review_due }}">{{ source.review_due }}</time></td>
+              <td data-label="{{ trans(key='design', lang=lang) }}">{{ <evidence.design design={source.design} lang={lang} /> }}</td>
+              <td data-label="{{ trans(key='evidence_level', lang=lang) }}">{{ <evidence.level level={source.level} lang={lang} /> }}</td>
+              <td data-label="{{ trans(key='last_reviewed', lang=lang) }}"><time datetime="{{ source.last_reviewed }}">{{ source.last_reviewed }}</time></td>
+              <td data-label="{{ trans(key='review_due', lang=lang) }}"><time datetime="{{ source.review_due }}">{{ source.review_due }}</time></td>
             </tr>
             {%- endfor %}
           </tbody>

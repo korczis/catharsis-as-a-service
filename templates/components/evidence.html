@@ -46,7 +46,8 @@
 {% component evidence.claim(claim: map, lang: string, heading: string = "h3") %}
 {%- set show_label = trans(key="show_sources", lang=lang) -%}
 {%- set hide_label = trans(key="hide_sources", lang=lang) -%}
-<article id="claim-{{ claim.id }}" class="claim-card" x-data="{ open: false }">
+<article id="claim-{{ claim.id }}" class="claim-card" x-data="{ open: window.location.hash === '#claim-{{ claim.id }}' }"
+  x-on:hashchange.window="if (window.location.hash === '#claim-{{ claim.id }}') open = true">
   <div class="claim-badges">
     {{ <evidence.kind kind={claim.claim_type} lang={lang} /> }}
     {{ <evidence.level level={claim.evidence_level} lang={lang} /> }}
@@ -64,7 +65,7 @@
   </p>
   {%- if claim.sources | length > 0 %}
   <button type="button" class="claim-toggle" data-requires-js aria-controls="claim-{{ claim.id }}-sources" aria-expanded="false"
-    x-on:click="open = !open" x-bind:aria-expanded="open.toString()">
+    x-on:click="open = !open; if (open) window.history.replaceState(window.history.state, '', '#claim-{{ claim.id }}')" x-bind:aria-expanded="open.toString()">
     <span x-text="open ? '{{ hide_label }}' : '{{ show_label }}'">{{ show_label }}</span> <span aria-hidden="true">({{ claim.sources | length }})</span>
   </button>
   <div id="claim-{{ claim.id }}-sources" class="claim-sources hidden" x-bind:class="{ 'hidden': !open }">

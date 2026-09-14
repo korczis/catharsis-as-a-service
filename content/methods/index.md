@@ -295,6 +295,14 @@ confidence_value = "LOW"
 confidence_note = "Without a verified personal baseline, context and repeated observations, an inference about one person from four signals cannot exceed low confidence."
 problem_line = "problem_solved"
 problem_values = { unknown = "unknown", false = "false" }
+
+[extra.poster_figure]
+id = "poster-methods"
+caption = "From the Catharsis as a Service poster series. Slogans and numbers on the posters belong to the artwork; they are not findings."
+items = [
+  { src = "assets/posters/emoce-jsou-data.png", title = "Emotions are data", alt = "Poster: EMOCE JSOU DATA. (emotions are data) over a close-up of a face with closed eyes streaked with red light, above a crowd at a glowing stage gate; side panels repeat the artwork's input, process and output and show an artistic telemetry box.", caption = "An artistic slogan, not a method: this page explains why signals do not show what someone feels." },
+]
+
 +++
 
 ## Why this page exists

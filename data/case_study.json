@@ -1,0 +1,2178 @@
+{
+  "commits": [
+    {
+      "sha": "c8e012038c4f5eb798ae08247423dfaf4d246c8c",
+      "subject": "feat(poster): add Catharsis as a Service poster with print render",
+      "ts": "2026-09-14T09:54:05Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+    },
+    {
+      "sha": "9bc6897ce839e4a512f89f641d26ed57e066f118",
+      "subject": "feat(site): ship Catharsis as a Service as a bilingual Zola site with verified CI/CD",
+      "ts": "2026-09-14T10:42:45Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+    },
+    {
+      "sha": "54a31a2dcae156ace74383db307243a71d6a6531",
+      "subject": "feat(seo): add boilerplate practices, localized previews, structured data and guides",
+      "ts": "2026-09-14T11:10:12Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/54a31a2dcae156ace74383db307243a71d6a6531"
+    },
+    {
+      "sha": "51dde0bb4dba09c35fb4c0a835d764a497f3c5a3",
+      "subject": "feat(content): add research library, graded advice, command registry and Rust content API",
+      "ts": "2026-09-14T12:16:53Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/51dde0bb4dba09c35fb4c0a835d764a497f3c5a3"
+    },
+    {
+      "sha": "94d734c78ffed85a02a447051992a2acac51926d",
+      "subject": "fix(references): match Crossref titles with or without subtitles",
+      "ts": "2026-09-14T12:20:54Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+    },
+    {
+      "sha": "4cbb6fb84a94734d2a79ba0e12826d81b36830af",
+      "subject": "feat(evidence): add evidence ledger, methods page, glossary, status and evidence-gated landing",
+      "ts": "2026-09-14T12:53:54Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/4cbb6fb84a94734d2a79ba0e12826d81b36830af"
+    },
+    {
+      "sha": "f2890f4fa20f0f92db790477b1460c2e774bbe44",
+      "subject": "feat(api): export the evidence ledger and glossary, extend the Rust client, document the system",
+      "ts": "2026-09-14T13:01:58Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+    },
+    {
+      "sha": "d2b3c47608f29ece52f0e42045496f160a45c163",
+      "subject": "feat(screens): preview concept screens in place with paging and swipe",
+      "ts": "2026-09-14T15:14:22Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/d2b3c47608f29ece52f0e42045496f160a45c163"
+    },
+    {
+      "sha": "93fd07f57c5ffe691bc7b0ed1005b9a08c2b9ab0",
+      "subject": "fix(screens): give previews addresses and test modified clicks deterministically",
+      "ts": "2026-09-14T15:37:52Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/93fd07f57c5ffe691bc7b0ed1005b9a08c2b9ab0"
+    },
+    {
+      "sha": "2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b",
+      "subject": "feat(research): expand measuring-emotion with verified sources",
+      "ts": "2026-09-14T15:38:00Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b"
+    },
+    {
+      "sha": "eca8874c202444df5fd99d443fa160fbad6ccd04",
+      "subject": "feat(figures): add data-driven curves and pipeline figure kinds",
+      "ts": "2026-09-14T15:58:31Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/commit/eca8874c202444df5fd99d443fa160fbad6ccd04"
+    }
+  ],
+  "events": [
+    {
+      "detail_cs": "Pro tento commit neběžela pipeline Pages (workflow ještě neexistoval).",
+      "detail_en": "No Pages pipeline run for this commit (it predates the workflow).",
+      "id": "commit-c8e0120",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "title_en": "feat(poster): add Catharsis as a Service poster with print render",
+      "ts": "2026-09-14T09:54:05Z"
+    },
+    {
+      "detail_cs": "Politika se promítla do 3 instrukčních souborů (AGENTS.md, CLAUDE.md, GEMINI.md), které každého agenta odkazují na .ai/README.md.",
+      "detail_en": "The policy was projected into 3 instruction files (AGENTS.md, CLAUDE.md, GEMINI.md) that point every agent at .ai/README.md.",
+      "id": "majordomus-init",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        },
+        {
+          "label": ".ai/repo/policy.yaml",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/policy.yaml"
+        }
+      ],
+      "title_cs": "Inicializována vrstva Majordomus; vygenerovány instrukční soubory pro poskytovatele",
+      "title_en": "Majordomus layer initialised; provider instruction files generated",
+      "ts": "2026-09-14T10:26:23Z"
+    },
+    {
+      "detail_cs": "Profil implementation; rozsah 20 cest.",
+      "detail_en": "Profile implementation; scope of 20 paths.",
+      "id": "t-20260914102623-44b3-start",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102623-44b3",
+      "title_cs": "Start úlohy: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Task started: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:26:23Z"
+    },
+    {
+      "detail_en": "Current state: Site sources, templates, styles, scripts and tests written; validation in progress. The first task scope omitted the pre-existing root files that were moved into artwork/ and static/ (index.html, bg.jpg, catharsis-as-a-service.png, catharsis-as-a-service.jpg, .nojekyll), so watch reports scope drift. Next action: Restart the task with a scope covering the whole repository and continue: validate, commit, CI, deploy, verify, release.",
+      "id": "handover-20260914t102914z",
+      "kind": "handover",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102623-44b3",
+      "title_cs": "Zapsán handover: aktuální stav a další krok",
+      "title_en": "Handover written: current state and next action",
+      "ts": "2026-09-14T10:29:14Z"
+    },
+    {
+      "detail_cs": "První úloha si nárokovala 20 cest, ale ne kořenové soubory přesunuté do artwork/ a static/. Handover zaznamenává, že majordomus watch nahlásil odchylku; úloha byla ukončena jako partial a restartována před prvním pushem.",
+      "detail_en": "The first task claimed 20 paths but not the root files that were moved into artwork/ and static/. The handover records that majordomus watch reported the drift; the task was finished as partial and restarted before the first push.",
+      "id": "finding-scope-drift",
+      "kind": "finding",
+      "links": [
+        {
+          "label": "task lifecycle",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/workflows/task-lifecycle.md"
+        }
+      ],
+      "title_cs": "Odchylka od rozsahu po přesunu souborů; úloha restartována",
+      "title_en": "Scope drift after files were moved; task restarted",
+      "ts": "2026-09-14T10:29:14Z"
+    },
+    {
+      "detail_cs": "Smlouva o dokončení: 5 pass, 6 skipped; bez zaznamenaného ověřovacího příkazu.",
+      "detail_en": "Finish contract: 5 pass, 6 skipped; no verification command recorded.",
+      "id": "t-20260914102623-44b3-finish",
+      "kind": "finish",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102623-44b3",
+      "title_cs": "Úloha ukončena jako partial: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Task finished as partial: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:29:16Z"
+    },
+    {
+      "detail_cs": "Profil implementation; rozsah 1 cesta zadaný jako \".\".",
+      "detail_en": "Profile implementation; scope of 1 path declared as \".\".",
+      "id": "t-20260914102916-7cf5-start",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102916-7cf5",
+      "title_cs": "Start úlohy: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Task started: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:29:16Z"
+    },
+    {
+      "detail_cs": "Ručně psaná poznámka o průběhu (podle politiky nejvýš 40 řádků); text zůstává v lokálním stavu checkoutu.",
+      "detail_en": "Authored progress note (at most 40 lines by policy); the body stays in the checkout's local state.",
+      "id": "checkpoint-20260914t103433z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102916-7cf5",
+      "title_cs": "Checkpoint: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Checkpoint: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:34:33Z"
+    },
+    {
+      "detail_en": "Current state: Site, CI/CD, rules and repo settings are done; validate passes and 30/30 local e2e pass. A scope of \".\" is not interpreted as the whole repository, so check reports every file out of scope. Next action: Restart with explicit top-level scope paths, then commit, push, watch the Pages pipeline and verify production.",
+      "id": "handover-20260914t103937z",
+      "kind": "handover",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102916-7cf5",
+      "title_cs": "Zapsán handover: aktuální stav a další krok",
+      "title_en": "Handover written: current state and next action",
+      "ts": "2026-09-14T10:39:37Z"
+    },
+    {
+      "detail_cs": "Restartovaná úloha zadala rozsah jako \".\", což Majordomus nečte jako celý repozitář, a majordomus check proto nahlásil každý změněný soubor jako mimo rozsah. Úloha byla restartována s výslovně vyjmenovanými cestami ještě před prvním pushem.",
+      "detail_en": "The restarted task declared its scope as \".\", which Majordomus does not read as the whole repository, so majordomus check reported every changed file as out of scope. The task was restarted with explicit top-level paths before the first push.",
+      "id": "finding-malformed-scope",
+      "kind": "finding",
+      "links": [
+        {
+          "label": "scope-integrity rule",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/rules/vendor/majordomus/rules/scope-integrity.v1.md"
+        }
+      ],
+      "title_cs": "Rozsah \".\" zachycen před prvním pushem",
+      "title_en": "A scope of \".\" was caught before the first push",
+      "ts": "2026-09-14T10:39:37Z"
+    },
+    {
+      "detail_cs": "Smlouva o dokončení: 5 pass, 6 skipped; bez zaznamenaného ověřovacího příkazu.",
+      "detail_en": "Finish contract: 5 pass, 6 skipped; no verification command recorded.",
+      "id": "t-20260914102916-7cf5-finish",
+      "kind": "finish",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914102916-7cf5",
+      "title_cs": "Úloha ukončena jako partial: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Task finished as partial: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:39:39Z"
+    },
+    {
+      "detail_cs": "Profil implementation; rozsah 26 cest.",
+      "detail_en": "Profile implementation; scope of 26 paths.",
+      "id": "t-20260914103939-7b10-start",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit c8e0120",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/c8e012038c4f5eb798ae08247423dfaf4d246c8c"
+        }
+      ],
+      "task": "t-20260914103939-7b10",
+      "title_cs": "Start úlohy: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Task started: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:39:39Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34834554169 success.",
+      "detail_en": "Pages pipeline: run 34834554169 success.",
+      "id": "commit-9bc6897",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        },
+        {
+          "label": "run 34834554169",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34834554169"
+        }
+      ],
+      "title_en": "feat(site): ship Catharsis as a Service as a bilingual Zola site with verified CI/CD",
+      "ts": "2026-09-14T10:42:45Z"
+    },
+    {
+      "detail_cs": "7 jobů za 2 min 43 s: 7 prošlo.",
+      "detail_en": "7 jobs in 2 min 43 s: 7 passed.",
+      "id": "pipeline-34834554169",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34834554169",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34834554169"
+        },
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "title_cs": "Pipeline Pages prošla: feat(site): ship Catharsis as a Service as a bilingual Zola site with…",
+      "title_en": "Pages pipeline passed: feat(site): ship Catharsis as a Service as a bilingual Zola site with…",
+      "ts": "2026-09-14T10:43:02Z"
+    },
+    {
+      "detail_cs": "Checkpoint zapsaný po prvním pushi zaznamenává, že push využil výjimku pro administrátora v pravidlech repozitáře, která vyžadují CI. Nasazení přesto zůstalo podmíněné: ve workflow Pages job deploy závisí na jobech CI a job release na ověření produkce.",
+      "detail_en": "The checkpoint written after the first push records that the push used the admin bypass of the repository ruleset that requires CI. Deployment was still gated: in the Pages workflow the deploy job needs the CI jobs, and the release job needs production verification.",
+      "id": "finding-ruleset-bypass",
+      "kind": "finding",
+      "links": [
+        {
+          "label": ".github/workflows/pages.yml",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.github/workflows/pages.yml"
+        }
+      ],
+      "title_cs": "První push do main prošel přes výjimku pravidel pro administrátora",
+      "title_en": "The first push to main went through the ruleset's admin bypass",
+      "ts": "2026-09-14T10:43:26Z"
+    },
+    {
+      "detail_cs": "Ručně psaná poznámka o průběhu (podle politiky nejvýš 40 řádků); text zůstává v lokálním stavu checkoutu.",
+      "detail_en": "Authored progress note (at most 40 lines by policy); the body stays in the checkout's local state.",
+      "id": "checkpoint-20260914t104327z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914103939-7b10",
+      "title_cs": "Checkpoint: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Checkpoint: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:43:27Z"
+    },
+    {
+      "detail_cs": "Vytvořeno jobem Release v běhu 34834554169 poté, co pro commit 9bc6897 prošly Deploy a Verify production.",
+      "detail_en": "Cut by the Release job of run 34834554169 after Deploy and Verify production passed for commit 9bc6897.",
+      "id": "release-v0-1-0",
+      "kind": "release",
+      "links": [
+        {
+          "label": "v0.1.0",
+          "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.1.0"
+        },
+        {
+          "label": "run 34834554169",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34834554169"
+        },
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "title_cs": "Publikováno vydání v0.1.0",
+      "title_en": "Release v0.1.0 published",
+      "ts": "2026-09-14T10:45:42Z"
+    },
+    {
+      "detail_cs": "Smlouva o dokončení: 7 pass, 4 skipped; ověřovací příkaz scripts/smoke-production.sh https://korczis.github.io/catharsis-as-a-service/ skončil kódem 0 za 7 s.",
+      "detail_en": "Finish contract: 7 pass, 4 skipped; verification command scripts/smoke-production.sh https://korczis.github.io/catharsis-as-a-service/ exited 0 in 7 s.",
+      "id": "t-20260914103939-7b10-finish",
+      "kind": "finish",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        },
+        {
+          "label": "live site",
+          "url": "https://korczis.github.io/catharsis-as-a-service/"
+        }
+      ],
+      "task": "t-20260914103939-7b10",
+      "title_cs": "Úloha ukončena jako completed: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "title_en": "Task finished as completed: Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "ts": "2026-09-14T10:47:25Z"
+    },
+    {
+      "detail_cs": "Obě úlohy uzavřené jako dokončené spustily jako ověřovací příkaz smoke test proti živé URL (exit 0, 7 s). Úlohy uzavřené jako partial (3) žádný ověřovací příkaz nezaznamenaly a dokončení netvrdily.",
+      "detail_en": "Both tasks closed as completed ran the production smoke test against the live URL as their verification command (exit 0, 7 s). The 3 tasks closed as partial recorded no verification command and claimed no completion.",
+      "id": "finding-live-verified-completion",
+      "kind": "finding",
+      "links": [
+        {
+          "label": "verification-integrity rule",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/rules/vendor/majordomus/rules/verification-integrity.v1.md"
+        },
+        {
+          "label": "scripts/smoke-production.sh",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/scripts/smoke-production.sh"
+        }
+      ],
+      "title_cs": "„Dokončeno“ se zaznamenalo jen s úspěšnou kontrolou živého webu",
+      "title_en": "\"Completed\" was recorded only with a passing check of the live site",
+      "ts": "2026-09-14T10:47:25Z"
+    },
+    {
+      "detail_cs": "Profil implementation; rozsah 23 cest.",
+      "detail_en": "Profile implementation; scope of 23 paths.",
+      "id": "t-20260914105057-4fd0-start",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_cs": "Start úlohy: HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "title_en": "Task started: HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "ts": "2026-09-14T10:50:57Z"
+    },
+    {
+      "detail_en": "Why: Hand-written JSON-LD inside HTML templates gets HTML-escaped and breaks on quotes; building the graph as template maps keeps escaping correct by construction. Rejected: hand-written JSON-LD strings; a client-side script injecting JSON-LD. Evidence: templates/partials/structured-data.html; scripts/validate-html.py parses every JSON-LD block.",
+      "id": "decision-1",
+      "kind": "decision",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        },
+        {
+          "label": "templates/partials/structured-data.html",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/templates/partials/structured-data.html"
+        },
+        {
+          "label": "scripts/validate-html.py",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/scripts/validate-html.py"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_en": "Structured data is built as Tera data and serialised with json_encode",
+      "ts": "2026-09-14T11:08:30Z"
+    },
+    {
+      "detail_en": "Why: A shared link preview is often the only part of the work a reader sees; hreflang alternates in the sitemap and og:locale:alternate keep each edition discoverable in its own language. Rejected: one English preview card for all pages; hreflang only in HTML. Evidence: templates/sitemap.xml; tests/site.spec.js 'link previews are localized and reachable'.",
+      "id": "decision-2",
+      "kind": "decision",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        },
+        {
+          "label": "templates/sitemap.xml",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/templates/sitemap.xml"
+        },
+        {
+          "label": "tests/site.spec.js",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/tests/site.spec.js"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_en": "Link previews are localized per language, and the sitemap lists every language edition",
+      "ts": "2026-09-14T11:08:30Z"
+    },
+    {
+      "detail_en": "Why: User preference is pytest for Python; a venv keeps the global interpreter untouched and CI reproducible. Rejected: stdlib unittest; installing pytest globally. Evidence: requirements-dev.txt pins pytest 9.1.1.",
+      "id": "decision-3",
+      "kind": "decision",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_en": "Python validators are tested with pytest in a project venv",
+      "ts": "2026-09-14T11:08:31Z"
+    },
+    {
+      "detail_cs": "Ručně psaná poznámka o průběhu (podle politiky nejvýš 40 řádků); text zůstává v lokálním stavu checkoutu.",
+      "detail_en": "Authored progress note (at most 40 lines by policy); the body stays in the checkout's local state.",
+      "id": "checkpoint-20260914t110930z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_cs": "Checkpoint: HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "title_en": "Checkpoint: HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "ts": "2026-09-14T11:09:30Z"
+    },
+    {
+      "detail_en": "Current state: Phase A validated locally: validate.sh 7/7, Playwright 37/37. Not yet committed or deployed. New top-level paths (requirements-dev.txt, Rust workspace, data/, schemas/) fall outside this task scope. Next action: Restart the task with a scope covering all planned paths, commit and deploy Phase A, then implement Phase B and Phase C.",
+      "id": "handover-20260914t111009z",
+      "kind": "handover",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_cs": "Zapsán handover: aktuální stav a další krok",
+      "title_en": "Handover written: current state and next action",
+      "ts": "2026-09-14T11:10:09Z"
+    },
+    {
+      "detail_cs": "Když se zadání rozrostlo o workspace v Rustu, datové soubory a nástroje pro Python, handover zaznamenal, že nové cesty nejvyšší úrovně leží mimo rozsah úlohy. Úloha skončila jako partial a nová si nárokovala 31 cest.",
+      "detail_en": "When the brief grew to a Rust workspace, data files and Python tooling, the handover recorded that the new top-level paths fell outside the task's scope. The task was finished as partial and a new one claimed 31 paths.",
+      "id": "finding-scope-outgrown",
+      "kind": "finding",
+      "links": [],
+      "title_cs": "Zadání přerostlo nárokovaný rozsah; nová úloha si ho nárokovala",
+      "title_en": "The brief outgrew the claimed scope; a new task claimed it",
+      "ts": "2026-09-14T11:10:09Z"
+    },
+    {
+      "detail_cs": "Smlouva o dokončení: 5 pass, 6 skipped; bez zaznamenaného ověřovacího příkazu.",
+      "detail_en": "Finish contract: 5 pass, 6 skipped; no verification command recorded.",
+      "id": "t-20260914105057-4fd0-finish",
+      "kind": "finish",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914105057-4fd0",
+      "title_cs": "Úloha ukončena jako partial: HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "title_en": "Task finished as partial: HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "ts": "2026-09-14T11:10:10Z"
+    },
+    {
+      "detail_cs": "Profil implementation; rozsah 31 cest.",
+      "detail_en": "Profile implementation; scope of 31 paths.",
+      "id": "t-20260914111011-94a4-start",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit 9bc6897",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/9bc6897ce839e4a512f89f641d26ed57e066f118"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_cs": "Start úlohy: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "title_en": "Task started: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "ts": "2026-09-14T11:10:11Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34836842423 success.",
+      "detail_en": "Pages pipeline: run 34836842423 success.",
+      "id": "commit-54a31a2",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 54a31a2",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/54a31a2dcae156ace74383db307243a71d6a6531"
+        },
+        {
+          "label": "run 34836842423",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34836842423"
+        }
+      ],
+      "title_en": "feat(seo): add boilerplate practices, localized previews, structured data and guides",
+      "ts": "2026-09-14T11:10:12Z"
+    },
+    {
+      "detail_cs": "7 jobů za 3 min 6 s: 7 prošlo.",
+      "detail_en": "7 jobs in 3 min 6 s: 7 passed.",
+      "id": "pipeline-34836842423",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34836842423",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34836842423"
+        },
+        {
+          "label": "commit 54a31a2",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/54a31a2dcae156ace74383db307243a71d6a6531"
+        }
+      ],
+      "title_cs": "Pipeline Pages prošla: feat(seo): add boilerplate practices, localized previews, structured …",
+      "title_en": "Pages pipeline passed: feat(seo): add boilerplate practices, localized previews, structured …",
+      "ts": "2026-09-14T11:10:26Z"
+    },
+    {
+      "detail_cs": "Vytvořeno jobem Release v běhu 34836842423 poté, co pro commit 54a31a2 prošly Deploy a Verify production.",
+      "detail_en": "Cut by the Release job of run 34836842423 after Deploy and Verify production passed for commit 54a31a2.",
+      "id": "release-v0-2-0",
+      "kind": "release",
+      "links": [
+        {
+          "label": "v0.2.0",
+          "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.2.0"
+        },
+        {
+          "label": "run 34836842423",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34836842423"
+        },
+        {
+          "label": "commit 54a31a2",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/54a31a2dcae156ace74383db307243a71d6a6531"
+        }
+      ],
+      "title_cs": "Publikováno vydání v0.2.0",
+      "title_en": "Release v0.2.0 published",
+      "ts": "2026-09-14T11:13:28Z"
+    },
+    {
+      "detail_cs": "Ručně psaná poznámka o průběhu (podle politiky nejvýš 40 řádků); text zůstává v lokálním stavu checkoutu.",
+      "detail_en": "Authored progress note (at most 40 lines by policy); the body stays in the checkout's local state.",
+      "id": "checkpoint-20260914t113136z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit 54a31a2",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/54a31a2dcae156ace74383db307243a71d6a6531"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_cs": "Checkpoint: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "title_en": "Checkpoint: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "ts": "2026-09-14T11:31:36Z"
+    },
+    {
+      "detail_cs": "Odvozeno z Gitu, ne napsáno: od začátku úlohy se změnilo 65 souborů.",
+      "detail_en": "Derived from Git, not authored: 65 files changed since the task started.",
+      "id": "checkpoint-20260914t121646z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit 54a31a2",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/54a31a2dcae156ace74383db307243a71d6a6531"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_cs": "Checkpoint: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "title_en": "Checkpoint: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "ts": "2026-09-14T12:16:46Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34842607207 failure.",
+      "detail_en": "Pages pipeline: run 34842607207 failure.",
+      "id": "commit-51dde0b",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 51dde0b",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/51dde0bb4dba09c35fb4c0a835d764a497f3c5a3"
+        },
+        {
+          "label": "run 34842607207",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842607207"
+        }
+      ],
+      "title_en": "feat(content): add research library, graded advice, command registry and Rust content API",
+      "ts": "2026-09-14T12:16:53Z"
+    },
+    {
+      "detail_cs": "10 jobů za 1 min 29 s: 6 prošlo, selhalo: CI / References (Crossref), přeskočeno: Deploy, Release, Verify production. Další zelený běh byl 34842946706 pro commit 94d734c.",
+      "detail_en": "10 jobs in 1 min 29 s: 6 passed, failed: CI / References (Crossref), skipped: Deploy, Release, Verify production. The next green run was 34842946706 for commit 94d734c.",
+      "id": "pipeline-34842607207",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34842607207",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842607207"
+        },
+        {
+          "label": "commit 51dde0b",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/51dde0bb4dba09c35fb4c0a835d764a497f3c5a3"
+        },
+        {
+          "label": "next green run 34842946706",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+        }
+      ],
+      "title_cs": "Pipeline Pages selhala: feat(content): add research library, graded advice, command registry …",
+      "title_en": "Pages pipeline failed: feat(content): add research library, graded advice, command registry …",
+      "ts": "2026-09-14T12:17:19Z"
+    },
+    {
+      "detail_cs": "Běh 34842607207 selhal v jobu References (Crossref); přeskočeno: Deploy, Release, Verify production. Další zelený běh byl 34842946706 pro commit 94d734c (fix(references): match Crossref titles with or without subtitles), který publikoval v0.3.0.",
+      "detail_en": "Run 34842607207 failed in References (Crossref); Deploy, Release, Verify production were skipped. The next green run was 34842946706 for commit 94d734c (fix(references): match Crossref titles with or without subtitles), which published v0.3.0.",
+      "id": "finding-references-failure",
+      "kind": "finding",
+      "links": [
+        {
+          "label": "failed run 34842607207",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842607207"
+        },
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        },
+        {
+          "label": "green run 34842946706",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+        }
+      ],
+      "title_cs": "Neshoda názvu v Crossrefu zastavila nasazení",
+      "title_en": "A Crossref title mismatch stopped a deployment",
+      "ts": "2026-09-14T12:17:19Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34842946706 success.",
+      "detail_en": "Pages pipeline: run 34842946706 success.",
+      "id": "commit-94d734c",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        },
+        {
+          "label": "run 34842946706",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+        }
+      ],
+      "title_en": "fix(references): match Crossref titles with or without subtitles",
+      "ts": "2026-09-14T12:20:54Z"
+    },
+    {
+      "detail_cs": "10 jobů za 3 min 25 s: 10 prošlo.",
+      "detail_en": "10 jobs in 3 min 25 s: 10 passed.",
+      "id": "pipeline-34842946706",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34842946706",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+        },
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        }
+      ],
+      "title_cs": "Pipeline Pages prošla: fix(references): match Crossref titles with or without subtitles",
+      "title_en": "Pages pipeline passed: fix(references): match Crossref titles with or without subtitles",
+      "ts": "2026-09-14T12:21:07Z"
+    },
+    {
+      "detail_cs": "Vytvořeno jobem Release v běhu 34842946706 poté, co pro commit 94d734c prošly Deploy a Verify production.",
+      "detail_en": "Cut by the Release job of run 34842946706 after Deploy and Verify production passed for commit 94d734c.",
+      "id": "release-v0-3-0",
+      "kind": "release",
+      "links": [
+        {
+          "label": "v0.3.0",
+          "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.3.0"
+        },
+        {
+          "label": "run 34842946706",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+        },
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        }
+      ],
+      "title_cs": "Publikováno vydání v0.3.0",
+      "title_en": "Release v0.3.0 published",
+      "ts": "2026-09-14T12:24:28Z"
+    },
+    {
+      "detail_en": "Why: The site makes psychological and physiological claims to the public; bibliographic correctness (Crossref) does not show whether a claim is still supported, how strong it is, or when it was last checked. Rejected: Free-text evidence notes inside each page; a single combined references+appraisal file (mixes Crossref-verifiable facts with editorial judgement). Evidence: scripts/validate-claims.py, .github/workflows/evidence-freshness.yml.",
+      "id": "decision-4",
+      "kind": "decision",
+      "links": [
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        },
+        {
+          "label": "scripts/validate-claims.py",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/scripts/validate-claims.py"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_en": "Evidence is tracked as a dated ledger: data/sources.toml appraises every registry reference (design, level A–E), data/claims.toml records each public claim (type, level, confidence, sources, where used, last_reviewed, review_due), and validators fail the build on stale or inconsistent entries",
+      "ts": "2026-09-14T12:26:06Z"
+    },
+    {
+      "detail_cs": "Odvozeno z Gitu, ne napsáno: od začátku úlohy se změnilo 144 souborů.",
+      "detail_en": "Derived from Git, not authored: 144 files changed since the task started.",
+      "id": "checkpoint-20260914t125241z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_cs": "Checkpoint: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "title_en": "Checkpoint: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "ts": "2026-09-14T12:52:41Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34845982889 success.",
+      "detail_en": "Pages pipeline: run 34845982889 success.",
+      "id": "commit-4cbb6fb",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 4cbb6fb",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/4cbb6fb84a94734d2a79ba0e12826d81b36830af"
+        },
+        {
+          "label": "run 34845982889",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34845982889"
+        }
+      ],
+      "title_en": "feat(evidence): add evidence ledger, methods page, glossary, status and evidence-gated landing",
+      "ts": "2026-09-14T12:53:54Z"
+    },
+    {
+      "detail_cs": "10 jobů za 4 min 17 s: 10 prošlo.",
+      "detail_en": "10 jobs in 4 min 17 s: 10 passed.",
+      "id": "pipeline-34845982889",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34845982889",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34845982889"
+        },
+        {
+          "label": "commit 4cbb6fb",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/4cbb6fb84a94734d2a79ba0e12826d81b36830af"
+        }
+      ],
+      "title_cs": "Pipeline Pages prošla: feat(evidence): add evidence ledger, methods page, glossary, status a…",
+      "title_en": "Pages pipeline passed: feat(evidence): add evidence ledger, methods page, glossary, status a…",
+      "ts": "2026-09-14T12:54:07Z"
+    },
+    {
+      "detail_cs": "Zaznamenáno jako návrh. Přijetí architektonického rozhodnutí je ponecháno na člověku.",
+      "detail_en": "Recorded as proposed. Accepting an architecture decision is left to a person.",
+      "id": "adr-0001-proposed",
+      "kind": "decision",
+      "links": [
+        {
+          "label": ".ai/repo/adrs/0001-evidence-ledger-with-dated-review-for-every-public-claim.md",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/adrs/0001-evidence-ledger-with-dated-review-for-every-public-claim.md"
+        }
+      ],
+      "title_cs": "ADR-0001 navrženo: Evidence ledger with dated review for every public claim",
+      "title_en": "ADR-0001 proposed: Evidence ledger with dated review for every public claim",
+      "ts": "2026-09-14T12:55:12Z"
+    },
+    {
+      "detail_cs": "Agent zaznamenal rozhodnutí o ledgeru důkazů jako navržené ADR a sám ho nepřijal. Poslední handover uvádí jeho přijetí nebo úpravu jako další krok pro člověka.",
+      "detail_en": "The agent recorded the evidence-ledger decision as a proposed ADR and did not accept it. The final handover lists accepting or amending it as the next action for a person.",
+      "id": "finding-adr-left-to-person",
+      "kind": "finding",
+      "links": [
+        {
+          "label": ".ai/repo/adrs/0001-evidence-ledger-with-dated-review-for-every-public-claim.md",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/adrs/0001-evidence-ledger-with-dated-review-for-every-public-claim.md"
+        }
+      ],
+      "title_cs": "ADR-0001 zůstalo návrhem; přijetí zůstalo na člověku",
+      "title_en": "ADR-0001 stayed proposed; acceptance was left to a person",
+      "ts": "2026-09-14T12:55:12Z"
+    },
+    {
+      "detail_cs": "Vytvořeno jobem Release v běhu 34845982889 poté, co pro commit 4cbb6fb prošly Deploy a Verify production.",
+      "detail_en": "Cut by the Release job of run 34845982889 after Deploy and Verify production passed for commit 4cbb6fb.",
+      "id": "release-v0-4-0",
+      "kind": "release",
+      "links": [
+        {
+          "label": "v0.4.0",
+          "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.4.0"
+        },
+        {
+          "label": "run 34845982889",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34845982889"
+        },
+        {
+          "label": "commit 4cbb6fb",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/4cbb6fb84a94734d2a79ba0e12826d81b36830af"
+        }
+      ],
+      "title_cs": "Publikováno vydání v0.4.0",
+      "title_en": "Release v0.4.0 published",
+      "ts": "2026-09-14T12:58:21Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34846771284 success.",
+      "detail_en": "Pages pipeline: run 34846771284 success.",
+      "id": "commit-f2890f4",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        },
+        {
+          "label": "run 34846771284",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34846771284"
+        }
+      ],
+      "title_en": "feat(api): export the evidence ledger and glossary, extend the Rust client, document the system",
+      "ts": "2026-09-14T13:01:58Z"
+    },
+    {
+      "detail_cs": "10 jobů za 5 min 2 s: 10 prošlo.",
+      "detail_en": "10 jobs in 5 min 2 s: 10 passed.",
+      "id": "pipeline-34846771284",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34846771284",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34846771284"
+        },
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        }
+      ],
+      "title_cs": "Pipeline Pages prošla: feat(api): export the evidence ledger and glossary, extend the Rust c…",
+      "title_en": "Pages pipeline passed: feat(api): export the evidence ledger and glossary, extend the Rust c…",
+      "ts": "2026-09-14T13:02:11Z"
+    },
+    {
+      "detail_cs": "Vytvořeno jobem Release v běhu 34846771284 poté, co pro commit f2890f4 prošly Deploy a Verify production.",
+      "detail_en": "Cut by the Release job of run 34846771284 after Deploy and Verify production passed for commit f2890f4.",
+      "id": "release-v0-5-0",
+      "kind": "release",
+      "links": [
+        {
+          "label": "v0.5.0",
+          "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.5.0"
+        },
+        {
+          "label": "run 34846771284",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34846771284"
+        },
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        }
+      ],
+      "title_cs": "Publikováno vydání v0.5.0",
+      "title_en": "Release v0.5.0 published",
+      "ts": "2026-09-14T13:07:10Z"
+    },
+    {
+      "detail_en": "Current state: main at f2890f4 is deployed as release v0.5.0; Pages pipeline run 34846771284 passed all 10 jobs including production verification. Evidence freshness workflow run 34846806810 passed. Local: validate.sh PASS, pytest 40 passed, Playwright 72 passed, cargo fmt/clippy/test pass. Ledger: 58 appraised sources, 50 claims, 54 glossary terms. ADR-0001 (evidence ledger) is proposed and awaits a person's acceptance. Next action: Accept or amend ADR-0001. Review Czech glossary terminology flagged as non-standard (kolektivní efervescence, pojmenování afektu, afektivní informatika). Optional: per-page social preview images (currently localized per language).",
+      "id": "handover-20260914t130826z",
+      "kind": "handover",
+      "links": [
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_cs": "Zapsán handover: aktuální stav a další krok",
+      "title_en": "Handover written: current state and next action",
+      "ts": "2026-09-14T13:08:26Z"
+    },
+    {
+      "detail_cs": "Smlouva o dokončení: 7 pass, 4 skipped; ověřovací příkaz scripts/smoke-production.sh https://korczis.github.io/catharsis-as-a-service/ skončil kódem 0 za 7 s.",
+      "detail_en": "Finish contract: 7 pass, 4 skipped; verification command scripts/smoke-production.sh https://korczis.github.io/catharsis-as-a-service/ exited 0 in 7 s.",
+      "id": "t-20260914111011-94a4-finish",
+      "kind": "finish",
+      "links": [
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        },
+        {
+          "label": "live site",
+          "url": "https://korczis.github.io/catharsis-as-a-service/"
+        }
+      ],
+      "task": "t-20260914111011-94a4",
+      "title_cs": "Úloha ukončena jako completed: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "title_en": "Task finished as completed: Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "ts": "2026-09-14T13:08:34Z"
+    },
+    {
+      "detail_cs": "Profil implementation; rozsah 31 cest.",
+      "detail_en": "Profile implementation; scope of 31 paths.",
+      "id": "t-20260914145407-5f45-start",
+      "kind": "task",
+      "links": [
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        }
+      ],
+      "task": "t-20260914145407-5f45",
+      "title_cs": "Start úlohy: Extend the site: more research and advice, per-page social previews, search and glossary cross-linking, second artifact Closure as a Service",
+      "title_en": "Task started: Extend the site: more research and advice, per-page social previews, search and glossary cross-linking, second artifact Closure as a Service",
+      "ts": "2026-09-14T14:54:07Z"
+    },
+    {
+      "detail_cs": "Checkpoint úlohy zaznamenaný v ledgeru; soubor s poznámkou k němu uchován není.",
+      "detail_en": "Checkpoint of the task recorded in the ledger; no note file is retained for it.",
+      "id": "checkpoint-20260914t151241z",
+      "kind": "checkpoint",
+      "links": [
+        {
+          "label": "commit f2890f4",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/f2890f4fa20f0f92db790477b1460c2e774bbe44"
+        }
+      ],
+      "task": "t-20260914145407-5f45",
+      "title_cs": "Checkpoint: Extend the site: more research and advice, per-page social previews, search and glossary cross-linking, second artifact Closure as a Service",
+      "title_en": "Checkpoint: Extend the site: more research and advice, per-page social previews, search and glossary cross-linking, second artifact Closure as a Service",
+      "ts": "2026-09-14T15:12:41Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34860959250 failure.",
+      "detail_en": "Pages pipeline: run 34860959250 failure.",
+      "id": "commit-d2b3c47",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit d2b3c47",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/d2b3c47608f29ece52f0e42045496f160a45c163"
+        },
+        {
+          "label": "run 34860959250",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34860959250"
+        }
+      ],
+      "title_en": "feat(screens): preview concept screens in place with paging and swipe",
+      "ts": "2026-09-14T15:14:22Z"
+    },
+    {
+      "detail_cs": "10 jobů za 8 min 1 s: 8 prošlo, selhalo: Verify production, přeskočeno: Release. Další zelený běh byl 34863500153 pro commit 2125f1e.",
+      "detail_en": "10 jobs in 8 min 1 s: 8 passed, failed: Verify production, skipped: Release. The next green run was 34863500153 for commit 2125f1e.",
+      "id": "pipeline-34860959250",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34860959250",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34860959250"
+        },
+        {
+          "label": "commit d2b3c47",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/d2b3c47608f29ece52f0e42045496f160a45c163"
+        },
+        {
+          "label": "next green run 34863500153",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+        }
+      ],
+      "title_cs": "Pipeline Pages selhala: feat(screens): preview concept screens in place with paging and swipe",
+      "title_en": "Pages pipeline failed: feat(screens): preview concept screens in place with paging and swipe",
+      "ts": "2026-09-14T15:15:24Z"
+    },
+    {
+      "detail_cs": "Běh 34860959250 selhal v jobu Verify production; přeskočeno: Release. Další zelený běh byl 34863500153 pro commit 2125f1e (feat(research): expand measuring-emotion with verified sources), který publikoval v0.6.0.",
+      "detail_en": "Run 34860959250 failed in Verify production; Release was skipped. The next green run was 34863500153 for commit 2125f1e (feat(research): expand measuring-emotion with verified sources), which published v0.6.0.",
+      "id": "finding-production-verification-failure",
+      "kind": "finding",
+      "links": [
+        {
+          "label": "failed run 34860959250",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34860959250"
+        },
+        {
+          "label": "commit 2125f1e",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b"
+        },
+        {
+          "label": "green run 34863500153",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+        }
+      ],
+      "title_cs": "Ověření produkce selhalo, a proto nevzniklo vydání",
+      "title_en": "Production verification failed, so no release was cut",
+      "ts": "2026-09-14T15:15:24Z"
+    },
+    {
+      "detail_cs": "Pro tento commit neběžela pipeline Pages (workflow ještě neexistoval).",
+      "detail_en": "No Pages pipeline run for this commit (it predates the workflow).",
+      "id": "commit-93fd07f",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 93fd07f",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/93fd07f57c5ffe691bc7b0ed1005b9a08c2b9ab0"
+        }
+      ],
+      "title_en": "fix(screens): give previews addresses and test modified clicks deterministically",
+      "ts": "2026-09-14T15:37:52Z"
+    },
+    {
+      "detail_cs": "Pipeline Pages: běh 34863500153 success.",
+      "detail_en": "Pages pipeline: run 34863500153 success.",
+      "id": "commit-2125f1e",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit 2125f1e",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b"
+        },
+        {
+          "label": "run 34863500153",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+        }
+      ],
+      "title_en": "feat(research): expand measuring-emotion with verified sources",
+      "ts": "2026-09-14T15:38:00Z"
+    },
+    {
+      "detail_cs": "10 jobů za 5 min 7 s: 10 prošlo.",
+      "detail_en": "10 jobs in 5 min 7 s: 10 passed.",
+      "id": "pipeline-34863500153",
+      "kind": "pipeline",
+      "links": [
+        {
+          "label": "run 34863500153",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+        },
+        {
+          "label": "commit 2125f1e",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b"
+        }
+      ],
+      "title_cs": "Pipeline Pages prošla: feat(research): expand measuring-emotion with verified sources",
+      "title_en": "Pages pipeline passed: feat(research): expand measuring-emotion with verified sources",
+      "ts": "2026-09-14T15:38:33Z"
+    },
+    {
+      "detail_cs": "Vytvořeno jobem Release v běhu 34863500153 poté, co pro commit 2125f1e prošly Deploy a Verify production.",
+      "detail_en": "Cut by the Release job of run 34863500153 after Deploy and Verify production passed for commit 2125f1e.",
+      "id": "release-v0-6-0",
+      "kind": "release",
+      "links": [
+        {
+          "label": "v0.6.0",
+          "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.6.0"
+        },
+        {
+          "label": "run 34863500153",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+        },
+        {
+          "label": "commit 2125f1e",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b"
+        }
+      ],
+      "title_cs": "Publikováno vydání v0.6.0",
+      "title_en": "Release v0.6.0 published",
+      "ts": "2026-09-14T15:43:36Z"
+    },
+    {
+      "detail_cs": "Pro tento commit neběžela pipeline Pages (workflow ještě neexistoval).",
+      "detail_en": "No Pages pipeline run for this commit (it predates the workflow).",
+      "id": "commit-eca8874",
+      "kind": "commit",
+      "links": [
+        {
+          "label": "commit eca8874",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/eca8874c202444df5fd99d443fa160fbad6ccd04"
+        }
+      ],
+      "title_en": "feat(figures): add data-driven curves and pipeline figure kinds",
+      "ts": "2026-09-14T15:58:31Z"
+    }
+  ],
+  "findings": [
+    {
+      "caught_by": "majordomus-watch",
+      "detail_cs": "První úloha si nárokovala 20 cest, ale ne kořenové soubory přesunuté do artwork/ a static/. Handover zaznamenává, že majordomus watch nahlásil odchylku; úloha byla ukončena jako partial a restartována před prvním pushem.",
+      "detail_en": "The first task claimed 20 paths but not the root files that were moved into artwork/ and static/. The handover records that majordomus watch reported the drift; the task was finished as partial and restarted before the first push.",
+      "evidence": [
+        "handover-20260914t102914z",
+        "t-20260914102623-44b3-finish",
+        "t-20260914102916-7cf5-start"
+      ],
+      "id": "scope-drift",
+      "links": [
+        {
+          "label": "task lifecycle",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/workflows/task-lifecycle.md"
+        }
+      ],
+      "title_cs": "Odchylka od rozsahu po přesunu souborů; úloha restartována",
+      "title_en": "Scope drift after files were moved; task restarted",
+      "ts": "2026-09-14T10:29:14Z"
+    },
+    {
+      "caught_by": "majordomus-check",
+      "detail_cs": "Restartovaná úloha zadala rozsah jako \".\", což Majordomus nečte jako celý repozitář, a majordomus check proto nahlásil každý změněný soubor jako mimo rozsah. Úloha byla restartována s výslovně vyjmenovanými cestami ještě před prvním pushem.",
+      "detail_en": "The restarted task declared its scope as \".\", which Majordomus does not read as the whole repository, so majordomus check reported every changed file as out of scope. The task was restarted with explicit top-level paths before the first push.",
+      "evidence": [
+        "t-20260914102916-7cf5-start",
+        "handover-20260914t103937z",
+        "t-20260914102916-7cf5-finish",
+        "t-20260914103939-7b10-start"
+      ],
+      "id": "malformed-scope",
+      "links": [
+        {
+          "label": "scope-integrity rule",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/rules/vendor/majordomus/rules/scope-integrity.v1.md"
+        }
+      ],
+      "title_cs": "Rozsah \".\" zachycen před prvním pushem",
+      "title_en": "A scope of \".\" was caught before the first push",
+      "ts": "2026-09-14T10:39:37Z"
+    },
+    {
+      "caught_by": null,
+      "detail_cs": "Když se zadání rozrostlo o workspace v Rustu, datové soubory a nástroje pro Python, handover zaznamenal, že nové cesty nejvyšší úrovně leží mimo rozsah úlohy. Úloha skončila jako partial a nová si nárokovala 31 cest.",
+      "detail_en": "When the brief grew to a Rust workspace, data files and Python tooling, the handover recorded that the new top-level paths fell outside the task's scope. The task was finished as partial and a new one claimed 31 paths.",
+      "evidence": [
+        "handover-20260914t111009z",
+        "t-20260914105057-4fd0-finish",
+        "t-20260914111011-94a4-start"
+      ],
+      "id": "scope-outgrown",
+      "links": [],
+      "title_cs": "Zadání přerostlo nárokovaný rozsah; nová úloha si ho nárokovala",
+      "title_en": "The brief outgrew the claimed scope; a new task claimed it",
+      "ts": "2026-09-14T11:10:09Z"
+    },
+    {
+      "caught_by": null,
+      "detail_cs": "Checkpoint zapsaný po prvním pushi zaznamenává, že push využil výjimku pro administrátora v pravidlech repozitáře, která vyžadují CI. Nasazení přesto zůstalo podmíněné: ve workflow Pages job deploy závisí na jobech CI a job release na ověření produkce.",
+      "detail_en": "The checkpoint written after the first push records that the push used the admin bypass of the repository ruleset that requires CI. Deployment was still gated: in the Pages workflow the deploy job needs the CI jobs, and the release job needs production verification.",
+      "evidence": [
+        "checkpoint-20260914t104327z"
+      ],
+      "id": "ruleset-bypass",
+      "links": [
+        {
+          "label": ".github/workflows/pages.yml",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.github/workflows/pages.yml"
+        }
+      ],
+      "title_cs": "První push do main prošel přes výjimku pravidel pro administrátora",
+      "title_en": "The first push to main went through the ruleset's admin bypass",
+      "ts": "2026-09-14T10:43:26Z"
+    },
+    {
+      "caught_by": "majordomus-finish",
+      "detail_cs": "Obě úlohy uzavřené jako dokončené spustily jako ověřovací příkaz smoke test proti živé URL (exit 0, 7 s). Úlohy uzavřené jako partial (3) žádný ověřovací příkaz nezaznamenaly a dokončení netvrdily.",
+      "detail_en": "Both tasks closed as completed ran the production smoke test against the live URL as their verification command (exit 0, 7 s). The 3 tasks closed as partial recorded no verification command and claimed no completion.",
+      "evidence": [
+        "t-20260914103939-7b10-finish",
+        "t-20260914111011-94a4-finish"
+      ],
+      "id": "live-verified-completion",
+      "links": [
+        {
+          "label": "verification-integrity rule",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/rules/vendor/majordomus/rules/verification-integrity.v1.md"
+        },
+        {
+          "label": "scripts/smoke-production.sh",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/scripts/smoke-production.sh"
+        }
+      ],
+      "title_cs": "„Dokončeno“ se zaznamenalo jen s úspěšnou kontrolou živého webu",
+      "title_en": "\"Completed\" was recorded only with a passing check of the live site",
+      "ts": "2026-09-14T10:47:25Z"
+    },
+    {
+      "caught_by": "ci:References (Crossref)",
+      "detail_cs": "Běh 34842607207 selhal v jobu References (Crossref); přeskočeno: Deploy, Release, Verify production. Další zelený běh byl 34842946706 pro commit 94d734c (fix(references): match Crossref titles with or without subtitles), který publikoval v0.3.0.",
+      "detail_en": "Run 34842607207 failed in References (Crossref); Deploy, Release, Verify production were skipped. The next green run was 34842946706 for commit 94d734c (fix(references): match Crossref titles with or without subtitles), which published v0.3.0.",
+      "evidence": [
+        "pipeline-34842607207",
+        "commit-94d734c",
+        "pipeline-34842946706",
+        "release-v0-3-0"
+      ],
+      "id": "references-failure",
+      "links": [
+        {
+          "label": "failed run 34842607207",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842607207"
+        },
+        {
+          "label": "commit 94d734c",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/94d734c78ffed85a02a447051992a2acac51926d"
+        },
+        {
+          "label": "green run 34842946706",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+        }
+      ],
+      "title_cs": "Neshoda názvu v Crossrefu zastavila nasazení",
+      "title_en": "A Crossref title mismatch stopped a deployment",
+      "ts": "2026-09-14T12:17:19Z"
+    },
+    {
+      "caught_by": null,
+      "detail_cs": "Agent zaznamenal rozhodnutí o ledgeru důkazů jako navržené ADR a sám ho nepřijal. Poslední handover uvádí jeho přijetí nebo úpravu jako další krok pro člověka.",
+      "detail_en": "The agent recorded the evidence-ledger decision as a proposed ADR and did not accept it. The final handover lists accepting or amending it as the next action for a person.",
+      "evidence": [
+        "adr-0001-proposed",
+        "handover-20260914t130826z"
+      ],
+      "id": "adr-left-to-person",
+      "links": [
+        {
+          "label": ".ai/repo/adrs/0001-evidence-ledger-with-dated-review-for-every-public-claim.md",
+          "url": "https://github.com/korczis/catharsis-as-a-service/blob/main/.ai/repo/adrs/0001-evidence-ledger-with-dated-review-for-every-public-claim.md"
+        }
+      ],
+      "title_cs": "ADR-0001 zůstalo návrhem; přijetí zůstalo na člověku",
+      "title_en": "ADR-0001 stayed proposed; acceptance was left to a person",
+      "ts": "2026-09-14T12:55:12Z"
+    },
+    {
+      "caught_by": "ci:Verify production",
+      "detail_cs": "Běh 34860959250 selhal v jobu Verify production; přeskočeno: Release. Další zelený běh byl 34863500153 pro commit 2125f1e (feat(research): expand measuring-emotion with verified sources), který publikoval v0.6.0.",
+      "detail_en": "Run 34860959250 failed in Verify production; Release was skipped. The next green run was 34863500153 for commit 2125f1e (feat(research): expand measuring-emotion with verified sources), which published v0.6.0.",
+      "evidence": [
+        "pipeline-34860959250",
+        "commit-2125f1e",
+        "pipeline-34863500153",
+        "release-v0-6-0"
+      ],
+      "id": "production-verification-failure",
+      "links": [
+        {
+          "label": "failed run 34860959250",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34860959250"
+        },
+        {
+          "label": "commit 2125f1e",
+          "url": "https://github.com/korczis/catharsis-as-a-service/commit/2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b"
+        },
+        {
+          "label": "green run 34863500153",
+          "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+        }
+      ],
+      "title_cs": "Ověření produkce selhalo, a proto nevzniklo vydání",
+      "title_en": "Production verification failed, so no release was cut",
+      "ts": "2026-09-14T15:15:24Z"
+    }
+  ],
+  "generated_from": {
+    "adrs_proposed": 1,
+    "checkpoints": 7,
+    "commits": 11,
+    "decisions": 4,
+    "events": 61,
+    "findings": 8,
+    "handovers": 4,
+    "ledger_events": 30,
+    "pipeline_runs": 8,
+    "releases": 6,
+    "tasks": 6,
+    "through": "2026-09-14T15:58:31Z"
+  },
+  "majordomus_version": "0.6.0",
+  "milestones": {
+    "first_commit": "2026-09-14T09:54:05Z",
+    "first_commit_to_first_release_seconds": 3097,
+    "first_verified_release": "2026-09-14T10:45:42Z",
+    "majordomus_initialised": "2026-09-14T10:26:23Z",
+    "majordomus_to_first_release_seconds": 1159
+  },
+  "pipelines": [
+    {
+      "conclusion": "success",
+      "created": "2026-09-14T10:43:02Z",
+      "id": 34834554169,
+      "jobs": [
+        {
+          "completed": "2026-09-14T10:43:10Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 5,
+          "started": "2026-09-14T10:43:05Z"
+        },
+        {
+          "completed": "2026-09-14T10:44:00Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 55,
+          "started": "2026-09-14T10:43:05Z"
+        },
+        {
+          "completed": "2026-09-14T10:43:19Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 14,
+          "started": "2026-09-14T10:43:05Z"
+        },
+        {
+          "completed": "2026-09-14T10:43:19Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 14,
+          "started": "2026-09-14T10:43:05Z"
+        },
+        {
+          "completed": "2026-09-14T10:44:19Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 15,
+          "started": "2026-09-14T10:44:04Z"
+        },
+        {
+          "completed": "2026-09-14T10:45:44Z",
+          "conclusion": "success",
+          "name": "Release",
+          "seconds": 10,
+          "started": "2026-09-14T10:45:34Z"
+        },
+        {
+          "completed": "2026-09-14T10:45:31Z",
+          "conclusion": "success",
+          "name": "Verify production",
+          "seconds": 69,
+          "started": "2026-09-14T10:44:22Z"
+        }
+      ],
+      "seconds": 163,
+      "sha": "9bc6897ce839e4a512f89f641d26ed57e066f118",
+      "title": "feat(site): ship Catharsis as a Service as a bilingual Zola site with…",
+      "updated": "2026-09-14T10:45:45Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34834554169"
+    },
+    {
+      "conclusion": "success",
+      "created": "2026-09-14T11:10:26Z",
+      "id": 34836842423,
+      "jobs": [
+        {
+          "completed": "2026-09-14T11:10:36Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 7,
+          "started": "2026-09-14T11:10:29Z"
+        },
+        {
+          "completed": "2026-09-14T11:11:31Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 62,
+          "started": "2026-09-14T11:10:29Z"
+        },
+        {
+          "completed": "2026-09-14T11:10:44Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 14,
+          "started": "2026-09-14T11:10:30Z"
+        },
+        {
+          "completed": "2026-09-14T11:10:41Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 12,
+          "started": "2026-09-14T11:10:29Z"
+        },
+        {
+          "completed": "2026-09-14T11:11:59Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 23,
+          "started": "2026-09-14T11:11:36Z"
+        },
+        {
+          "completed": "2026-09-14T11:13:31Z",
+          "conclusion": "success",
+          "name": "Release",
+          "seconds": 14,
+          "started": "2026-09-14T11:13:17Z"
+        },
+        {
+          "completed": "2026-09-14T11:13:14Z",
+          "conclusion": "success",
+          "name": "Verify production",
+          "seconds": 72,
+          "started": "2026-09-14T11:12:02Z"
+        }
+      ],
+      "seconds": 186,
+      "sha": "54a31a2dcae156ace74383db307243a71d6a6531",
+      "title": "feat(seo): add boilerplate practices, localized previews, structured …",
+      "updated": "2026-09-14T11:13:32Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34836842423"
+    },
+    {
+      "conclusion": "failure",
+      "created": "2026-09-14T12:17:19Z",
+      "id": 34842607207,
+      "jobs": [
+        {
+          "completed": "2026-09-14T12:17:30Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 7,
+          "started": "2026-09-14T12:17:23Z"
+        },
+        {
+          "completed": "2026-09-14T12:18:47Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 84,
+          "started": "2026-09-14T12:17:23Z"
+        },
+        {
+          "completed": "2026-09-14T12:17:35Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 13,
+          "started": "2026-09-14T12:17:22Z"
+        },
+        {
+          "completed": "2026-09-14T12:17:44Z",
+          "conclusion": "success",
+          "name": "CI / Python tests",
+          "seconds": 22,
+          "started": "2026-09-14T12:17:22Z"
+        },
+        {
+          "completed": "2026-09-14T12:17:36Z",
+          "conclusion": "failure",
+          "name": "CI / References (Crossref)",
+          "seconds": 14,
+          "started": "2026-09-14T12:17:22Z"
+        },
+        {
+          "completed": "2026-09-14T12:17:47Z",
+          "conclusion": "success",
+          "name": "CI / Rust",
+          "seconds": 25,
+          "started": "2026-09-14T12:17:22Z"
+        },
+        {
+          "completed": "2026-09-14T12:17:40Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 18,
+          "started": "2026-09-14T12:17:22Z"
+        },
+        {
+          "completed": "2026-09-14T12:18:47Z",
+          "conclusion": "skipped",
+          "name": "Deploy",
+          "seconds": 0,
+          "started": "2026-09-14T12:18:47Z"
+        },
+        {
+          "completed": "2026-09-14T12:18:47Z",
+          "conclusion": "skipped",
+          "name": "Release",
+          "seconds": 0,
+          "started": "2026-09-14T12:18:47Z"
+        },
+        {
+          "completed": "2026-09-14T12:18:47Z",
+          "conclusion": "skipped",
+          "name": "Verify production",
+          "seconds": 0,
+          "started": "2026-09-14T12:18:47Z"
+        }
+      ],
+      "seconds": 89,
+      "sha": "51dde0bb4dba09c35fb4c0a835d764a497f3c5a3",
+      "title": "feat(content): add research library, graded advice, command registry …",
+      "updated": "2026-09-14T12:18:48Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842607207"
+    },
+    {
+      "conclusion": "success",
+      "created": "2026-09-14T12:21:07Z",
+      "id": 34842946706,
+      "jobs": [
+        {
+          "completed": "2026-09-14T12:21:20Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 9,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:22:27Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 76,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:21:24Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 13,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:21:45Z",
+          "conclusion": "success",
+          "name": "CI / Python tests",
+          "seconds": 34,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:21:25Z",
+          "conclusion": "success",
+          "name": "CI / References (Crossref)",
+          "seconds": 14,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:21:33Z",
+          "conclusion": "success",
+          "name": "CI / Rust",
+          "seconds": 22,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:21:29Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 18,
+          "started": "2026-09-14T12:21:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:22:53Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 21,
+          "started": "2026-09-14T12:22:32Z"
+        },
+        {
+          "completed": "2026-09-14T12:24:31Z",
+          "conclusion": "success",
+          "name": "Release",
+          "seconds": 11,
+          "started": "2026-09-14T12:24:20Z"
+        },
+        {
+          "completed": "2026-09-14T12:24:15Z",
+          "conclusion": "success",
+          "name": "Verify production",
+          "seconds": 79,
+          "started": "2026-09-14T12:22:56Z"
+        }
+      ],
+      "seconds": 205,
+      "sha": "94d734c78ffed85a02a447051992a2acac51926d",
+      "title": "fix(references): match Crossref titles with or without subtitles",
+      "updated": "2026-09-14T12:24:32Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34842946706"
+    },
+    {
+      "conclusion": "success",
+      "created": "2026-09-14T12:54:07Z",
+      "id": 34845982889,
+      "jobs": [
+        {
+          "completed": "2026-09-14T12:54:18Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 7,
+          "started": "2026-09-14T12:54:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:55:56Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 105,
+          "started": "2026-09-14T12:54:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:54:25Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 14,
+          "started": "2026-09-14T12:54:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:54:35Z",
+          "conclusion": "success",
+          "name": "CI / Python tests",
+          "seconds": 24,
+          "started": "2026-09-14T12:54:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:54:44Z",
+          "conclusion": "success",
+          "name": "CI / References (Crossref)",
+          "seconds": 33,
+          "started": "2026-09-14T12:54:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:54:34Z",
+          "conclusion": "success",
+          "name": "CI / Rust",
+          "seconds": 24,
+          "started": "2026-09-14T12:54:10Z"
+        },
+        {
+          "completed": "2026-09-14T12:54:27Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 16,
+          "started": "2026-09-14T12:54:11Z"
+        },
+        {
+          "completed": "2026-09-14T12:56:19Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 19,
+          "started": "2026-09-14T12:56:00Z"
+        },
+        {
+          "completed": "2026-09-14T12:58:23Z",
+          "conclusion": "success",
+          "name": "Release",
+          "seconds": 9,
+          "started": "2026-09-14T12:58:14Z"
+        },
+        {
+          "completed": "2026-09-14T12:58:11Z",
+          "conclusion": "success",
+          "name": "Verify production",
+          "seconds": 110,
+          "started": "2026-09-14T12:56:21Z"
+        }
+      ],
+      "seconds": 257,
+      "sha": "4cbb6fb84a94734d2a79ba0e12826d81b36830af",
+      "title": "feat(evidence): add evidence ledger, methods page, glossary, status a…",
+      "updated": "2026-09-14T12:58:24Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34845982889"
+    },
+    {
+      "conclusion": "success",
+      "created": "2026-09-14T13:02:11Z",
+      "id": 34846771284,
+      "jobs": [
+        {
+          "completed": "2026-09-14T13:02:23Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 8,
+          "started": "2026-09-14T13:02:15Z"
+        },
+        {
+          "completed": "2026-09-14T13:03:49Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 94,
+          "started": "2026-09-14T13:02:15Z"
+        },
+        {
+          "completed": "2026-09-14T13:02:29Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 14,
+          "started": "2026-09-14T13:02:15Z"
+        },
+        {
+          "completed": "2026-09-14T13:02:48Z",
+          "conclusion": "success",
+          "name": "CI / Python tests",
+          "seconds": 33,
+          "started": "2026-09-14T13:02:15Z"
+        },
+        {
+          "completed": "2026-09-14T13:02:34Z",
+          "conclusion": "success",
+          "name": "CI / References (Crossref)",
+          "seconds": 20,
+          "started": "2026-09-14T13:02:14Z"
+        },
+        {
+          "completed": "2026-09-14T13:02:39Z",
+          "conclusion": "success",
+          "name": "CI / Rust",
+          "seconds": 24,
+          "started": "2026-09-14T13:02:15Z"
+        },
+        {
+          "completed": "2026-09-14T13:02:37Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 21,
+          "started": "2026-09-14T13:02:16Z"
+        },
+        {
+          "completed": "2026-09-14T13:04:52Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 58,
+          "started": "2026-09-14T13:03:54Z"
+        },
+        {
+          "completed": "2026-09-14T13:07:12Z",
+          "conclusion": "success",
+          "name": "Release",
+          "seconds": 12,
+          "started": "2026-09-14T13:07:00Z"
+        },
+        {
+          "completed": "2026-09-14T13:06:57Z",
+          "conclusion": "success",
+          "name": "Verify production",
+          "seconds": 122,
+          "started": "2026-09-14T13:04:55Z"
+        }
+      ],
+      "seconds": 302,
+      "sha": "f2890f4fa20f0f92db790477b1460c2e774bbe44",
+      "title": "feat(api): export the evidence ledger and glossary, extend the Rust c…",
+      "updated": "2026-09-14T13:07:13Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34846771284"
+    },
+    {
+      "conclusion": "failure",
+      "created": "2026-09-14T15:15:24Z",
+      "id": 34860959250,
+      "jobs": [
+        {
+          "completed": "2026-09-14T15:15:36Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 8,
+          "started": "2026-09-14T15:15:28Z"
+        },
+        {
+          "completed": "2026-09-14T15:17:57Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 144,
+          "started": "2026-09-14T15:15:33Z"
+        },
+        {
+          "completed": "2026-09-14T15:15:55Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 27,
+          "started": "2026-09-14T15:15:28Z"
+        },
+        {
+          "completed": "2026-09-14T15:16:28Z",
+          "conclusion": "success",
+          "name": "CI / Python tests",
+          "seconds": 34,
+          "started": "2026-09-14T15:15:54Z"
+        },
+        {
+          "completed": "2026-09-14T15:15:47Z",
+          "conclusion": "success",
+          "name": "CI / References (Crossref)",
+          "seconds": 19,
+          "started": "2026-09-14T15:15:28Z"
+        },
+        {
+          "completed": "2026-09-14T15:16:23Z",
+          "conclusion": "success",
+          "name": "CI / Rust",
+          "seconds": 25,
+          "started": "2026-09-14T15:15:58Z"
+        },
+        {
+          "completed": "2026-09-14T15:19:06Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 18,
+          "started": "2026-09-14T15:18:48Z"
+        },
+        {
+          "completed": "2026-09-14T15:19:26Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 15,
+          "started": "2026-09-14T15:19:11Z"
+        },
+        {
+          "completed": "2026-09-14T15:23:24Z",
+          "conclusion": "skipped",
+          "name": "Release",
+          "seconds": 0,
+          "started": "2026-09-14T15:23:25Z"
+        },
+        {
+          "completed": "2026-09-14T15:23:24Z",
+          "conclusion": "failure",
+          "name": "Verify production",
+          "seconds": 234,
+          "started": "2026-09-14T15:19:30Z"
+        }
+      ],
+      "seconds": 481,
+      "sha": "d2b3c47608f29ece52f0e42045496f160a45c163",
+      "title": "feat(screens): preview concept screens in place with paging and swipe",
+      "updated": "2026-09-14T15:23:25Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34860959250"
+    },
+    {
+      "conclusion": "success",
+      "created": "2026-09-14T15:38:33Z",
+      "id": 34863500153,
+      "jobs": [
+        {
+          "completed": "2026-09-14T15:38:47Z",
+          "conclusion": "success",
+          "name": "CI / Conventional commits",
+          "seconds": 10,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:40:22Z",
+          "conclusion": "success",
+          "name": "CI / End-to-end (subpath preview)",
+          "seconds": 105,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:38:52Z",
+          "conclusion": "success",
+          "name": "CI / Majordomus supervision",
+          "seconds": 15,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:39:08Z",
+          "conclusion": "success",
+          "name": "CI / Python tests",
+          "seconds": 31,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:38:58Z",
+          "conclusion": "success",
+          "name": "CI / References (Crossref)",
+          "seconds": 21,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:39:02Z",
+          "conclusion": "success",
+          "name": "CI / Rust",
+          "seconds": 25,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:38:56Z",
+          "conclusion": "success",
+          "name": "CI / Validate and build",
+          "seconds": 19,
+          "started": "2026-09-14T15:38:37Z"
+        },
+        {
+          "completed": "2026-09-14T15:41:25Z",
+          "conclusion": "success",
+          "name": "Deploy",
+          "seconds": 22,
+          "started": "2026-09-14T15:41:03Z"
+        },
+        {
+          "completed": "2026-09-14T15:43:39Z",
+          "conclusion": "success",
+          "name": "Release",
+          "seconds": 14,
+          "started": "2026-09-14T15:43:25Z"
+        },
+        {
+          "completed": "2026-09-14T15:43:21Z",
+          "conclusion": "success",
+          "name": "Verify production",
+          "seconds": 113,
+          "started": "2026-09-14T15:41:28Z"
+        }
+      ],
+      "seconds": 307,
+      "sha": "2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b",
+      "title": "feat(research): expand measuring-emotion with verified sources",
+      "updated": "2026-09-14T15:43:40Z",
+      "url": "https://github.com/korczis/catharsis-as-a-service/actions/runs/34863500153"
+    }
+  ],
+  "releases": [
+    {
+      "published": "2026-09-14T10:45:42Z",
+      "run": 34834554169,
+      "sha": "9bc6897ce839e4a512f89f641d26ed57e066f118",
+      "tag": "v0.1.0",
+      "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.1.0"
+    },
+    {
+      "published": "2026-09-14T11:13:28Z",
+      "run": 34836842423,
+      "sha": "54a31a2dcae156ace74383db307243a71d6a6531",
+      "tag": "v0.2.0",
+      "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.2.0"
+    },
+    {
+      "published": "2026-09-14T12:24:28Z",
+      "run": 34842946706,
+      "sha": "94d734c78ffed85a02a447051992a2acac51926d",
+      "tag": "v0.3.0",
+      "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.3.0"
+    },
+    {
+      "published": "2026-09-14T12:58:21Z",
+      "run": 34845982889,
+      "sha": "4cbb6fb84a94734d2a79ba0e12826d81b36830af",
+      "tag": "v0.4.0",
+      "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.4.0"
+    },
+    {
+      "published": "2026-09-14T13:07:10Z",
+      "run": 34846771284,
+      "sha": "f2890f4fa20f0f92db790477b1460c2e774bbe44",
+      "tag": "v0.5.0",
+      "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.5.0"
+    },
+    {
+      "published": "2026-09-14T15:43:36Z",
+      "run": 34863500153,
+      "sha": "2125f1eb4a3f6f0a2048d0625b28cf7e85ff2f7b",
+      "tag": "v0.6.0",
+      "url": "https://github.com/korczis/catharsis-as-a-service/releases/tag/v0.6.0"
+    }
+  ],
+  "repository": "https://github.com/korczis/catharsis-as-a-service",
+  "schema": "case-study/v1",
+  "site": "https://korczis.github.io/catharsis-as-a-service/",
+  "tasks": [
+    {
+      "checkpoints": 0,
+      "contract": {
+        "majordomus.blocker-resolution": "skipped",
+        "majordomus.completion-gates": "skipped",
+        "majordomus.note-integrity": "pass",
+        "majordomus.obligation-closure": "pass",
+        "majordomus.profile-requirements": "skipped",
+        "majordomus.publication-currency": "skipped",
+        "majordomus.scope-integrity": "skipped",
+        "majordomus.state-consistency": "pass",
+        "majordomus.task-continuity": "pass",
+        "majordomus.use-case-coverage": "pass",
+        "majordomus.verification-integrity": "skipped"
+      },
+      "decisions": 0,
+      "duration_seconds": 173,
+      "finished": "2026-09-14T10:29:16Z",
+      "handovers": 1,
+      "id": "t-20260914102623-44b3",
+      "outcome": "partial",
+      "profile": "implementation",
+      "scope_paths_count": 20,
+      "started": "2026-09-14T10:26:23Z",
+      "title_en": "Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "verify": null
+    },
+    {
+      "checkpoints": 1,
+      "contract": {
+        "majordomus.blocker-resolution": "skipped",
+        "majordomus.completion-gates": "skipped",
+        "majordomus.note-integrity": "pass",
+        "majordomus.obligation-closure": "pass",
+        "majordomus.profile-requirements": "skipped",
+        "majordomus.publication-currency": "skipped",
+        "majordomus.scope-integrity": "skipped",
+        "majordomus.state-consistency": "pass",
+        "majordomus.task-continuity": "pass",
+        "majordomus.use-case-coverage": "pass",
+        "majordomus.verification-integrity": "skipped"
+      },
+      "decisions": 0,
+      "duration_seconds": 623,
+      "finished": "2026-09-14T10:39:39Z",
+      "handovers": 1,
+      "id": "t-20260914102916-7cf5",
+      "outcome": "partial",
+      "profile": "implementation",
+      "scope_paths_count": 1,
+      "started": "2026-09-14T10:29:16Z",
+      "title_en": "Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "verify": null
+    },
+    {
+      "checkpoints": 2,
+      "contract": {
+        "majordomus.blocker-resolution": "pass",
+        "majordomus.completion-gates": "skipped",
+        "majordomus.note-integrity": "pass",
+        "majordomus.obligation-closure": "pass",
+        "majordomus.profile-requirements": "skipped",
+        "majordomus.publication-currency": "skipped",
+        "majordomus.scope-integrity": "pass",
+        "majordomus.state-consistency": "pass",
+        "majordomus.task-continuity": "skipped",
+        "majordomus.use-case-coverage": "pass",
+        "majordomus.verification-integrity": "pass"
+      },
+      "decisions": 0,
+      "duration_seconds": 466,
+      "finished": "2026-09-14T10:47:25Z",
+      "handovers": 0,
+      "id": "t-20260914103939-7b10",
+      "outcome": "completed",
+      "profile": "implementation",
+      "scope_paths_count": 26,
+      "started": "2026-09-14T10:39:39Z",
+      "title_en": "Ship Catharsis as a Service: Zola EN/CS site, CI/CD to GitHub Pages, live verification, automatic releases",
+      "verify": {
+        "command": "scripts/smoke-production.sh https://korczis.github.io/catharsis-as-a-service/",
+        "exit": 0,
+        "seconds": 7
+      }
+    },
+    {
+      "checkpoints": 3,
+      "contract": {
+        "majordomus.blocker-resolution": "skipped",
+        "majordomus.completion-gates": "skipped",
+        "majordomus.note-integrity": "pass",
+        "majordomus.obligation-closure": "pass",
+        "majordomus.profile-requirements": "skipped",
+        "majordomus.publication-currency": "skipped",
+        "majordomus.scope-integrity": "skipped",
+        "majordomus.state-consistency": "pass",
+        "majordomus.task-continuity": "pass",
+        "majordomus.use-case-coverage": "pass",
+        "majordomus.verification-integrity": "skipped"
+      },
+      "decisions": 3,
+      "duration_seconds": 1153,
+      "finished": "2026-09-14T11:10:10Z",
+      "handovers": 1,
+      "id": "t-20260914105057-4fd0",
+      "outcome": "partial",
+      "profile": "implementation",
+      "scope_paths_count": 23,
+      "started": "2026-09-14T10:50:57Z",
+      "title_en": "HTML5 Boilerplate practices, link previews per locale/page, structured data and SEO hardening",
+      "verify": null
+    },
+    {
+      "checkpoints": 6,
+      "contract": {
+        "majordomus.blocker-resolution": "pass",
+        "majordomus.completion-gates": "skipped",
+        "majordomus.note-integrity": "pass",
+        "majordomus.obligation-closure": "pass",
+        "majordomus.profile-requirements": "skipped",
+        "majordomus.publication-currency": "skipped",
+        "majordomus.scope-integrity": "pass",
+        "majordomus.state-consistency": "pass",
+        "majordomus.task-continuity": "skipped",
+        "majordomus.use-case-coverage": "pass",
+        "majordomus.verification-integrity": "pass"
+      },
+      "decisions": 1,
+      "duration_seconds": 7103,
+      "finished": "2026-09-14T13:08:34Z",
+      "handovers": 1,
+      "id": "t-20260914111011-94a4",
+      "outcome": "completed",
+      "profile": "implementation",
+      "scope_paths_count": 31,
+      "started": "2026-09-14T11:10:11Z",
+      "title_en": "Evidence-based catharsis site: psychology essays, advice library, tags, illustrations, per-page previews, Majordomus method, Rust integration, command registry, tests and docs",
+      "verify": {
+        "command": "scripts/smoke-production.sh https://korczis.github.io/catharsis-as-a-service/",
+        "exit": 0,
+        "seconds": 7
+      }
+    },
+    {
+      "checkpoints": 1,
+      "contract": {},
+      "decisions": 0,
+      "duration_seconds": null,
+      "finished": null,
+      "handovers": 0,
+      "id": "t-20260914145407-5f45",
+      "outcome": "active",
+      "profile": "implementation",
+      "scope_paths_count": 31,
+      "started": "2026-09-14T14:54:07Z",
+      "title_en": "Extend the site: more research and advice, per-page social previews, search and glossary cross-linking, second artifact Closure as a Service",
+      "verify": null
+    }
+  ]
+}

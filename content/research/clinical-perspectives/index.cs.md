@@ -11,7 +11,7 @@ tags = ["klinická psychologie", "expozice", "trauma", "regulace emocí", "důka
 kicker = "Výzkumná poznámka 08"
 summary = "Klinický výzkum představuje pro myšlenku katarze nejzávažnější test. Teorie emočního zpracování tvrdí, že trvalá změna vyžaduje aktivaci vzpomínky na strach spolu s informací, která ji opravuje. Přehled Cochrane nenašel důkazy, že jednorázový psychologický debriefing předchází posttraumatické stresové poruše, a našel určité známky škody. Metaanalýzy spojují ruminaci, vyhýbání a potlačování s více příznaky a ukazují, že strategie založené na přehodnocení mění emoční prožitek. Uvolnění bez nového učení není léčba."
 key_points = [
-  "Teorie emočního zpracování navrhuje, že terapeutická změna vyžaduje aktivaci strachové vzpomínky a korektivní informaci, která je s ní neslučitelná (Foa & Kozak, 1986).",
+  "Teorie emočního zpracování navrhuje, že terapeutická změna vyžaduje aktivaci strachové vzpomínky a korektivní informaci, která je s ní neslučitelná (Foa a Kozak, 1986).",
   "Systematický přehled Cochrane nenašel důkazy, že jednorázový individuální debriefing předchází PTSP, a doporučil upustit od povinného debriefingu (Rose a kol., 2002).",
   "Napříč psychopatologií souvisejí ruminace, vyhýbání a potlačování s více příznaky (Aldao a kol., 2010); experimentálně přehodnocení mění emoční prožitek, zatímco potlačování prožitku ne (Webb a kol., 2012).",
 ]

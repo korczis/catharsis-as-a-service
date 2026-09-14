@@ -12,8 +12,8 @@ kicker = "Výzkumná poznámka 09"
 summary = "Stresové reakce tělo krátkodobě chrání a poškozují ho, když jsou chronicky aktivované nebo se nedokážou vypnout. Prefrontální systémy mohou emoční reakce regulovat, sociální opora tlumí účinky stresu a lidé záměrně využívají hudbu, včetně její schopnosti přinést výboj, k regulaci nálady. Noc kolektivního pohybu zapojuje několik těchto systémů najednou. Chronické stresory jsou však definovány přetrvávajícími podmínkami a úleva od jejich účinků je neodstraní."
 key_points = [
   "Stresové mediátory, jako je kortizol a katecholaminy, akutně chrání, ale při chronické aktivaci nebo nedostatečném ukončení přispívají k alostatické zátěži (McEwen, 1998).",
-  "Přehodnocení zapojuje prefrontální a cingulární kontrolní systémy, které modulují aktivitu oblastí vytvářejících emoce, jako je amygdala (Ochsner & Gross, 2005).",
-  "Vnímaná sociální opora tlumí účinky stresu (Cohen & Wills, 1985) a dospívající popisují výboj jako jeden z několika odlišných způsobů, jak využívají hudbu k regulaci nálady (Saarikallio & Erkkilä, 2007).",
+  "Přehodnocení zapojuje prefrontální a cingulární kontrolní systémy, které modulují aktivitu oblastí vytvářejících emoce, jako je amygdala (Ochsner a Gross, 2005).",
+  "Vnímaná sociální opora tlumí účinky stresu (Cohen a Wills, 1985) a dospívající popisují výboj jako jeden z několika odlišných způsobů, jak využívají hudbu k regulaci nálady (Saarikallio a Erkkilä, 2007).",
 ]
 references = ["mcewen-1998", "ochsner-gross-2005", "cohen-wills-1985", "saarikallio-erkkila-2007", "tarr-2015", "reed-ones-2006"]
 
@@ -59,6 +59,6 @@ Studie je kvalitativní a týká se dospívajících, popisuje tedy strategie, n
 
 ## Tělo v davu
 
-Noc tance kombinuje několik procesů popsaných v této knihovně. Soustavná námaha přináší akutní zlepšení pozitivního afektu (Reed & Ones, 2006). Synchronie a námaha zvyšují práh bolesti a posilují blízkost (Tarr a kol., 2015). Hlasitá rytmická hudba podporuje výboj a odvedení pozornosti. Sdílené prostředí poskytuje alespoň na několik hodin silný pocit sounáležitosti.
+Noc tance kombinuje několik procesů popsaných v této knihovně. Soustavná námaha přináší akutní zlepšení pozitivního afektu (Reed a Ones, 2006). Synchronie a námaha zvyšují práh bolesti a posilují blízkost (Tarr a kol., 2015). Hlasitá rytmická hudba podporuje výboj a odvedení pozornosti. Sdílené prostředí poskytuje alespoň na několik hodin silný pocit sounáležitosti.
 
 Každý z těchto účinků je skutečný fyziologický a psychologický jev. Žádný z nich neodstraní chronický stresor. Pokud podmínky, které vyvolávají opakovanou aktivaci, jako jsou finanční potíže, konflikty, osamělost nebo přepracování, přetrvávají, stresová reakce se znovu spustí, jakmile se k nim člověk vrátí. Z pohledu alostatické zátěže jsou užitečné otázky, zda má tělo mezi aktivacemi dostatečné zotavení a zda něco snižuje, jak často se stresová reakce musí zapojit. K prvnímu přispívá úleva. K druhému přispívá jen změna.

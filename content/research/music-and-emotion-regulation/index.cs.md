@@ -12,8 +12,8 @@ kicker = "Výzkumná poznámka 10"
 summary = "Hudba patří k nejdostupnějším způsobům, jak lidé regulují emoce. Randomizované studie shrnuté metaanalýzou spojují hudební intervence se snížením fyziologických i psychických ukazatelů stresu a rozhovorové a dotazníkové studie popisují odlišné regulační strategie, od rozptýlení přes vybití až po zpracování pocitů. Důkazy mnoho říkají o krátkodobé změně stavu a málo o tom, zda se mění příčiny tísně."
 key_points = [
   "Dvě víceúrovňové metaanalýzy 104 randomizovaných kontrolovaných studií (9 617 účastníků) zjistily, že hudební intervence snižovaly ukazatele stresu, s d = 0,380 u fyziologických a d = 0,545 u psychických výsledků (de Witte a kol., 2020).",
-  "Ve 13 korelačních studiích (2 641 účastníků) neuroticismus pozitivně koreloval s využíváním poslechu hudby k regulaci emocí, r = 0,22 (Miranda & Blais-Rochette, 2020); z tohoto designu nelze zjistit, zda takové využívání pomáhá.",
-  "Dospívající popsali několik odlišných strategií, mimo jiné rozptýlení, vybití, mentální práci a útěchu (Saarikallio & Erkkilä, 2007), zatímco pozdější přehled zjistil v pojmech a konceptech oboru nekonzistenci (Baltazar & Saarikallio, 2016).",
+  "Ve 13 korelačních studiích (2 641 účastníků) neuroticismus pozitivně koreloval s využíváním poslechu hudby k regulaci emocí, r = 0,22 (Miranda a Blais-Rochette, 2020); z tohoto designu nelze zjistit, zda takové využívání pomáhá.",
+  "Dospívající popsali několik odlišných strategií, mimo jiné rozptýlení, vybití, mentální práci a útěchu (Saarikallio a Erkkilä, 2007), zatímco pozdější přehled zjistil v pojmech a konceptech oboru nekonzistenci (Baltazar a Saarikallio, 2016).",
   "Krátkodobá úleva díky hudbě je dobře podložená; důkazy o tom, zda regulace pomocí hudby mění podmínky, které tíseň vytvářejí, jsou nedostatečné.",
 ]
 figures = []

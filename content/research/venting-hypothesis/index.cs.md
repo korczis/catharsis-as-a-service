@@ -11,10 +11,10 @@ tags = ["katarze", "hněv", "agrese", "regulace emocí"]
 kicker = "Výzkumná poznámka 02"
 summary = "Hydraulický model předpovídá, že ventilace hněv vybije. Laboratorní experimenty zjistily opak: ventilace se zaměřením na provokaci udržovala hněv aktivní a zvyšovala agresi, zatímco nicnedělání vedlo k agresi nejmenší. Strategie, které snižují vzrušení nebo mění interpretaci, hněv snižují, aniž by ho opakovaly."
 key_points = [
-  "Víra, že ventilace pomáhá, vedla lidi k tomu, že ventilovali častěji, a po ventilaci následovala větší, nikoli menší agrese (Bushman, Baumeister & Stack, 1999).",
+  "Víra, že ventilace pomáhá, vedla lidi k tomu, že ventilovali častěji, a po ventilaci následovala větší, nikoli menší agrese (Bushman, Baumeister a Stack, 1999).",
   "Bušení do boxovacího pytle při myšlenkách na provokatéra vedlo k největšímu hněvu a agresi; tiché sezení k nejmenší (Bushman, 2002).",
   "Přehodnocení a odstup od sebe snižují hněv i ruminaci, aniž by provokaci znovu přehrávaly.",
-  "Metaanalýza 154 studií (10 189 účastníků) zjistila, že činnosti snižující vzrušení snižovaly hněv a agresi (g = -0,63), zatímco činnosti vzrušení zvyšující, včetně námahy ve stylu ventilace a běhu, byly celkově neúčinné (g = -0,02) (Kjærvik & Bushman, 2024).",
+  "Metaanalýza 154 studií (10 189 účastníků) zjistila, že činnosti snižující vzrušení snižovaly hněv a agresi (g = -0,63), zatímco činnosti vzrušení zvyšující, včetně námahy ve stylu ventilace a běhu, byly celkově neúčinné (g = -0,02) (Kjærvik a Bushman, 2024).",
 ]
 references = ["bushman-baumeister-stack-1999", "bushman-2002", "gross-1998", "gross-john-2003", "kross-ayduk-mischel-2005", "kjaervik-bushman-2024"]
 
@@ -54,7 +54,7 @@ Navrhovaným mechanismem je opakování. Ventilace při pozornosti upřené na p
 
 ## Co hněv naopak snižuje
 
-Strategie, které snižují vzrušení, jako je počkat, zpomalit dech nebo se skutečně rozptýlit, nechají hněv odeznít, aniž by se opakoval. Kognitivní přehodnocení mění výklad provokace ještě předtím nebo zatímco se emoce rozvíjí; lidé, kteří přehodnocení používají obvykle, uvádějí více pozitivních a méně negativních emocí než lidé, kteří obvykle emoce potlačují (Gross, 1998; Gross & John, 2003). Uvažování o rozrušujícím zážitku z perspektivy odstupu, jako pozorovatel, nikoli jako opětovné prožívání, snížilo emoční reaktivitu i ruminaci ve srovnání s ponořeným vybavováním (Kross, Ayduk & Mischel, 2005).
+Strategie, které snižují vzrušení, jako je počkat, zpomalit dech nebo se skutečně rozptýlit, nechají hněv odeznít, aniž by se opakoval. Kognitivní přehodnocení mění výklad provokace ještě předtím nebo zatímco se emoce rozvíjí; lidé, kteří přehodnocení používají obvykle, uvádějí více pozitivních a méně negativních emocí než lidé, kteří obvykle emoce potlačují (Gross, 1998; Gross a John, 2003). Uvažování o rozrušujícím zážitku z perspektivy odstupu, jako pozorovatel, nikoli jako opětovné prožívání, snížilo emoční reaktivitu i ruminaci ve srovnání s ponořeným vybavováním (Kross, Ayduk a Mischel, 2005).
 
 Tyto strategie mají jedno společné. Mění vztah k emoci, místo aby se ji snažily vyprázdnit.
 

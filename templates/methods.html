@@ -15,7 +15,7 @@
     <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
 
     <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
-      <aside class="aside-scroll space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+      <aside class="aside-rail space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
         <section class="aside-block" aria-labelledby="abstract-title">
           <h2 id="abstract-title" class="label">{{ trans(key="abstract", lang=lang) }}</h2>
           <p class="mt-3">{{ x.summary }}</p>
@@ -44,6 +44,7 @@
 
       <div class="lg:col-span-8">
         <div class="prose-page prose-wide">{{ page.content | safe }}</div>
+        {%- if x.poster_figure is defined %}<div class="mt-12">{{ <posters.figure fig={x.poster_figure} lang={lang} /> }}</div>{%- endif %}
 
         <section id="detection-chain" class="method-block" aria-labelledby="detection-chain-title">
           <h2 id="detection-chain-title" class="condensed method-title">{{ trans(key="detection_chain", lang=lang) }}</h2>
@@ -84,7 +85,7 @@
         <section id="detection-matrix" class="method-block" aria-labelledby="detection-matrix-title">
           <h2 id="detection-matrix-title" class="condensed method-title">{{ trans(key="detection_matrix", lang=lang) }}</h2>
           {%- set m = x.detection_matrix %}
-          <div class="table-scroll mt-8" role="region" aria-labelledby="detection-matrix-title" tabindex="0">
+          <div class="table-frame mt-8" role="region" aria-labelledby="detection-matrix-title">
             <table class="ledger-table matrix-table">
               <caption>{{ m.caption }}</caption>
               <thead>
@@ -98,10 +99,10 @@
                 {%- for row in m.rows %}
                 <tr>
                   <th scope="row">{{ row.signal }}</th>
-                  <td>{{ row.records }}</td>
-                  <td>{{ row.consistent_with }}</td>
-                  <td>{{ row.cannot_establish }}</td>
-                  <td>{{ row.confounds }}</td>
+                  <td data-label="{{ m.columns.records }}">{{ row.records }}</td>
+                  <td data-label="{{ m.columns.consistent_with }}">{{ row.consistent_with }}</td>
+                  <td data-label="{{ m.columns.cannot_establish }}">{{ row.cannot_establish }}</td>
+                  <td data-label="{{ m.columns.confounds }}">{{ row.confounds }}</td>
                 </tr>
                 {%- endfor %}
               </tbody>
@@ -135,7 +136,7 @@
 
         <section id="architecture" class="method-block" aria-labelledby="architecture-title">
           <h2 id="architecture-title" class="condensed method-title">{{ trans(key="architecture", lang=lang) }}</h2>
-          <div class="table-scroll mt-8" role="region" aria-labelledby="architecture-title" tabindex="0">
+          <div class="table-frame mt-8" role="region" aria-labelledby="architecture-title">
             <table class="ledger-table">
               <thead>
                 <tr>
@@ -149,9 +150,9 @@
                 {%- for row in x.architecture %}
                 <tr data-status="{{ row.status }}">
                   <th scope="row">{{ row.component }}</th>
-                  <td>{{ <evidence.status status={row.status} lang={lang} /> }}</td>
-                  <td>{{ row.role }}</td>
-                  <td>{{ row.note }}</td>
+                  <td data-label="{{ trans(key='status', lang=lang) }}">{{ <evidence.status status={row.status} lang={lang} /> }}</td>
+                  <td data-label="{{ trans(key='role', lang=lang) }}">{{ row.role }}</td>
+                  <td data-label="{{ trans(key='note', lang=lang) }}">{{ row.note }}</td>
                 </tr>
                 {%- endfor %}
               </tbody>
@@ -164,7 +165,8 @@
           <h2 id="simulation-title" class="condensed method-title">{{ s.heading }}</h2>
           <p class="sim-banner mt-6" role="note">{{ s.banner }}</p>
           <p class="mt-6 max-w-3xl">{{ s.intro }}</p>
-          <div class="detector mt-8" data-requires-js data-detector x-data="detector" data-config="{{ s | json_encode }}">
+          <div class="detector mt-8" data-requires-js data-detector x-data="detector" data-config="{{ s | json_encode }}"
+            x-init="$nextTick(() => { const d = { ...values, cause: false }; if (window.caasUrlState) { const r = window.caasUrlState.read('sim', d); cause = r.cause ?? false; delete r.cause; Object.assign(values, r); window.Alpine.effect(() => window.caasUrlState.write('sim', { ...values, cause }, d)); } })">
             <fieldset class="detector-inputs">
               <legend class="label">{{ s.inputs_label }}</legend>
               {%- for input in s.inputs %}

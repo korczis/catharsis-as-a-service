@@ -11,8 +11,8 @@ tags = ["katarze", "pláč", "sociální sdílení", "pojmenování afektu", "re
 kicker = "Výzkumná poznámka 07"
 summary = "Pláč se všeobecně považuje za katarzní a většina lidí uvádí, že se po něm cítí lépe, laboratorní studie však často nacházejí bezprostředně poté horší náladu. Sdílení emocí s druhými je téměř univerzální a posiluje vztahy, samotné mluvení ale nesnižuje emoční dopad vzpomínky. Pojmenování pocitu zapojuje prefrontální regulaci. Důkazy ukazují, že vyjádření je užitečné, když přivolává oporu, porozumění nebo regulaci, nikoli když pocit jen vyprázdní."
 key_points = [
-  "V rozsáhlé mezinárodní studii záviselo to, zda byl pláč katarzní, na kontextu: sociální opora a nové porozumění události zvyšovaly pravděpodobnost přínosu (Bylsma, Vingerhoets & Rottenberg, 2008).",
-  "Lidé sdílejí s druhými většinu svých emočních zážitků; sdílení posiluje sociální vazby, ale samo o sobě nesnižuje emoční dopad vzpomínky (Rimé, 2009; Zech & Rimé, 2005).",
+  "V rozsáhlé mezinárodní studii záviselo to, zda byl pláč katarzní, na kontextu: sociální opora a nové porozumění události zvyšovaly pravděpodobnost přínosu (Bylsma, Vingerhoets a Rottenberg, 2008).",
+  "Lidé sdílejí s druhými většinu svých emočních zážitků; sdílení posiluje sociální vazby, ale samo o sobě nesnižuje emoční dopad vzpomínky (Rimé, 2009; Zech a Rimé, 2005).",
   "Převedení pocitů do slov snížilo reakci amygdaly a zvýšilo aktivitu pravého ventrolaterálního prefrontálního kortexu (Lieberman a kol., 2007).",
 ]
 figures = []

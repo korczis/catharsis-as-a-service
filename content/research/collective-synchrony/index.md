@@ -26,6 +26,15 @@ description = "On the left six waves oscillate at different phases and frequenci
 caption = "Figure 1. Entrainment: individual signals become collective oscillation. Conceptual illustration, not measured data."
 before = "Individual signals"
 after = "Synchronization"
+
+[[extra.figures]]
+kind = "posters"
+id = "poster-synchrony"
+caption = "From the Catharsis as a Service poster series. Slogans and numbers on the posters belong to the artwork; they are not findings."
+items = [
+  { src = "assets/posters/human-connection.png", title = "Human connection / Lidské propojení", alt = "Bilingual poster: HUMAN CONNECTION and LIDSKÉ PROPOJENÍ above a crowd raising hands in front of a stage with a red waveform; English and Czech columns repeat input, process, output and problem_solved: false around an artistic synchrony panel.", caption = "Synchronized individuals, temporary equilibrium." },
+]
+
 +++
 
 ## Why crowds move together

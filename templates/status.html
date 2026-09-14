@@ -86,7 +86,7 @@
 
       <section class="mt-16" aria-labelledby="next-reviews-title">
         <h3 id="next-reviews-title" class="condensed ledger-subtitle">{{ trans(key="next_reviews", lang=lang) }}</h3>
-        <div class="table-scroll mt-6" role="region" aria-labelledby="next-reviews-title" tabindex="0">
+        <div class="table-frame mt-6" role="region" aria-labelledby="next-reviews-title">
           <table class="ledger-table">
             <thead>
               <tr>
@@ -98,9 +98,9 @@
             <tbody>
               {%- for c in by_review[:6] %}
               <tr>
-                <td><time datetime="{{ c.review_due }}">{{ c.review_due }}</time></td>
+                <td data-label="{{ trans(key='review_due', lang=lang) }}"><time datetime="{{ c.review_due }}">{{ c.review_due }}</time></td>
                 <th scope="row"><a href="{{ get_url(path='@/evidence/index.md', lang=lang) }}#claim-{{ c.id }}">{{ c.statement[lang] }}</a></th>
-                <td>{{ <evidence.kind kind={c.claim_type} lang={lang} /> }}</td>
+                <td data-label="{{ trans(key='status', lang=lang) }}">{{ <evidence.kind kind={c.claim_type} lang={lang} /> }}</td>
               </tr>
               {%- endfor %}
             </tbody>

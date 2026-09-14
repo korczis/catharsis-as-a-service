@@ -1,0 +1,47 @@
+{#- Discovery aids for library pages: glossary terms that occur in the text, and related pages
+    ranked by shared tags. Both are computed at build time from content and data. -#}
+
+{% component discover.terms(content: string, lang: string) %}
+{%- set glossary = load_data(path="data/glossary.toml") -%}
+{%- set haystack = content | striptags | lower -%}
+{%- set_global found_terms = [] -%}
+{%- for t in glossary.terms %}
+  {%- set needle = t.term[lang] | lower -%}
+  {%- if needle | length > 4 and needle in haystack and found_terms | length < 16 %}{% set_global found_terms = [...found_terms, t] %}{% endif -%}
+{%- endfor -%}
+{%- if found_terms | length > 0 %}
+<section class="aside-block" aria-labelledby="terms-title" data-terms>
+  <h2 id="terms-title" class="label">{{ trans(key="terms_in_page", lang=lang) }}</h2>
+  <div class="term-chips">
+    {%- for t in found_terms %}
+    <a href="{{ get_url(path='@/glossary/index.md', lang=lang) }}#{{ t.id }}">{{ t.term[lang] }}</a>
+    {%- endfor %}
+  </div>
+</section>
+{%- endif %}
+{% endcomponent discover.terms %}
+
+{#- `exclude` holds permalinks the page already links elsewhere (an explicit related list), so the
+    same page is not offered twice. -#}
+{% component discover.related(current: string, tags: array, lang: string, sections: array, exclude: array) %}
+{%- set_global candidates = [] -%}
+{%- for section_path in sections %}
+  {%- set listing = get_section(path=section_path, lang=lang) -%}
+  {%- for p in listing.pages %}
+    {%- if p.permalink != current and p.permalink not in exclude %}
+      {%- set_global shared = 0 -%}
+      {%- for tag in p.taxonomies.tags or [] %}{% if tag in tags %}{% set_global shared = shared + 1 %}{% endif %}{% endfor -%}
+      {%- if shared > 0 %}{% set_global candidates = [...candidates, {"shared": shared, "page": p}] %}{% endif -%}
+    {%- endif %}
+  {%- endfor %}
+{%- endfor -%}
+{%- set ranked = candidates | sort(attribute="shared") | reverse -%}
+{%- set_global picks = [] -%}
+{%- for item in ranked[:3] %}{% set_global picks = [...picks, item.page] %}{% endfor -%}
+{%- if picks | length > 0 %}
+<section class="related-reading mt-16" aria-labelledby="related-reading-title" data-related>
+  <h2 id="related-reading-title" class="condensed section-title">{{ trans(key="related_reading", lang=lang) }}</h2>
+  <div class="mt-6">{{ <library.cards pages={picks} lang={lang} heading="h3" /> }}</div>
+</section>
+{%- endif %}
+{% endcomponent discover.related %}

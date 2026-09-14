@@ -11,7 +11,7 @@ tags = ["synchronie", "hudba", "sociální vazby", "kolektivní chování"]
 kicker = "Výzkumná poznámka 03"
 summary = "Pohyb v souladu s ostatními zvyšuje sympatie a spolupráci, synchronizovaný a náročný skupinový tanec zvyšuje práh bolesti a pocit blízkosti a příjemná hudba zapojuje dopaminergní odměnu. Tato zjištění vysvětlují, proč kolektivní rytmus působí obnovujícím dojmem. Neukazují, že řeší potíže, které si do něj lidé přinášejí."
 key_points = [
-  "Synchronní ťukání zvýšilo sympatie k partnerovi (Hove & Risen, 2009) a synchronní činnost zvýšila pozdější spolupráci (Wiltermuth & Heath, 2009).",
+  "Synchronní ťukání zvýšilo sympatie k partnerovi (Hove a Risen, 2009) a synchronní činnost zvýšila pozdější spolupráci (Wiltermuth a Heath, 2009).",
   "Při skupinovém tanci synchronie i námaha nezávisle na sobě zvýšily práh bolesti, nepřímý ukazatel aktivity endorfinů, a synchronie zvýšila pocit sociální blízkosti (Tarr a kol., 2015).",
   "Vrcholné emoční okamžiky v hudbě doprovázelo uvolnění dopaminu ve striatu (Salimpoor a kol., 2011).",
   "V 50 studiích souvisela uváděná kolektivní šumivost během shromáždění a demonstrací se sebepřesahujícími emocemi, skupinovou identitou, duševní pohodou a kolektivní účinností; souhrnné výsledky jsou korelace, nikoli prokázané účinky (Pizarro a kol., 2022).",
@@ -26,6 +26,15 @@ description = "Vlevo kmitá šest vln v různých fázích a frekvencích; vprav
 caption = "Obrázek 1. Strhávání rytmem: z jednotlivých signálů se stává kolektivní oscilace. Koncepční ilustrace, nikoli naměřená data."
 before = "Jednotlivé signály"
 after = "Synchronizace"
+
+[[extra.figures]]
+kind = "posters"
+id = "poster-synchrony"
+caption = "Ze série plakátů Catharsis as a Service. Slogany a čísla na plakátech patří k dílu; nejsou to výzkumná zjištění."
+items = [
+  { src = "assets/posters/human-connection.png", title = "Human connection / Lidské propojení", alt = "Dvojjazyčný plakát: HUMAN CONNECTION a LIDSKÉ PROPOJENÍ nad davem se zdviženýma rukama před pódiem s rudou vlnovkou; anglický a český sloupec opakují vstup, proces, výstup a problém_vyřešen: false kolem uměleckého panelu synchronizace.", caption = "Synchronizované individuální signály, dočasná rovnováha." },
+]
+
 +++
 
 ## Proč se dav hýbe společně

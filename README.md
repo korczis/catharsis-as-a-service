@@ -32,8 +32,11 @@ The site is educational. It is not a diagnostic or treatment tool, and no metric
 | Area | Content | Source of truth |
 |---|---|---|
 | Landing | intent, definition of catharsis, the relief loop, evidence highlights, FAQ, how it was made | `content/_index.md`, `content/_index.cs.md` |
-| Research | nine research notes with key points, figures and references | `content/research/` |
-| Advice | ten entries graded by strength of evidence, with practice steps and limits | `content/advice/` |
+| Research | research notes with key points, figures and references | `content/research/` |
+| Advice | entries graded by strength of evidence, with practice steps and limits | `content/advice/` |
+| Theory | essays: catharsis theories, process model, appraisal, basic vs constructed emotion, social sharing, avoidance learning, allostasis, collective ritual | `content/theory/` |
+| Interactive models | relief loop, venting and arousal, peak–end memory, Kuramoto synchrony, allostatic load | `content/models/`, `static/js/models.js` |
+| Search | diacritic-insensitive search over pages and glossary terms in both languages | `api/v1/search.<lang>.json` |
 | Methods | detection model, temporal model, detection matrix, uncertainty vocabulary, architecture status, a labelled simulation | `content/methods/` |
 | Evidence ledger | every public claim graded by level and confidence, with sources and review dates | `data/claims.toml`, `data/sources.toml` |
 | Glossary | psychological, physiological and methodological terms (`/glossary/`, `/cs/slovnik/`) | `data/glossary.toml` |
@@ -109,6 +112,8 @@ python3 scripts/validate-claims.py
   [`cargo test`](https://korczis.github.io/catharsis-as-a-service/commands/#cargo-test).
 - [`python3 scripts/check-references.py --online`](https://korczis.github.io/catharsis-as-a-service/commands/#check-references):
   every DOI, title and year against Crossref.
+- [`python3 scripts/render-social.py`](https://korczis.github.io/catharsis-as-a-service/commands/#render-social):
+  renders a social preview for every page; validation runs it with `--check` so no page ships without its own image.
 - [`python3 scripts/validate-claims.py`](https://korczis.github.io/catharsis-as-a-service/commands/#validate-claims):
   the evidence ledger (levels, confidence, review intervals, staleness, coverage) and the glossary. A weekly
   workflow repeats it with Crossref and opens an `evidence-update` issue when anything has expired.

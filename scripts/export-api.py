@@ -92,6 +92,35 @@ def export(root, out, base_url):
     references = tomllib.loads((root / "data" / "references.toml").read_text(encoding="utf-8"))["references"]
     write(api / "references.json", dict(sorted(references.items())))
 
+    # Theory essays share the research-note shape.
+    collections["theory"] = {}
+    for language in languages:
+        theory = [
+            {
+                "slug": slug,
+                "url": url(base, language, default, "theory", slug),
+                "title": meta["title"],
+                "description": meta["description"],
+                "date": str(meta.get("date", "")),
+                "kicker": meta.get("extra", {}).get("kicker", ""),
+                "summary": meta.get("extra", {}).get("summary", ""),
+                "key_points": meta.get("extra", {}).get("key_points", []),
+                "tags": meta.get("taxonomies", {}).get("tags", []),
+                "references": meta.get("extra", {}).get("references", []),
+            }
+            for _, slug, meta in documents(root, "theory", language, default)
+        ]
+        filename = f"theory.{language}.json"
+        write(api / filename, theory)
+        collections["theory"][language] = filename
+
+    # Search index per language: every page plus every glossary term (static/js/search.js).
+    search = {}
+    for language in languages:
+        filename = f"search.{language}.json"
+        write(api / filename, search_entries(root, base, language, default))
+        search[language] = filename
+
     # Evidence ledger and glossary. TOML dates become ISO 8601 strings.
     def data(name):
         return tomllib.loads((root / "data" / name).read_text(encoding="utf-8"))
@@ -123,10 +152,77 @@ def export(root, out, base_url):
         "sources": "sources.json",
         "glossary": "glossary.json",
         "evidence_changelog": "evidence_changelog.json",
+        "search": search,
         "endpoint": {"method": "POST", "path": "/v1/catharsis", "status": 200, "problem_solved": False},
     }
     write(api / "index.json", index)
     return api, index
+
+
+DOCUMENT = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+\s*\n?(.*)\Z", re.S)
+MARKDOWN_LINK = re.compile(r"!?\[([^\]]*)\]\([^)]*\)")
+MARKDOWN_NOISE = re.compile(r"^```.*?^```|<[^>]+>|[*_`#>|]", re.S | re.M)
+SEARCH_TEXT_LIMIT = 1500
+SEARCH_EXCLUDED = {"search"}
+
+
+def plain(markdown):
+    text = MARKDOWN_LINK.sub(r"\1", markdown)
+    text = MARKDOWN_NOISE.sub(" ", text)
+    return re.sub(r"\s+", " ", text).strip()
+
+
+def content_url(base, rel, meta, language, default):
+    """The public URL of a content file, honouring a localized `slug`."""
+    parts = list(rel.parent.parts)
+    if meta.get("slug") and parts:
+        parts[-1] = meta["slug"]
+    prefix = "" if language == default else f"{language}/"
+    path = "/".join(parts)
+    return f"{base}/{prefix}{path}/" if path else f"{base}/{prefix}"
+
+
+def search_entries(root, base, language, default):
+    names = {"index.md", "_index.md"} if language == default else {f"index.{language}.md", f"_index.{language}.md"}
+    entries = []
+    glossary_url = None
+    for path in sorted((root / "content").rglob("*.md")):
+        if path.name not in names:
+            continue
+        rel = path.relative_to(root / "content")
+        section = rel.parts[0] if len(rel.parts) > 1 else "pages"
+        if section in SEARCH_EXCLUDED:
+            continue
+        match = DOCUMENT.match(path.read_text(encoding="utf-8"))
+        if not match:
+            continue
+        meta = tomllib.loads(match.group(1))
+        extra = meta.get("extra", {})
+        page_url = content_url(base, rel, meta, language, default)
+        if section == "glossary":
+            glossary_url = page_url
+        kind = section if section in {"research", "theory", "advice", "glossary", "engineering"} and not path.name.startswith("_index") else "pages"
+        entries.append({
+            "url": page_url,
+            "title": meta.get("title", ""),
+            "description": meta.get("description", ""),
+            "section": kind,
+            "kicker": extra.get("kicker", ""),
+            "tags": meta.get("taxonomies", {}).get("tags", []),
+            "text": plain(match.group(2))[:SEARCH_TEXT_LIMIT],
+        })
+    if glossary_url:
+        for term in tomllib.loads((root / "data" / "glossary.toml").read_text(encoding="utf-8"))["terms"]:
+            entries.append({
+                "url": f"{glossary_url}#{term['id']}",
+                "title": term["term"][language],
+                "description": term["definition"][language],
+                "section": "glossary",
+                "kicker": "",
+                "tags": [],
+                "text": "",
+            })
+    return entries
 
 
 def write(path, data):

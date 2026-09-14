@@ -735,3 +735,941 @@ population = { en = "Not applicable: a review proposing a taxonomy and neurocogn
 appraisal = { en = "Supports the claim that the neurocognitive mechanisms of distancing are unclear and that inconsistent terminology and methods make the literature difficult to synthesise. Its neurocognitive model is a proposal and is not cited as a finding.", cs = "Podporuje tvrzení, že neurokognitivní mechanismy odstupu jsou nejasné a že nejednotná terminologie a metody ztěžují souhrnné zpracování literatury. Jeho neurokognitivní model je návrh a necituje se jako zjištění." }
 last_reviewed = 2026-09-14
 review_due = 2027-09-14
+
+[sources.rescorla-wagner-1972]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a formal theory of Pavlovian conditioning, tested in animal learning experiments.", cs = "Neuplatňuje se: formální teorie pavlovovského podmiňování testovaná v experimentech s učením zvířat." }
+appraisal = { en = "Supports the statement that the model describes learning as an error-correcting update, in which each trial changes associative strength in proportion to the difference between what the outcome can support and what has already been learned. It concerns Pavlovian conditioning; applying its form to instrumental relief-seeking is an analogy. No abstract is available for this book chapter, so the appraisal rests on the standard description of the model.", cs = "Podporuje tvrzení, že model popisuje učení jako korekční aktualizaci, při níž každý pokus mění asociační sílu úměrně rozdílu mezi tím, co výsledek umožňuje, a tím, co už je naučeno. Týká se pavlovovského podmiňování; použití jeho tvaru pro instrumentální vyhledávání úlevy je analogie. Kapitola nemá dostupný abstrakt, hodnocení proto vychází ze standardního popisu modelu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kuramoto-1984]
+design = "book"
+level = "E"
+population = { en = "Not applicable: a mathematical monograph on oscillations and waves in chemical and other systems.", cs = "Neuplatňuje se: matematická monografie o oscilacích a vlnách v chemických a dalších systémech." }
+appraisal = { en = "Supports attributing the coupled-oscillator model of synchronization to Kuramoto. It is mathematical and makes no claim about people, emotion or groups; its contents were not re-read for this appraisal, and the model's properties are cited from the 2000 review.", cs = "Podporuje připsání modelu spřažených oscilátorů Kuramotovi. Jde o matematickou práci bez tvrzení o lidech, emocích nebo skupinách; obsah knihy nebyl pro toto hodnocení znovu čten a vlastnosti modelu se citují z přehledu z roku 2000." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.strogatz-2000]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of 25 years of mathematical research on the Kuramoto model.", cs = "Neuplatňuje se: narativní přehled 25 let matematického výzkumu Kuramotova modelu." }
+appraisal = { en = "Supports the claim that, in the Kuramoto model, oscillators with natural frequencies drawn from a distribution undergo a transition when coupling exceeds a threshold, with some synchronizing and others remaining incoherent. A mathematical review; it offers no evidence about human synchrony or social bonding.", cs = "Podporuje tvrzení, že v Kuramotově modelu procházejí oscilátory s vlastními frekvencemi vybranými z rozdělení přechodem, když vazba překročí práh: část se synchronizuje a zbytek zůstává nekoherentní. Matematický přehled; neposkytuje doklady o synchronii lidí ani o sociální sounáležitosti." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.higgins-thompson-2002]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a statistical methods paper illustrated with five example meta-analytic data sets.", cs = "Neuplatňuje se: statisticko-metodologická práce ilustrovaná na pěti ukázkových metaanalytických souborech dat." }
+appraisal = { en = "Supports the definition of I² as the proportion of total variation in study estimates due to heterogeneity, independent of the number of studies and the effect metric. Methods guidance, not evidence about any emotional outcome.", cs = "Podporuje definici I² jako podílu celkové variability odhadů studií připadajícího na heterogenitu, nezávislého na počtu studií i metrice účinku. Metodologické vodítko, nikoli doklad o jakémkoli emočním výsledku." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.egger-1997]
+design = "cross-sectional"
+level = "D"
+population = { en = "Eight pairs of meta-analyses and large trials, plus funnel plots from 37 journal meta-analyses and 38 Cochrane reviews.", cs = "Osm dvojic metaanalýz a velkých studií a trychtýřové grafy z 37 časopiseckých metaanalýz a 38 Cochraneových přehledů." }
+appraisal = { en = "Supports the claims that funnel-plot asymmetry was associated with meta-analyses later contradicted by large trials and was present in a sizeable minority of published meta-analyses. Asymmetry is consistent with publication bias but has other possible causes, and the medical sample may not represent psychology.", cs = "Podporuje tvrzení, že asymetrie trychtýřového grafu souvisela s metaanalýzami, které později vyvrátily velké studie, a že se vyskytovala v nezanedbatelné menšině publikovaných metaanalýz. Asymetrie je v souladu s publikačním zkreslením, má však i jiné možné příčiny a lékařský vzorek nemusí odpovídat psychologii." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.nosek-2018]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a conceptual article on preregistration across disciplines.", cs = "Neuplatňuje se: koncepční článek o předregistraci napříč obory." }
+appraisal = { en = "Supports the definition of preregistration and the argument that it distinguishes prediction from postdiction. Advocacy by proponents of the practice; it does not measure the effect of preregistration on research quality.", cs = "Podporuje definici předregistrace a argument, že odlišuje předpověď od dodatečného vysvětlení. Jde o obhajobu praxe jejími zastánci; účinek předregistrace na kvalitu výzkumu neměří." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.osc-2015]
+design = "experiment"
+level = "D"
+population = { en = "Replications of 100 experimental and correlational studies from three psychology journals, using high-powered designs.", cs = "Replikace 100 experimentálních a korelačních studií ze tří psychologických časopisů s designy o vysoké statistické síle." }
+appraisal = { en = "Supports the claims that replication effects were about half the size of the original effects and that 36% of replications were statistically significant versus 97% of originals. Graded D because it mixes experimental and correlational replications and describes research practice in a sample of journals, not an intervention; what counts as a successful replication is itself debated.", cs = "Podporuje tvrzení, že účinky v replikacích dosahovaly zhruba poloviny původní velikosti a že statisticky významných bylo 36 % replikací oproti 97 % původních studií. Úroveň D, protože kombinuje experimentální a korelační replikace a popisuje výzkumnou praxi ve vzorku časopisů, nikoli intervenci; co se počítá za úspěšnou replikaci, je samo předmětem sporu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.button-2013]
+design = "review"
+level = "D"
+population = { en = "Not verified: no abstract was retrievable; an analysis of statistical power in neuroscience meta-analyses.", cs = "Neověřeno: abstrakt nebyl dostupný; analýza statistické síly v neurovědních metaanalýzách." }
+appraisal = { en = "Cited for the claims that low power reduces the chance of detecting true effects, lowers the probability that significant results reflect true effects and inflates estimated effect sizes. Figures from the analysis were not re-verified from an abstract and are not stated on the site.", cs = "Citováno pro tvrzení, že nízká síla snižuje šanci zachytit skutečné účinky, snižuje pravděpodobnost, že významné výsledky odrážejí skutečný účinek, a nadsazuje odhadované velikosti účinku. Čísla z analýzy nebyla z abstraktu znovu ověřena a web je neuvádí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.baron-kenny-1986]
+design = "theory"
+level = "D"
+population = { en = "Not verified: no abstract was retrievable; a conceptual and statistical paper on moderators and mediators.", cs = "Neověřeno: abstrakt nebyl dostupný; koncepční a statistická práce o moderátorech a mediátorech." }
+appraisal = { en = "Cited for the conceptual distinction between moderators and mediators. Its stepwise procedure for testing mediation has since been widely criticised, so it is not cited for how mediation should be tested.", cs = "Citováno pro koncepční rozlišení moderátorů a mediátorů. Jeho postupný způsob testování mediace byl později široce kritizován, a proto se necituje pro to, jak mediaci testovat." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.orne-1962]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a conceptual paper on the psychological experiment as a social situation.", cs = "Neuplatňuje se: koncepční práce o psychologickém experimentu jako sociální situaci." }
+appraisal = { en = "Supports the definition of demand characteristics and the recommendation of post-experimental inquiry. A historical, conceptual source; the size of demand effects varies across paradigms.", cs = "Podporuje definici požadavkových charakteristik a doporučení dotazování po experimentu. Historický koncepční zdroj; velikost vlivu požadavkových charakteristik se mezi paradigmaty liší." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.curran-bauer-2011]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a methods review demonstrated with artificial data sets.", cs = "Neuplatňuje se: metodologický přehled demonstrovaný na umělých souborech dat." }
+appraisal = { en = "Supports the distinction between within-person and between-person effects and the use of multilevel models to separate them. Methods guidance, not evidence about any substantive effect.", cs = "Podporuje rozlišení vnitroosobních a meziosobních účinků a použití víceúrovňových modelů k jejich oddělení. Metodologické vodítko, nikoli doklad o konkrétním věcném účinku." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.cumming-2014]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a methods article on estimation, confidence intervals and meta-analysis.", cs = "Neuplatňuje se: metodologický článek o odhadu, intervalech spolehlivosti a metaanalýze." }
+appraisal = { en = "Supports recommendations to report effect sizes with confidence intervals rather than rely on null-hypothesis significance testing. A position shared by many methodologists but not universally; it is guidance, not a test.", cs = "Podporuje doporučení uvádět velikosti účinku s intervaly spolehlivosti místo spoléhání na testování nulové hypotézy. Postoj sdílený mnoha metodology, nikoli však všemi; jde o vodítko, nikoli o test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.wasserstein-lazar-2016]
+design = "review"
+level = "D"
+population = { en = "Not verified: no abstract was retrievable; a policy statement of the American Statistical Association on p-values.", cs = "Neověřeno: abstrakt nebyl dostupný; stanovisko Americké statistické asociace k p-hodnotám." }
+appraisal = { en = "Cited for the principles that a p-value does not measure the probability that a hypothesis is true or the size of an effect, and that conclusions should not rest only on crossing a threshold. An expert consensus statement, not an empirical study.", cs = "Citováno pro zásady, že p-hodnota neměří pravděpodobnost platnosti hypotézy ani velikost účinku a že závěry by neměly stát jen na překročení hranice. Expertní konsenzuální stanovisko, nikoli empirická studie." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lakens-2013]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a practical primer on calculating effect sizes for t-tests and ANOVAs.", cs = "Neuplatňuje se: praktický průvodce výpočtem velikostí účinku pro t-testy a analýzu rozptylu." }
+appraisal = { en = "Supports technical statements about Cohen's d, Hedges' g and the different formulas required for within- and between-subject designs. Methods guidance.", cs = "Podporuje technická tvrzení o Cohenově d, Hedgesově g a o odlišných vzorcích pro designy s opakovaným měřením a mezi skupinami. Metodologické vodítko." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kaptchuk-miller-2015]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a brief perspective article on placebo effects in clinical medicine.", cs = "Neuplatňuje se: krátký perspektivní článek o placebo efektech v klinické medicíně." }
+appraisal = { en = "Supports the description of placebo effects as genuine biopsychosocial phenomena beyond spontaneous remission or symptom fluctuation. A short expert perspective; it does not quantify placebo effects for emotional outcomes.", cs = "Podporuje popis placebo efektů jako skutečných biopsychosociálních jevů přesahujících spontánní odeznění nebo kolísání příznaků. Krátká expertní perspektiva; placebo efekty u emočních výsledků nekvantifikuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hernan-2004]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a causal-diagram analysis of selection bias in epidemiological designs.", cs = "Neuplatňuje se: analýza výběrového zkreslení v epidemiologických designech pomocí kauzálních diagramů." }
+appraisal = { en = "Supports the structural distinction between selection bias, which results from conditioning on a common effect, and confounding, which results from a common cause. Conceptual and methodological; examples come from epidemiology.", cs = "Podporuje strukturální rozlišení výběrového zkreslení, které vzniká podmíněním na společném důsledku, a zkreslení společnou příčinou (confounding). Koncepční a metodologická práce; příklady pocházejí z epidemiologie." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rohrer-2018]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a tutorial on graphical causal models for observational data in psychology.", cs = "Neuplatňuje se: výukový článek o grafických kauzálních modelech pro observační data v psychologii." }
+appraisal = { en = "Supports statements that correlation does not establish causation, that statistical control depends on assumptions, and that controlling for colliders or mediators can bias estimates. Methods guidance.", cs = "Podporuje tvrzení, že korelace nezakládá kauzalitu, že statistická kontrola závisí na předpokladech a že kontrola koliderů či mediátorů může odhady zkreslit. Metodologické vodítko." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.simmons-2011]
+design = "experiment"
+level = "B"
+population = { en = "Computer simulations plus two experiments demonstrating flexible analysis.", cs = "Počítačové simulace a dva experimenty demonstrující flexibilní analýzu." }
+appraisal = { en = "Supports the claim that undisclosed flexibility in data collection, analysis and reporting can raise false-positive rates far above the nominal level. The experiments were deliberate demonstrations; the paper does not estimate how common such practices are.", cs = "Podporuje tvrzení, že nepřiznaná flexibilita při sběru, analýze a vykazování dat může zvýšit míru falešně pozitivních výsledků vysoko nad nominální úroveň. Experimenty byly záměrnými demonstracemi; článek neodhaduje, jak časté takové praktiky jsou." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Psychophysiology and neuroscience (glossary, added 2026-09-14) ───────────────────────────────
+
+[sources.thayer-lane-2000]
+design = "theory"
+level = "D"
+population = { en = "Not verified: no abstract was retrievable; a theoretical model of neurovisceral integration.", cs = "Neověřeno: abstrakt nebyl dostupný; teoretický model neuroviscerální integrace." }
+appraisal = { en = "Cited for the proposal that vagally mediated heart rate variability is associated with flexible emotion regulation through a network linking prefrontal and autonomic function. A theoretical model; supporting studies are largely correlational.", cs = "Citováno pro návrh, že vagově zprostředkovaná variabilita srdeční frekvence souvisí s pružnou regulací emocí prostřednictvím sítě propojující prefrontální a autonomní funkce. Teoretický model; podpůrné studie jsou převážně korelační." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.dickerson-kemeny-2004]
+design = "meta-analysis"
+level = "C"
+population = { en = "208 laboratory studies of acute psychological stressors and cortisol responses.", cs = "208 laboratorních studií akutních psychických stresorů a kortizolové odpovědi." }
+appraisal = { en = "Supports the claims that psychological stressors raised cortisol on average, with wide variation, and that uncontrollable tasks with social-evaluative threat produced the largest responses and longest recovery. Pooled effects are largely pre-to-post changes within laboratory tasks rather than randomised comparisons, so it is graded C.", cs = "Podporuje tvrzení, že psychické stresory kortizol v průměru zvyšovaly, s velkou variabilitou, a že nekontrolovatelné úlohy s hrozbou sociálního hodnocení vyvolávaly největší odpovědi a nejdelší zotavení. Shrnuté účinky jsou převážně změny před–po v rámci laboratorních úloh, nikoli randomizovaná srovnání, proto má úroveň C." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.stalder-2016]
+design = "review"
+level = "D"
+population = { en = "Not applicable: expert consensus guidelines of the International Society of Psychoneuroendocrinology.", cs = "Neuplatňuje se: konsenzuální doporučení expertů Mezinárodní společnosti pro psychoneuroendokrinologii." }
+appraisal = { en = "Supports technical statements about the cortisol awakening response and the dependence of its measurement on accurate, verified sampling times. Expert consensus, not a test of what the response indicates.", cs = "Podporuje technická tvrzení o kortizolové odpovědi na probuzení a o závislosti jejího měření na přesných a ověřených časech odběru. Expertní konsenzus, nikoli test toho, co odpověď vypovídá." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.buhle-2014]
+design = "meta-analysis"
+level = "A"
+population = { en = "48 neuroimaging studies of cognitive reappraisal, mostly down-regulation of negative affect.", cs = "48 neurozobrazovacích studií kognitivního přehodnocení, převážně tlumení negativního afektu." }
+appraisal = { en = "Supports the claim that reappraisal consistently engaged cognitive control regions and lateral temporal cortex and was accompanied by modulation of bilateral amygdala activity. Group-level activation in instructed laboratory tasks; it does not show how regulation unfolds for an individual in daily life.", cs = "Podporuje tvrzení, že přehodnocení konzistentně aktivovalo oblasti kognitivní kontroly a laterální spánkovou kůru a provázela je modulace aktivity amygdaly na obou stranách. Skupinová aktivace v instruovaných laboratorních úlohách; neukazuje, jak regulace probíhá u jednotlivce v každodenním životě." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.garfinkel-2015]
+design = "cross-sectional"
+level = "D"
+population = { en = "A normative sample of 80 adults completing heartbeat tasks and interoception questionnaires.", cs = "Normativní vzorek 80 dospělých, kteří absolvovali úlohy vnímání tepu a dotazníky interocepce." }
+appraisal = { en = "Supports the claim that interoceptive accuracy, sensibility and awareness were distinct and dissociable dimensions. A single modest sample; the heartbeat tasks used have known measurement limitations.", cs = "Podporuje tvrzení, že interoceptivní přesnost, citlivost a uvědomění byly odlišné a oddělitelné dimenze. Jediný menší vzorek; použité úlohy vnímání tepu mají známá omezení měření." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.schultz-1997]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review linking primate dopamine-neuron recordings with computational learning theory.", cs = "Neuplatňuje se: přehled propojující záznamy dopaminových neuronů primátů s výpočetní teorií učení." }
+appraisal = { en = "Supports the description of dopamine neuron firing as consistent with a reward prediction error signal. Based on animal recordings; it says nothing directly about human subjective pleasure.", cs = "Podporuje popis aktivity dopaminových neuronů jako slučitelné se signálem chyby predikce odměny. Opírá se o záznamy u zvířat; o lidském subjektivním potěšení přímo nic neříká." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.dunbar-2012]
+design = "experiment"
+level = "B"
+population = { en = "Participants in six studies watching comedy or control videos in the laboratory and stage performances in naturalistic settings.", cs = "Účastníci šesti studií sledující komediální nebo kontrolní videa v laboratoři a divadelní představení v přirozeném prostředí." }
+appraisal = { en = "Supports the claim that pain thresholds were higher after social laughter than in control conditions. Pain threshold is used as a proxy for endorphin release, which was not measured directly.", cs = "Podporuje tvrzení, že práh bolesti byl po společném smíchu vyšší než v kontrolních podmínkách. Práh bolesti slouží jako zástupný ukazatel uvolnění endorfinů, které nebylo přímo měřeno." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rankin-2009]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a consensus review by researchers studying habituation across species and paradigms.", cs = "Neuplatňuje se: konsenzuální přehled výzkumníků studujících habituaci napříč druhy a paradigmaty." }
+appraisal = { en = "Supports the definition of habituation and its behavioural characteristics. Expert consensus on basic learning; it does not address emotional processing.", cs = "Podporuje definici habituace a její behaviorální charakteristiky. Expertní konsenzus o základním učení; emočním zpracováním se nezabývá." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Social and affective psychology (glossary, added 2026-09-14) ─────────────────────────────────
+
+[sources.kramer-2014]
+design = "experiment"
+level = "B"
+population = { en = "Facebook users whose News Feeds were experimentally altered to contain less positive or less negative emotional content.", cs = "Uživatelé Facebooku, jejichž kanál novinek byl experimentálně upraven tak, aby obsahoval méně pozitivního nebo negativního emočního obsahu." }
+appraisal = { en = "Supports the claim that reducing emotional expressions in the feed was followed by corresponding changes in the emotional language of users' own posts. Effects were very small, the outcome was word use rather than felt emotion, and the study was criticised for lacking informed consent.", cs = "Podporuje tvrzení, že po omezení emočních projevů v kanálu následovaly odpovídající změny emočního jazyka vlastních příspěvků uživatelů. Účinky byly velmi malé, výsledkem bylo užití slov, nikoli prožívaná emoce, a studie byla kritizována pro chybějící informovaný souhlas." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.butler-randall-2013]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a conceptual article proposing an operational definition of coregulation.", cs = "Neuplatňuje se: koncepční článek navrhující operační definici koregulace." }
+appraisal = { en = "Supports the definition of coregulation as bidirectional, oscillating emotional linkage between partners that contributes to stability. A proposal to sharpen terminology, not a test of its effects on well-being.", cs = "Podporuje definici koregulace jako obousměrného, oscilujícího emočního propojení partnerů, které přispívá ke stabilitě. Návrh zpřesnění terminologie, nikoli test jejích účinků na pohodu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.zaki-williams-2013]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a conceptual framework for interpersonal emotion regulation.", cs = "Neuplatňuje se: koncepční rámec interpersonální regulace emocí." }
+appraisal = { en = "Supports the distinctions between intrinsic and extrinsic, and response-dependent and response-independent, interpersonal regulation. An organising framework; it does not test which processes are effective.", cs = "Podporuje rozlišení vnitřní a vnější a na reakci závislé a nezávislé interpersonální regulace. Organizační rámec; netestuje, které procesy jsou účinné." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.coan-2006]
+design = "experiment"
+level = "B"
+population = { en = "16 married women in an fMRI threat-of-shock task holding their husband's hand, a stranger's hand or no hand.", cs = "16 vdaných žen v fMRI úloze s hrozbou elektrického šoku, které držely za ruku manžela, cizího muže, nebo nikoho." }
+appraisal = { en = "Supports the claim that spousal hand-holding was associated with attenuated threat-related activation, more than a stranger's hand, and more so in higher-quality marriages. A small, homogeneous sample and a within-subject design; replication in larger samples is limited.", cs = "Podporuje tvrzení, že držení ruky manžela souviselo s oslabenou aktivací spojenou s hrozbou, výrazněji než ruka cizího muže, a více v kvalitnějších manželstvích. Malý homogenní vzorek a design s opakovaným měřením týchž osob; replikací na větších vzorcích je málo." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.beckes-coan-2011]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical review presenting social baseline theory.", cs = "Neuplatňuje se: teoretický přehled představující teorii sociální výchozí úrovně." }
+appraisal = { en = "Supports the description of social baseline theory: social proximity as the expected baseline that conserves regulatory resources. Theory by its originators; the supporting evidence is heterogeneous.", cs = "Podporuje popis teorie sociální výchozí úrovně: sociální blízkost jako očekávaná výchozí úroveň, která šetří regulační zdroje. Teorie od jejích autorů; podpůrné doklady jsou různorodé." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.barrett-2001]
+design = "cross-sectional"
+level = "D"
+population = { en = "Participants completing a 14-day emotion diary and laboratory measures of emotion regulation.", cs = "Účastníci, kteří vyplňovali čtrnáctidenní deník emocí a absolvovali laboratorní měření regulace emocí." }
+appraisal = { en = "Supports the claim that negative emotion differentiation was positively related to the frequency of negative emotion regulation, particularly at higher emotional intensity. Correlational; it cannot show that differentiation causes more regulation.", cs = "Podporuje tvrzení, že diferenciace negativních emocí pozitivně souvisela s četností jejich regulace, zejména při vyšší emoční intenzitě. Korelační studie; nemůže ukázat, že diferenciace vede k častější regulaci." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.kashdan-2015]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a short review of research on emotion differentiation.", cs = "Neuplatňuje se: krátký přehled výzkumu emoční diferenciace." }
+appraisal = { en = "Supports the claim that greater emotional granularity during distress is associated with less use of maladaptive strategies such as binge drinking and aggression. A brief review by researchers in the area; most cited findings are correlational.", cs = "Podporuje tvrzení, že vyšší emoční granularita v tísni souvisí s menším využíváním maladaptivních strategií, jako je nárazové pití nebo agrese. Krátký přehled od výzkumníků v oboru; většina citovaných zjištění je korelační." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bagby-1994]
+design = "cross-sectional"
+level = "D"
+population = { en = "Not verified: no abstract was retrievable; a psychometric development study of the 20-item Toronto Alexithymia Scale.", cs = "Neověřeno: abstrakt nebyl dostupný; psychometrická studie vývoje dvacetipoložkové Torontské škály alexithymie." }
+appraisal = { en = "Cited for the existence and three-factor structure of the TAS-20 as a self-report measure of alexithymia. Sample details were not re-verified from an abstract and are not stated on the site.", cs = "Citováno pro existenci a trojfaktorovou strukturu TAS-20 jako sebeposuzovacího měřítka alexithymie. Údaje o vzorku nebyly z abstraktu znovu ověřeny a web je neuvádí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.keltner-haidt-2003]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a prototype analysis of awe drawn from religious, philosophical, sociological and psychological writing.", cs = "Neuplatňuje se: prototypová analýza úžasu vycházející z náboženských, filozofických, sociologických a psychologických textů." }
+appraisal = { en = "Supports the definition of awe by perceived vastness and a need for accommodation, with further appraisals shaping its tone. A conceptual proposal, not an empirical test.", cs = "Podporuje vymezení úžasu vnímanou nesmírností a potřebou přizpůsobení, přičemž další hodnocení utvářejí jeho zabarvení. Koncepční návrh, nikoli empirický test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.stellar-2017]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of compassion, gratitude and awe as self-transcendent emotions.", cs = "Neuplatňuje se: přehled soucitu, vděčnosti a úžasu jako sebepřesahujících emocí." }
+appraisal = { en = "Supports the description of self-transcendent emotions as a proposed category linked to prosociality and group coordination. Narrative review with evolutionary proposals that remain to be tested.", cs = "Podporuje popis sebepřesahujících emocí jako navrhované kategorie spojené s prosocialitou a koordinací ve skupině. Narativní přehled s evolučními návrhy, které teprve čekají na ověření." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.engeser-rheinberg-2008]
+design = "cross-sectional"
+level = "D"
+population = { en = "Not verified: no abstract was retrievable; field studies of flow, performance and challenge–skill balance.", cs = "Neověřeno: abstrakt nebyl dostupný; terénní studie flow, výkonu a rovnováhy náročnosti a dovedností." }
+appraisal = { en = "Cited for the claim that the relation between challenge–skill balance and flow depends on moderators. Samples and effect sizes were not re-verified from an abstract and are not stated on the site.", cs = "Citováno pro tvrzení, že vztah mezi rovnováhou náročnosti a dovedností a prožitkem flow závisí na moderátorech. Vzorky a velikosti účinku nebyly z abstraktu znovu ověřeny a web je neuvádí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.swann-2012]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical review of identity fusion.", cs = "Neuplatňuje se: teoretický přehled fúze identity." }
+appraisal = { en = "Supports the definition of identity fusion, the local–extended distinction, and the report that fusion measures predict endorsement of extreme pro-group behaviour. A review by the theory's proponents; outcomes are often hypothetical self-reports.", cs = "Podporuje definici fúze identity, rozlišení lokální a rozšířené fúze a zjištění, že měřítka fúze předpovídají souhlas s extrémním jednáním ve prospěch skupiny. Přehled od zastánců teorie; výsledky jsou často hypotetická sebeposouzení." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.phillips-silver-2010]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a unifying theoretical framework for entrainment across music, dance and motor coordination.", cs = "Neuplatňuje se: sjednocující teoretický rámec strhávání rytmu napříč hudbou, tancem a pohybovou koordinací." }
+appraisal = { en = "Supports the definition of entrainment and of social entrainment as coordination with a rhythm produced by another individual. Theory; it does not test emotional or social outcomes.", cs = "Podporuje definici strhávání rytmu a sociálního strhávání jako koordinace s rytmem, který vytváří jiný jedinec. Teorie; emoční ani sociální výsledky netestuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Clinical boundary (glossary, added 2026-09-14) ───────────────────────────────────────────────
+
+[sources.gould-2007]
+design = "longitudinal"
+level = "C"
+population = { en = "1,085 suicidal callers to eight US crisis centres assessed during calls, 380 of whom completed follow-up within three weeks.", cs = "1 085 volajících se sebevražednými myšlenkami do osmi krizových center v USA hodnocených během hovoru, z nichž 380 se zúčastnilo sledování do tří týdnů." }
+appraisal = { en = "Supports the claims that seriously suicidal people contacted crisis lines and that suicidality decreased during calls, with further decreases in hopelessness and psychological pain afterwards. No comparison group and a 35% follow-up rate, so changes cannot be attributed to the calls alone.", cs = "Podporuje tvrzení, že krizové linky kontaktovali lidé s vážnými sebevražednými myšlenkami a že suicidalita během hovoru klesala, s dalším poklesem beznaděje a psychické bolesti poté. Bez srovnávací skupiny a se sledováním jen 35 % volajících, takže změny nelze přičíst pouze hovorům." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.cuijpers-2016]
+design = "meta-analysis"
+level = "A"
+population = { en = "144 randomised trials (184 comparisons) of CBT versus waiting list, care as usual or pill placebo for major depression, generalised anxiety, panic and social anxiety disorder.", cs = "144 randomizovaných studií (184 srovnání) KBT oproti čekací listině, běžné péči nebo placebu u deprese, generalizované úzkostné poruchy, panické poruchy a sociální úzkostné poruchy." }
+appraisal = { en = "Supports the claims that CBT effects were large against control conditions (g = 0.75 to 0.88), smaller after adjustment for publication bias, and small to moderate against care as usual or pill placebo. Only 17.4% of trials were rated high quality, and most anxiety trials used waiting-list controls.", cs = "Podporuje tvrzení, že účinky KBT byly oproti kontrolním podmínkám velké (g = 0,75 až 0,88), po korekci na publikační zkreslení menší a oproti běžné péči nebo placebu malé až střední. Jen 17,4 % studií bylo hodnoceno jako vysoce kvalitní a většina studií úzkostných poruch používala kontrolu čekací listinou." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.cuijpers-2019]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of evidence on common and specific factors in psychotherapy.", cs = "Neuplatňuje se: přehled poznatků o společných a specifických faktorech v psychoterapii." }
+appraisal = { en = "Supports the claim that no common or specific factor yet meets the criteria for an empirically validated working mechanism, because mechanism research has been correlational. Narrative review; it does not question that psychotherapies are effective.", cs = "Podporuje tvrzení, že žádný společný ani specifický faktor zatím nesplňuje kritéria empiricky ověřeného mechanismu účinku, protože výzkum mechanismů byl korelační. Narativní přehled; účinnost psychoterapií nezpochybňuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lewis-2020]
+design = "meta-analysis"
+level = "A"
+population = { en = "114 randomised controlled trials with 8,171 adults with PTSD, appraised with GRADE.", cs = "114 randomizovaných kontrolovaných studií s 8 171 dospělými s PTSD, hodnocených metodou GRADE." }
+appraisal = { en = "Supports the claim of robust evidence for clinically important effects of trauma-focused CBT and EMDR, with cognitive processing therapy, cognitive therapy and prolonged exposure having the strongest evidence. Trial populations and comparators vary, and effects are for adults with diagnosed PTSD.", cs = "Podporuje tvrzení o robustních dokladech klinicky významných účinků KBT zaměřené na trauma a EMDR, přičemž nejsilnější doklady má terapie kognitivního zpracování, kognitivní terapie a prodloužená expozice. Populace i srovnávací podmínky se mezi studiemi liší a účinky se týkají dospělých s diagnostikovanou PTSD." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.norton-gino-2014]
+design = "experiment"
+level = "B"
+population = { en = "Three experiments on losses of loved ones, of relationships and of a lottery chance; sample sizes are not stated in the abstract.", cs = "Tři experimenty se ztrátou blízkého člověka, vztahu a výhry v loterii; velikosti vzorků abstrakt neuvádí." }
+appraisal = { en = "Supports the claim that recalling past rituals or completing novel rituals after a loss was followed by lower self-reported grief, mediated by feelings of control, including in people who did not believe in rituals. Short-term self-report after mostly minor or recalled losses; it does not test outcomes over months after bereavement.", cs = "Podporuje tvrzení, že vzpomínka na dřívější rituály nebo provedení nového rituálu po ztrátě byly následovány nižším uváděným zármutkem, zprostředkovaným pocitem kontroly, a to i u lidí, kteří v rituály nevěřili. Krátkodobé sebeposouzení po převážně menších nebo vybavovaných ztrátách; netestuje výsledky v řádu měsíců po úmrtí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hobson-2018]
+design = "review"
+level = "D"
+population = { en = "Not applicable: an integrative review of ritual research across psychology, anthropology, economics and neuroscience.", cs = "Neuplatňuje se: integrativní přehled výzkumu rituálů napříč psychologií, antropologií, ekonomií a neurovědami." }
+appraisal = { en = "Supports the conceptual claim that rituals have been proposed to regulate emotions, performance goal states and social connection through bottom-up and top-down processes. A framework that generates predictions, not a test of them.", cs = "Podporuje koncepční tvrzení, že rituálům se připisuje regulace emocí, stavů spojených s výkonovými cíli a sociálního propojení prostřednictvím procesů zdola nahoru a shora dolů. Rámec generuje předpovědi, netestuje je." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.mitima-verloop-2021]
+design = "longitudinal"
+level = "C"
+population = { en = "Bereaved adults in the Netherlands completing questionnaires six months (n = 552) and three years (n = 289) after the loss.", cs = "Pozůstalí dospělí v Nizozemsku vyplňující dotazníky šest měsíců (n = 552) a tři roky (n = 289) po ztrátě." }
+appraisal = { en = "Supports the claim that funerals and grief rituals were rated as helpful but that neither the evaluation of the funeral nor the use of rituals was significantly associated with grief reactions. One country, self-selected questionnaire sample, attrition between waves.", cs = "Podporuje tvrzení, že pohřby a rituály truchlení byly hodnoceny jako užitečné, ale ani hodnocení pohřbu, ani užívání rituálů významně nesouviselo s reakcemi zármutku. Jedna země, dotazníkový vzorek s dobrovolnou účastí, úbytek mezi vlnami." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.stroebe-schut-1999]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical paper proposing the dual process model of coping with bereavement.", cs = "Neuplatňuje se: teoretická práce navrhující duální procesový model vyrovnávání se se ztrátou." }
+appraisal = { en = "Supports the claim that the model describes oscillation between loss-oriented and restoration-oriented coping, including respite from grieving, as adaptive, and that it was proposed in response to criticism of the grief work hypothesis. A model with discussed but not pooled empirical support.", cs = "Podporuje tvrzení, že model popisuje jako adaptivní střídání vyrovnávání zaměřeného na ztrátu a na obnovu včetně oddechu od truchlení a že vznikl jako reakce na kritiku hypotézy práce se zármutkem. Model s diskutovanou, nikoli souhrnně vyhodnocenou empirickou oporou." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.stroebe-schut-boerner-2010]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical integration of research on continuing bonds with the deceased.", cs = "Neuplatňuje se: teoretická integrace výzkumu pokračujících pout se zemřelými." }
+appraisal = { en = "Supports the claim that whether continuing or relinquishing bonds is adaptive remained unclear in the literature and that an attachment-based model was proposed to predict when bonds help. Theory, not a test.", cs = "Podporuje tvrzení, že v literatuře zůstávalo nejasné, zda je adaptivní pouta se zemřelým udržovat, nebo je rozvolnit, a že byl navržen model vycházející z teorie citové vazby, který má předpovídat, kdy pouta pomáhají. Teorie, nikoli test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.stroebe-schut-stroebe-2007]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of bereavement and physical and mental health.", cs = "Neuplatňuje se: narativní přehled vztahu mezi ztrátou blízkého a tělesným i duševním zdravím." }
+appraisal = { en = "Supports the claims that grief is not a disease, that most people adjust without professional intervention, that bereavement is associated with excess mortality risk especially early after a loss, and that intervention should target people at high risk or with complicated grief. Narrative synthesis.", cs = "Podporuje tvrzení, že zármutek není nemoc, že se většina lidí vyrovná bez odborné intervence, že ztráta blízkého souvisí se zvýšeným rizikem úmrtí zejména brzy po ztrátě a že intervence mají mířit na lidi s vysokým rizikem nebo komplikovaným zármutkem. Narativní syntéza." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.bonanno-2002]
+design = "longitudinal"
+level = "C"
+population = { en = "205 older adults assessed several years before the death of their spouse and 6 and 18 months after it.", cs = "205 starších dospělých hodnocených několik let před úmrtím manželského partnera a 6 a 18 měsíců po něm." }
+appraisal = { en = "Supports the claims that five trajectories were identified, that resilience was the most frequent pattern and common grief relatively infrequent, and that chronic grief was associated with preloss dependency. One cohort of spousal loss in later life.", cs = "Podporuje tvrzení, že bylo identifikováno pět trajektorií, že nejčastějším vzorcem byla odolnost a běžný zármutek byl poměrně vzácný a že chronický zármutek souvisel se závislostí před ztrátou. Jedna kohorta ztráty partnera ve vyšším věku." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.prigerson-2009]
+design = "longitudinal"
+level = "C"
+population = { en = "291 bereaved respondents interviewed three times between 0 and 24 months after the loss.", cs = "291 pozůstalých respondentů dotazovaných třikrát v období 0 až 24 měsíců po ztrátě." }
+appraisal = { en = "Supports the claim that proposed criteria for prolonged grief disorder centre on yearning plus further symptoms persisting at least six months after the death with functional impairment. Prolonged grief disorder has since entered ICD-11; the 2009 paper is cited for the logic of the boundary, not for current thresholds.", cs = "Podporuje tvrzení, že navržená kritéria prolongované poruchy truchlení se soustředí na stesk a další příznaky přetrvávající nejméně šest měsíců po úmrtí spolu s narušením fungování. Prolongovaná porucha truchlení byla od té doby zařazena do MKN-11; práce z roku 2009 je citována kvůli logice hranice, nikoli kvůli současným prahům." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lundorff-2017]
+design = "meta-analysis"
+level = "D"
+population = { en = "14 studies of non-psychiatric adults after non-violent bereavement.", cs = "14 studií nepsychiatrických dospělých po nenásilné ztrátě blízkého." }
+appraisal = { en = "Supports the claim that the pooled prevalence of prolonged grief disorder was 9.8% (95% CI 6.8 to 14.0) and higher with higher mean age. Pools observational prevalence studies with heterogeneous methods and high risk of external validity bias, so it is graded D.", cs = "Podporuje tvrzení, že souhrnná prevalence prolongované poruchy truchlení byla 9,8 % (95% CI 6,8 až 14,0) a s vyšším průměrným věkem byla vyšší. Shrnuje observační studie prevalence s heterogenními metodami a vysokým rizikem zkreslení vnější validity, proto má úroveň D." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.currier-2008]
+design = "meta-analysis"
+level = "A"
+population = { en = "61 controlled studies of psychotherapeutic interventions for bereaved persons.", cs = "61 kontrolovaných studií psychoterapeutických intervencí pro pozůstalé." }
+appraisal = { en = "Supports the claims that interventions had a small effect at post-treatment and no significant benefit at follow-up overall, that interventions for people with marked difficulties had more favourable outcomes, and that untreated controls tended to improve over time. Older literature with mixed quality.", cs = "Podporuje tvrzení, že intervence měly celkově malý účinek po skončení a žádný významný přínos při sledování, že intervence pro lidi s výraznými obtížemi měly příznivější výsledky a že kontrolní skupiny bez intervence se časem zlepšovaly. Starší literatura smíšené kvality." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.johannsen-2019]
+design = "meta-analysis"
+level = "A"
+population = { en = "31 randomized controlled trials of psychological interventions for grief in bereaved adults.", cs = "31 randomizovaných kontrolovaných studií psychologických intervencí pro zármutek u pozůstalých dospělých." }
+appraisal = { en = "Supports the claim that psychological interventions reduced grief symptoms (g = 0.41 post-intervention, 0.31 after adjustment for publication bias, 0.45 at follow-up), with larger effects in people at least six months post-loss and with high baseline symptoms. Heterogeneous trials of varying quality.", cs = "Podporuje tvrzení, že psychologické intervence snižovaly příznaky zármutku (g = 0,41 po intervenci, 0,31 po korekci na publikační zkreslení, 0,45 při sledování) a že účinky byly větší u lidí nejméně šest měsíců po ztrátě a s vysokými výchozími příznaky. Heterogenní studie různé kvality." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Exercise and mood ─────────────────────────────────────────────────────────────────────────────
+
+[sources.liao-2015]
+design = "systematic-review"
+level = "C"
+population = { en = "14 studies in free-living, non-clinical populations relating momentary affect to physical activity over the following hours.", cs = "14 studií v přirozeném prostředí u neklinických populací, které vztahovaly okamžitý afekt k pohybové aktivitě v následujících hodinách." }
+appraisal = { en = "Supports the claims that physical activity consistently predicted higher positive affect over the next few hours and that evidence for reduced negative affect was inconsistent. Intensive longitudinal observational studies, so direction and confounding remain open.", cs = "Podporuje tvrzení, že pohybová aktivita konzistentně predikovala vyšší pozitivní afekt v následujících hodinách a že doklady o snížení negativního afektu byly nekonzistentní. Intenzivní longitudinální observační studie, takže směr vztahu a zkreslení zůstávají otevřené." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.ekkekakis-2011]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of 33 articles (1999 to 2009) on exercise intensity and affective responses.", cs = "Neuplatňuje se: přehled 33 článků (1999 až 2009) o intenzitě cvičení a afektivních reakcích." }
+appraisal = { en = "Supports the claims that pleasure declines mainly above the ventilatory or lactate threshold, that sub-threshold intensities produce pleasant changes for most people with large individual variability near the threshold, and that self-selected intensity fosters tolerance of higher intensities. Narrative review of experimental studies.", cs = "Podporuje tvrzení, že potěšení klesá hlavně nad ventilačním nebo laktátovým prahem, že intenzity pod prahem vedou u většiny lidí k příjemným změnám s velkou individuální variabilitou blízko prahu a že zvolená intenzita zvyšuje toleranci vyšší zátěže. Narativní přehled experimentálních studií." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rebar-2015]
+design = "meta-analysis"
+level = "A"
+population = { en = "Eight meta-analytic outcomes of randomised trials in non-clinical adults: 92 studies (4,310 participants) for depression and 306 study effects (10,755 participants) for anxiety.", cs = "Osm metaanalytických výsledků randomizovaných studií u neklinických dospělých: 92 studií (4 310 účastníků) pro depresi a 306 účinků studií (10 755 účastníků) pro úzkost." }
+appraisal = { en = "Supports the claim that physical activity reduced depression by a medium effect (SMD = -0.50) and anxiety by a small effect (SMD = -0.38) in non-clinical adults. Aggregates meta-analyses, so overlap between included studies is possible.", cs = "Podporuje tvrzení, že pohybová aktivita u neklinických dospělých snižovala depresi se středním účinkem (SMD = -0,50) a úzkost s malým účinkem (SMD = -0,38). Agreguje metaanalýzy, takže se zahrnuté studie mohou překrývat." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.schuch-2016]
+design = "meta-analysis"
+level = "A"
+population = { en = "25 randomised controlled trials of exercise in people with depression, 9 of them in major depressive disorder.", cs = "25 randomizovaných kontrolovaných studií cvičení u lidí s depresí, z toho 9 u velké depresivní poruchy." }
+appraisal = { en = "Supports the claim that exercise had a large effect on depressive symptoms compared with control conditions, with larger effects for aerobic, moderate-to-vigorous and supervised exercise. A clinical population; not evidence about everyday mood regulation in healthy adults.", cs = "Podporuje tvrzení, že cvičení mělo ve srovnání s kontrolními podmínkami velký účinek na depresivní příznaky, s většími účinky u aerobního, středně až vysoce intenzivního a vedeného cvičení. Klinická populace; nejde o doklad o každodenní regulaci nálady u zdravých dospělých." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.noetel-2024]
+design = "meta-analysis"
+level = "A"
+population = { en = "218 randomised trials (14,170 participants) meeting clinical cut-offs for major depression.", cs = "218 randomizovaných studií (14 170 účastníků) splňujících klinické hranice pro velkou depresi." }
+appraisal = { en = "Supports the claim that walking or jogging, yoga and strength training were associated with moderate reductions in depression compared with active controls, with effects proportional to prescribed intensity. Only one study met criteria for low risk of bias, and confidence in the estimates was rated low to very low.", cs = "Podporuje tvrzení, že chůze nebo běh, jóga a silový trénink byly ve srovnání s aktivními kontrolami spojeny se středním snížením deprese a že účinky odpovídaly předepsané intenzitě. Kritéria nízkého rizika zkreslení splnila jen jedna studie a důvěra v odhady byla hodnocena jako nízká až velmi nízká." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.singh-2023]
+design = "systematic-review"
+level = "A"
+population = { en = "Umbrella review of 97 systematic reviews (1,039 trials, 128,119 adult participants) of physical activity interventions.", cs = "Zastřešující přehled 97 systematických přehledů (1 039 studií, 128 119 dospělých účastníků) intervencí pohybové aktivity." }
+appraisal = { en = "Supports the claim that physical activity had medium effects on depression, anxiety and psychological distress compared with usual care across populations, with higher intensity associated with greater improvement. Most included reviews had critically low quality ratings.", cs = "Podporuje tvrzení, že pohybová aktivita měla ve srovnání s běžnou péčí napříč populacemi střední účinky na depresi, úzkost a psychický distres a že vyšší intenzita souvisela s větším zlepšením. Většina zahrnutých přehledů měla kriticky nízké hodnocení kvality." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Sleep and emotion regulation ──────────────────────────────────────────────────────────────────
+
+[sources.palmer-2024]
+design = "meta-analysis"
+level = "A"
+population = { en = "154 experimental studies (1,338 effect sizes, 5,717 healthy participants aged 7 to 79) of total sleep deprivation, partial restriction or fragmentation.", cs = "154 experimentálních studií (1 338 velikostí účinku, 5 717 zdravých účastníků ve věku 7 až 79 let) úplné spánkové deprivace, částečného omezení nebo fragmentace spánku." }
+appraisal = { en = "Supports the claims that all forms of experimental sleep loss reduced positive affect, increased anxiety symptoms and blunted arousal in response to emotional stimuli, while findings for negative affect and depressive symptoms were mixed. Preregistered; acute laboratory sleep loss in healthy samples.", cs = "Podporuje tvrzení, že všechny formy experimentální ztráty spánku snižovaly pozitivní afekt, zvyšovaly příznaky úzkosti a tlumily arousal v reakci na emoční podněty, zatímco zjištění pro negativní afekt a depresivní příznaky byla smíšená. Předregistrovaná; akutní laboratorní ztráta spánku u zdravých vzorků." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.tomaso-2021]
+design = "meta-analysis"
+level = "A"
+population = { en = "241 effect sizes from 64 studies of sleep restriction or deprivation from early childhood to late adulthood.", cs = "241 velikostí účinku z 64 studií omezení nebo deprivace spánku od raného dětství po pozdní dospělost." }
+appraisal = { en = "Supports the claims that sleep loss increased negative mood (g = 0.45), decreased positive mood (g = -0.94) and had a small negative effect on adaptive emotion regulation (g = -0.32), with no significant effect on maladaptive regulation. The regulation findings came from youth samples only.", cs = "Podporuje tvrzení, že ztráta spánku zvyšovala negativní náladu (g = 0,45), snižovala pozitivní náladu (g = -0,94) a měla malý negativní účinek na adaptivní regulaci emocí (g = -0,32), bez významného účinku na maladaptivní regulaci. Zjištění o regulaci pocházejí jen ze vzorků dětí a dospívajících." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.palmer-alfano-2017]
+design = "review"
+level = "D"
+population = { en = "Not applicable: an integrative review of sleep and emotion regulation organised by the process model.", cs = "Neuplatňuje se: integrativní přehled spánku a regulace emocí uspořádaný podle procesového modelu." }
+appraisal = { en = "Supports the claims that sleep-emotion research has often poorly delineated constructs, focusing on emotions generated after poor sleep rather than regulatory processes, and that maladaptive changes appear at multiple stages of emotion generation and regulation. Narrative review.", cs = "Podporuje tvrzení, že výzkum spánku a emocí často nedostatečně vymezuje pojmy, zaměřuje se spíše na emoce vznikající po špatném spánku než na regulační procesy a že maladaptivní změny se objevují v několika fázích vzniku a regulace emocí. Narativní přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.minkel-2012]
+design = "experiment"
+level = "B"
+population = { en = "Healthy adult volunteers in two laboratory experiments (total N = 53) after one night of total sleep deprivation or rested control.", cs = "Zdraví dospělí dobrovolníci ve dvou laboratorních experimentech (celkem N = 53) po jedné noci úplné spánkové deprivace nebo v odpočinuté kontrolní skupině." }
+appraisal = { en = "Supports the claim that sleep-deprived participants reported more stress, anxiety and anger than rested controls after a low-stress task but not after a high-stress task, consistent with a lowered threshold for perceiving stress. Small samples and one night of total deprivation.", cs = "Podporuje tvrzení, že účastníci bez spánku uváděli po málo stresující úloze více stresu, úzkosti a hněvu než odpočatí, nikoli však po vysoce stresující úloze, což odpovídá sníženému prahu vnímání stresu. Malé vzorky a jedna noc úplné deprivace." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.walker-van-der-helm-2009]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review proposing a model of sleep-dependent emotional brain processing.", cs = "Neuplatňuje se: přehled navrhující model zpracování emocí závislého na spánku." }
+appraisal = { en = "Supports the claim that a model has been proposed in which sleep, including REM sleep, modulates next-day emotional reactivity and reprocesses recent emotional memories. A hypothesis-generating review; the model is contested and not established.", cs = "Podporuje tvrzení, že byl navržen model, v němž spánek včetně REM fáze moduluje emoční reaktivitu následujícího dne a znovu zpracovává nedávné emoční vzpomínky. Přehled generující hypotézy; model je sporný a nedoložený." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.baglioni-2011]
+design = "meta-analysis"
+level = "C"
+population = { en = "21 longitudinal epidemiological studies of insomnia complaints and later depression.", cs = "21 longitudinálních epidemiologických studií nespavosti a pozdější deprese." }
+appraisal = { en = "Supports the claim that insomnia at baseline was associated with about twice the odds of later depression (random-effects OR 2.60; fixed-effects OR 2.10 after removing outliers). Observational cohorts that did not always adjust for intervening variables.", cs = "Podporuje tvrzení, že nespavost na počátku souvisela přibližně s dvojnásobnou šancí pozdější deprese (OR 2,60 v modelu náhodných efektů; OR 2,10 v modelu fixních efektů po vyřazení odlehlých hodnot). Observační kohorty, které ne vždy zohlednily intervenující proměnné." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.scott-2021]
+design = "meta-analysis"
+level = "A"
+population = { en = "65 randomised controlled trials (72 interventions, 8,608 participants) of interventions that improved sleep.", cs = "65 randomizovaných kontrolovaných studií (72 intervencí, 8 608 účastníků) intervencí, které zlepšily spánek." }
+appraisal = { en = "Supports the claims that improving sleep led to medium effects on composite mental health (g+ = -0.53), depression, anxiety and rumination, with a dose-response relation. Selects trials in which sleep improved; the abstract does not break down intervention types, so it is evidence for improved sleep, not for particular everyday habits.", cs = "Podporuje tvrzení, že zlepšení spánku vedlo ke středním účinkům na souhrnné duševní zdraví (g+ = -0,53), depresi, úzkost a ruminaci se vztahem dávka-odpověď. Vybírá studie, v nichž se spánek zlepšil; typ intervencí abstrakt nerozepisuje, takže jde o doklad pro zlepšený spánek, ne pro konkrétní každodenní návyky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.irish-2015]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of evidence for individual sleep hygiene recommendations in the general population.", cs = "Neuplatňuje se: přehled dokladů pro jednotlivá doporučení spánkové hygieny v obecné populaci." }
+appraisal = { en = "Supports the claims that sleep hygiene education has been ineffective as a clinical treatment and that, although individual recommendations are associated with nocturnal sleep, their direct effects remain largely untested in the general population. Narrative review.", cs = "Podporuje tvrzení, že edukace o spánkové hygieně se jako klinická léčba neukázala účinná a že jednotlivá doporučení sice souvisejí s nočním spánkem, jejich přímé účinky však v obecné populaci zůstávají převážně netestované. Narativní přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Expressive writing ────────────────────────────────────────────────────────────────────────────
+
+[sources.smyth-1998]
+design = "meta-analysis"
+level = "A"
+population = { en = "Studies of a written emotional expression task in healthy participants; the number of studies is not stated in the abstract.", cs = "Studie úlohy písemného vyjádření emocí u zdravých účastníků; počet studií abstrakt neuvádí." }
+appraisal = { en = "Supports the claims that writing was followed by improved reported physical health, psychological well-being, physiological and general functioning but not health behaviours, that it increased immediate distress unrelated to health outcomes, and that several moderators were identified. Fixed-effects synthesis, later criticised as limiting generalisability.", cs = "Podporuje tvrzení, že po psaní následovalo zlepšení uváděného tělesného zdraví, psychické pohody, fyziologického i celkového fungování, nikoli však zdravotního chování, že psaní zvýšilo okamžitý distres nesouvisející se zdravotními výsledky a že bylo zjištěno několik moderátorů. Syntéza s fixními efekty, později kritizovaná kvůli omezené zobecnitelnosti." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.frattaroli-2006]
+design = "meta-analysis"
+level = "A"
+population = { en = "146 randomized studies of experimental disclosure.", cs = "146 randomizovaných studií experimentálního sdělování." }
+appraisal = { en = "Supports the claims that experimental disclosure had a positive and significant but small average effect (r = .075) in random-effects analysis and that a number of moderators were identified. The abstract does not list the moderators, so they are not itemised on the site.", cs = "Podporuje tvrzení, že experimentální sdělování mělo v analýze náhodných efektů pozitivní a významný, ale malý průměrný účinek (r = 0,075) a že bylo zjištěno několik moderátorů. Abstrakt moderátory nevyjmenovává, proto je web neuvádí jednotlivě." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.sloan-marx-2004]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of theories proposed to explain the written disclosure paradigm.", cs = "Neuplatňuje se: přehled teorií navržených k vysvětlení paradigmatu písemného sdělování." }
+appraisal = { en = "Supports the claim that it remained unclear why written disclosure is effective and for whom it is best suited, although it may benefit some individuals. Narrative review.", cs = "Podporuje tvrzení, že zůstávalo nejasné, proč je písemné sdělování účinné a komu nejvíce vyhovuje, přestože některým lidem prospět může. Narativní přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.travagin-2015]
+design = "meta-analysis"
+level = "A"
+population = { en = "21 independent studies of expressive writing in youth aged 10 to 18.", cs = "21 nezávislých studií expresivního psaní u mládeže ve věku 10 až 18 let." }
+appraisal = { en = "Supports the claims that expressive writing had a small positive overall effect in adolescents (g = 0.127), that few moderators were significant, and that higher-dosage protocols were associated with larger effects on somatic complaints. The authors judge the evidence promising but not decisive.", cs = "Podporuje tvrzení, že expresivní psaní mělo u dospívajících malý pozitivní celkový účinek (g = 0,127), že jen málo moderátorů bylo významných a že protokoly s vyšší dávkou souvisely s většími účinky na somatické obtíže. Autoři hodnotí doklady jako slibné, ale nerozhodné." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.reinhold-2018]
+design = "meta-analysis"
+level = "A"
+population = { en = "39 randomized controlled trials (64 comparisons) in physically healthy adults with varying stress but without PTSD.", cs = "39 randomizovaných kontrolovaných studií (64 srovnání) u tělesně zdravých dospělých s různou mírou stresu, ale bez PTSD." }
+appraisal = { en = "Supports the claims that expressive writing did not yield significant long-term effects on depressive symptoms, and that effects were larger with more sessions and more specific writing topics. Depressive symptoms only.", cs = "Podporuje tvrzení, že expresivní psaní nepřineslo významné dlouhodobé účinky na depresivní příznaky a že účinky byly větší při více sezeních a konkrétněji zadaném tématu. Pouze depresivní příznaky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.pavlacic-2019]
+design = "meta-analysis"
+level = "D"
+population = { en = "Experimental conditions of expressive writing studies measuring posttraumatic stress, posttraumatic growth and quality of life.", cs = "Experimentální podmínky studií expresivního psaní měřících posttraumatický stres, posttraumatický růst a kvalitu života." }
+appraisal = { en = "Supports the claim that change within writing conditions was small for posttraumatic stress and negligible to small for growth and quality of life, and larger in studies requiring a PTSD diagnosis. Pools only the experimental arms, without control comparisons, so it is graded D and cannot separate writing effects from natural change.", cs = "Podporuje tvrzení, že změna v podmínkách psaní byla u posttraumatického stresu malá a u růstu a kvality života zanedbatelná až malá a že byla větší ve studiích vyžadujících diagnózu PTSD. Shrnuje jen experimentální ramena bez srovnání s kontrolou, proto má úroveň D a nemůže oddělit účinek psaní od přirozené změny." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Rumination and repetitive thought ─────────────────────────────────────────────────────────────
+
+[sources.lyubomirsky-nolen-hoeksema-1995]
+design = "experiment"
+level = "B"
+population = { en = "Dysphoric and nondysphoric students in three experiments with rumination or distraction inductions.", cs = "Dysforičtí a nedysforičtí studenti ve třech experimentech s navozením ruminace nebo rozptýlení." }
+appraisal = { en = "Supports the claims that dysphoric participants induced to ruminate endorsed more negative interpretations, were more pessimistic and generated less effective interpersonal solutions, whereas dysphoric participants who were distracted performed like nondysphoric participants. Brief laboratory inductions.", cs = "Podporuje tvrzení, že dysforičtí účastníci po navození ruminace volili negativnější interpretace, byli pesimističtější a navrhovali méně účinná řešení mezilidských problémů, zatímco dysforičtí účastníci po rozptýlení si vedli jako nedysforičtí. Krátké laboratorní indukce." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watkins-moulds-2005]
+design = "experiment"
+level = "B"
+population = { en = "40 depressed patients and 40 never-depressed controls.", cs = "40 pacientů s depresí a 40 kontrolních osob, které depresi nikdy neprodělaly." }
+appraisal = { en = "Supports the claim that concrete rather than abstract symptom-focused self-focus improved social problem solving in depressed patients, so the mode of rumination rather than its topic determined its effect on problem solving. Small sample, single session.", cs = "Podporuje tvrzení, že konkrétní, nikoli abstraktní zaměření na příznaky zlepšilo u pacientů s depresí řešení sociálních problémů, takže účinek na řešení problémů určoval spíše způsob ruminace než její téma. Malý vzorek, jediné sezení." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.moberly-watkins-2008]
+design = "longitudinal"
+level = "C"
+population = { en = "93 adults sampled eight times daily for one week.", cs = "93 dospělých dotazovaných osmkrát denně po dobu jednoho týdne." }
+appraisal = { en = "Supports the claims that momentary ruminative self-focus and negative affect predicted each other at the next occasion, and that brooding but not reflective pondering was associated with higher negative affect. Experience sampling; reciprocal association, not causation.", cs = "Podporuje tvrzení, že okamžité ruminativní zaměření na sebe a negativní afekt se navzájem predikovaly v následujícím měření a že s vyšším negativním afektem souviselo hloubání (brooding), nikoli reflektivní přemítání. Metoda výběru zkušeností; vzájemná souvislost, nikoli kauzalita." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watkins-2011]
+design = "experiment"
+level = "B"
+population = { en = "42 adults with medication-refractory residual depression randomised to treatment as usual or treatment as usual plus rumination-focused CBT.", cs = "42 dospělých s reziduální depresí nereagující na medikaci randomizovaných k běžné léčbě, nebo k běžné léčbě doplněné o KBT zaměřenou na ruminaci." }
+appraisal = { en = "Supports the claim that adding rumination-focused CBT improved residual symptoms and remission, mediated by change in rumination. Phase II trial without an attentional control, so specific and non-specific effects cannot be separated.", cs = "Podporuje tvrzení, že přidání KBT zaměřené na ruminaci zlepšilo reziduální příznaky a remisi, zprostředkovaně změnou ruminace. Studie fáze II bez kontroly pozornosti, takže specifické a nespecifické účinky nelze oddělit." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.watkins-roberts-2020]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of the consequences, causes, mechanisms and treatment of rumination.", cs = "Neuplatňuje se: narativní přehled důsledků, příčin, mechanismů a léčby ruminace." }
+appraisal = { en = "Supports the claims that rumination has been linked to prolonged negative mood, impaired problem solving and multiple disorders, and that rumination has been modelled as a learnt habit involving abstract processing of unresolved goals (the H-EX-A-GO-N model). Proposes rather than establishes the model; treatment trials described as preliminary.", cs = "Podporuje tvrzení, že ruminace byla spojena s prodlouženou negativní náladou, zhoršeným řešením problémů a řadou poruch a že byla modelována jako naučený návyk zahrnující abstraktní zpracování nevyřešených cílů (model H-EX-A-GO-N). Model navrhuje, nedokládá; studie léčby popisuje jako předběžné." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.mcgowan-behar-2013]
+design = "experiment"
+level = "B"
+population = { en = "53 participants with high trait worry randomly assigned to two weeks of stimulus control training or focused worry.", cs = "53 účastníků s vysokou mírou sklonu k obavám náhodně přidělených ke dvěma týdnům tréninku kontroly podnětů, nebo soustředěných obav." }
+appraisal = { en = "Supports the claim that a daily 30-minute time- and place-restricted worry period reduced worry, anxiety, negative affect and insomnia more than the control condition, but not depression or positive affect. Preliminary trial, small sample, short follow-up, worry rather than rumination.", cs = "Podporuje tvrzení, že každodenní třicetiminutové období obav omezené časem a místem snížilo obavy, úzkost, negativní afekt a nespavost více než kontrolní podmínka, nikoli však depresi nebo pozitivní afekt. Předběžná studie, malý vzorek, krátké sledování, obavy, nikoli ruminace." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.gross-2015]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of emotion regulation research.", cs = "Neuplatňuje se: narativní přehled výzkumu regulace emocí." }
+appraisal = { en = "Supports the conceptual claims that the process model groups strategies by the point at which they act and that the extended process model adds identification, selection and implementation stages. It selects evidence to illustrate the model rather than testing it.", cs = "Podporuje koncepční tvrzení, že procesní model řadí strategie podle bodu, v němž působí, a že rozšířený procesní model přidává fáze identifikace, výběru a provedení. Doklady vybírá pro ilustraci modelu, netestuje jej." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.sheppes-2011]
+design = "experiment"
+level = "B"
+population = { en = "Adult participants in three laboratory experiments using emotional pictures or unpredictable electric stimulation.", cs = "Dospělí účastníci tří laboratorních experimentů s emočními obrázky nebo nepředvídatelnou elektrickou stimulací." }
+appraisal = { en = "Supports the claim that participants relatively preferred reappraisal in low-intensity and distraction in high-intensity negative situations. It measures choice, not the long-term consequences of those choices.", cs = "Podporuje tvrzení, že účastníci v situacích nízké negativní intenzity relativně častěji volili přehodnocení a v situacích vysoké intenzity rozptýlení. Měří volbu, nikoli dlouhodobé důsledky těchto voleb." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.gross-barrett-2011]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that whether emotion generation and emotion regulation can be distinguished depends on one's theoretical perspective on emotion. A conceptual argument, not an empirical test.", cs = "Podporuje tvrzení, že zda lze odlišit vznik emoce od její regulace, závisí na teoretickém pohledu na emoce. Jde o koncepční argument, nikoli empirický test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Appraisal ─────────────────────────────────────────────────────────────────────────────────────
+
+[sources.lazarus-1991]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that Lazarus proposed a cognitive-motivational-relational theory in which appraisal patterns and core relational themes explain specific emotions such as anger, anxiety, sadness and pride. Theory illustrated with examples, not a test.", cs = "Podporuje tvrzení, že Lazarus navrhl kognitivně-motivačně-relační teorii, v níž vzorce hodnocení a ústřední vztahová témata vysvětlují konkrétní emoce, například hněv, úzkost, smutek a hrdost. Teorie ilustrovaná příklady, nikoli test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.lazarus-folkman-1984]
+design = "book"
+level = "E"
+population = { en = "Not applicable: a monograph on stress, appraisal and coping.", cs = "Neuplatňuje se: monografie o stresu, hodnocení a zvládání." }
+appraisal = { en = "Supports historical claims about the transactional model of stress, with its distinction between primary and secondary appraisal and between problem-focused and emotion-focused coping. No abstract is available; the book is cited only for these widely documented concepts.", cs = "Podporuje historická tvrzení o transakčním modelu stresu s rozlišením primárního a sekundárního hodnocení a zvládání zaměřeného na problém a na emoce. Abstrakt není k dispozici; kniha je citována jen pro tyto široce doložené pojmy." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.scherer-2009]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a theoretical article with a review of supporting studies.", cs = "Neuplatňuje se: teoretický článek s přehledem podpůrných studií." }
+appraisal = { en = "Supports the claim that the component process model treats emotion as a dynamic process driven by a sequence of appraisal checks and the synchronisation of response components. The evidence is reviewed by the model's author and is not a systematic synthesis.", cs = "Podporuje tvrzení, že model komponentních procesů chápe emoci jako dynamický proces poháněný sledem hodnoticích kontrol a synchronizací složek odpovědi. Doklady shrnuje sám autor modelu a nejde o systematickou syntézu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.moors-2013]
+design = "review"
+level = "D"
+population = { en = "Not applicable: an editorial overview of appraisal theories.", cs = "Neuplatňuje se: redakční přehled teorií hodnocení." }
+appraisal = { en = "Supports the claims that appraisal theories share the premise that emotions reflect evaluations of events' significance for well-being, that the family includes several variants, and that critical objections remain. An overview, not a test.", cs = "Podporuje tvrzení, že teorie hodnocení sdílejí předpoklad, podle něhož emoce odrážejí hodnocení významu událostí pro blaho jedince, že tato rodina zahrnuje několik variant a že kritické námitky trvají. Přehled, nikoli test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.scherer-moors-2019]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review focused on experimental studies of the emotion process.", cs = "Neuplatňuje se: narativní přehled zaměřený na experimentální studie emočního procesu." }
+appraisal = { en = "Supports the claim that the componential view describes a process from appraisal through action tendencies, physiology and expression to feeling and verbal categorisation. Narrative review by proponents of the view.", cs = "Podporuje tvrzení, že komponentní pojetí popisuje proces od hodnocení přes akční tendence, fyziologii a výraz k prožitku a slovní kategorizaci. Narativní přehled od zastánců tohoto pojetí." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Basic and constructed emotion ─────────────────────────────────────────────────────────────────
+
+[sources.ekman-1992]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that basic emotion theory treats emotions as evolved responses, each with distinctive signal, physiology and antecedent events and sharing features such as rapid onset and brief duration. A theoretical argument.", cs = "Podporuje tvrzení, že teorie základních emocí chápe emoce jako evolučně vzniklé odpovědi, z nichž každá má typický signál, fyziologii a spouštěče a sdílí rysy, jako je rychlý nástup a krátké trvání. Teoretický argument." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.ekman-cordaro-2011]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that basic emotion theory describes emotions as families of related states sharing characteristics that are preprogrammed but shaped by experience. A restatement of the theory, not a test.", cs = "Podporuje tvrzení, že teorie základních emocí popisuje emoce jako rodiny příbuzných stavů se společnými charakteristikami, které jsou předem dané, ale utvářené zkušeností. Nové shrnutí teorie, nikoli test." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.keltner-2019]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of studies on emotional expression.", cs = "Neuplatňuje se: narativní přehled studií emočního výrazu." }
+appraisal = { en = "Supports the claim that proponents of basic emotion theory now describe upwards of 20 emotions signalled in multimodal, dynamic patterns and acknowledge contextual influences on recognition. Review by proponents; it does not settle the dispute with constructionist accounts.", cs = "Podporuje tvrzení, že zastánci teorie základních emocí dnes popisují více než 20 emocí signalizovaných multimodálními a dynamickými vzorci a uznávají vliv kontextu na rozpoznávání. Přehled od zastánců; spor s konstrukcionistickými přístupy neřeší." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.cowen-keltner-2017]
+design = "cross-sectional"
+level = "D"
+population = { en = "Online participants rating reported experiences elicited by 2,185 short videos.", cs = "Online účastníci hodnotící prožitky vyvolané 2 185 krátkými videi." }
+appraisal = { en = "Supports the claim that reports of experience elicited by the videos were organised into 27 categories with fuzzy boundaries and smooth gradients between them. It concerns the structure of self-report, not of physiology, and the category count depends on the stimuli and methods.", cs = "Podporuje tvrzení, že výpovědi o prožitcích vyvolaných videi se uspořádaly do 27 kategorií s neostrými hranicemi a plynulými přechody mezi nimi. Týká se struktury sebeposouzení, nikoli fyziologie, a počet kategorií závisí na podnětech a metodách." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.barrett-2016]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that the theory of constructed emotion proposes a computational, predictive account in which emotions are constructed through interoception and categorisation rather than triggered as fixed programmes. A theoretical proposal whose central predictions are still being tested.", cs = "Podporuje tvrzení, že teorie konstruovaných emocí navrhuje výpočetní, prediktivní výklad, v němž emoce vznikají konstrukcí prostřednictvím interocepce a kategorizace, nikoli spuštěním pevných programů. Teoretický návrh, jehož hlavní předpovědi se teprve testují." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.russell-2003]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that core affect was proposed as a basic pleasant-unpleasant and activated-deactivated state that becomes an emotional episode when attributed to a cause. A theoretical framework.", cs = "Podporuje tvrzení, že jádrový afekt byl navržen jako základní stav příjemnosti a aktivace, který se stává emoční epizodou, když je přisouzen nějaké příčině. Teoretický rámec." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Social sharing of emotion ─────────────────────────────────────────────────────────────────────
+
+[sources.rime-1998]
+design = "review"
+level = "D"
+population = { en = "Studies of social sharing across ages and cultures, largely from the authors' research programme.", cs = "Studie sociálního sdílení napříč věkem a kulturami, převážně z výzkumného programu autorů." }
+appraisal = { en = "Supports the claims that most emotional experiences are shared soon after they occur and that findings were generally not consistent with the view that sharing alleviates the emotional memory. Narrative review.", cs = "Podporuje tvrzení, že většina emočních zážitků je brzy po události sdílena a že zjištění obecně neodpovídala představě, že sdílení zmírňuje emoční vzpomínku. Narativní přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.rime-2007]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article illustrated with empirical findings.", cs = "Neuplatňuje se: teoretický článek ilustrovaný empirickými zjištěními." }
+appraisal = { en = "Supports the claims that sharing reactivates emotional arousal in speaker and listener, strengthens social bonds and propagates through secondary sharing, and that this was proposed as a route to collective emotional climates. The collective predictions are theoretical.", cs = "Podporuje tvrzení, že sdílení znovu aktivuje emoční vzrušení u mluvčího i posluchače, posiluje sociální vazby a šíří se dalším sdílením a že to bylo navrženo jako cesta ke kolektivnímu emočnímu klimatu. Kolektivní předpovědi jsou teoretické." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.nils-rime-2012]
+design = "experiment"
+level = "B"
+population = { en = "Participants who viewed an aversive film and talked about it with a close person instructed in a response mode (2 × 2 design).", cs = "Účastníci, kteří zhlédli averzivní film a mluvili o něm s blízkou osobou instruovanou k určitému způsobu odpovědi (design 2 × 2)." }
+appraisal = { en = "Supports the claim that emotional recovery two days later occurred only when the listener stimulated cognitive work, whereas socio-affective responses produced social integration and an impression of feeling better. A single laboratory study with a film stimulus; the abstract does not report the sample size.", cs = "Podporuje tvrzení, že k emočnímu zotavení po dvou dnech došlo jen tehdy, když posluchač podněcoval kognitivní zpracování, zatímco socio-afektivní odpovědi přinesly sociální začlenění a dojem, že je člověku lépe. Jediná laboratorní studie s filmovým podnětem; abstrakt neuvádí velikost vzorku." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.brans-2013]
+design = "longitudinal"
+level = "C"
+population = { en = "Participants in two experience-sampling studies reporting episodes of anger, fear and sadness.", cs = "Účastníci dvou studií se vzorkováním zážitků, kteří hlásili epizody hněvu, strachu a smutku." }
+appraisal = { en = "Supports the claims that sharing was associated with shorter emotion episodes, especially socio-affective sharing, and that sharing was not related to residual emotional intensity three days after onset. Observational; sharing was not manipulated.", cs = "Podporuje tvrzení, že sdílení bylo spojeno s kratším trváním emočních epizod, zejména u socio-afektivního sdílení, a že nesouviselo se zbytkovou intenzitou emoce tři dny po jejím vzniku. Observační design; sdílení nebylo manipulováno." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Learning, avoidance and relief ────────────────────────────────────────────────────────────────
+
+[sources.mowrer-1951]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the historical claim that Mowrer set out two-factor learning theory. No abstract is available; substantive statements about the theory rest on Krypotos et al. (2015).", cs = "Podporuje historické tvrzení, že Mowrer formuloval dvoufaktorovou teorii učení. Abstrakt není k dispozici; obsahová tvrzení o teorii se opírají o Krypotos a kol. (2015)." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.krypotos-2015]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of theories and experiments on avoidance learning.", cs = "Neuplatňuje se: narativní přehled teorií a experimentů o učení vyhýbání." }
+appraisal = { en = "Supports claims about past and contemporary theories of how adaptive and maladaptive avoidance is acquired and maintained and their clinical implications. Narrative review; the underlying experiments are largely laboratory fear-conditioning studies.", cs = "Podporuje tvrzení o dřívějších i současných teoriích toho, jak vzniká a udržuje se adaptivní a maladaptivní vyhýbání, a o jejich klinických důsledcích. Narativní přehled; podkladové experimenty jsou převážně laboratorní studie podmiňování strachu." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.chawla-ostafin-2007]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a review of empirical studies on experiential avoidance.", cs = "Neuplatňuje se: přehled empirických studií o zážitkovém vyhýbání." }
+appraisal = { en = "Supports the claims that experiential avoidance may be implicated in various forms of psychopathology and that the construct lacks theoretical integration and clear operationalisation. The reviewed studies are mostly correlational.", cs = "Podporuje tvrzení, že zážitkové vyhýbání se může podílet na různých formách psychopatologie a že konstruktu chybí teoretická integrace a jasná operacionalizace. Přehledované studie jsou převážně korelační." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.craske-2014]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a clinical-theoretical review with case illustrations.", cs = "Neuplatňuje se: klinicko-teoretický přehled s kazuistickými ilustracemi." }
+appraisal = { en = "Supports the claims that an inhibitory learning model of extinction has been proposed to optimise exposure, including expectancy violation and removal of safety signals, and that many people do not benefit or experience a return of fear. Recommendations are derived from theory and experiments, not tested here as a package.", cs = "Podporuje tvrzení, že pro optimalizaci expozice byl navržen model extinkce založený na inhibičním učení, včetně narušení očekávání a odstranění bezpečnostních signálů, a že řada lidí z léčby neprofituje nebo se u nich strach vrací. Doporučení vycházejí z teorie a experimentů, zde nejsou testována jako celek." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.hofmann-hay-2018]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review.", cs = "Neuplatňuje se: narativní přehled." }
+appraisal = { en = "Supports the claim that avoidance maintains anxiety disorders in standard accounts but can, depending on its function, serve as a coping strategy that enhances perceived control. A theoretical argument.", cs = "Podporuje tvrzení, že vyhýbání podle standardních výkladů udržuje úzkostné poruchy, ale v závislosti na své funkci může sloužit jako strategie zvládání, která posiluje vnímanou kontrolu. Teoretický argument." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Allostasis and stress ─────────────────────────────────────────────────────────────────────────
+
+[sources.mcewen-stellar-1993]
+design = "review"
+level = "D"
+population = { en = "Human and animal studies and selected reviews identified through MEDLINE.", cs = "Studie na lidech a zvířatech a vybrané přehledy vyhledané v databázi MEDLINE." }
+appraisal = { en = "Supports the claim that allostatic load was defined as the cost of chronic exposure to fluctuating or heightened neural or neuroendocrine responses. A conceptual review, not a systematic synthesis.", cs = "Podporuje tvrzení, že alostatická zátěž byla definována jako cena chronického vystavení kolísavým nebo zvýšeným nervovým či neuroendokrinním odpovědím. Koncepční přehled, nikoli systematická syntéza." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.sterling-2012]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a theoretical article.", cs = "Neuplatňuje se: teoretický článek." }
+appraisal = { en = "Supports the claim that allostasis was proposed as predictive regulation, anticipating needs rather than correcting errors by feedback. A theoretical argument whose contrast with homeostasis is disputed.", cs = "Podporuje tvrzení, že alostáza byla navržena jako prediktivní regulace, která potřeby předjímá, místo aby chyby opravovala zpětnou vazbou. Teoretický argument, jehož kontrast s homeostázou je sporný." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.sterling-eyer-1988]
+design = "book"
+level = "E"
+population = { en = "Not applicable: a chapter in an edited handbook.", cs = "Neuplatňuje se: kapitola v editované příručce." }
+appraisal = { en = "Supports the historical claim that the term allostasis was introduced in this chapter. No abstract or DOI is available; the chapter is cited only for the origin of the term.", cs = "Podporuje historické tvrzení, že pojem alostáza byl zaveden v této kapitole. Abstrakt ani DOI nejsou k dispozici; kapitola je citována jen jako původ pojmu." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.juster-2010]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of studies using allostatic load indices.", cs = "Neuplatňuje se: narativní přehled studií používajících indexy alostatické zátěže." }
+appraisal = { en = "Supports the claim that studies using multisystem allostatic load indices reported prediction of morbidity and mortality beyond traditional clinical measures. Narrative review; index composition varies between studies.", cs = "Podporuje tvrzení, že studie používající víceoborové indexy alostatické zátěže uváděly predikci nemocnosti a úmrtnosti nad rámec tradičních klinických ukazatelů. Narativní přehled; složení indexů se mezi studiemi liší." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.day-2005]
+design = "theory"
+level = "D"
+population = { en = "Not applicable: a conceptual critique.", cs = "Neuplatňuje se: koncepční kritika." }
+appraisal = { en = "Supports the claim that the concepts of allostasis and allostatic load have been criticised as adding little to an accurate reading of homeostasis. One critical position, cited as a counterpoint.", cs = "Podporuje tvrzení, že pojmy alostáza a alostatická zátěž byly kritizovány, protože oproti přesnému čtení homeostázy přinášejí málo nového. Jedno kritické stanovisko, citované jako protiváha." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.linden-1997]
+design = "review"
+level = "D"
+population = { en = "105 physiological reactivity studies from four journals over two years, plus a selective review of recovery studies.", cs = "105 studií fyziologické reaktivity ze čtyř časopisů za dva roky a výběrový přehled studií zotavení." }
+appraisal = { en = "Supports the claim that of 105 reactivity studies, 63% collected recovery data but only 23% reported it, and that recovery protocols revealed findings not apparent from reactivity alone. A methodological review.", cs = "Podporuje tvrzení, že ze 105 studií reaktivity 63 % sbíralo data o zotavení, ale jen 23 % je uvedlo, a že protokoly zotavení odhalily zjištění, která by ze samotné reaktivity nebyla patrná. Metodologický přehled." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.brosschot-2006]
+design = "review"
+level = "D"
+population = { en = "Not applicable: a narrative review of studies on worry, rumination and physiological activation.", cs = "Neuplatňuje se: narativní přehled studií o obavách, ruminaci a fyziologické aktivaci." }
+appraisal = { en = "Supports the claim that worry, rumination and anticipatory stress are associated with enhanced cardiovascular, endocrine, immune and neurovisceral activity, which the authors describe as preliminary support for the perseverative cognition hypothesis.", cs = "Podporuje tvrzení, že obavy, ruminace a anticipační stres jsou spojeny se zvýšenou kardiovaskulární, endokrinní, imunitní a neuroviscerální aktivitou, což autoři označují za předběžnou podporu hypotézy perseverativní kognice." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Collective emotion and ritual ─────────────────────────────────────────────────────────────────
+
+[sources.durkheim-1912]
+design = "classical"
+level = "E"
+population = { en = "Not applicable: a classical sociological treatise based on ethnographic reports.", cs = "Neuplatňuje se: klasický sociologický spis založený na etnografických zprávách." }
+appraisal = { en = "Supports historical claims that Durkheim described collective religious ritual as producing heightened shared emotion and renewed attachment to the group. It makes no measured claim, and its ethnographic sources are dated.", cs = "Podporuje historická tvrzení, že Durkheim popsal kolektivní náboženský rituál jako zdroj zesílených sdílených emocí a obnovené vazby ke skupině. Neobsahuje měřená tvrzení a jeho etnografické prameny jsou zastaralé." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.collins-2004]
+design = "book"
+level = "E"
+population = { en = "Not applicable: a monograph in sociological theory.", cs = "Neuplatňuje se: monografie sociologické teorie." }
+appraisal = { en = "Supports the claim that Collins proposed that successful interaction rituals create symbols of membership and emotional energy while failed rituals drain it. Theory built on microsociological observation, not a quantitative test.", cs = "Podporuje tvrzení, že Collins navrhl, že úspěšné interakční rituály vytvářejí symboly příslušnosti a emoční energii, zatímco neúspěšné ji vyčerpávají. Teorie založená na mikrosociologickém pozorování, nikoli kvantitativní test." }
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[sources.paez-2015]
+design = "longitudinal"
+level = "C"
+population = { en = "Participants in folkloric marches and protest demonstrations across four studies (two correlational, one semi-longitudinal, one experimental).", cs = "Účastníci folklorních průvodů a protestních demonstrací ve čtyřech studiích (dvě korelační, jedna semilongitudinální, jedna experimentální)." }
+appraisal = { en = "Supports the claim that participation was associated with stronger collective identity, social integration, efficacy and positive affect, mediated by perceived emotional synchrony. Graded C because most outcomes come from correlational and semi-longitudinal designs; the abstract does not describe the experimental manipulation.", cs = "Podporuje tvrzení, že účast souvisela se silnější kolektivní identitou, sociální integrací, účinností a pozitivním afektem a že tento vztah zprostředkovala vnímaná emoční synchronie. Úroveň C, protože většina výsledků pochází z korelačních a semilongitudinálních designů; abstrakt experimentální manipulaci nepopisuje." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[sources.konvalinka-2011]
+design = "cross-sectional"
+level = "D"
+population = { en = "38 participants at a Spanish fire-walking ritual: fire-walkers, related spectators and unrelated spectators.", cs = "38 účastníků španělského rituálu chůze po žhavém uhlí: chodci, příbuzní diváci a nepříbuzní diváci." }
+appraisal = { en = "Supports the claim that heart-rate dynamics showed fine-grained commonalities between fire-walkers and related spectators but not unrelated spectators. A single field study; it measured shared arousal, not wellbeing or later outcomes.", cs = "Podporuje tvrzení, že dynamika srdeční frekvence vykazovala jemné shody mezi chodci a příbuznými diváky, nikoli však nepříbuznými diváky. Jediná terénní studie; měřila sdílené vzrušení, nikoli pohodu ani pozdější výsledky." }
+last_reviewed = 2026-09-14
+review_due = 2027-09-14

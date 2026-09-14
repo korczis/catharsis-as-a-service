@@ -40,7 +40,7 @@ CLAIM_INTERVALS = {
 }
 SOURCE_INTERVALS = {"classical": 730, "book": 730, "software": 730, "record": 730}
 SOURCE_INTERVAL_DEFAULT = 365
-COVERED_SECTIONS = ("research", "advice")
+COVERED_SECTIONS = ("research", "theory", "advice")
 IDENT = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
 
 

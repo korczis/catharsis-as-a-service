@@ -22,8 +22,10 @@ CSS_URL = re.compile(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)")
 CSS_DATA_URI = re.compile(r"url\(\s*(['\"])data:.*?\1\s*\)|url\(\s*data:[^)]*\)", re.S)
 SITEMAP_LOC = re.compile(r"<loc>([^<]+)</loc>")
 # Library pages must describe themselves as Article; no page may claim to be a medical resource.
-ARTICLE_PAGES = re.compile(r"^(cs/)?(research/[^/]+/|advice/[^/]+/|methods/|evidence/|glossary/|slovnik/|about/)index\.html$")
+ARTICLE_PAGES = re.compile(r"^(cs/)?(research/[^/]+/|theory/[^/]+/|engineering/[^/]+/|advice/[^/]+/|methods/|models/|modely/|case-study/|pripadova-studie/|evidence/|glossary/|slovnik/|about/)index\.html$")
 FORBIDDEN_TYPES = {"MedicalWebPage", "MedicalScholarlyArticle", "MedicalCondition"}
+# Every content page has a page-specific social preview (static/og, scripts/render-social.py).
+CONTENT_PAGE_PREVIEW = True
 
 
 class Page(HTMLParser):
@@ -42,9 +44,13 @@ class Page(HTMLParser):
         self._open_links = []
         self.structured_data = []
         self._in_structured_data = False
+        # Client-side templates (<template x-for>) are not rendered markup; skip their links.
+        self._template_depth = 0
 
     def handle_starttag(self, tag, attrs):
         a = {key: (value or "") for key, value in attrs}
+        if tag == "template":
+            self._template_depth += 1
         if tag == "script" and a.get("type") == "application/ld+json":
             self._in_structured_data = True
             self.structured_data.append("")
@@ -75,12 +81,14 @@ class Page(HTMLParser):
             self.images.append(a)
             for link in self._open_links:
                 link["text"] += a.get("alt", "")
-        if tag == "a":
+        if tag == "a" and not self._template_depth:
             self._open_links.append({"attrs": a, "text": ""})
             if a.get("href"):
                 self.refs.append(a["href"])
 
     def handle_endtag(self, tag):
+        if tag == "template" and self._template_depth:
+            self._template_depth -= 1
         if tag == "title":
             self._in_title = False
         elif tag == "script":
@@ -132,6 +140,8 @@ def main():
         pages[path] = parser
 
     anchors_checked = refs_checked = structured_nodes = 0
+    # A site that ships per-page previews (public/og) must use them on every content page.
+    content_previews = CONTENT_PAGE_PREVIEW and (public / "og").is_dir()
     titles = {}
     for path, page in pages.items():
         rel = path.relative_to(public)
@@ -164,6 +174,8 @@ def main():
             for name in PREVIEW_META:
                 if not page.meta.get(name, "").strip():
                     errors.append(f"{rel}: link preview metadata '{name}' is missing or empty")
+            if content_previews and not rel.as_posix().startswith(("tags/", "cs/tags/")) and "/og/" not in page.meta.get("og:image", ""):
+                errors.append(f"{rel}: og:image is the site-wide fallback; run scripts/render-social.py")
             if len(page.structured_data) != 1:
                 errors.append(f"{rel}: expected one JSON-LD block, found {len(page.structured_data)}")
             for block in page.structured_data:

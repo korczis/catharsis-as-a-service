@@ -28,8 +28,8 @@ REQUIRED = ("kind", "authors", "year", "title", "container", "volume", "issue", 
 KINDS = {"journal-article", "systematic-review", "conference-paper", "book", "classical", "software", "record"}
 DOI = re.compile(r"^10\.\d{4,9}/\S+$")
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+", re.S)
-CITING_SECTIONS = ("research", "advice")
-CITING_PAGES = ("methods",)
+CITING_SECTIONS = ("research", "theory", "advice")
+CITING_PAGES = ("methods", "models")
 TITLE_SIMILARITY = 0.9
 
 

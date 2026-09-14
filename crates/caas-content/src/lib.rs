@@ -33,6 +33,9 @@ pub struct ApiIndex {
     pub sources: String,
     pub glossary: String,
     pub evidence_changelog: String,
+    /// Search index file per language (`search.<lang>.json`).
+    #[serde(default)]
+    pub search: BTreeMap<String, String>,
     pub endpoint: Endpoint,
 }
 
@@ -41,6 +44,8 @@ pub struct ApiIndex {
 pub struct Collections {
     pub research: BTreeMap<String, String>,
     pub advice: BTreeMap<String, String>,
+    #[serde(default)]
+    pub theory: BTreeMap<String, String>,
 }
 
 /// The artifact's endpoint: it succeeds, and the problem stays unsolved.

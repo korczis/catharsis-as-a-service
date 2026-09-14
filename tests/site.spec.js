@@ -8,8 +8,8 @@ const BASE = new URL(process.env.BASE_URL || 'http://127.0.0.1:4173/catharsis-as
 const PRODUCTION = Boolean(process.env.BASE_URL);
 const SCREENSHOTS = path.join('screenshots', PRODUCTION ? 'production' : 'local');
 const LOCALES = [
-  { code: 'en', path: '', about: 'About', glossary: 'glossary/' },
-  { code: 'cs', path: 'cs/', about: 'O projektu', glossary: 'slovnik/' },
+  { code: 'en', path: '', about: 'About', glossary: 'glossary/', models: 'models/', search: 'search/' },
+  { code: 'cs', path: 'cs/', about: 'O projektu', glossary: 'slovnik/', models: 'modely/', search: 'hledat/' },
 ];
 const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844 },
@@ -155,7 +155,11 @@ for (const locale of LOCALES) {
     'methods/',
     'evidence/',
     'status/',
+    'theory/',
+    'artifacts/closure-as-a-service/',
     locale.glossary,
+    locale.models,
+    locale.search,
   ]) {
     test(`${locale.code}: /${relative} renders`, async ({ page }) => {
       const problems = watch(page);
@@ -398,7 +402,7 @@ test('link previews are localized and reachable', async ({ page, request }) => {
     expect(card.alt).toBeTruthy();
     const response = await request.get(String(card.image));
     expect(response.status()).toBe(200);
-    expect(response.headers()['content-type']).toContain('image/png');
+    expect(response.headers()['content-type']).toMatch(/image\/(png|jpeg)/);
   }
 });
 
@@ -619,7 +623,7 @@ test('the footer carries the science note and build metadata; /status/ is genera
   await expect(footer.locator('[data-build="version"]')).not.toBeEmpty();
   expect(Number(await page.locator('[data-stat="claims"]').textContent())).toBeGreaterThan(20);
   expect(Number(await page.locator('[data-stat="sources"]').textContent())).toBeGreaterThan(40);
-  await expect(page.locator('#next-reviews-title + .table-scroll tbody tr').first()).toBeVisible();
+  await expect(page.locator('#next-reviews-title + .table-frame tbody tr').first()).toBeVisible();
   if (PRODUCTION) await expect(page.locator('main [data-build="revision"] a, main [data-build="revision"]').first()).not.toHaveText('local');
 });
 
@@ -973,4 +977,143 @@ test('concept screens are labelled as illustrative wherever they appear', async 
       expect(String(alt).length).toBeGreaterThan(40);
     }
   }
+});
+
+test('interactive models respond to their inputs and stay labelled as illustrative', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, 'models/');
+  await expect(page.locator('.sim-banner').first()).toBeVisible();
+
+  const relief = page.locator('[data-model="relief-loop"]');
+  await relief.locator('#rl-change').fill('0');
+  await expect(relief.locator('[data-output="resolved"]')).toHaveAttribute('data-resolved', '0');
+  await relief.locator('#rl-change').fill('30');
+  await expect(relief.locator('[data-output="resolved"]')).toHaveAttribute('data-resolved', /^[1-9]\d*$/);
+  await expect(relief.locator('path.series-blood')).toHaveAttribute('d', /^M/);
+
+  const venting = page.locator('[data-model="venting-arousal"]');
+  await venting.locator('input[value="venting"]').check();
+  const vented = Number(await venting.locator('[data-output="at-ten"]').textContent());
+  await venting.locator('input[value="calming"]').check();
+  await expect.poll(async () => Number(await venting.locator('[data-output="at-ten"]').textContent())).toBeLessThan(vented);
+
+  const peak = page.locator('[data-model="peak-end"]');
+  await expect(peak.locator('[data-output="peak-end"]')).toHaveText('7');
+  await expect(peak.locator('[data-output="total"]')).toHaveText('42');
+  await peak.locator('[data-action="add"]').click();
+  await expect(peak.locator('[data-output="peak-end"]')).toHaveText('5.5');
+  await expect(peak.locator('[data-output="total"]')).toHaveText('45');
+
+  const sync = page.locator('[data-model="synchrony"]');
+  await sync.locator('#sy-coupling').fill('4');
+  await sync.locator('#sy-spread').fill('0.2');
+  for (let i = 0; i < 6; i += 1) await sync.locator('[data-action="step"]').click();
+  await expect.poll(async () => Number(await sync.locator('[data-output="order"]').textContent())).toBeGreaterThan(0.8);
+
+  const load = page.locator('[data-model="allostatic-load"]');
+  await load.locator('#al-frequency').fill('2');
+  await load.locator('#al-recovery').fill('30');
+  const low = Number(await load.locator('[data-output="peak"]').textContent());
+  await load.locator('#al-frequency').fill('14');
+  await load.locator('#al-recovery').fill('2');
+  await expect.poll(async () => Number(await load.locator('[data-output="peak"]').textContent())).toBeGreaterThan(low * 5);
+  expect(problems).toEqual([]);
+});
+
+test('search finds pages and glossary terms in both languages, ignoring diacritics', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, 'search/?q=venting');
+  const results = page.locator('.search-result');
+  await expect(results.first()).toBeVisible();
+  await expect(page.locator('.search-result a[href$="/research/venting-hypothesis/"]')).toHaveCount(1);
+  await page.locator('[data-filter="glossary"]').click();
+  await expect(page.locator('[data-filter="glossary"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.search-result a[href*="/glossary/#venting"]')).toHaveCount(1);
+  expect(problems).toEqual([]);
+
+  await open(page, 'cs/hledat/');
+  await page.locator('#search-input').fill('katarzi');
+  await expect(page.locator('.search-result a[href*="/cs/"]').first()).toBeVisible();
+  await expect(page).toHaveURL(/q=katarzi/);
+  await page.locator('#search-input').fill('prehodnoceni');
+  await expect(page.locator('.search-result').first()).toBeVisible();
+});
+
+test('library pages link their glossary terms and related reading', async ({ page }) => {
+  for (const locale of LOCALES) {
+    await open(page, `${locale.path}research/venting-hypothesis/`);
+    const terms = page.locator('[data-terms] a');
+    expect(await terms.count()).toBeGreaterThan(2);
+    const target = String(await terms.first().getAttribute('href'));
+    expect(target).toContain(`${locale.path}${locale.glossary}#`);
+    await expect(page.locator('[data-related] .card')).not.toHaveCount(0);
+  }
+  await open(page, 'advice/reappraise/');
+  await expect(page.locator('[data-related] .card').first()).toBeVisible();
+});
+
+test('every content page has its own social preview image', async ({ page, request }) => {
+  const seen = new Set();
+  for (const relative of ['', 'cs/', 'research/venting-hypothesis/', 'cs/research/venting-hypothesis/', 'models/', 'cs/slovnik/', 'artifacts/closure-as-a-service/']) {
+    await page.goto(url(relative));
+    const image = String(await page.locator('meta[property="og:image"]').getAttribute('content'));
+    expect(image, relative).toContain('/og/');
+    expect(seen.has(image), `${relative} reuses ${image}`).toBe(false);
+    seen.add(image);
+    const response = await request.get(image);
+    expect(response.status()).toBe(200);
+    expect(response.headers()['content-type']).toContain('image/jpeg');
+    expect(await page.locator('meta[property="og:image:alt"]').getAttribute('content')).toContain('Catharsis as a Service');
+  }
+});
+
+test('the theory section and the second artifact are part of the library and the series', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, 'theory/');
+  const cards = page.locator('.card-title a');
+  expect(await cards.count()).toBeGreaterThan(5);
+  await cards.first().click();
+  await expect(page.locator('nav.breadcrumb li')).toHaveCount(3);
+  await expect(page.locator('nav.breadcrumb li').nth(1)).toContainText('Theory');
+  await expect(page.locator('.kind-theoretical').first()).toBeVisible();
+
+  await open(page, 'artifacts/closure-as-a-service/');
+  await expect(page.locator('[data-status-line]')).toHaveText('grief_resolved: pending');
+  await expect(page.locator('[data-hero-line]')).toContainText('≠');
+  await open(page, '');
+  await expect(page.locator('#archive .archive-row')).toHaveCount(2);
+  await expect(page.locator('#experience [data-status-line]')).toHaveText('problem_solved: false');
+  expect(problems).toEqual([]);
+});
+
+test('interactive state is bookmarkable: models, simulation, search filter and claim links', async ({ page }) => {
+  const problems = watch(page);
+  await open(page, 'models/?rl-change=0&pe-moments=1,9,2&sy-coupling=4&al-frequency=14');
+  const relief = page.locator('[data-model="relief-loop"]');
+  await expect(relief.locator('#rl-change')).toHaveValue('0');
+  await expect(relief.locator('[data-output="resolved"]')).toHaveAttribute('data-resolved', '0');
+  await expect(page.locator('[data-model="peak-end"] [data-output="peak-end"]')).toHaveText('5.5');
+  await expect(page.locator('#sy-coupling')).toHaveValue('4');
+  await expect(page.locator('#al-frequency')).toHaveValue('14');
+  await relief.locator('#rl-relief').fill('45');
+  await expect(page).toHaveURL(/rl-relief=45/);
+  await relief.getByRole('button', { name: /reset/i }).click();
+  await expect(page).not.toHaveURL(/rl-relief|rl-change/);
+
+  await open(page, 'methods/?sim-relief=2&sim-cause=1');
+  await expect(page.locator('#sim-relief')).toHaveValue('2');
+  await expect(page.locator('#sim-cause')).toBeChecked();
+  await expect(page.locator('#simulation [data-output="phase"]')).toHaveAttribute('data-phase', 'peak');
+
+  await open(page, 'search/?q=anger&search-section=advice');
+  await expect(page.locator('[data-filter="advice"]')).toHaveAttribute('aria-pressed', 'true');
+  await expect(page.locator('.search-result a[href*="/advice/"]').first()).toBeVisible();
+  await expect(page.locator('.search-result a[href*="/research/"]')).toHaveCount(0);
+
+  await open(page, 'evidence/');
+  const first = page.locator('#claims .claim-card:has(.claim-toggle)').first();
+  const id = String(await first.getAttribute('id'));
+  await open(page, `evidence/#${id}`);
+  await expect(page.locator(`#${id} .claim-sources`)).toBeVisible();
+  expect(problems).toEqual([]);
 });

@@ -510,7 +510,8 @@
 
   .code {
     max-width: 100%;
-    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
     border: 1px solid var(--color-line);
     background: var(--color-ink-2);
     padding: 1.25rem 1.5rem;
@@ -648,7 +649,8 @@
   }
 
   .terminal pre {
-    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
     padding: 1.25rem 1rem;
     font-size: clamp(0.75rem, 2.7vw, 0.95rem);
     line-height: 1.7;
@@ -786,7 +788,8 @@
 
   .prose-page pre {
     margin-top: 1.25rem;
-    overflow-x: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
     border: 1px solid var(--color-line);
     background: var(--color-ink-2);
     padding: 1rem 1.25rem;
@@ -1019,10 +1022,9 @@
   }
 
   .prose-page table {
-    display: block;
     width: 100%;
     margin-top: 1.5rem;
-    overflow-x: auto;
+    table-layout: fixed;
     border-collapse: collapse;
     font-size: 0.8125rem;
   }
@@ -1033,6 +1035,19 @@
     padding: 0.6rem 0.9rem 0.6rem 0;
     text-align: left;
     vertical-align: top;
+    overflow-wrap: anywhere;
+    hyphens: auto;
+  }
+
+  @media (width <= 40rem) {
+    .prose-page table {
+      font-size: 0.75rem;
+    }
+
+    .prose-page th,
+    .prose-page td {
+      padding-right: 0.5rem;
+    }
   }
 
   .prose-page th {
@@ -1882,6 +1897,124 @@
     }
   }
 
+  /* FAQ: the questions index and one question per page */
+
+  .faq-groups {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .faq-group-link {
+    border: 1px solid var(--color-line);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--color-muted);
+    transition: border-color 0.3s, color 0.3s;
+  }
+
+  .faq-group-link:hover {
+    border-color: var(--color-blood);
+    color: var(--color-bone);
+  }
+
+  .faq-group + .faq-group {
+    margin-top: 4.5rem;
+  }
+
+  .faq-index {
+    display: grid;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+  }
+
+  .faq-entry {
+    background: var(--color-ink);
+    padding: 1.5rem;
+    transition: background 0.3s var(--ease-heavy);
+  }
+
+  .faq-entry:hover {
+    background: var(--color-ink-2);
+  }
+
+  @media (min-width: 768px) {
+    .faq-entry {
+      display: grid;
+      grid-template-columns: 7rem 1fr;
+      gap: 0 2rem;
+      padding: 1.75rem 2rem;
+    }
+
+    .faq-entry-kicker {
+      grid-row: span 3;
+    }
+  }
+
+  .faq-entry-kicker {
+    margin: 0;
+    color: var(--color-muted);
+  }
+
+  .faq-entry-title {
+    margin-top: 0.5rem;
+    font-family: var(--font-condensed);
+    font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  @media (min-width: 768px) {
+    .faq-entry-title {
+      margin-top: 0;
+    }
+  }
+
+  .faq-entry-title a {
+    text-decoration: none;
+  }
+
+  .faq-entry-title a:hover {
+    color: var(--color-blood);
+  }
+
+  .faq-entry-answer {
+    margin-top: 0.6rem;
+    max-width: 58ch;
+    color: var(--color-muted);
+  }
+
+  .faq-entry-more {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+  }
+
+  .faq-entry-more a {
+    text-decoration: none;
+    color: var(--color-bone);
+  }
+
+  .faq-entry-more a:hover {
+    color: var(--color-blood);
+  }
+
+  /* The short answer carries the page: a reader who stops here has the answer. */
+  .answer-card {
+    border-left: 2px solid var(--color-blood);
+    background: var(--color-ink-2);
+    padding: 1.5rem 1.75rem;
+  }
+
+  .answer-short {
+    margin-top: 0.75rem;
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    line-height: 1.55;
+  }
+
   .claim-card {
     display: flex;
     flex-direction: column;
@@ -2054,14 +2187,15 @@
     font-weight: 600;
   }
 
-  .table-scroll {
-    overflow-x: auto;
+  /* Tables are framed, never scrolled: below the width their columns need they stack into one
+     record per row, each cell labelled from its column header (project.no-scroll-containers). */
+
+  .table-frame {
     border: 1px solid var(--color-line);
   }
 
   .ledger-table {
     width: 100%;
-    min-width: 44rem;
     border-collapse: collapse;
     font-size: 0.875rem;
   }
@@ -2097,14 +2231,68 @@
     background: rgb(239 41 41 / 0.08);
   }
 
-  .matrix-table {
-    min-width: 64rem;
-  }
-
   .matrix-table tbody th {
     font-family: var(--font-condensed);
     font-size: 1.125rem;
     font-weight: 600;
+  }
+
+  @media (width <= 60rem) {
+    .ledger-table caption {
+      padding-bottom: 0;
+    }
+
+    .ledger-table,
+    .ledger-table thead,
+    .ledger-table tbody,
+    .ledger-table tr,
+    .ledger-table th,
+    .ledger-table td {
+      display: block;
+    }
+
+    /* The column headers become the per-cell labels below, so the header row is read, not shown. */
+    .ledger-table thead {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      overflow: hidden;
+      clip-path: inset(50%);
+      white-space: nowrap;
+    }
+
+    .ledger-table tbody tr {
+      padding: 1rem;
+      border-top: 1px solid var(--color-line);
+    }
+
+    .ledger-table tbody tr:first-child {
+      border-top: 0;
+    }
+
+    .ledger-table th,
+    .ledger-table td {
+      padding: 0.35rem 0;
+      border-top: 0;
+      overflow-wrap: anywhere;
+    }
+
+    .ledger-table td[data-label]::before {
+      content: attr(data-label);
+      display: block;
+      margin-bottom: 0.15rem;
+      font-family: var(--font-condensed);
+      font-size: 0.6875rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-muted);
+    }
+
+    .ledger-table tbody th {
+      padding-bottom: 0.6rem;
+      font-size: 1rem;
+    }
   }
 
   .changelog {
@@ -2126,16 +2314,10 @@
     font-size: 0.75rem;
   }
 
-  .aside-scroll {
+  /* The rail sticks while it is shorter than the viewport and scrolls away with the page when it is
+     not, instead of carrying a scrollbar of its own (project.no-scroll-containers). */
+  .aside-rail {
     max-height: none;
-  }
-
-  @media (min-width: 1024px) {
-    .aside-scroll {
-      max-height: calc(100dvh - 7rem);
-      overflow-y: auto;
-      scrollbar-width: thin;
-    }
   }
 
   .method-block {
@@ -2709,5 +2891,128 @@
     .claim-sources.hidden {
       display: block !important;
     }
+  }
+}
+
+/* Landing prose and library map (templates/components/landing.html) */
+@layer components {
+  .landing-prose p {
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-bone);
+  }
+
+  .landing-prose p + p {
+    margin-top: 1.1rem;
+  }
+
+  .explore-grid {
+    display: grid;
+    gap: 1px;
+    background: var(--color-line);
+    border: 1px solid var(--color-line);
+  }
+
+  @media (min-width: 768px) {
+    .explore-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .explore-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+
+  .explore-item {
+    padding: 1.75rem;
+    background: var(--color-ink);
+  }
+
+  .explore-title {
+    margin-block: 0.5rem 0.75rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    line-height: 1.15;
+  }
+
+  .explore-title a {
+    text-decoration: none;
+  }
+
+  .explore-title a:hover {
+    color: var(--color-blood);
+  }
+}
+
+/* Poster series figures (templates/components/posters.html); the dialog reuses .screen-viewer */
+@layer components {
+  .posters {
+    margin-block: 2.5rem;
+  }
+
+  .poster-series-label {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.6875rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--color-muted);
+  }
+
+  .poster-grid {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .posters:not(.is-single-poster) .poster-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .posters:not(.is-single-poster) .poster-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+
+  .is-single-poster {
+    max-width: 28rem;
+  }
+
+  .poster-viewer .screen-viewer-body img {
+    width: auto;
+    max-width: 100%;
+    max-height: calc(100dvh - 11rem);
+    margin-inline: auto;
+  }
+}
+
+/* Glossary term chips in library asides. Rendered by discover.terms on essay and advice pages,
+   which load only app.css, so the rules live here rather than in interactive.css. */
+
+@layer components {
+  .term-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+  }
+
+  .term-chips a {
+    padding: 0.25rem 0.55rem;
+    border: 1px solid var(--color-line);
+    font-size: 0.75rem;
+    text-decoration: none;
+  }
+
+  .term-chips a:hover {
+    border-color: var(--color-blood);
+    color: var(--color-blood);
   }
 }

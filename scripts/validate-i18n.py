@@ -18,9 +18,11 @@ CONTENT = ROOT / "content"
 TEMPLATES = ROOT / "templates"
 FRONT_MATTER = re.compile(r"\A\+\+\+\s*\n(.*?)\n\+\+\+", re.S)
 TRANS_KEY = re.compile(r"""trans\(\s*key\s*=\s*["']([A-Za-z0-9_]+)["']""")
+# Keys built at render time, e.g. trans(key="design_" ~ source.design): the prefix is the evidence.
+TRANS_PREFIX = re.compile(r"""trans\(\s*key\s*=\s*["']([A-Za-z0-9_]+)["']\s*~""")
+SET_PREFIX = re.compile(r"""set\s+\w+\s*=\s*["']([A-Za-z0-9_]+_)["']\s*~""")
 
 
-DYNAMIC_PREFIXES = ("kind_", "status_", "design_", "change_")
 
 def load_config():
     with open(ROOT / "zola.toml", "rb") as handle:
@@ -105,10 +107,14 @@ def main():
                 errors.append(f"UI string '{key}' is empty for {code}")
 
     used = {item["key"] for item in config.get("extra", {}).get("nav", [])}
-    # Keys built from data values in templates (e.g. "kind_" ~ claim.claim_type) count as used.
-    used.update(key for key in all_keys if key.startswith(DYNAMIC_PREFIXES))
+    prefixes = set()
     for template in TEMPLATES.rglob("*.html"):
         used.update(TRANS_KEY.findall(template.read_text(encoding="utf-8")))
+        text = template.read_text(encoding="utf-8")
+        for prefix in TRANS_PREFIX.findall(text) + SET_PREFIX.findall(text):
+            prefixes.add(prefix)
+            used.update(key for key in all_keys if key.startswith(prefix))
+    used.difference_update(prefixes)
     for key in sorted(used - all_keys):
         errors.append(f"template uses undefined UI string '{key}'")
     for key in sorted(all_keys - used):

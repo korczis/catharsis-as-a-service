@@ -1,6 +1,56 @@
 {#- Landing page sections. Each reads one [extra.*] block from content/_index.md (per locale),
     so the landing page is edited in Markdown front matter, not in templates. -#}
 
+{#- Why the site exists: a case study for Majordomus and Prismatic. Every case links to its records;
+    the verify list points at public evidence (links: path = Zola page, url = external, file = built file). -#}
+{% component landing.purpose(block: map, lang: string, idx: string) %}
+<section id="purpose" class="section" aria-labelledby="purpose-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="purpose" /> }}
+    <h2 id="purpose-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
+    <p class="lead mt-8 max-w-4xl reveal">{{ block.lead }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
+    <div class="mt-14 grid gap-12 lg:grid-cols-2 lg:gap-16 reveal">
+      {%- for case in block.cases %}
+      <article class="aside-block" aria-labelledby="purpose-case-{{ loop.index }}">
+        <p class="label text-blood">{{ case.label }}</p>
+        <h3 id="purpose-case-{{ loop.index }}" class="condensed lens-title">{{ case.title }}</h3>
+        <p class="mt-4">{{ case.text }}</p>
+        <ul class="key-points mt-6">
+          {%- for point in case.points %}
+          <li>{{ point }}</li>
+          {%- endfor %}
+        </ul>
+        <div class="mt-8 flex flex-wrap gap-3">
+          {%- for link in case.links %}
+          {%- if link.url is defined %}
+          <a class="btn-ghost" href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }} <span aria-hidden="true">↗</span></a>
+          {%- else %}
+          <a class="btn-ghost" href="{{ get_url(path='@/' ~ link.path, lang=lang) }}">{{ link.label }} <span aria-hidden="true">→</span></a>
+          {%- endif %}
+          {%- endfor %}
+        </div>
+      </article>
+      {%- endfor %}
+    </div>
+    <h3 class="label mt-20 reveal">{{ block.verify_label }}</h3>
+    <ul class="explore-grid mt-6 reveal">
+      {%- for item in block.verify %}
+      <li class="explore-item">
+        <p class="label text-blood">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</p>
+        <h4 class="condensed explore-title">
+          {%- if item.url is defined %}<a href="{{ item.url }}" target="_blank" rel="noopener">{{ item.title }} <span aria-hidden="true">↗</span></a>
+          {%- elif item.file is defined %}<a href="{{ get_url(path=item.file) }}">{{ item.title }}</a>
+          {%- else %}<a href="{{ get_url(path='@/' ~ item.path, lang=lang) }}">{{ item.title }}</a>{% endif -%}
+        </h4>
+        <p>{{ item.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endcomponent landing.purpose %}
+
 {% component landing.intent(block: map, lang: string, idx: string) %}
 <section id="intent" class="section" aria-labelledby="intent-title">
   <div class="shell">
@@ -9,6 +59,7 @@
       <div class="lg:col-span-7">
         <h2 id="intent-title" class="display display-lg reveal">{{ block.heading }}</h2>
         <p class="lead mt-8 reveal">{{ block.lead }}</p>
+        {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
         <div class="mt-10 reveal">
           <h3 class="label">{{ block.problem_label }}</h3>
           <p class="body-large mt-3">{{ block.problem }}</p>
@@ -47,6 +98,7 @@
     {{ <artifact.section_head idx={idx} label={block.label} id="concept" /> }}
     <h2 id="concept-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
     <p class="lead mt-8 max-w-4xl reveal">{{ block.definition }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <ul class="lens-grid mt-14 reveal">
       {%- for lens in block.lenses %}
       <li class="lens">
@@ -74,6 +126,7 @@
     {{ <artifact.section_head idx={idx} label={block.label} id="mechanism" /> }}
     <h2 id="mechanism-title" class="display display-lg reveal">{{ block.heading }}</h2>
     <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <ol class="stage-grid mt-14 reveal">
       {%- for step in block.steps %}
       <li>
@@ -97,6 +150,7 @@
     {{ <artifact.section_head idx={idx} label={block.label} id="evidence" /> }}
     <h2 id="evidence-title" class="display display-lg reveal">{{ block.heading }}</h2>
     <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <ul class="finding-grid mt-14 reveal">
       {%- for finding in block.findings %}
       <li class="finding">
@@ -125,6 +179,7 @@
     {{ <artifact.section_head idx={idx} label={block.label} id="advice" /> }}
     <h2 id="advice-title" class="display display-lg reveal">{{ block.heading }}</h2>
     <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <div class="mt-14 reveal">{{ <library.cards pages={advice.pages[:6]} lang={lang} heading="h3" /> }}</div>
     <a class="btn-primary mt-10 reveal" href="{{ advice.permalink }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
   </div>
@@ -137,6 +192,7 @@
     {{ <artifact.section_head idx={idx} label={block.label} id="making" /> }}
     <h2 id="making-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
     <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <dl class="stat-grid mt-14 reveal">
       {%- for stat in block.stats %}
       <div class="stat">
@@ -154,7 +210,9 @@
       {%- endfor %}
     </ul>
     <div class="mt-10 flex flex-wrap gap-3 reveal">
-      <a class="btn-primary" href="{{ get_url(path='@/research/method-majordomus/index.md', lang=lang) }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
+      <a class="btn-primary" href="{{ get_url(path='@/case-study/index.md', lang=lang) }}">{{ block.cta_case }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="{{ get_url(path='@/engineering/_index.md', lang=lang) }}">{{ block.cta_engineering }} <span aria-hidden="true">→</span></a>
+      <a class="btn-ghost" href="{{ get_url(path='@/research/method-majordomus/index.md', lang=lang) }}">{{ block.cta }} <span aria-hidden="true">→</span></a>
       <a class="btn-ghost" href="https://majordomus.dev" target="_blank" rel="noopener">majordomus.dev <span aria-hidden="true">↗</span></a>
     </div>
   </div>
@@ -194,13 +252,15 @@
       {%- for line in block.lines %}<span class="block{% if loop.last %} text-blood{% endif %}">{{ line }}</span>{% endfor -%}
     </h2>
     <div class="mt-12 grid gap-10 lg:grid-cols-12 lg:gap-16">
-      <p class="body-large lg:col-span-7 reveal">{{ block.text }}</p>
+      <div class="lg:col-span-7 reveal"><p class="body-large">{{ block.text }}</p>{%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}</div>
       <div class="lg:col-span-5 reveal">
         <p class="endpoint" data-formula><span>&gt; {{ block.formula }}</span></p>
         <div class="mt-8 flex flex-wrap gap-3">
           <a class="btn-primary" href="{{ get_url(path='@/methods/index.md', lang=lang) }}#temporal-model">{{ block.cta_methods }} <span aria-hidden="true">→</span></a>
           <a class="btn-ghost" href="{{ get_url(path='@/research/relief-is-not-resolution/index.md', lang=lang) }}">{{ block.cta_note }} <span aria-hidden="true">→</span></a>
         </div>
+        {#- No reveal here: the column is already a .reveal, and nesting them doubles the transition. -#}
+        {%- if block.poster is defined %}<div class="mt-12">{{ <posters.figure fig={block.poster} lang={lang} /> }}</div>{%- endif %}
       </div>
     </div>
   </div>
@@ -231,20 +291,23 @@
     </dl>
     <p class="label mt-8 normal-case tracking-normal reveal">{{ block.source }}</p>
     <p class="body-large mt-8 max-w-3xl reveal">{{ block.meaning }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <div class="mt-10 flex flex-wrap gap-3 reveal">
       <a class="btn-primary" href="{{ get_url(path='@/research/venting-hypothesis/index.md', lang=lang) }}">{{ block.cta_note }} <span aria-hidden="true">→</span></a>
       <a class="btn-ghost" href="{{ get_url(path='@/advice/let-anger-cool/index.md', lang=lang) }}">{{ block.cta_advice }} <span aria-hidden="true">→</span></a>
     </div>
+    {%- if block.poster is defined %}<div class="mt-12 reveal">{{ <posters.figure fig={block.poster} lang={lang} /> }}</div>{%- endif %}
   </div>
 </section>
 {% endcomponent landing.venting %}
 
-{% component landing.questions(block: map, idx: string) %}
+{% component landing.questions(block: map, lang: string, idx: string) %}
 <section id="questions" class="section section-alt" aria-labelledby="questions-title">
   <div class="shell">
     {{ <artifact.section_head idx={idx} label={block.label} id="questions" /> }}
     <h2 id="questions-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
     <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
     <ol class="question-list mt-14 reveal">
       {%- for item in block.items %}
       <li>
@@ -253,6 +316,7 @@
       </li>
       {%- endfor %}
     </ol>
+    {%- if block.poster is defined %}<div class="mt-12 reveal">{{ <posters.figure fig={block.poster} lang={lang} /> }}</div>{%- endif %}
   </div>
 </section>
 {% endcomponent landing.questions %}
@@ -266,6 +330,7 @@
       <div>
         <h2 id="boundary-title" class="display display-md">{{ block.heading }}</h2>
         <p class="mt-6">{{ block.text }}</p>
+        {%- if block.body is defined %}{{ <landing.prose paragraphs={block.body} /> }}{%- endif %}
       </div>
       <div>
         <h3 class="label">{{ block.signs_label }}</h3>
@@ -284,3 +349,33 @@
   </div>
 </section>
 {% endcomponent landing.boundary %}
+
+{#- Longer explanatory paragraphs for landing blocks ([extra.<block>].body). -#}
+{#- The parameter is not called `body`: Tera reserves that name for component body content. -#}
+{% component landing.prose(paragraphs: array) %}
+<div class="landing-prose mt-8 max-w-3xl reveal">
+  {%- for paragraph in paragraphs %}
+  <p>{{ paragraph }}</p>
+  {%- endfor %}
+</div>
+{% endcomponent landing.prose %}
+
+{#- A map of the library: every way in, with a sentence on what it is for. -#}
+{% component landing.explore(block: map, lang: string, idx: string) %}
+<section id="explore" class="section section-alt" aria-labelledby="explore-title">
+  <div class="shell">
+    {{ <artifact.section_head idx={idx} label={block.label} id="explore" /> }}
+    <h2 id="explore-title" class="display display-lg max-w-5xl reveal">{{ block.heading }}</h2>
+    <p class="body-large mt-8 max-w-3xl reveal">{{ block.intro }}</p>
+    <ul class="explore-grid mt-14 reveal">
+      {%- for item in block.items %}
+      <li class="explore-item">
+        <p class="label text-blood">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</p>
+        <h3 class="condensed explore-title"><a href="{{ get_url(path='@/' ~ item.path, lang=lang) }}">{{ item.title }}</a></h3>
+        <p>{{ item.text }}</p>
+      </li>
+      {%- endfor %}
+    </ul>
+  </div>
+</section>
+{% endcomponent landing.explore %}

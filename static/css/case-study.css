@@ -1,0 +1,461 @@
+/* Case study page (templates/case-study.html). Plain CSS on the design tokens Tailwind emits
+   (--color-*), loaded only by this page. */
+
+/* This file is unlayered, so its display rules would beat the layered no-JS rule of app.css. */
+.no-js [data-requires-js] {
+  display: none;
+}
+
+/* Grid items default to min-width: auto, so a wide table or timeline row would widen the single mobile
+   column past the viewport; the tables scroll inside their own region instead. */
+.case-layout > * {
+  min-width: 0;
+}
+
+.case-badge {
+  display: inline-block;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid var(--color-blood);
+  color: var(--color-bone);
+  font-size: 0.6875rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.case-lead {
+  max-width: 48rem;
+  margin-top: 1.5rem;
+  font-size: 1.125rem;
+  line-height: 1.6;
+}
+
+/* Metrics */
+
+.case-metrics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 2.5rem 0 0;
+  background: var(--color-line);
+  border: 1px solid var(--color-line);
+}
+
+@media (min-width: 768px) {
+  .case-metrics {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.case-metric {
+  min-width: 0;
+  padding: 1rem 1.25rem;
+  background: var(--color-ink);
+}
+
+.case-metric dt {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.case-metric dd {
+  margin: 0.35rem 0 0;
+  font-family: var(--font-condensed, inherit);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1;
+  color: var(--color-bone);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-metric.is-wide {
+  grid-column: 1 / -1;
+}
+
+.case-metric small {
+  display: block;
+  margin-top: 0.4rem;
+  font-family: inherit;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--color-muted);
+}
+
+.case-snapshot {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+/* Section frames */
+
+.case-block {
+  margin-top: 4rem;
+  scroll-margin-top: 6rem;
+}
+
+.case-block > p {
+  max-width: 48rem;
+}
+
+/* Lifecycle */
+
+.case-steps {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: step;
+}
+
+.case-steps a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.55rem 0.8rem;
+  border: 1px solid var(--color-line);
+  color: var(--color-bone);
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.case-steps a:hover,
+.case-steps a:focus-visible,
+.case-steps a[aria-current='step'] {
+  border-color: var(--color-blood);
+}
+
+.case-steps a[aria-current='step'] {
+  background: rgb(239 41 41 / 0.12);
+}
+
+.case-step-number {
+  font-size: 0.6875rem;
+  color: var(--color-blood);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-step-panel {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  border: 1px solid var(--color-line);
+  scroll-margin-top: 6rem;
+}
+
+.case-step-panel + .case-step-panel {
+  margin-top: 1rem;
+}
+
+.case-step-panel h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+.case-facts {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0 0;
+}
+
+@media (min-width: 768px) {
+  .case-facts {
+    grid-template-columns: minmax(8rem, 12rem) minmax(0, 1fr);
+    column-gap: 1.5rem;
+  }
+}
+
+.case-facts dt {
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.case-facts dd {
+  min-width: 0;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.case-code {
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 0.875rem;
+  overflow-wrap: anywhere;
+}
+
+/* Timeline */
+
+.case-filters {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.case-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.case-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--color-line);
+  background: transparent;
+  color: var(--color-bone);
+  font: inherit;
+  font-size: 0.8125rem;
+  cursor: pointer;
+}
+
+.case-chip[aria-pressed='true'] {
+  border-color: var(--color-blood);
+  background: rgb(239 41 41 / 0.16);
+}
+
+.case-chip span {
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-search {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.case-search input {
+  flex: 1 1 14rem;
+  min-width: 0;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--color-line);
+  background: var(--color-ink);
+  color: var(--color-bone);
+  font: inherit;
+}
+
+.case-search input:focus-visible {
+  outline: 2px solid var(--color-blood);
+  outline-offset: 1px;
+}
+
+.case-count {
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-timeline {
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  border-left: 1px solid var(--color-line);
+}
+
+.case-event {
+  position: relative;
+  padding: 0 0 0 1.25rem;
+  scroll-margin-top: 6rem;
+}
+
+.case-event[hidden] {
+  display: none;
+}
+
+.case-event::before {
+  content: '';
+  position: absolute;
+  top: 1.05rem;
+  left: -0.3rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  background: var(--color-muted);
+}
+
+.case-event[data-kind='finding']::before,
+.case-event[data-kind='finish']::before {
+  background: var(--color-blood);
+}
+
+.case-event details {
+  border-bottom: 1px solid var(--color-line);
+}
+
+.case-event summary {
+  display: grid;
+  gap: 0.25rem 0.75rem;
+  padding: 0.75rem 0;
+  cursor: pointer;
+  list-style: none;
+}
+
+.case-event summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .case-event summary {
+    grid-template-columns: 11.5rem 7rem minmax(0, 1fr);
+    align-items: baseline;
+  }
+}
+
+.case-event time {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.case-kind {
+  justify-self: start;
+  font-size: 0.6875rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.case-event[data-kind='finding'] .case-kind,
+.case-event[data-kind='finish'] .case-kind {
+  color: var(--color-blood);
+}
+
+.case-event-title {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.case-event details[open] .case-event-title {
+  color: var(--color-bone);
+  font-weight: 600;
+}
+
+.case-event-body {
+  padding: 0 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .case-event-body {
+    padding-left: 19rem;
+  }
+}
+
+.case-event-body p {
+  max-width: 48rem;
+  overflow-wrap: anywhere;
+}
+
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem 1rem;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.8125rem;
+}
+
+.case-links a,
+.case-table a,
+.case-card a,
+.case-step-panel a {
+  color: var(--color-bone);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+  overflow-wrap: anywhere;
+}
+
+.case-links a:hover,
+.case-table a:hover,
+.case-card a:hover,
+.case-step-panel a:hover {
+  color: var(--color-blood);
+}
+
+.case-empty {
+  margin-top: 1rem;
+  color: var(--color-muted);
+}
+
+/* Tables and cards */
+
+.case-table td,
+.case-table th {
+  overflow-wrap: anywhere;
+}
+
+.case-cards {
+  display: grid;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 768px) {
+  .case-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.case-card {
+  min-width: 0;
+  padding: 1.25rem;
+  border: 1px solid var(--color-line);
+  scroll-margin-top: 6rem;
+}
+
+.case-card h3 {
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.case-card p {
+  margin-top: 0.6rem;
+}
+
+.case-card .case-meta {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.case-limits {
+  margin-top: 1.5rem;
+  padding-left: 1.25rem;
+  list-style: square;
+}
+
+.case-limits li + li {
+  margin-top: 0.5rem;
+}
+
+.case-read-next {
+  padding: 1.5rem;
+  border: 1px solid var(--color-blood);
+}
+
+.case-screens {
+  margin-block: 2.5rem;
+}
+
+.case-disclaimer {
+  margin-top: 1rem;
+  font-size: 0.8125rem;
+  color: var(--color-muted);
+}
+
+@media print {
+  .case-event details:not([open]) > .case-event-body {
+    display: block;
+  }
+
+  .case-step-panel {
+    display: block !important;
+  }
+}

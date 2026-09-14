@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ get_url(path='css/interactive.css', cachebust=true) }}">
+{% endblock head_extra %}
+
+{% block scripts_extra %}
+<script src="{{ get_url(path='js/models.js', cachebust=true) }}" defer></script>
+{% endblock scripts_extra %}
+
+{% block content %}
+{%- set x = page.extra -%}
+{%- set reference_data = load_data(path="data/references.toml") -%}
+<article class="hero" aria-labelledby="models-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <p class="eyebrow">{{ x.kicker }} <span class="text-muted">//</span> {{ <evidence.kind kind="theoretical" lang={lang} /> }}</p>
+    <h1 id="models-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
+    <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
+    <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
+    <p class="sim-banner mt-8" role="note">{{ x.banner }}</p>
+
+    <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <aside class="aside-rail space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+        <section class="aside-block" aria-labelledby="abstract-title">
+          <h2 id="abstract-title" class="label">{{ trans(key="abstract", lang=lang) }}</h2>
+          <p class="mt-3">{{ x.summary }}</p>
+        </section>
+        {{ <library.key_points points={x.key_points} lang={lang} /> }}
+        <nav class="toc aside-block" aria-label="{{ trans(key='toc_label', lang=lang) }}">
+          <p class="label">{{ trans(key="toc_label", lang=lang) }}</p>
+          <ol class="mt-3 space-y-2 border-l border-line pl-4">
+            {%- for m in x.models %}
+            <li><a class="nav-link normal-case tracking-normal" href="#model-{{ m.id }}">{{ m.title }}</a></li>
+            {%- endfor %}
+            {%- for heading in page.toc %}
+            <li><a class="nav-link normal-case tracking-normal" href="#{{ heading.id }}">{{ heading.title }}</a></li>
+            {%- endfor %}
+          </ol>
+        </nav>
+      </aside>
+
+      <div class="lg:col-span-8">
+        {%- for m in x.models %}
+        <section id="model-{{ m.id }}" class="method-block first:mt-0" aria-labelledby="model-{{ m.id }}-title">
+          <p class="label text-blood">{{ loop.index }} / {{ x.models | length }}</p>
+          <h2 id="model-{{ m.id }}-title" class="condensed method-title mt-2">{{ m.title }}</h2>
+          <p class="model-question mt-6">{{ m.question }}</p>
+          <p class="mt-4 max-w-3xl">{{ m.explanation }}</p>
+          {%- if m.id == "relief-loop" %}{{ <models.relief_loop m={m} /> }}
+          {%- elif m.id == "venting-arousal" %}{{ <models.venting_arousal m={m} name="va-activity" /> }}
+          {%- elif m.id == "peak-end" %}{{ <models.peak_end m={m} /> }}
+          {%- elif m.id == "synchrony" %}{{ <models.synchrony m={m} /> }}
+          {%- elif m.id == "allostatic-load" %}{{ <models.allostatic_load m={m} /> }}
+          {%- else %}{{ throw(message="unknown model: " ~ m.id) }}{%- endif %}
+          <noscript><p class="disclaimer mt-6">{{ trans(key="model_nojs", lang=lang) }}</p></noscript>
+          <p class="mt-6 max-w-3xl">{{ m.reading }}</p>
+          <div class="model-notes">
+            <section class="aside-block" aria-labelledby="model-{{ m.id }}-assumptions">
+              <h3 id="model-{{ m.id }}-assumptions" class="label">{{ trans(key="model_assumptions", lang=lang) }}</h3>
+              <ul class="key-points">{% for item in m.assumptions %}<li>{{ item }}</li>{% endfor %}</ul>
+            </section>
+            <section class="aside-block" aria-labelledby="model-{{ m.id }}-limits">
+              <h3 id="model-{{ m.id }}-limits" class="label">{{ trans(key="limits", lang=lang) }}</h3>
+              <ul class="key-points">{% for item in m.limits %}<li>{{ item }}</li>{% endfor %}</ul>
+            </section>
+          </div>
+          {%- if m.references | length > 0 %}
+          <p class="term-links mt-4"><span class="label">{{ trans(key="sources", lang=lang) }}</span>
+            {%- for ref_id in m.references %}
+            {%- set ref = reference_data.references[ref_id] %}
+            {%- set short = ref.authors | split(pat=",") | first %}
+            <a href="#ref-{{ ref_id }}">{{ short }} ({{ ref.year }})</a>
+            {%- endfor %}
+          </p>
+          {%- endif %}
+        </section>
+        {%- endfor %}
+
+        <div class="prose-page prose-wide method-block">{{ page.content | safe }}</div>
+        {{ <evidence.page_claims path="models/index.md" lang={lang} /> }}
+        {{ <library.references ids={x.references} lang={lang} /> }}
+        <div class="mt-12">{{ <library.disclaimer lang={lang} /> }}</div>
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock content %}

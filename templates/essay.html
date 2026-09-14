@@ -3,24 +3,28 @@
 {% block content %}
 <article class="hero" aria-labelledby="essay-title">
   <div class="shell">
+    {#- Essays live in research/ and theory/; the parent section supplies the breadcrumb and eyebrow. -#}
+    {%- set parent_path = page.ancestors | last | replace(from="." ~ lang ~ ".md", to=".md") %}
+    {%- set parent = get_section(path=parent_path, lang=lang, metadata_only=true) %}
     {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
       {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
-      {"name": trans(key="nav_research", lang=lang), "url": get_url(path="@/research/_index.md", lang=lang)},
+      {"name": parent.title, "url": parent.permalink},
       {"name": page.extra.kicker, "url": page.permalink}
     ]} /> }}
     {%- if page.extra.kind is defined %}{% set kind = page.extra.kind %}{% else %}{% set kind = "empirical" %}{% endif %}
-    <p class="eyebrow"><a class="no-underline" href="{{ get_url(path='@/research/_index.md', lang=lang) }}">{{ trans(key="nav_research", lang=lang) }}</a> <span class="text-muted">// {{ page.extra.kicker }}</span> {{ <evidence.kind kind={kind} lang={lang} /> }}</p>
+    <p class="eyebrow"><a class="no-underline" href="{{ parent.permalink }}">{{ parent.title }}</a> <span class="text-muted">// {{ page.extra.kicker }}</span> {{ <evidence.kind kind={kind} lang={lang} /> }}</p>
     <h1 id="essay-title" class="display display-lg mt-7 max-w-5xl">{{ page.title }}</h1>
     <p class="label mt-6">{{ trans(key="published", lang=lang) }} {{ page.date | date(format="%Y-%m-%d") }} · {{ page.reading_time }} {{ trans(key="reading_time", lang=lang) }}</p>
     <div class="mt-4">{{ <library.tags tags={page.taxonomies.tags or []} lang={lang} /> }}</div>
 
     <div class="mt-14 grid gap-12 lg:grid-cols-12 lg:gap-16">
-      <aside class="space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
+      <aside class="aside-rail space-y-10 lg:col-span-4 lg:sticky lg:top-24 lg:self-start">
         <section class="aside-block" aria-labelledby="abstract-title">
           <h2 id="abstract-title" class="label">{{ trans(key="abstract", lang=lang) }}</h2>
           <p class="mt-3">{{ page.extra.summary }}</p>
         </section>
         {{ <library.key_points points={page.extra.key_points} lang={lang} /> }}
+        {{ <discover.terms content={page.content} lang={lang} /> }}
         {%- if page.toc | length > 2 %}
         <nav class="toc aside-block" aria-label="{{ trans(key='toc_label', lang=lang) }}">
           <p class="label">{{ trans(key="toc_label", lang=lang) }}</p>
@@ -39,6 +43,7 @@
         {{ <evidence.page_claims path={claim_path} lang={lang} /> }}
         {{ <library.references ids={page.extra.references} lang={lang} /> }}
         <div class="mt-12">{{ <library.disclaimer lang={lang} /> }}</div>
+        {{ <discover.related current={page.permalink} tags={page.taxonomies.tags or []} lang={lang} sections={["research/_index.md", "theory/_index.md", "advice/_index.md"]} exclude={[]} /> }}
       </div>
     </div>
   </div>

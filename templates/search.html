@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block head_extra %}
+<link rel="stylesheet" href="{{ get_url(path='css/interactive.css', cachebust=true) }}">
+{% endblock head_extra %}
+
+{% block scripts_extra %}
+<script src="{{ get_url(path='js/search.js', cachebust=true) }}" defer></script>
+{% endblock scripts_extra %}
+
+{% block content %}
+{%- set labels = {
+  "all": trans(key="search_all", lang=lang),
+  "research": trans(key="section_research", lang=lang),
+  "theory": trans(key="section_theory", lang=lang),
+  "advice": trans(key="section_advice", lang=lang),
+  "glossary": trans(key="section_glossary", lang=lang),
+  "pages": trans(key="section_pages", lang=lang)
+} -%}
+<article class="hero" aria-labelledby="search-title">
+  <div class="shell">
+    {{ <library.breadcrumb label={trans(key="breadcrumb_label", lang=lang)} items={[
+      {"name": trans(key="breadcrumb_home", lang=lang), "url": get_url(path="@/_index.md", lang=lang)},
+      {"name": page.title, "url": page.permalink}
+    ]} /> }}
+    <h1 id="search-title" class="display display-lg mt-7">{{ page.title }}</h1>
+    <p class="lead mt-8 max-w-3xl">{{ page.description }}</p>
+
+    <div class="mt-12" data-requires-js x-data="siteSearch" data-index="{{ get_url(path='api/v1/search.' ~ lang ~ '.json') }}">
+      <form class="search-form" role="search" x-on:submit.prevent>
+        <label for="search-input" class="sr-only">{{ trans(key="search_label", lang=lang) }}</label>
+        <input id="search-input" class="search-input" type="search" name="q" autocomplete="off"
+          placeholder="{{ trans(key='search_placeholder', lang=lang) }}" x-model.debounce.150ms="query">
+      </form>
+      <div class="search-filters mt-6" role="group" aria-label="{{ trans(key='search_filter_label', lang=lang) }}">
+        {%- for key, name in labels %}
+        <button type="button" class="search-filter" data-filter="{{ key }}" x-on:click="section = '{{ key }}'"
+          x-bind:aria-pressed="(section === '{{ key }}').toString()" aria-pressed="{% if key == 'all' %}true{% else %}false{% endif %}">
+          {{ name }} <span x-show="terms.length" x-text="'(' + count('{{ key }}') + ')'" aria-hidden="true"></span>
+        </button>
+        {%- endfor %}
+      </div>
+      <p class="label mt-8" aria-live="polite" data-search-status>
+        <span x-show="terms.length &amp;&amp; loaded">{{ trans(key="search_results", lang=lang) }} <span x-text="results.length"></span></span>
+        <span x-show="failed">{{ trans(key="search_failed", lang=lang) }}</span>
+      </p>
+      <p class="mt-4" x-show="terms.length &amp;&amp; loaded &amp;&amp; !results.length">{{ trans(key="search_empty", lang=lang) }}</p>
+      <ol class="search-results mt-6">
+        <template x-for="entry in results" x-bind:key="entry.url">
+          <li class="search-result">
+            <p class="label"><span x-text="({{ labels | json_encode }})[entry.section]"></span><span x-show="entry.kicker" x-text="' · ' + entry.kicker"></span></p>
+            <a class="mt-2 block" x-bind:href="entry.url" x-text="entry.title"></a>
+            <p class="mt-2" x-text="entry.description"></p>
+          </li>
+        </template>
+      </ol>
+    </div>
+    <noscript><p class="disclaimer mt-10">{{ trans(key="search_nojs", lang=lang) }}</p></noscript>
+    {#- Server-side index links: the only crawlable path out of this page, and the fallback when the index fails. -#}
+    <ul class="mt-10 flex flex-wrap gap-3">
+      <li><a class="btn-ghost" href="{{ get_url(path='@/research/_index.md', lang=lang) }}">{{ trans(key="section_research", lang=lang) }}</a></li>
+      <li><a class="btn-ghost" href="{{ get_url(path='@/theory/_index.md', lang=lang) }}">{{ trans(key="section_theory", lang=lang) }}</a></li>
+      <li><a class="btn-ghost" href="{{ get_url(path='@/advice/_index.md', lang=lang) }}">{{ trans(key="section_advice", lang=lang) }}</a></li>
+      <li><a class="btn-ghost" href="{{ get_url(path='@/glossary/index.md', lang=lang) }}">{{ trans(key="section_glossary", lang=lang) }}</a></li>
+    </ul>
+    {%- if page.extra.poster_figure is defined %}<div class="mt-20">{{ <posters.figure fig={page.extra.poster_figure} lang={lang} /> }}</div>{%- endif %}
+  </div>
+</article>
+{% endblock content %}

@@ -5,7 +5,7 @@ date = 2026-09-14
 template = "evidence.html"
 
 [taxonomies]
-tags = ["evidence", "methods", "verification"]
+tags = ["důkazy", "metody", "ověřování"]
 
 [extra]
 kicker = "Důkazy"
@@ -33,6 +33,14 @@ claim_types = [
 ]
 review_policy = "Tvrzení o klinických hranicích se revidují nejméně jednou za 180 dní, empirická tvrzení jednou za 365 dní a teoretická, historická, technická a umělecká tvrzení jednou za 730 dní. Automatická kontrola běží každý týden a při každé změně; tvrzení nebo zdroj po datu revize zastaví sestavení webu, dokud je někdo znovu neposoudí a výsledek nezaznamená do changelogu důkazů."
 report_label = "Nahlásit zastaralé nebo nesprávné tvrzení"
+
+[extra.poster_figure]
+id = "poster-evidence"
+caption = "Ze série plakátů Catharsis as a Service. Slogany a čísla na plakátech patří k dílu; nejsou to výzkumná zjištění."
+items = [
+  { src = "assets/posters/vice-dat-lepsi-rozhodnuti.png", title = "Více dat. Méně iluzí. Lepší rozhodnutí.", alt = "Plakát: VÍCE DAT. MÉNĚ ILUZÍ. LEPŠÍ ROZHODNUTÍ. Člověk sedí u stolu s monitory před stěnou propojených fotografií a poznámek, vedle knih s nápisy evidence, context, perspective, truth a better questions; otevřenými dveřmi je vidět postavu mířící do rudých hor.", caption = "Stejná fakta, víc perspektiv, méně manipulace." },
+]
+
 +++
 
 ## Proč registr

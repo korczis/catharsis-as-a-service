@@ -19,9 +19,9 @@ styles/app.css ─► Tailwind CSS 4 ───┘   scripts/export-api.py ─►
 | Content | `content/` (one file per language) | research, advice, methods, evidence, glossary, status, about, guides, commands, artifacts |
 | Data | `data/` | references, sources, claims, evidence changelog, glossary, command registry |
 | UI strings | `zola.toml` `[translations]` | parity enforced by [scripts/validate-i18n.py](../scripts/validate-i18n.py) |
-| Templates | `templates/` | page templates plus components: `artifact`, `landing`, `library`, `evidence`, `illustration` |
+| Templates | `templates/` | page templates plus components: `artifact`, `landing`, `library`, `evidence`, `discover` (glossary terms and related reading), `models`, `illustration`, `posters` (poster strip on landing, artifact, library, methods and evidence) |
 | Styles | `styles/app.css` | design tokens and components on Tailwind CSS 4 with the Flowbite plugin |
-| Behaviour | `static/js/app.js`, `static/js/locale.js` | Alpine: header, view switch, copy, claim panels, detection simulation. Flowbite: modal, drawer, tooltip, accordion. Content is complete without JavaScript |
+| Behaviour | `static/js/app.js`, `static/js/locale.js`, `static/js/url-state.js` (shareable URL state for models, simulation and search), page scripts `static/js/models.js` and `static/js/search.js` | Alpine: header, view switch, copy, claim panels, detection simulation. Flowbite: modal, drawer, tooltip, accordion. Content is complete without JavaScript |
 | API | [scripts/export-api.py](../scripts/export-api.py) → `api/v1` | contract in [RUST-INTEGRATION.md](RUST-INTEGRATION.md) |
 | Rust | `crates/caas-content`, `crates/caas-cli` | typed client, integrity checks, CLI |
 | Supervision | `.ai/`, `.githooks/` | Majordomus policy, project rules, ADRs; hooks run the health check and the finish contract |
@@ -34,6 +34,9 @@ styles/app.css ─► Tailwind CSS 4 ───┘   scripts/export-api.py ─►
 | `/`, `/cs/` | `index.html` | `content/_index*.md` landing blocks, featured artifact |
 | `/research/<slug>/` | `essay.html` | front matter, references, ledger claims (`used_in`) |
 | `/advice/<slug>/` | `advice.html` | front matter, references, ledger claims |
+| `/theory/<slug>/` | `essay.html` | theory essays with the research-note front matter and `kind = "theoretical"` |
+| `/models/`, `/cs/modely/` | `models.html` | model labels and explanations in front matter; simulations in `static/js/models.js` |
+| `/search/`, `/cs/hledat/` | `search.html` | `api/v1/search.<lang>.json`, ranked in `static/js/search.js` |
 | `/methods/` | `methods.html` | structured blocks in front matter, simulation, ledger claims |
 | `/evidence/` | `evidence.html` | claims, sources, references, changelog |
 | `/glossary/`, `/cs/slovnik/` | `glossary.html` | `data/glossary.toml` |

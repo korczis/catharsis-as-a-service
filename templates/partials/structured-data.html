@@ -1,7 +1,8 @@
 {#- schema.org JSON-LD. The graph is built as template data and serialised with json_encode,
     so no JSON escaping is ever written by hand. -#}
 {%- set site_url = get_url(path="@/_index.md", lang=l) -%}
-{%- set preview_url = get_url(path=trans(key="social_image", lang=l)) -%}
+{#- head.html computes social_image (the page's own og image when one exists) before this include. -#}
+{%- set search_url = get_url(path="@/search/index.md", lang=l) -%}
 {%- set_global graph = [
   {
     "@type": "WebSite",
@@ -10,7 +11,12 @@
     "name": config.title,
     "description": config.description,
     "inLanguage": l,
-    "publisher": {"@id": site_url ~ "#author"}
+    "publisher": {"@id": site_url ~ "#author"},
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": {"@type": "EntryPoint", "urlTemplate": search_url ~ "?q={search_term_string}"},
+      "query-input": "required name=search_term_string"
+    }
   },
   {"@type": "Person", "@id": site_url ~ "#author", "name": config.extra.author}
 ] -%}
@@ -29,7 +35,7 @@
     "name": art.title,
     "description": art.description,
     "image": get_url(path=art.extra.poster),
-    "thumbnailUrl": preview_url,
+    "thumbnailUrl": social_image,
     "artform": "Poster",
     "artMedium": "Digital",
     "width": {"@type": "QuantitativeValue", "value": poster.width, "unitCode": "E37"},
@@ -43,7 +49,19 @@
 
 {#- Library pages are Article (never MedicalWebPage: the site is educational, see
     .ai/repo/rules/project/medical-claims.v1.md); listing pages are CollectionPage. -#}
-{%- if page is defined and page.extra.poster is not defined -%}
+{%- if page is defined and page.relative_path is starting_with(pat="search/") -%}
+  {%- set_global graph = [...graph, {
+    "@type": "SearchResultsPage",
+    "@id": page.permalink ~ "#webpage",
+    "url": page.permalink,
+    "name": page.title,
+    "description": page.description,
+    "inLanguage": l,
+    "isPartOf": {"@id": site_url ~ "#website"},
+    "primaryImageOfPage": social_image,
+    "isAccessibleForFree": true
+  }] -%}
+{%- elif page is defined and page.extra.poster is not defined -%}
   {%- set_global citations = [] -%}
   {%- if page.extra.references is defined -%}
     {%- set reference_data = load_data(path="data/references.toml") -%}
@@ -67,7 +85,7 @@
     "author": {"@id": site_url ~ "#author"},
     "publisher": {"@id": site_url ~ "#author"},
     "isPartOf": {"@id": site_url ~ "#website"},
-    "image": preview_url,
+    "image": social_image,
     "keywords": (page.taxonomies.tags or []) | join(sep=", "),
     "citation": citations,
     "isAccessibleForFree": true

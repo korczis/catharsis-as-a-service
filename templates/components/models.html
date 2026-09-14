@@ -1,0 +1,168 @@
+{#- Interactive model widgets (Alpine components in static/js/models.js). Labels come from
+    content/models front matter; without JavaScript the page shows the explanation and a notice. -#}
+
+{% component models.slider(id: string, label: string, min: string, max: string, step: string, model: string, suffix: string = "") %}
+<div class="slider">
+  <div class="slider-head">
+    <label for="{{ id }}">{{ label }}</label>
+    <output for="{{ id }}" x-text="{{ model }} + '{{ suffix }}'"></output>
+  </div>
+  <input type="range" id="{{ id }}" min="{{ min }}" max="{{ max }}" step="{{ step }}" x-model.number="{{ model }}">
+</div>
+{% endcomponent models.slider %}
+
+{% component models.relief_loop(m: map) %}
+{%- set l = m.labels -%}
+<div class="model" data-requires-js data-model="relief-loop" x-data="reliefLoop" data-labels="{{ l | json_encode }}">
+  <div class="model-controls">
+    {{ <models.slider id="rl-relief" label={l.relief} min="0" max="60" step="5" model="relief" /> }}
+    {{ <models.slider id="rl-change" label={l.change} min="0" max="30" step="1" model="change" suffix=" %" /> }}
+    <p class="model-result" aria-live="polite" aria-atomic="true" data-output="resolved" x-bind:data-resolved="resolvedAt" x-text="resolvedText"></p>
+    <button type="button" class="btn-ghost" x-on:click="reset()">{{ l.reset }}</button>
+  </div>
+  <figure class="model-chart">
+    <svg viewBox="0 0 600 240" role="img" aria-label="{{ l.chart }}">
+      <line class="axis" x1="28" y1="212" x2="572" y2="212"></line>
+      <line class="axis" x1="28" y1="28" x2="28" y2="212"></line>
+      <line class="marker" y1="28" y2="212" x-bind:x1="marker" x-bind:x2="marker" x-show="resolvedAt"></line>
+      <path class="series series-muted" x-bind:d="paths.before"></path>
+      <path class="series series-bone" x-bind:d="paths.after"></path>
+      <path class="series series-blood" x-bind:d="paths.urge"></path>
+    </svg>
+    <figcaption class="legend">
+      <span class="key key-muted">{{ l.distress_before }}</span>
+      <span class="key key-bone">{{ l.distress_after }}</span>
+      <span class="key key-blood">{{ l.urge }}</span>
+      <span class="label">{{ l.episodes }} 1–30</span>
+    </figcaption>
+  </figure>
+</div>
+{% endcomponent models.relief_loop %}
+
+{% component models.venting_arousal(m: map, name: string) %}
+{%- set l = m.labels -%}
+<div class="model" data-requires-js data-model="venting-arousal" x-data="ventingArousal" data-labels="{{ l | json_encode }}">
+  <div class="model-controls">
+    <fieldset>
+      <legend class="label">{{ l.activity }}</legend>
+      {%- for option in ["waiting", "calming", "venting"] %}
+      <label class="choice"><input type="radio" name="{{ name }}" value="{{ option }}" x-model="activity"> <span>{{ l[option] }}</span></label>
+      {%- endfor %}
+    </fieldset>
+    <p class="model-result" aria-live="polite" aria-atomic="true"><span class="label">{{ l.at_ten }}</span> <strong data-output="at-ten" x-text="atTen"></strong></p>
+  </div>
+  <figure class="model-chart">
+    <svg viewBox="0 0 600 240" role="img" aria-label="{{ l.chart }}">
+      <line class="axis" x1="28" y1="212" x2="572" y2="212"></line>
+      <line class="axis" x1="28" y1="28" x2="28" y2="212"></line>
+      <line class="marker marker-soft" x1="209.3" x2="209.3" y1="28" y2="212"></line>
+      <path class="series series-ghost" x-bind:d="paths.waiting"></path>
+      <path class="series series-ghost" x-bind:d="paths.calming"></path>
+      <path class="series series-ghost" x-bind:d="paths.venting"></path>
+      <path class="series series-bone" x-bind:d="paths.anger"></path>
+      <path class="series series-blood series-dashed" x-bind:d="paths.arousal"></path>
+    </svg>
+    <figcaption class="legend">
+      <span class="key key-bone">{{ l.anger }}</span>
+      <span class="key key-blood key-dashed">{{ l.arousal }}</span>
+      <span class="label">{{ l.minutes }} 0–30</span>
+    </figcaption>
+  </figure>
+</div>
+{% endcomponent models.venting_arousal %}
+
+{% component models.peak_end(m: map) %}
+{%- set l = m.labels -%}
+<div class="model" data-requires-js data-model="peak-end" x-data="peakEnd" data-labels="{{ l | json_encode }}">
+  <div class="model-controls">
+    <div class="moment-grid">
+      {%- for index in range(end=12) %}
+      <div class="moment" x-show="moments.length > {{ index }}">
+        <label for="pe-{{ index }}" class="label">{{ l.moment }} {{ index + 1 }}</label>
+        <input type="range" id="pe-{{ index }}" min="0" max="10" step="1" x-model.number="moments[{{ index }}]">
+      </div>
+      {%- endfor %}
+    </div>
+    <dl class="model-stats" aria-live="polite" aria-atomic="true">
+      <div><dt>{{ l.average }}</dt><dd data-output="average" x-text="average"></dd></div>
+      <div><dt>{{ l.peak_end }}</dt><dd data-output="peak-end" x-text="peakEnd"></dd></div>
+      <div><dt>{{ l.total }}</dt><dd data-output="total" x-text="total"></dd></div>
+    </dl>
+    <div class="flex flex-wrap gap-3">
+      <button type="button" class="btn-ghost" data-action="add" x-on:click="add()">{{ l.add }}</button>
+      <button type="button" class="btn-ghost" data-action="remove" x-on:click="remove()">{{ l.remove }}</button>
+      <button type="button" class="btn-ghost" x-on:click="reset()">{{ l.reset }}</button>
+    </div>
+  </div>
+  <figure class="model-chart">
+    <svg viewBox="0 0 600 240" role="img" aria-label="{{ l.chart }}">
+      <line class="axis" x1="28" y1="212" x2="572" y2="212"></line>
+      {%- for index in range(end=12) %}
+      <rect class="bar" x-show="moments.length > {{ index }}" x-bind:x="bar({{ index }}).x" x-bind:y="bar({{ index }}).y" x-bind:width="bar({{ index }}).width" x-bind:height="bar({{ index }}).height"></rect>
+      {%- endfor %}
+      <line class="level level-bone" x1="28" x2="572" x-bind:y1="level(average)" x-bind:y2="level(average)"></line>
+      <line class="level level-blood" x1="28" x2="572" x-bind:y1="level(peakEnd)" x-bind:y2="level(peakEnd)"></line>
+    </svg>
+    <figcaption class="legend">
+      <span class="key key-bone">{{ l.average }}</span>
+      <span class="key key-blood">{{ l.peak_end }}</span>
+      <span class="label">{{ l.discomfort }} 0–10</span>
+    </figcaption>
+  </figure>
+</div>
+{% endcomponent models.peak_end %}
+
+{% component models.synchrony(m: map) %}
+{%- set l = m.labels -%}
+<div class="model" data-requires-js data-model="synchrony" x-data="synchrony" data-labels="{{ l | json_encode }}">
+  <div class="model-controls">
+    {{ <models.slider id="sy-coupling" label={l.coupling} min="0" max="4" step="0.1" model="coupling" /> }}
+    {{ <models.slider id="sy-count" label={l.count} min="4" max="40" step="1" model="count" /> }}
+    {{ <models.slider id="sy-spread" label={l.spread} min="0" max="1" step="0.05" model="spread" /> }}
+    <p class="model-result"><span class="label">{{ l.order }}</span> <strong data-output="order" x-text="orderText"></strong></p>
+    {#- The readout above changes on every animation frame; announce the order only when the run stops or steps. -#}
+    <p class="sr-only" aria-live="polite" aria-atomic="true" x-text="announcement"></p>
+    <div class="flex flex-wrap gap-3">
+      <button type="button" class="btn-primary" data-action="toggle" x-on:click="toggle()" x-text="playing ? '{{ l.pause }}' : '{{ l.play }}'">{{ l.play }}</button>
+      <button type="button" class="btn-ghost" data-action="step" x-on:click="step(40); announce()">{{ l.step }}</button>
+      <button type="button" class="btn-ghost" x-on:click="reset()">{{ l.reset }}</button>
+    </div>
+  </div>
+  <figure class="model-chart model-chart-split">
+    <svg class="orbit-chart" viewBox="-120 -120 240 240" role="img" aria-label="{{ l.chart }}">
+      <circle class="orbit" r="100"></circle>
+      {%- for index in range(end=40) %}
+      <circle class="oscillator" r="5" x-show="dot({{ index }}).visible" x-bind:cx="dot({{ index }}).x" x-bind:cy="dot({{ index }}).y"></circle>
+      {%- endfor %}
+      <line class="order-vector" x1="0" y1="0" x-bind:x2="vector.x" x-bind:y2="vector.y"></line>
+    </svg>
+    <svg viewBox="0 0 600 240" aria-hidden="true">
+      <line class="axis" x1="28" y1="212" x2="572" y2="212"></line>
+      <path class="series series-blood" x-bind:d="historyPath"></path>
+    </svg>
+    <figcaption class="legend"><span class="key key-blood">{{ l.order }}</span></figcaption>
+  </figure>
+</div>
+{% endcomponent models.synchrony %}
+
+{% component models.allostatic_load(m: map) %}
+{%- set l = m.labels -%}
+<div class="model" data-requires-js data-model="allostatic-load" x-data="allostaticLoad" data-labels="{{ l | json_encode }}">
+  <div class="model-controls">
+    {{ <models.slider id="al-frequency" label={l.frequency} min="0" max="14" step="1" model="frequency" /> }}
+    {{ <models.slider id="al-recovery" label={l.recovery} min="1" max="30" step="1" model="recovery" suffix=" %" /> }}
+    <p class="model-result" aria-live="polite" aria-atomic="true"><span class="label">{{ l.peak }}</span> <strong data-output="peak" x-text="peak"></strong></p>
+  </div>
+  <figure class="model-chart">
+    <svg viewBox="0 0 600 240" role="img" aria-label="{{ l.chart }}">
+      <line class="axis" x1="28" y1="212" x2="572" y2="212"></line>
+      <line class="axis" x1="28" y1="28" x2="28" y2="212"></line>
+      <path class="series series-blood" x-bind:d="path"></path>
+    </svg>
+    <figcaption class="legend">
+      <span class="key key-blood">{{ l.load }}</span>
+      <span class="label">{{ l.weeks }} 1–12</span>
+    </figcaption>
+  </figure>
+</div>
+{% endcomponent models.allostatic_load %}

@@ -4,7 +4,16 @@
 {%- if page is defined -%}{%- set_global ctx = page -%}
 {%- elif section is defined -%}{%- set_global ctx = section -%}
 {%- elif term is defined -%}{%- set_global ctx = {"title": "#" ~ term.name, "description": trans(key="tag_description", lang=l) ~ " #" ~ term.name, "translations": [], "ancestors": []} -%}
-{%- elif taxonomy is defined -%}{%- set_global ctx = {"title": trans(key="nav_tags", lang=l), "description": trans(key="tags_description", lang=l), "translations": [], "ancestors": []} -%}
+{%- elif taxonomy is defined -%}
+{#- The tag list exists in every locale at the same relative path, so it has real alternates;
+    sitemap.xml declares them too. Individual term pages do not (a Czech tag is not a translation). -#}
+{%- set_global tags_translations = [] -%}
+{%- for code in config.extra.locales -%}
+{%- if code == config.default_language -%}{%- set tags_permalink = config.base_url ~ "/tags/" -%}
+{%- else -%}{%- set tags_permalink = config.base_url ~ "/" ~ code ~ "/tags/" -%}{%- endif -%}
+{%- set_global tags_translations = [...tags_translations, {"lang": code, "permalink": tags_permalink}] -%}
+{%- endfor -%}
+{%- set_global ctx = {"title": trans(key="nav_tags", lang=l), "description": trans(key="tags_description", lang=l), "translations": tags_translations, "ancestors": []} -%}
 {%- endif -%}
 {%- set_global home_url = get_url(path="@/_index.md", lang=l) -%}
 <!doctype html>
@@ -15,6 +24,7 @@
   {% block html_attrs %}{% endblock %}>
 <head>
 {% include "partials/head.html" %}
+{% block head_extra %}{% endblock head_extra %}
 </head>
 <body>
 <a href="#main" class="skip-link">{{ trans(key="skip_to_content", lang=l) }}</a>
@@ -23,6 +33,9 @@
 {% block content %}{% endblock %}
 </main>
 {% include "partials/footer.html" %}
+{#- Page scripts that register Alpine components must run before Alpine: deferred, in document order. -#}
+<script src="{{ get_url(path='js/url-state.js', cachebust=true) }}" defer></script>
+{% block scripts_extra %}{% endblock scripts_extra %}
 {% include "partials/scripts.html" %}
 </body>
 </html>

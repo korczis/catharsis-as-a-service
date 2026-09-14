@@ -33,6 +33,14 @@ claim_types = [
 ]
 review_policy = "Clinical-boundary claims are reviewed at least every 180 days, empirical claims every 365 days, and theoretical, historical, technical and artistic claims every 730 days. An automated check runs every week and on every change; a claim or source past its review date fails the build until someone re-examines it and records the outcome in the evidence changelog."
 report_label = "Report an outdated or incorrect claim"
+
+[extra.poster_figure]
+id = "poster-evidence"
+caption = "From the Catharsis as a Service poster series. Slogans and numbers on the posters belong to the artwork; they are not findings."
+items = [
+  { src = "assets/posters/vice-dat-lepsi-rozhodnuti.png", title = "More data. Fewer illusions. Better decisions.", alt = "Poster: VÍCE DAT. MÉNĚ ILUZÍ. LEPŠÍ ROZHODNUTÍ. A person sits at a desk with monitors facing a wall of linked photographs and notes, beside books titled evidence, context, perspective, truth and better questions; an open doorway shows a figure walking into red mountains.", caption = "Same facts, more perspectives, less manipulation." },
+]
+
 +++
 
 ## Why a ledger

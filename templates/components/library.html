@@ -116,6 +116,8 @@
 {%- for fig in figures %}
 {%- if fig.kind == "screens" %}
 {{ <library.screens fig={fig} lang={lang} /> }}
+{%- elif fig.kind == "posters" %}
+{{ <posters.figure fig={fig} lang={lang} /> }}
 {%- elif fig.kind == "timeline" %}
 {{ <illustration.timeline id={fig.id} title={fig.title} description={fig.description} caption={fig.caption} items={fig.items} /> }}
 {%- elif fig.kind == "relief_loop" %}

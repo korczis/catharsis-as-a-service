@@ -84,6 +84,16 @@ response = '''HTTP/1.1 200 OK
 }'''
 mantra = ["Rave.", "Uvolnění.", "Reset.", "Znovu."]
 closing = ["Některé problémy se vyřešit nedají.", "Dají se jen protancovat."]
+
+[extra.editions]
+id = "poster-editions"
+caption = "Ze série plakátů Catharsis as a Service. Slogany a čísla na plakátech patří k dílu; nejsou to výzkumná zjištění."
+items = [
+  { src = "assets/posters/catharsis-edition-en.png", title = "Anglická edice", alt = "Plakát: CATHARSIS AS A SERVICE™, emotional state transition endpoint, nad rudě zářící branou pódia a hustým davem; levý panel uvádí input, process, output a problem_solved: false; dole POST /v1/catharsis → 200 OK a umělecký panel telemetrie.", caption = "Rave. Release. Reset. Repeat." },
+  { src = "assets/posters/catharsis-edition-cs.png", title = "Česká edice", alt = "Plakát: CATHARSIS AS A SERVICE™ s podtitulem Endpoint přechodu emočního stavu; průmyslové věže s promítnutou dvojicí postav nad rudě osvětleným davem a panel Diagnostika s položkami individuální signály, synchronizace, kolektivní oscilace, výboj a dočasná rovnováha.", caption = "Stejní lidé. Jiné vzorce. Víc dat. Míň iluzí." },
+  { src = "assets/posters/catharsis-edition-sign.png", title = "Signální edice", alt = "Plakát: CATHARSIS červeně a AS A SERVICE™ bíle nad pódiem s emblémy trojúhelníku v kruhu a transparenty same people different patterns a more data less illusions; postava před davem zvedá obě ruce; POST /v1/catharsis → 200 OK.", caption = "Některé problémy se vyřešit nedají. Dají se jen protancovat." },
+]
+
 +++
 
 Vizuální studie, která na první pohled předkládá kolektivní euforii a na druhý její diagnózu.

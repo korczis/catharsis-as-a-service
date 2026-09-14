@@ -10,6 +10,7 @@
     <p class="eyebrow"><span>Prismatic × Sig Nihl</span> <span class="text-muted">// {{ section.extra.kicker }}</span></p>
     <h1 id="library-title" class="display display-hero mt-7">{{ section.title }}</h1>
     <div class="prose-page mt-8">{{ section.content | safe }}</div>
+    {%- if section.extra.poster_figure is defined %}<div class="mt-12">{{ <posters.figure fig={section.extra.poster_figure} lang={lang} /> }}</div>{%- endif %}
   </div>
 </section>
 <section class="section" aria-label="{{ section.title }}">

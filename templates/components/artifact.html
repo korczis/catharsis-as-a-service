@@ -55,7 +55,7 @@
       </dl>
       <div class="flex flex-col items-start gap-3">
         <p class="endpoint"><span>&gt; {{ a.extra.endpoint }}</span> <span aria-hidden="true">→</span> <strong class="text-blood">{{ a.extra.status }}</strong></p>
-        <p class="font-bold text-blood">problem_solved: {{ d.problem_solved }}</p>
+        <p class="font-bold text-blood" data-status-line>{% if d.status_line is defined %}{{ d.status_line }}{% else %}problem_solved: {{ d.problem_solved }}{% endif %}</p>
         <p class="hero-line" data-hero-line>{{ a.extra.hero_line }}</p>
       </div>
     </div>
@@ -193,6 +193,9 @@
         </div>
       </div>
     </div>
+    {%- if a.extra.editions is defined %}
+    <div class="mt-20 reveal">{{ <posters.figure fig={a.extra.editions} lang={lang} /> }}</div>
+    {%- endif %}
   </div>
 </section>
 {% endcomponent artifact.poster %}

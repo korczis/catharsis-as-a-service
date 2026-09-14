@@ -47,7 +47,7 @@ FIGURE_KINDS = {"screens", "posters", "timeline", "relief_loop", "relief_curve",
 FIGURE_STYLES = {"bone", "alert", "muted"}
 FIGURE_CONCEPTUAL = re.compile(r"not (?:a plot of )?measured data|nikoli (?:graf )?naměřen(?:á|ých) dat", re.I)
 FIGURE_DATA_LIKE = {"curves", "relief_curve"}
-PROHIBITED_SCAN = ("content/**/*.md", "data/*.toml", "templates/**/*.html", "zola.toml", "README.md", "docs/**/*.md")
+PROHIBITED_SCAN =("content/**/*.md", "data/*.toml", "templates/**/*.html", "zola.toml", "README.md", "docs/**/*.md")
 # Documents that define the prohibited list have to quote it.
 PROHIBITED_EXEMPT = {"docs/CONTENT-STANDARDS.md"}
 
@@ -69,6 +69,8 @@ def check_prohibited(root, errors):
 EVIDENCE_GRADES = {"meta-analytic", "replicated-experimental", "experimental", "observational", "theoretical"}
 COMMAND_PREFIXES = ("npm ", "npx ", "zola ", "majordomus ", "gh ", "cargo ", "git ", "python3 ", "scripts/", ".venv/bin/")
 DESCRIPTION_LENGTH = (50, 320)
+# Sections whose pages are essays with the research-note front matter.
+ESSAY_SECTIONS = ("research", "theory")
 LINKED_CODE = re.compile(r"\[`([^`]+)`\]\(([^)\s]+)\)")
 INLINE_CODE = re.compile(r"`([^`\n]+)`")
 FENCE = re.compile(r"^```[^\n]*\n(.*?)^```", re.S | re.M)
@@ -235,7 +237,7 @@ def main():
         tags = meta.get("taxonomies", {}).get("tags", [])
         parts = rel.parts
 
-        if len(parts) >= 3 and parts[1] == "research" and path.name != "_index.md" and not path.name.startswith("_index."):
+        if len(parts) >= 3 and parts[1] in ESSAY_SECTIONS and not path.name.startswith("_index"):
             counters["research"] += 1
             for key in ("kicker", "summary"):
                 if not extra.get(key):

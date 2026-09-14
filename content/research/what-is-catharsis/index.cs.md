@@ -51,7 +51,7 @@ Moderní psychologie z katarze udělala tvrzení, které lze testovat: sníží 
 
 U hněvu kontrolované experimenty zjistily opak toho, co hydraulický model předpovídá. Ventilace hněvu se zaměřením na jeho příčinu udržovala hněv aktivní a vedla k větší, nikoli menší agresi ([Výzkumná poznámka 02](@/research/venting-hypothesis/index.cs.md)).
 
-U tíživých zážitků obecně je obraz jemnější. Ve studiích expresivního psaní účastníci, kteří psali o faktech i o svých pocitech spojených s traumatickou událostí, vykazovali později ve srovnání s kontrolními skupinami zdravotní přínosy (Pennebaker & Beall, 1986). Navazující analýzy naznačily, že přínos souvisel s vytvářením souvislého vyprávění o zážitku, tedy s kognitivním zpracováním, spíše než se samotným emočním výbojem (Pennebaker, 1997).
+U tíživých zážitků obecně je obraz jemnější. Ve studiích expresivního psaní účastníci, kteří psali o faktech i o svých pocitech spojených s traumatickou událostí, vykazovali později ve srovnání s kontrolními skupinami zdravotní přínosy (Pennebaker a Beall, 1986). Navazující analýzy naznačily, že přínos souvisel s vytvářením souvislého vyprávění o zážitku, tedy s kognitivním zpracováním, spíše než se samotným emočním výbojem (Pennebaker, 1997).
 
 Výzkum regulace emocí otázku znovu přeformuloval. Místo volby mezi uvolněním a potlačením se ptá, které strategie mění průběh emoce, v jakém bodě jejího rozvíjení a za jakou cenu (Gross, 1998).
 

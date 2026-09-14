@@ -5,7 +5,7 @@ date = 2026-09-14
 weight = 6
 
 [taxonomies]
-tags = ["metoda", "majordomus", "ověřování", "dodávka softwaru"]
+tags = ["metody", "majordomus", "ověřování", "dodávka softwaru"]
 
 [extra]
 kicker = "Výzkumná poznámka 06"

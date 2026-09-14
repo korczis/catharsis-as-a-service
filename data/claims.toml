@@ -941,3 +941,870 @@ caveat = { en = "Mechanisms remain unclear and terminology is inconsistent acros
 used_in = ["advice/reflect-from-a-distance/index.md"]
 last_reviewed = 2026-09-14
 review_due = 2027-09-14
+
+[[claims]]
+id = "models-outputs-illustrative"
+statement = { en = "The interactive models compute their outputs in the browser from invented inputs and stated rules; the numbers are illustrative, not measurements, fitted estimates or predictions about any person.", cs = "Interaktivní modely počítají své výstupy v prohlížeči z vymyšlených vstupů a uvedených pravidel; čísla jsou ilustrativní, nejde o měření, odhady přizpůsobené datům ani předpovědi o kterémkoli člověku." }
+claim_type = "technical"
+evidence_level = "E"
+confidence = "HIGH"
+sources = []
+scope = { en = "The five models on the interactive models page.", cs = "Pět modelů na stránce interaktivních modelů." }
+caveat = { en = "Parameters such as time constants, learning rates and load units were chosen for legibility; changing them changes the curves without any empirical basis either way.", cs = "Parametry jako časové konstanty, rychlost učení a jednotky zátěže byly zvoleny kvůli srozumitelnosti; jejich změna mění křivky bez empirické opory v jakémkoli směru." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "rescorla-wagner-error-correction"
+statement = { en = "The Rescorla–Wagner model describes learning as an error-correcting update: each trial changes associative strength in proportion to the gap between what the outcome can support and what has already been learned, so gains shrink as learning approaches its limit.", cs = "Rescorlův–Wagnerův model popisuje učení jako korekční aktualizaci: každý pokus mění asociační sílu úměrně rozdílu mezi tím, co výsledek umožňuje, a tím, co už je naučeno, takže přírůstky se s blížící se hranicí zmenšují." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["rescorla-wagner-1972"]
+scope = { en = "A formal model of Pavlovian conditioning.", cs = "Formální model pavlovovského podmiňování." }
+caveat = { en = "The relief-loop model borrows only the form of the update for an instrumental habit, which is an analogy; the original model has known failures that are not discussed here.", cs = "Model smyčky úlevy si pro instrumentální návyk půjčuje jen tvar aktualizace, což je analogie; původní model má známá selhání, která zde nejsou rozebírána." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "relief-habit-without-change-model"
+statement = { en = "If relief reinforces a behaviour on every episode while the cause of distress persists, a learning account predicts a growing tendency to repeat the behaviour alongside unchanged distress before each episode.", cs = "Pokud úleva posiluje chování v každé epizodě, zatímco příčina tísně trvá, teorie učení předpovídá rostoucí sklon chování opakovat při nezměněné tísni před každou epizodou." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["hayes-1996", "rescorla-wagner-1972"]
+scope = { en = "A theoretical consequence of negative reinforcement, illustrated in the relief-loop model.", cs = "Teoretický důsledek negativního posilování ilustrovaný v modelu smyčky úlevy." }
+caveat = { en = "No cited study tested this loop for cathartic experiences; relief can also accompany steps that do change the cause.", cs = "Žádná citovaná studie tuto smyčku u katarzních zážitků netestovala; úleva může provázet i kroky, které příčinu skutečně mění." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "venting-model-follows-direction"
+statement = { en = "The anger curves in the venting model follow the direction of the evidence: lowering arousal reduced anger and aggression in a meta-analysis (g = -0.63), raising arousal did not reduce them overall (g = -0.02), and hitting a punching bag while ruminating increased anger compared with doing nothing.", cs = "Křivky hněvu v modelu ventilace sledují směr dokladů: snižování vzrušení v metaanalýze zmírňovalo hněv a agresi (g = −0,63), zvyšování vzrušení je celkově nesnižovalo (g = −0,02) a bušení do boxovacího pytle při ruminaci zvýšilo hněv oproti nečinnosti." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["kjaervik-bushman-2024", "bushman-2002"]
+scope = { en = "Anger and aggression outcomes after provocation; the time course drawn in the model is not measured.", cs = "Hněv a agrese po provokaci; časový průběh vykreslený v modelu naměřen není." }
+caveat = { en = "Confidence is moderate because the curves add invented timing to pooled effects, and the arousal-increasing studies were heterogeneous.", cs = "Míra jistoty je střední, protože křivky přidávají k souhrnným účinkům vymyšlený časový průběh a studie činností zvyšujících vzrušení byly heterogenní." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "better-ending-longer-episode-preferred"
+statement = { en = "Adding a milder but still unpleasant ending to an aversive episode led most participants to choose the longer episode for repetition, and retrospective evaluations of film clips were little affected by their duration.", cs = "Přidání mírnějšího, ale stále nepříjemného závěru k averzivní epizodě vedlo většinu účastníků k tomu, že si pro opakování zvolili delší epizodu, a zpětná hodnocení filmových ukázek téměř neovlivnila jejich délka." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "HIGH"
+sources = ["kahneman-1993", "fredrickson-kahneman-1993"]
+scope = { en = "Cold-water immersion and film clips in laboratory experiments.", cs = "Ponoření ruky do studené vody a filmové ukázky v laboratorních experimentech." }
+caveat = { en = "The peak–end average in the model is a simplification of a group tendency, and applying it to real-life episodes is an extrapolation.", cs = "Průměr vrcholu a konce v modelu je zjednodušením skupinové tendence a jeho použití na skutečné životní epizody je extrapolací." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "kuramoto-coupling-threshold"
+statement = { en = "In the Kuramoto model of coupled oscillators with natural frequencies drawn from a distribution, coupling above a threshold produces a transition in which some oscillators spontaneously synchronize while others remain incoherent.", cs = "V Kuramotově modelu spřažených oscilátorů s vlastními frekvencemi vybranými z rozdělení vede vazba nad prahovou hodnotou k přechodu, při němž se část oscilátorů spontánně synchronizuje, zatímco ostatní zůstávají nekoherentní." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["strogatz-2000", "kuramoto-1984"]
+scope = { en = "The mathematical model in the limit of large populations.", cs = "Matematický model v limitě velkých populací." }
+caveat = { en = "With the small numbers of oscillators in the page's simulation, the transition is blurred and the order parameter fluctuates.", cs = "Při malém počtu oscilátorů v simulaci na stránce je přechod rozmazaný a parametr uspořádání kolísá." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "oscillator-synchrony-is-analogy"
+statement = { en = "Synchronization of coupled oscillators is used on this site only as an analogy for moving in time with others; the findings linking human synchrony with cooperation and bonding come from experiments with people and do not test the oscillator model.", cs = "Synchronizace spřažených oscilátorů slouží na tomto webu pouze jako analogie pohybu v rytmu s ostatními; zjištění spojující lidskou synchronii se spoluprací a sounáležitostí pocházejí z experimentů s lidmi a oscilátorový model netestují." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["strogatz-2000", "wiltermuth-heath-2009", "tarr-2015"]
+scope = { en = "The relation between the synchrony model and the human research cited on this site.", cs = "Vztah mezi modelem synchronie a výzkumem lidí citovaným na tomto webu." }
+caveat = { en = "Some researchers model interpersonal coordination with coupled oscillators; that literature is not reviewed here.", cs = "Někteří výzkumníci modelují mezilidskou koordinaci pomocí spřažených oscilátorů; tato literatura zde není rozebírána." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "allostatic-load-accumulation-model"
+statement = { en = "Allostatic load has been described as the cumulative cost of stress responses that are activated too often or not terminated efficiently, which implies that load can build up when challenges recur faster than recovery.", cs = "Alostatická zátěž byla popsána jako kumulativní cena stresových reakcí, které se aktivují příliš často nebo se neukončují účinně, z čehož plyne, že se zátěž může hromadit, když se nároky opakují rychleji, než probíhá zotavení." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["mcewen-1998"]
+scope = { en = "A conceptual framework, illustrated with arbitrary units in the allostatic-load model.", cs = "Koncepční rámec ilustrovaný v modelu alostatické zátěže libovolnými jednotkami." }
+caveat = { en = "The measurement of allostatic load is debated, and the model's linear input and proportional recovery are simplifications with no physiological calibration.", cs = "Měření alostatické zátěže je předmětem debat a lineární přírůstek i poměrné zotavení v modelu jsou zjednodušení bez fyziologické kalibrace." }
+used_in = ["models/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "mourning-rituals-lower-grief-short-term"
+statement = { en = "In three experiments, reflecting on past rituals or completing a novel ritual after a loss was followed by lower self-reported grief, mediated by increased feelings of control, including in people who did not believe in rituals.", cs = "Ve třech experimentech po zamyšlení nad dřívějšími rituály nebo po provedení nového rituálu po ztrátě následoval nižší uváděný zármutek, zprostředkovaný zvýšeným pocitem kontroly, a to i u lidí, kteří v rituály nevěřili." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["norton-gino-2014"]
+scope = { en = "Short-term self-reported grief after recalled bereavements and after non-bereavement losses such as a relationship or a lottery chance.", cs = "Krátkodobě uváděný zármutek po vybavovaných úmrtích blízkých a po jiných ztrátách, například vztahu nebo šance na výhru." }
+caveat = { en = "One set of experiments; effects over months after bereavement and effects on prolonged grief were not measured.", cs = "Jediná sada experimentů; účinky v řádu měsíců po úmrtí blízkého a účinky na prolongované truchlení nebyly měřeny." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "funeral-rituals-valued-not-associated-with-grief"
+statement = { en = "Bereaved adults rated funerals and grief rituals as helpful, but neither their evaluation of the funeral nor their use of rituals was significantly associated with grief reactions six months and three years after the loss.", cs = "Pozůstalí dospělí hodnotili pohřby a rituály truchlení jako užitečné, ale ani hodnocení pohřbu, ani užívání rituálů významně nesouviselo s reakcemi zármutku šest měsíců a tři roky po ztrátě." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["mitima-verloop-2021"]
+scope = { en = "Questionnaire data from bereaved adults in the Netherlands.", cs = "Dotazníková data od pozůstalých dospělých v Nizozemsku." }
+caveat = { en = "A correlational design in one country; people with more distress may use rituals more, which could mask an effect.", cs = "Korelační design v jedné zemi; lidé s větší tísní mohou rituály využívat častěji, což by mohlo účinek zakrýt." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "most-bereaved-adapt-without-intervention"
+statement = { en = "Bereavement is associated with excess health risks, yet most bereaved people adjust without professional psychological intervention, and in a prospective study of spousal loss resilience was the most frequent trajectory.", cs = "Ztráta blízkého souvisí se zvýšenými zdravotními riziky, přesto se většina pozůstalých vyrovná bez odborné psychologické intervence a v prospektivní studii ztráty partnera byla nejčastější trajektorií odolnost." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["stroebe-schut-stroebe-2007", "bonanno-2002"]
+scope = { en = "Adult bereavement; the trajectory data come from older adults who lost a spouse.", cs = "Ztráta blízkého v dospělosti; data o trajektoriích pocházejí od starších dospělých, kteří ztratili partnera." }
+caveat = { en = "Trajectories after sudden, violent or child deaths may differ, and resilience describes measured symptoms and functioning, not the absence of missing the person.", cs = "Průběh po náhlém či násilném úmrtí nebo po úmrtí dítěte se může lišit a odolnost popisuje měřené příznaky a fungování, nikoli to, že by člověku zemřelý nechyběl." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "grief-oscillation-and-continuing-bonds"
+statement = { en = "Contemporary bereavement theory describes adaptive coping as oscillation between confronting the loss and attending to restoration, including respite from grieving, and treats continuing bonds with the deceased as common, with their adaptiveness still unresolved; rituals have been proposed to regulate emotion, goals and social connection.", cs = "Současná teorie truchlení popisuje adaptivní vyrovnávání jako střídání konfrontace se ztrátou a péče o obnovu včetně oddechu od truchlení a pokračující pouta se zemřelým považuje za běžná, přičemž otázka jejich adaptivnosti zůstává otevřená; rituálům se připisuje regulace emocí, cílů a sociálního propojení." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["stroebe-schut-1999", "stroebe-schut-boerner-2010", "hobson-2018"]
+scope = { en = "Theoretical models of bereavement and ritual.", cs = "Teoretické modely truchlení a rituálu." }
+caveat = { en = "Models and frameworks that generate predictions; they do not establish which way of grieving or which ritual helps a particular person.", cs = "Modely a rámce, které generují předpovědi; neurčují, jaký způsob truchlení nebo jaký rituál pomůže konkrétnímu člověku." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "prolonged-grief-clinical-boundary"
+statement = { en = "A minority of bereaved adults develop prolonged grief disorder, characterised by intense yearning and other symptoms persisting for months after a death with functional impairment (at least six months in the 2009 proposal and in ICD-11; at least 12 months for adults in DSM-5-TR); a meta-analysis of non-violent bereavement estimated a pooled prevalence of 9.8%. The criteria describe a clinical boundary for professionals, not a self-test.", cs = "U menšiny pozůstalých dospělých se rozvine prolongovaná porucha truchlení, charakterizovaná intenzivním steskem a dalšími příznaky přetrvávajícími měsíce po úmrtí spolu s narušeným fungováním (nejméně šest měsíců v návrhu z roku 2009 a v MKN-11; nejméně 12 měsíců u dospělých v DSM-5-TR); metaanalýza nenásilných úmrtí odhadla souhrnnou prevalenci na 9,8 %. Kritéria vymezují klinickou hranici pro odborníky, nejsou testem pro samotné čtenáře." }
+claim_type = "clinical-boundary"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["prigerson-2009", "lundorff-2017"]
+scope = { en = "Adults after bereavement; prevalence from studies of non-violent deaths.", cs = "Dospělí po ztrátě blízkého; prevalence ze studií nenásilných úmrtí." }
+caveat = { en = "The 2009 criteria preceded the ICD-11 and DSM-5-TR definitions, which differ in the required duration; the prevalence studies were heterogeneous and of limited representativeness. Assessment requires a qualified professional.", cs = "Kritéria z roku 2009 předcházela definicím v MKN-11 a DSM-5-TR, které se liší v požadované době trvání; studie prevalence byly heterogenní a omezeně reprezentativní. Posouzení vyžaduje kvalifikovaného odborníka." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-03-13
+
+[[claims]]
+id = "grief-interventions-work-best-when-targeted"
+statement = { en = "Psychological interventions for grief show small average benefits, with little lasting benefit for unselected bereaved people and larger effects in trials that enrolled people with marked or high grief symptoms and in trials of people at least six months after the loss, which are separate study-level moderators.", cs = "Psychologické intervence pro zármutek vykazují malé průměrné přínosy, s malým trvalým přínosem pro neselektované pozůstalé a s většími účinky ve studiích, které zařadily lidi s výraznými nebo vysokými příznaky zármutku, a ve studiích lidí nejméně šest měsíců po ztrátě; jde o dva samostatné moderátory na úrovni studií." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["currier-2008", "johannsen-2019"]
+scope = { en = "Controlled and randomised trials of psychological interventions for bereaved adults.", cs = "Kontrolované a randomizované studie psychologických intervencí pro pozůstalé dospělé." }
+caveat = { en = "Trials were heterogeneous and of varying quality, with signs of publication bias; moderator findings compare studies rather than testing conditions directly.", cs = "Studie byly heterogenní a různé kvality se známkami publikačního zkreslení; zjištění o moderátorech srovnávají studie, netestují podmínky přímo." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "grief-when-to-seek-help"
+statement = { en = "Grief that remains intense and disabling for many months, persistent inability to function, or thoughts of ending one's life warrant contact with a qualified professional, and immediate danger warrants contacting local emergency services; seeking help does not mean grief has gone wrong.", cs = "Zármutek, který zůstává po mnoho měsíců intenzivní a ochromující, trvalá neschopnost fungovat nebo myšlenky na ukončení života jsou důvodem obrátit se na kvalifikovaného odborníka a bezprostřední nebezpečí je důvodem kontaktovat místní tísňové služby; vyhledání pomoci neznamená, že se zármutek pokazil." }
+claim_type = "clinical-boundary"
+evidence_level = "E"
+confidence = "HIGH"
+sources = []
+scope = { en = "Readers of the grief, exercise, sleep and rumination pages, especially after a loss or with persistent low mood.", cs = "Čtenáři stránek o zármutku, pohybu, spánku a ruminaci, zejména po ztrátě nebo při přetrvávající skleslosti." }
+caveat = { en = "A safety policy aligned with standard clinical guidance; thresholds and services differ by country, and the page assesses no one.", cs = "Bezpečnostní zásada v souladu s běžnými klinickými doporučeními; prahy a služby se v jednotlivých zemích liší a stránka nikoho neposuzuje." }
+used_in = ["research/grief-and-rituals/index.md", "advice/mark-a-loss-with-a-ritual/index.md", "advice/move-to-lower-arousal-and-lift-mood/index.md", "advice/protect-sleep-after-strain/index.md", "advice/interrupt-rumination-with-concrete-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-03-13
+
+# ── Exercise and mood ─────────────────────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "activity-raises-positive-affect-for-hours"
+statement = { en = "In everyday settings, physical activity consistently predicted higher positive affect over the next few hours, while evidence that it reduces negative affect over the same period was inconsistent.", cs = "V každodenním prostředí pohybová aktivita konzistentně předpovídala vyšší pozitivní afekt v následujících hodinách, zatímco doklady o snížení negativního afektu za stejnou dobu byly nekonzistentní." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["liao-2015", "reed-ones-2006"]
+scope = { en = "Non-clinical adults in free-living studies with repeated momentary reports.", cs = "Nekliničtí dospělí ve studiích v přirozeném prostředí s opakovanými okamžitými záznamy." }
+caveat = { en = "Observational designs in which mood also predicts activity; the related laboratory meta-analysis could not be re-verified from an abstract.", cs = "Observační designy, v nichž nálada předpovídá i aktivitu; související laboratorní metaanalýzu nebylo možné ověřit z abstraktu." }
+used_in = ["research/exercise-and-mood/index.md", "advice/move-to-lower-arousal-and-lift-mood/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "exercise-intensity-and-pleasure"
+statement = { en = "Pleasure during exercise declines mainly above the ventilatory or lactate threshold, most people experience pleasant changes below it with large individual differences near it, and self-selected intensity appears to foster tolerance of higher intensity.", cs = "Potěšení během cvičení klesá hlavně nad ventilačním nebo laktátovým prahem, pod ním prožívá většina lidí příjemné změny s velkými individuálními rozdíly v jeho blízkosti a samostatně zvolená intenzita podle všeho zvyšuje toleranci vyšší intenzity." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["ekkekakis-2011"]
+scope = { en = "Affective responses during and around single exercise bouts in reviewed studies from 1999 to 2009.", cs = "Afektivní reakce během jednotlivých cvičení a kolem nich ve shrnutých studiích z let 1999 až 2009." }
+caveat = { en = "A narrative review; thresholds vary between people and the findings concern how exercise feels, not symptom outcomes.", cs = "Narativní přehled; prahy se mezi lidmi liší a zjištění se týkají prožívání cvičení, nikoli výsledků v příznacích." }
+used_in = ["research/exercise-and-mood/index.md", "advice/move-to-lower-arousal-and-lift-mood/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "regular-activity-reduces-depression-anxiety"
+statement = { en = "Randomised trials pooled in several meta-analyses associate regular physical activity with reductions in depressive and anxiety symptoms, in non-clinical adults and in people with depression, although the certainty of specific effect estimates is often low.", cs = "Randomizované studie shrnuté v několika metaanalýzách spojují pravidelnou pohybovou aktivitu se snížením depresivních a úzkostných příznaků u neklinických dospělých i u lidí s depresí, i když jistota konkrétních odhadů účinku je často nízká." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["rebar-2015", "schuch-2016", "noetel-2024", "singh-2023"]
+scope = { en = "Structured physical activity interventions over weeks, compared with control conditions or usual care.", cs = "Strukturované pohybové intervence v řádu týdnů ve srovnání s kontrolními podmínkami nebo běžnou péčí." }
+caveat = { en = "Overlapping studies, unblinded participants, frequent risk of bias and low-quality reviews limit certainty; effect sizes differ widely between syntheses.", cs = "Jistotu omezují překrývající se studie, nezaslepení účastníci, časté riziko zkreslení a nekvalitní přehledy; velikosti účinku se mezi syntézami výrazně liší." }
+used_in = ["research/exercise-and-mood/index.md", "advice/move-to-lower-arousal-and-lift-mood/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "exertion-lifts-mood-but-does-not-discharge-anger"
+statement = { en = "Physical activity can lift positive affect while leaving anger unchanged: arousal-increasing anger-management activities, including running, did not reduce anger and aggression on average, and exertion while ruminating on a provocation produced the most anger.", cs = "Pohybová aktivita může zlepšit pozitivní afekt a hněv přitom nechat beze změny: činnosti pro zvládání hněvu zvyšující vzrušení, včetně běhu, v průměru hněv ani agresi nesnižovaly a námaha provázená ruminací o provokaci vedla k největšímu hněvu." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["kjaervik-bushman-2024", "bushman-2002", "liao-2015"]
+scope = { en = "Anger and aggression outcomes shortly after activity, contrasted with positive affect outcomes in daily life.", cs = "Hněv a agrese krátce po aktivitě v kontrastu s pozitivním afektem v každodenním životě." }
+caveat = { en = "The anger and mood literatures measure different outcomes in different studies; arousal-increasing studies were heterogeneous, so some activities in some contexts may differ.", cs = "Výzkum hněvu a nálady měří v různých studiích různé výsledky; studie činností zvyšujících vzrušení byly heterogenní, takže některé činnosti v některých kontextech se mohou lišit." }
+used_in = ["research/exercise-and-mood/index.md", "advice/move-to-lower-arousal-and-lift-mood/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Sleep and emotion regulation ──────────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "sleep-loss-reduces-positive-affect"
+statement = { en = "Experimental sleep loss in healthy people reduces positive affect and increases anxiety symptoms, while effects on negative affect, emotional reactivity and depressive symptoms are mixed and depend on the type of sleep loss.", cs = "Experimentální ztráta spánku u zdravých lidí snižuje pozitivní afekt a zvyšuje příznaky úzkosti, zatímco účinky na negativní afekt, emoční reaktivitu a depresivní příznaky jsou smíšené a závisejí na typu ztráty spánku." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "HIGH"
+sources = ["palmer-2024", "tomaso-2021"]
+scope = { en = "Total sleep deprivation, partial restriction and fragmentation over short periods in healthy participants aged 7 to 79.", cs = "Úplná deprivace, částečné omezení a fragmentace spánku po krátká období u zdravých účastníků ve věku 7 až 79 let." }
+caveat = { en = "Short laboratory manipulations; the pattern for negative affect and reactivity is not uniform, and chronic real-life sleep problems may differ.", cs = "Krátké laboratorní manipulace; vzorec pro negativní afekt a reaktivitu není jednotný a chronické spánkové obtíže v běžném životě se mohou lišit." }
+used_in = ["research/sleep-and-emotion-regulation/index.md", "advice/protect-sleep-after-strain/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "sleep-loss-lowers-stress-threshold"
+statement = { en = "After one night of total sleep deprivation, healthy adults reported more stress, anxiety and anger than rested controls in response to a mild stressor but not a severe one, consistent with a lowered threshold for perceiving stress.", cs = "Po jedné noci úplné spánkové deprivace uváděli zdraví dospělí v reakci na mírný stresor, nikoli však na silný, více stresu, úzkosti a hněvu než odpočatí, což odpovídá sníženému prahu vnímání stresu." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "LOW"
+sources = ["minkel-2012"]
+scope = { en = "Two laboratory experiments with healthy adults and cognitive stressors.", cs = "Dva laboratorní experimenty se zdravými dospělými a kognitivními stresory." }
+caveat = { en = "Small samples and a single night of total deprivation; not replicated in the sources cited here.", cs = "Malé vzorky a jediná noc úplné deprivace; v zde citovaných zdrojích nereplikováno." }
+used_in = ["research/sleep-and-emotion-regulation/index.md", "advice/protect-sleep-after-strain/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "sleep-restriction-lowers-adaptive-regulation"
+statement = { en = "In a meta-analysis, sleep restriction had a small negative effect on adaptive emotion regulation (g = -0.32) and no significant effect on maladaptive emotion regulation, in studies conducted only with young people.", cs = "V metaanalýze mělo omezení spánku malý negativní účinek na adaptivní regulaci emocí (g = -0,32) a žádný významný účinek na neadaptivní regulaci emocí, a to ve studiích prováděných jen s mladými lidmi." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["tomaso-2021"]
+scope = { en = "Meta-analysed experiments on sleep loss and emotion regulation; all adaptive-regulation studies used youth samples.", cs = "Metaanalyzované experimenty o ztrátě spánku a regulaci emocí; všechny studie adaptivní regulace používaly vzorky dětí a dospívajících." }
+caveat = { en = "The pooled regulation effect rests on youth samples only; effects in adults are not established by this source.", cs = "Souhrnný účinek na regulaci stojí jen na vzorcích dětí a dospívajících; účinky u dospělých tento zdroj nedokládá." }
+used_in = ["research/sleep-and-emotion-regulation/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "sleep-regulation-processes-understudied"
+statement = { en = "A narrative review of the field observed that research on sleep and emotion has focused more on emotions generated after inadequate sleep than on the regulatory processes that may alter them, with constructs often poorly delineated.", cs = "Přehledová studie oboru konstatovala, že výzkum spánku a emocí se zaměřoval spíše na emoce vznikající po nedostatečném spánku než na regulační procesy, které je mohou měnit, přičemž konstrukty bývaly nejasně vymezené." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["palmer-alfano-2017"]
+scope = { en = "A narrative review organised by the process model of emotion regulation.", cs = "Přehledová studie uspořádaná podle procesního modelu regulace emocí." }
+caveat = { en = "A narrative review, not a systematic synthesis; it describes the state of a literature that has grown since 2017.", cs = "Jde o narativní přehled, nikoli systematickou syntézu; popisuje stav literatury, která od roku 2017 dále narostla." }
+used_in = ["research/sleep-and-emotion-regulation/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "overnight-emotional-processing-hypothesis"
+statement = { en = "A model proposes that sleep, including REM sleep, modulates next-day emotional reactivity and reprocesses recent emotional memories; it remains a hypothesis under test.", cs = "Model navrhuje, že spánek včetně fáze REM moduluje emoční reaktivitu následujícího dne a znovu zpracovává nedávné emoční vzpomínky; jde stále o testovanou hypotézu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "LOW"
+sources = ["walker-van-der-helm-2009", "palmer-2024"]
+scope = { en = "Proposed neural and psychological account of sleep and emotion.", cs = "Navržené neurální a psychologické vysvětlení vztahu spánku a emocí." }
+caveat = { en = "Later meta-analytic evidence that sleep loss blunts arousal responses complicates simple accounts of heightened reactivity; neural findings are associations with measured activity.", cs = "Pozdější metaanalytické doklady, že ztráta spánku reakce arousalu tlumí, komplikují jednoduché výklady zvýšené reaktivity; neurální zjištění jsou souvislosti s měřenou aktivitou." }
+used_in = ["research/sleep-and-emotion-regulation/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "insomnia-associated-with-later-depression"
+statement = { en = "In longitudinal epidemiological studies, insomnia in people without depression was associated with about twice the odds of developing depression later.", cs = "V longitudinálních epidemiologických studiích souvisela nespavost u lidí bez deprese přibližně s dvojnásobnou šancí pozdějšího rozvoje deprese." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["baglioni-2011"]
+scope = { en = "Cohorts followed from baseline insomnia complaints to later depression.", cs = "Kohorty sledované od počátečních obtíží s nespavostí po pozdější depresi." }
+caveat = { en = "Observational; insomnia may be an early sign of depression or share causes with it, and not all studies adjusted for intervening variables.", cs = "Observační; nespavost může být časným projevem deprese nebo s ní sdílet příčiny a ne všechny studie zohlednily intervenující proměnné." }
+used_in = ["research/sleep-and-emotion-regulation/index.md", "advice/protect-sleep-after-strain/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "improving-sleep-improves-mental-health"
+statement = { en = "Across randomised trials of interventions that improved sleep, better sleep led to medium improvements in composite mental health, depression, anxiety and rumination, with a dose-response relationship.", cs = "Napříč randomizovanými studiemi intervencí, které zlepšily spánek, vedl lepší spánek ke středním zlepšením souhrnného duševního zdraví, deprese, úzkosti a ruminace se vztahem dávky a odpovědi." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["scott-2021"]
+scope = { en = "65 trials with 8,608 participants in which the intervention improved sleep.", cs = "65 studií s 8 608 účastníky, v nichž intervence zlepšila spánek." }
+caveat = { en = "Trials were selected for having improved sleep, and the result does not identify which interventions or everyday habits produce the benefit.", cs = "Studie byly vybrány podle toho, že spánek zlepšily, a výsledek neurčuje, které intervence nebo každodenní návyky přínos přinášejí." }
+used_in = ["research/sleep-and-emotion-regulation/index.md", "research/rumination-and-repetitive-thought/index.md", "advice/protect-sleep-after-strain/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "sleep-hygiene-evidence-limited"
+statement = { en = "Sleep hygiene education has been ineffective as a clinical treatment, and although individual recommendations are associated with better sleep, their direct effects in the general population remain largely untested.", cs = "Edukace o spánkové hygieně se jako klinická léčba neukázala účinná, a přestože jednotlivá doporučení souvisejí s lepším spánkem, jejich přímé účinky v obecné populaci zůstávají převážně netestované." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["irish-2015"]
+scope = { en = "Recommendations on exercise, stress management, noise, timing, caffeine, nicotine, alcohol and napping.", cs = "Doporučení týkající se pohybu, zvládání stresu, hluku, načasování, kofeinu, nikotinu, alkoholu a zdřímnutí." }
+caveat = { en = "A narrative review; it does not evaluate structured insomnia treatments delivered by clinicians.", cs = "Narativní přehled; nehodnotí strukturovanou léčbu nespavosti poskytovanou odborníky." }
+used_in = ["research/sleep-and-emotion-regulation/index.md", "advice/protect-sleep-after-strain/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Expressive writing ────────────────────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "expressive-writing-small-average-effect"
+statement = { en = "Across 146 randomised studies, experimental disclosure had a positive and significant but small average effect (r = .075), with several moderators; an earlier synthesis found benefits across reported physical health, well-being and functioning but not health behaviours.", cs = "Napříč 146 randomizovanými studiemi mělo experimentální sdělování pozitivní a významný, ale malý průměrný účinek (r = 0,075) s několika moderátory; dřívější syntéza zjistila přínosy v uváděném tělesném zdraví, pohodě a fungování, nikoli však ve zdravotním chování." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "HIGH"
+sources = ["frattaroli-2006", "smyth-1998"]
+scope = { en = "Randomised studies of writing or talking about personal, meaningful topics, largely in non-clinical samples.", cs = "Randomizované studie psaní nebo mluvení o osobních, významných tématech, převážně v neklinických vzorcích." }
+caveat = { en = "The average conceals heterogeneity, moderators are not itemised in the abstract, and a small average does not predict benefit for an individual.", cs = "Průměr skrývá heterogenitu, moderátory abstrakt nevyjmenovává a malý průměr nepředpovídá přínos pro jednotlivce." }
+used_in = ["research/expressive-writing-evidence/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "writing-distress-unrelated-to-health-outcomes"
+statement = { en = "Expressive writing tends to increase immediate distress, and in a research synthesis that increase was unrelated to later health outcomes.", cs = "Expresivní psaní obvykle zvyšuje bezprostřední distres a ve výzkumné syntéze tento nárůst s pozdějšími zdravotními výsledky nesouvisel." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["smyth-1998"]
+scope = { en = "Healthy participants in written emotional expression studies.", cs = "Zdraví účastníci studií písemného vyjádření emocí." }
+caveat = { en = "One early synthesis with fixed-effects methods; the dissociation was measured across studies, not within individuals.", cs = "Jedna raná syntéza s metodami fixních efektů; oddělení obou měření bylo zjištěno napříč studiemi, nikoli u jednotlivců." }
+used_in = ["research/expressive-writing-evidence/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "session-end-feeling-weak-evidence-of-benefit"
+statement = { en = "This site reads the dissociation between immediate distress and later health outcomes as meaning that relief or discomfort at the end of a writing session is weak evidence of benefit; the inference is the site's interpretation and was not tested.", cs = "Tento web vykládá oddělení bezprostředního distresu od pozdějších zdravotních výsledků tak, že úleva nebo nepohodlí na konci sezení jsou slabým dokladem přínosu; jde o výklad tohoto webu, který nebyl testován." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "LOW"
+sources = ["smyth-1998"]
+scope = { en = "How readers should weigh how a writing session feels at its end.", cs = "Jak by čtenáři měli vážit to, jak se sezení psaní na konci cítí." }
+caveat = { en = "An interpretation reasoned from a study-level dissociation; no study tested end-of-session feeling as a predictor of benefit.", cs = "Výklad odvozený z oddělení na úrovni studií; žádná studie netestovala pocit na konci sezení jako prediktor přínosu." }
+used_in = ["research/expressive-writing-evidence/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "expressive-writing-limited-for-depression-and-youth"
+statement = { en = "Brief self-directed expressive writing had no significant long-term effect on depressive symptoms in healthy adults under stress, with larger effects for more sessions and specific topics, and had a small positive overall effect in adolescents.", cs = "Krátké, samostatně prováděné expresivní psaní nemělo u zdravých dospělých pod stresem žádný významný dlouhodobý účinek na depresivní příznaky, s většími účinky při více sezeních a konkrétních tématech, a u dospívajících mělo malý pozitivní celkový účinek." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["reinhold-2018", "travagin-2015"]
+scope = { en = "Randomised trials in physically healthy adults without PTSD and studies of youth aged 10 to 18.", cs = "Randomizované studie u tělesně zdravých dospělých bez PTSD a studie mládeže ve věku 10 až 18 let." }
+caveat = { en = "Moderator findings compare studies; the adolescent evidence was judged promising but not decisive.", cs = "Zjištění o moderátorech srovnávají studie; doklady u dospívajících byly hodnoceny jako slibné, ale nerozhodné." }
+used_in = ["research/expressive-writing-evidence/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "expressive-writing-ptsd-evidence-uncontrolled"
+statement = { en = "A meta-analysis of change within expressive writing conditions found small effects on posttraumatic stress and negligible to small effects on growth and quality of life; without control comparisons it cannot show that writing treats posttraumatic stress disorder.", cs = "Metaanalýza změny v podmínkách expresivního psaní zjistila malé účinky na posttraumatický stres a zanedbatelné až malé účinky na růst a kvalitu života; bez srovnání s kontrolou nemůže ukázat, že psaní léčí posttraumatickou stresovou poruchu." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "LOW"
+sources = ["pavlacic-2019"]
+scope = { en = "Experimental arms of studies measuring posttraumatic stress, growth and quality of life.", cs = "Experimentální ramena studií měřících posttraumatický stres, růst a kvalitu života." }
+caveat = { en = "Change within one arm includes natural recovery and regression to the mean.", cs = "Změna v rámci jednoho ramene zahrnuje přirozené zotavení i regresi k průměru." }
+used_in = ["research/expressive-writing-evidence/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "expressive-writing-mechanism-unclear"
+statement = { en = "Why written disclosure helps, and for whom, remains unclear; the features associated with benefit, such as writing about facts and feelings, specific topics and changes in causal and insight language, are more consistent with sense-making than with discharge.", cs = "Proč písemné sdělování pomáhá a komu, zůstává nejasné; rysy spojené s přínosem, jako je psaní o faktech i pocitech, konkrétní témata a změny v jazyce příčinnosti a vhledu, odpovídají spíše vytváření smyslu než vybití." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["sloan-marx-2004", "pennebaker-1997", "reinhold-2018"]
+scope = { en = "Theories of the written disclosure paradigm.", cs = "Teorie paradigmatu písemného sdělování." }
+caveat = { en = "An interpretation of converging findings; no single mechanism has been established.", cs = "Výklad sbíhajících se zjištění; žádný jednotlivý mechanismus nebyl doložen." }
+used_in = ["research/expressive-writing-evidence/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+# ── Rumination and repetitive thought ─────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "induced-rumination-impairs-problem-solving"
+statement = { en = "In experiments, dysphoric participants induced to ruminate made more negative interpretations and generated less effective solutions than those induced to distract, and in depressed patients concrete rather than abstract self-focus improved social problem solving.", cs = "V experimentech dysforičtí účastníci po navození ruminace vykládali situace negativněji a navrhovali méně účinná řešení než ti po navození rozptýlení a u pacientů s depresí zlepšilo řešení sociálních problémů konkrétní, nikoli abstraktní zaměření na sebe." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["lyubomirsky-nolen-hoeksema-1995", "watkins-moulds-2005"]
+scope = { en = "Brief laboratory inductions in dysphoric students and in depressed patients with controls.", cs = "Krátké laboratorní indukce u dysforických studentů a u pacientů s depresí s kontrolní skupinou." }
+caveat = { en = "Short-term outcomes in small samples; the effects of changing thinking mode in everyday life over weeks are not shown here.", cs = "Krátkodobé výsledky v malých vzorcích; účinky změny způsobu myšlení v každodenním životě v řádu týdnů zde doloženy nejsou." }
+used_in = ["research/rumination-and-repetitive-thought/index.md", "advice/interrupt-rumination-with-concrete-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "rumination-and-negative-affect-reciprocal"
+statement = { en = "In experience sampling, momentary rumination and negative affect predicted each other at the next occasion, and brooding but not reflective pondering was associated with higher negative affect.", cs = "Při výběru zkušeností se okamžitá ruminace a negativní afekt navzájem předpovídaly v dalším měření a s vyšším negativním afektem souviselo hloubání, nikoli reflektivní přemítání." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["moberly-watkins-2008"]
+scope = { en = "Adults sampled eight times a day for one week.", cs = "Dospělí dotazovaní osmkrát denně po dobu jednoho týdne." }
+caveat = { en = "A reciprocal association in observational data, not a demonstration of cause.", cs = "Vzájemná souvislost v observačních datech, nikoli doklad příčiny." }
+used_in = ["research/rumination-and-repetitive-thought/index.md", "advice/interrupt-rumination-with-concrete-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "rumination-feels-like-processing"
+statement = { en = "Unconstructive repetitive thought is easily mistaken for processing because it concerns the problem, uses abstract questions that feel deep, and has been modelled as a habit triggered by unresolved goals; processing tends to yield new information, a decision or an action, whereas rumination usually does not.", cs = "Nekonstruktivní opakující se myšlení se snadno plete se zpracováním, protože se týká problému, používá abstraktní otázky, které působí hluboce, a bylo modelováno jako návyk spouštěný nevyřešenými cíli; zpracování obvykle přináší novou informaci, rozhodnutí nebo čin, ruminace většinou ne." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "LOW"
+sources = ["watkins-2008", "watkins-roberts-2020"]
+scope = { en = "An interpretation of reviews and models of repetitive thought.", cs = "Výklad přehledů a modelů opakujícího se myšlení." }
+caveat = { en = "The subjective sense of processing was not measured in the cited sources; the habit model is a proposal.", cs = "Subjektivní pocit zpracování nebyl v citovaných zdrojích měřen; model návyku je návrhem." }
+used_in = ["research/rumination-and-repetitive-thought/index.md", "advice/interrupt-rumination-with-concrete-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "bounded-worry-period-reduces-worry"
+statement = { en = "In a preliminary randomised study of people with high trait worry, two weeks of a daily 30-minute time- and place-restricted worry period reduced worry, anxiety, negative affect and insomnia more than a control condition, but not depression or positive affect.", cs = "V předběžné randomizované studii u lidí s vysokým sklonem k obavám snížily dva týdny každodenního třicetiminutového období obav omezeného časem a místem obavy, úzkost, negativní afekt a nespavost více než kontrolní podmínka, nikoli však depresi nebo pozitivní afekt." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "LOW"
+sources = ["mcgowan-behar-2013"]
+scope = { en = "53 adults with high trait worry over two weeks.", cs = "53 dospělých s vysokým sklonem k obavám po dobu dvou týdnů." }
+caveat = { en = "Small, preliminary and short; it concerns worry rather than rumination about past events.", cs = "Malá, předběžná a krátká studie; týká se obav, nikoli ruminace o minulých událostech." }
+used_in = ["research/rumination-and-repetitive-thought/index.md", "advice/interrupt-rumination-with-concrete-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "rumination-focused-therapy-trial"
+statement = { en = "Adding rumination-focused cognitive-behavioural therapy to usual treatment improved residual depressive symptoms and remission in a small randomised trial, with effects mediated by change in rumination.", cs = "Přidání kognitivně-behaviorální terapie zaměřené na ruminaci k běžné léčbě zlepšilo v malé randomizované studii reziduální depresivní příznaky a remisi, přičemž účinky byly zprostředkovány změnou ruminace." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "LOW"
+sources = ["watkins-2011"]
+scope = { en = "42 adults with medication-refractory residual depression.", cs = "42 dospělých s reziduální depresí nereagující na medikaci." }
+caveat = { en = "A phase II trial without an attentional control, so specific and non-specific therapy effects cannot be separated; a clinical treatment, not self-help.", cs = "Studie fáze II bez kontroly pozornosti, takže specifické a nespecifické účinky terapie nelze oddělit; jde o klinickou léčbu, nikoli svépomoc." }
+used_in = ["research/rumination-and-repetitive-thought/index.md", "advice/interrupt-rumination-with-concrete-steps/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "cathartic-discharge-model-historical"
+statement = { en = "The cathartic method rested on a discharge model in which affect attached to a memory maintained symptoms until it was expressed; this model is a historical theory, not an empirically established mechanism.", cs = "Katarzní metoda stála na modelu výboje, podle něhož afekt vázaný na vzpomínku udržoval příznaky, dokud nebyl vyjádřen; tento model je historická teorie, nikoli empiricky doložený mechanismus." }
+claim_type = "historical"
+evidence_level = "E"
+confidence = "MODERATE"
+sources = ["breuer-freud-1895"]
+scope = { en = "The theoretical assumptions of the cathartic method as described in Studies on Hysteria.", cs = "Teoretické předpoklady katarzní metody, jak je popisují Studie o hysterii." }
+caveat = { en = "Reconstructions of Breuer and Freud's model vary, and the uncontrolled case reports cannot show whether abreaction caused any improvement.", cs = "Rekonstrukce modelu Breuera a Freuda se liší a nekontrolované kazuistiky nemohou ukázat, zda abreakce nějaké zlepšení způsobila." }
+used_in = ["theory/catharsis-theories/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "catharsis-hypothesis-not-supported-for-anger"
+statement = { en = "When catharsis is operationalised as venting anger or engaging in arousing activity, controlled studies do not support the prediction that expression reduces anger or aggression; arousal-decreasing activities show better support.", cs = "Pokud je katarze operacionalizována jako ventilace hněvu nebo vzrušující aktivita, kontrolované studie nepodporují předpověď, že vyjádření hněv či agresi sníží; lépe podložené jsou aktivity snižující vzrušení." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["bushman-2002", "kjaervik-bushman-2024"]
+scope = { en = "Anger and aggression, mostly in laboratory studies with student samples.", cs = "Hněv a agrese, převážně v laboratorních studiích se studentskými vzorky." }
+caveat = { en = "The findings concern anger; they do not show that every form of expression is unhelpful for every emotion, and arousal-increasing studies were heterogeneous.", cs = "Zjištění se týkají hněvu; neukazují, že by každá forma vyjádření byla neužitečná pro každou emoci, a studie aktivit zvyšujících vzrušení byly heterogenní." }
+used_in = ["theory/catharsis-theories/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "expression-benefit-tied-to-processing"
+statement = { en = "Where expressing or sharing an emotion has been followed by measurable benefit, the evidence suggests the benefit is tied to cognitive processing of the experience rather than to discharge alone.", cs = "Tam, kde po vyjádření nebo sdílení emoce následoval měřitelný přínos, doklady naznačují, že přínos souvisí s kognitivním zpracováním zážitku, nikoli se samotným výbojem." }
+claim_type = "theoretical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["pennebaker-1997", "nils-rime-2012", "rime-1998"]
+scope = { en = "Expressive writing and laboratory studies of social sharing in non-clinical samples.", cs = "Expresivní psaní a laboratorní studie sociálního sdílení v neklinických vzorcích." }
+caveat = { en = "A small number of studies isolate processing from expression directly, and the interpretation is contested for some populations and outcomes.", cs = "Zpracování od vyjádření přímo odděluje jen malý počet studií a u některých populací a výsledků je interpretace sporná." }
+used_in = ["theory/catharsis-theories/index.md", "theory/social-sharing-of-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+# ── Theory 02: process model of emotion regulation ────────────────────────────────────────────────
+
+[[claims]]
+id = "process-model-strategy-families"
+statement = { en = "The process model of emotion regulation groups strategies into situation selection, situation modification, attentional deployment, cognitive change and response modulation according to the point in emotion generation at which they act; the extended process model adds identification, selection and implementation stages.", cs = "Procesní model regulace emocí řadí strategie do výběru situace, úpravy situace, zaměření pozornosti, kognitivní změny a modulace odpovědi podle toho, v kterém bodě vzniku emoce působí; rozšířený procesní model přidává fáze identifikace, výběru a provedení." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["gross-1998", "gross-2015"]
+scope = { en = "The structure of the model as stated by its author.", cs = "Struktura modelu, jak ji formuloval jeho autor." }
+caveat = { en = "The model is a heuristic framework; the families overlap in practice, and it is one of several ways to classify regulation.", cs = "Model je heuristický rámec; rodiny strategií se v praxi překrývají a jde o jeden z několika způsobů, jak regulaci třídit." }
+used_in = ["theory/process-model-of-emotion-regulation/index.md", "theory/appraisal-theories/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "strategy-effects-differ-by-family"
+statement = { en = "Strategy families differ in effect: in a meta-analysis of experiments, cognitive change had a small-to-medium effect, distraction was effective, concentrating on feelings was not, and suppressing emotional experience was ineffective; in laboratory choice studies people relatively preferred reappraisal at low and distraction at high negative intensity.", cs = "Rodiny strategií se liší účinkem: v metaanalýze experimentů měla kognitivní změna malý až střední účinek, rozptýlení bylo účinné, soustředění na pocity nikoli a potlačování prožitku emoce bylo neúčinné; v laboratorních studiích volby lidé při nízké negativní intenzitě relativně častěji volili přehodnocení a při vysoké rozptýlení." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["webb-2012", "sheppes-2011"]
+scope = { en = "Short laboratory emotion inductions in mostly healthy adult samples.", cs = "Krátké laboratorní indukce emocí u převážně zdravých dospělých." }
+caveat = { en = "Effects vary with moderators and may not transfer to prolonged real-life stressors; distraction that is effective in the moment is not necessarily adaptive over time.", cs = "Účinky se mění podle moderátorů a nemusí se přenášet na dlouhodobé stresory v reálném životě; rozptýlení účinné v daném okamžiku nemusí být adaptivní z dlouhodobého hlediska." }
+used_in = ["theory/process-model-of-emotion-regulation/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "venting-located-in-process-model"
+statement = { en = "Read through the process model, venting combines response modulation (acting on expression once an emotion is under way) with attentional deployment towards the cause and the feeling, whereas reappraisal is cognitive change; this placement is an interpretation by this site.", cs = "Z pohledu procesního modelu kombinuje ventilace modulaci odpovědi (působení na projev, když už emoce probíhá) se zaměřením pozornosti na příčinu a pocit, zatímco přehodnocení je kognitivní změna; toto zařazení je interpretací tohoto webu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["gross-1998", "gross-2015", "webb-2012"]
+scope = { en = "A conceptual classification used to connect the venting literature with the process model.", cs = "Koncepční zařazení, které propojuje literaturu o ventilaci s procesním modelem." }
+caveat = { en = "The cited authors do not classify venting in these words; forms of venting that include reflection also involve cognitive change.", cs = "Citovaní autoři ventilaci takto výslovně nezařazují; formy ventilace, které zahrnují reflexi, zahrnují i kognitivní změnu." }
+used_in = ["theory/process-model-of-emotion-regulation/index.md", "theory/catharsis-theories/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "generation-regulation-distinction-contested"
+statement = { en = "Whether emotion generation and emotion regulation can be usefully distinguished depends on one's theory of emotion, and the distinction is contested between modal and constructionist perspectives.", cs = "Zda lze vznik emoce a její regulaci užitečně rozlišit, závisí na teorii emocí, kterou člověk zastává, a toto rozlišení je mezi modálním a konstrukcionistickým pohledem sporné." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["gross-barrett-2011"]
+scope = { en = "Theoretical debate in emotion science.", cs = "Teoretická debata ve vědě o emocích." }
+caveat = { en = "The debate is about conceptual framing; it does not by itself invalidate experimental findings on regulation strategies.", cs = "Debata se týká koncepčního rámce; sama o sobě nezpochybňuje experimentální zjištění o regulačních strategiích." }
+used_in = ["theory/process-model-of-emotion-regulation/index.md", "theory/basic-and-constructed-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+# ── Theory 03: appraisal theories ─────────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "appraisal-theory-premise"
+statement = { en = "Appraisal theories share the premise that emotions are elicited and differentiated by evaluations of what an event means for a person's well-being and concerns, and they form a family of related theories rather than one model.", cs = "Teorie hodnocení sdílejí předpoklad, že emoce vznikají a navzájem se odlišují na základě hodnocení toho, co událost znamená pro blaho a zájmy člověka, a tvoří rodinu příbuzných teorií, nikoli jeden model." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["moors-2013", "lazarus-1991", "lazarus-folkman-1984"]
+scope = { en = "The shared premises of appraisal theories as described by their proponents.", cs = "Společné předpoklady teorií hodnocení, jak je popisují jejich zastánci." }
+caveat = { en = "Variants differ in the number and order of appraisal dimensions and in how automatic appraisal is assumed to be.", cs = "Varianty se liší počtem a pořadím hodnoticích dimenzí i tím, nakolik automatické hodnocení předpokládají." }
+used_in = ["theory/appraisal-theories/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "component-process-model-architecture"
+statement = { en = "The component process model describes emotion as a dynamic process in which a sequence of appraisal checks drives changes in motivation, physiology and expression, with feeling and verbal labelling as later components.", cs = "Model komponentních procesů popisuje emoci jako dynamický proces, v němž sled hodnoticích kontrol vyvolává změny motivace, fyziologie a výrazu, přičemž prožitek a slovní pojmenování jsou pozdějšími složkami." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["scherer-2009", "scherer-moors-2019"]
+scope = { en = "The model's architecture as stated by its author and collaborators.", cs = "Architektura modelu, jak ji formuloval autor a jeho spolupracovníci." }
+caveat = { en = "Support for the proposed sequence and synchronisation of components comes largely from the model's proponents, and critics dispute that appraisal precedes and causes the other components.", cs = "Podpora navrženého sledu a synchronizace složek pochází převážně od zastánců modelu a kritici zpochybňují, že hodnocení ostatním složkám předchází a způsobuje je." }
+used_in = ["theory/appraisal-theories/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "reappraisal-targets-appraisal"
+statement = { en = "Reappraisal is defined as changing the appraisal of a situation or of one's goals, and instructed cognitive change reliably shifts emotional outcomes; whether its effects run specifically through changed appraisals is less directly tested.", cs = "Přehodnocení je definováno jako změna hodnocení situace nebo vlastních cílů a instruovaná kognitivní změna spolehlivě posouvá emoční výsledky; zda její účinky vedou specificky přes změněná hodnocení, je testováno méně přímo." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["webb-2012", "uusberg-2023", "gross-2015"]
+scope = { en = "The conceptual link between appraisal theory and reappraisal research.", cs = "Koncepční vazba mezi teorií hodnocení a výzkumem přehodnocení." }
+caveat = { en = "Graded as theory because the mechanism, not the effect, is the claim; the effect itself is supported by meta-analytic experimental evidence.", cs = "Hodnoceno jako teorie, protože tvrzením je mechanismus, nikoli účinek; samotný účinek podporují metaanalytické experimentální doklady." }
+used_in = ["theory/appraisal-theories/index.md", "theory/process-model-of-emotion-regulation/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "appraisal-causality-contested"
+statement = { en = "Critics, including constructionist theorists, contest whether appraisals cause emotions or are part of how emotional episodes are described and categorised, and this question remains open.", cs = "Kritici, včetně konstrukcionistických teoretiků, zpochybňují, zda hodnocení emoce způsobuje, nebo je součástí toho, jak jsou emoční epizody popisovány a kategorizovány, a tato otázka zůstává otevřená." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["moors-2013", "russell-2003", "barrett-2016"]
+scope = { en = "Theoretical debate about the causal status of appraisal.", cs = "Teoretická debata o kauzálním statusu hodnocení." }
+caveat = { en = "Positions differ in degree; many constructionist accounts retain a role for meaning-making that resembles appraisal.", cs = "Stanoviska se liší mírou; řada konstrukcionistických výkladů si zachovává roli vytváření významu, která hodnocení připomíná." }
+used_in = ["theory/appraisal-theories/index.md", "theory/basic-and-constructed-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+# ── Theory 04: basic and constructed emotion ──────────────────────────────────────────────────────
+
+[[claims]]
+id = "basic-emotion-theory-position"
+statement = { en = "Basic emotion theory holds that a set of emotions evolved as distinct families with characteristic signals, physiology and antecedent events; recent versions describe more than 20 emotions expressed in multimodal, dynamic patterns and acknowledge contextual influence.", cs = "Teorie základních emocí tvrdí, že určitá sada emocí se vyvinula jako odlišné rodiny s typickými signály, fyziologií a spouštěči; novější verze popisují více než 20 emocí vyjadřovaných multimodálními, dynamickými vzorci a uznávají vliv kontextu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["ekman-1992", "ekman-cordaro-2011", "keltner-2019"]
+scope = { en = "The position as stated by its proponents.", cs = "Stanovisko, jak ho formulují jeho zastánci." }
+caveat = { en = "The theory has changed over time, so criticisms of early versions do not always apply to current ones.", cs = "Teorie se v čase proměňovala, takže kritika raných verzí se ne vždy vztahuje na současné." }
+used_in = ["theory/basic-and-constructed-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "constructed-emotion-theory-position"
+statement = { en = "The theory of constructed emotion proposes that emotion categories are not triggered programmes but are constructed, in the moment, from predictions based on interoception, past experience and concepts; it builds on the idea of core affect.", cs = "Teorie konstruovaných emocí navrhuje, že kategorie emocí nejsou spouštěné programy, ale vznikají v daném okamžiku z predikcí založených na interocepci, minulé zkušenosti a pojmech; navazuje na představu jádrového afektu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["barrett-2016", "russell-2003"]
+scope = { en = "The position as stated by its proponents.", cs = "Stanovisko, jak ho formulují jeho zastánci." }
+caveat = { en = "Its predictive-processing account is broad and some critics argue it is hard to falsify.", cs = "Její výklad založený na prediktivním zpracování je široký a někteří kritici namítají, že je obtížně falzifikovatelný." }
+used_in = ["theory/basic-and-constructed-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "no-consistent-category-signature"
+statement = { en = "Meta-analyses found little evidence that discrete emotion categories map consistently and specifically onto distinct brain regions or autonomic response patterns; an earlier review, a partial counterpoint, reported considerable autonomic specificity when emotion subtypes are considered.", cs = "Metaanalýzy našly jen málo dokladů, že by jednotlivé kategorie emocí konzistentně a specificky odpovídaly odlišným oblastem mozku nebo vzorcům autonomních odpovědí; dřívější přehled, který je částečnou protiváhou, uváděl značnou autonomní specifičnost při zohlednění podtypů emocí." }
+claim_type = "empirical"
+evidence_level = "A"
+confidence = "MODERATE"
+sources = ["siegel-2018", "lindquist-2012", "kreibig-2010"]
+scope = { en = "Laboratory neuroimaging and psychophysiology studies of emotion categories.", cs = "Laboratorní neurozobrazovací a psychofyziologické studie kategorií emocí." }
+caveat = { en = "Absence of a consistent signature across studies does not show that categories are unreal; multivariate methods and different inductions may yield different patterns.", cs = "Chybějící konzistentní otisk napříč studiemi neukazuje, že kategorie nejsou skutečné; vícerozměrné metody a jiné indukce mohou přinést jiné vzorce." }
+used_in = ["theory/basic-and-constructed-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "self-report-categories-gradients"
+statement = { en = "In one large self-report study, experiences elicited by 2,185 short videos were best described by 27 categories whose boundaries were fuzzy and linked by smooth gradients.", cs = "V jedné rozsáhlé studii sebeposouzení byly prožitky vyvolané 2 185 krátkými videi nejlépe popsány 27 kategoriemi, jejichž hranice byly neostré a propojené plynulými přechody." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["cowen-keltner-2017"]
+scope = { en = "Structure of reported experience in response to short videos, in online samples.", cs = "Struktura hlášeného prožitku v reakci na krátká videa v online vzorcích." }
+caveat = { en = "The number of categories depends on stimuli and analysis, and the result has been disputed by constructionist commentators.", cs = "Počet kategorií závisí na podnětech a analýze a výsledek zpochybnili konstrukcionističtí komentátoři." }
+used_in = ["theory/basic-and-constructed-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Theory 05: social sharing of emotion ──────────────────────────────────────────────────────────
+
+[[claims]]
+id = "sharing-reactivates-and-bonds"
+statement = { en = "Rimé's account proposes that sharing an emotion reactivates emotional arousal in speaker and listener, strengthens social bonds and propagates through secondary sharing, contributing to collective emotional climates.", cs = "Rimého výklad navrhuje, že sdílení emoce znovu aktivuje emoční vzrušení u mluvčího i posluchače, posiluje sociální vazby a šíří se dalším sdílením, čímž přispívá ke kolektivnímu emočnímu klimatu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["rime-2007", "rime-2009"]
+scope = { en = "A theoretical account illustrated with findings from the author's research programme.", cs = "Teoretický výklad ilustrovaný zjištěními z autorova výzkumného programu." }
+caveat = { en = "The collective predictions (emotional climate, collective memory) are less directly tested than the individual findings.", cs = "Kolektivní předpovědi (emoční klima, kolektivní paměť) jsou testovány méně přímo než individuální zjištění." }
+used_in = ["theory/social-sharing-of-emotion/index.md", "theory/collective-emotion-and-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "sharing-mode-determines-recovery"
+statement = { en = "In a laboratory experiment, emotional recovery after an aversive film occurred only when the listener stimulated cognitive work, while empathic responses produced social integration and a sense of feeling better; in experience-sampling studies sharing was associated with shorter emotion episodes but not with lower residual intensity three days later.", cs = "V laboratorním experimentu nastalo emoční zotavení po averzivním filmu jen tehdy, když posluchač podněcoval kognitivní zpracování, zatímco empatické odpovědi přinesly sociální začlenění a pocit, že je lépe; ve studiích se vzorkováním zážitků (experience sampling) bylo sdílení spojeno s kratšími emočními epizodami, nikoli však s nižší zbytkovou intenzitou po třech dnech." }
+claim_type = "empirical"
+evidence_level = "B"
+confidence = "MODERATE"
+sources = ["nils-rime-2012", "brans-2013", "zech-rime-2005", "rime-1998"]
+scope = { en = "Non-clinical adults; film stimuli in the laboratory and everyday anger, fear and sadness in experience sampling.", cs = "Nekliničtí dospělí; filmové podněty v laboratoři a každodenní hněv, strach a smutek ve vzorkování zážitků." }
+caveat = { en = "Few experiments manipulate the listener's response mode, and effects on severe or traumatic experiences were not studied here.", cs = "Způsob odpovědi posluchače manipuluje jen málo experimentů a účinky na závažné nebo traumatické zážitky zde zkoumány nebyly." }
+used_in = ["theory/social-sharing-of-emotion/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Theory 06: learning, avoidance and relief ─────────────────────────────────────────────────────
+
+[[claims]]
+id = "avoidance-maintained-by-relief"
+statement = { en = "Two-factor and later theories of avoidance learning propose that avoidance is acquired through fear learning and maintained because it ends or prevents an aversive state, which also prevents the learning that the feared outcome would not have occurred.", cs = "Dvoufaktorová teorie a pozdější teorie učení vyhýbání navrhují, že vyhýbání vzniká učením strachu a udržuje se, protože averzivní stav ukončuje nebo mu předchází, čímž zároveň brání naučit se, že obávaný následek by nenastal." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["mowrer-1951", "krypotos-2015"]
+scope = { en = "Learning theories grounded mainly in laboratory fear-conditioning research.", cs = "Teorie učení založené převážně na laboratorním výzkumu podmiňování strachu." }
+caveat = { en = "Contemporary models add cognitive and goal-directed processes, and not all avoidance is maladaptive.", cs = "Současné modely přidávají kognitivní a na cíl zaměřené procesy a ne každé vyhýbání je maladaptivní." }
+used_in = ["theory/learning-avoidance-and-relief/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "experiential-avoidance-construct-limits"
+statement = { en = "Experiential avoidance, the unwillingness to stay in contact with painful thoughts and feelings, has been associated with various forms of psychopathology, but the construct lacks theoretical integration and consistent measurement.", cs = "Zážitkové vyhýbání, tedy neochota zůstat v kontaktu s bolestnými myšlenkami a pocity, bylo spojováno s různými formami psychopatologie, ale konstruktu chybí teoretická integrace a konzistentní měření." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["hayes-1996", "chawla-ostafin-2007"]
+scope = { en = "Clinical research on experiential avoidance, mostly correlational.", cs = "Klinický výzkum zážitkového vyhýbání, převážně korelační." }
+caveat = { en = "Associations do not establish that avoidance causes difficulties; the construct may overlap with neuroticism and distress.", cs = "Souvislosti neprokazují, že vyhýbání obtíže způsobuje; konstrukt se může překrývat s neuroticismem a distresem." }
+used_in = ["theory/learning-avoidance-and-relief/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "inhibitory-learning-and-safety-behaviour"
+statement = { en = "Inhibitory learning accounts propose that exposure works by building new learning that competes with fear, recommend reducing safety signals, and note that many people do not benefit or experience a return of fear; other authors argue that avoidance can be adaptive depending on its function.", cs = "Výklady založené na inhibičním učení navrhují, že expozice působí vytvářením nového učení, které konkuruje strachu, doporučují omezovat bezpečnostní signály a upozorňují, že řada lidí neprofituje nebo se u nich strach vrací; jiní autoři tvrdí, že vyhýbání může být podle své funkce adaptivní." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["craske-2014", "hofmann-hay-2018", "foa-kozak-1986"]
+scope = { en = "Theory of exposure-based treatment for anxiety-related difficulties.", cs = "Teorie expoziční léčby obtíží souvisejících s úzkostí." }
+caveat = { en = "These are treatment principles delivered by clinicians; they are not self-help instructions, and the site does not recommend unsupervised exposure.", cs = "Jde o léčebné principy uplatňované klinickými odborníky; nejsou to svépomocné pokyny a web nedoporučuje expozici bez odborného vedení." }
+used_in = ["theory/learning-avoidance-and-relief/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+# ── Theory 07: allostasis and stress ──────────────────────────────────────────────────────────────
+
+[[claims]]
+id = "allostasis-predictive-regulation"
+statement = { en = "Allostasis, a term introduced by Sterling and Eyer, describes physiological regulation that anticipates demands and changes set points rather than holding them constant; allostatic load names the cumulative cost of repeated or chronic activation.", cs = "Alostáza, pojem zavedený Sterlingem a Eyerem, popisuje fyziologickou regulaci, která předjímá nároky a mění nastavené hodnoty, místo aby je udržovala konstantní; alostatická zátěž označuje kumulativní cenu opakované nebo chronické aktivace." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["sterling-eyer-1988", "sterling-2012", "mcewen-stellar-1993", "mcewen-1998"]
+scope = { en = "The concepts as defined by their originators.", cs = "Pojmy, jak je vymezili jejich autoři." }
+caveat = { en = "The definitions are theoretical and their contrast with homeostasis is disputed.", cs = "Definice jsou teoretické a jejich kontrast s homeostázou je sporný." }
+used_in = ["theory/allostasis-and-stress/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "allostatic-load-indices-prediction"
+statement = { en = "Studies using multisystem allostatic load indices have reported prediction of morbidity and mortality beyond traditional clinical measures.", cs = "Studie používající indexy alostatické zátěže kombinující více fyziologických systémů uváděly predikci nemocnosti a úmrtnosti nad rámec tradičních klinických ukazatelů." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "LOW"
+sources = ["juster-2010"]
+scope = { en = "Observational cohort studies summarised in a narrative review.", cs = "Observační kohortové studie shrnuté v narativním přehledu." }
+caveat = { en = "Indices are built from different biomarkers in different studies, the review is not systematic, and prediction is not evidence of mechanism.", cs = "Indexy se v různých studiích skládají z různých biomarkerů, přehled není systematický a predikce není dokladem mechanismu." }
+used_in = ["theory/allostasis-and-stress/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "allostasis-concept-contested"
+statement = { en = "The concepts of allostasis and allostatic load have been criticised as adding little to an accurate understanding of homeostasis and as blurring the definition of stress.", cs = "Pojmy alostáza a alostatická zátěž byly kritizovány, že oproti přesnému pochopení homeostázy přinášejí málo nového a že rozmazávají vymezení stresu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "HIGH"
+sources = ["day-2005"]
+scope = { en = "Conceptual debate in stress physiology.", cs = "Koncepční debata ve fyziologii stresu." }
+caveat = { en = "The claim is that a critique exists and what it argues, not that the critique is correct.", cs = "Tvrzení říká, že kritika existuje a co tvrdí, nikoli že je správná." }
+used_in = ["theory/allostasis-and-stress/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "recovery-and-perseverative-cognition"
+statement = { en = "Stress research has often measured reactivity without reporting recovery, and worry and rumination are associated with prolonged cardiovascular, endocrine and immune activation beyond the stressor itself.", cs = "Výzkum stresu často měřil reaktivitu, aniž by uváděl zotavení, a obavy a ruminace jsou spojeny s prodlouženou kardiovaskulární, endokrinní a imunitní aktivací přesahující samotný stresor." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["linden-1997", "brosschot-2006"]
+scope = { en = "Laboratory and ambulatory psychophysiology in mostly healthy adults.", cs = "Laboratorní a ambulantní psychofyziologie u převážně zdravých dospělých." }
+caveat = { en = "The perseverative cognition hypothesis was described by its authors as having preliminary support; associations do not establish effects on disease.", cs = "Hypotézu perseverativní kognice označili její autoři za předběžně podpořenou; souvislosti neprokazují účinky na nemoc." }
+used_in = ["theory/allostasis-and-stress/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+# ── Theory 08: collective emotion and ritual ──────────────────────────────────────────────────────
+
+[[claims]]
+id = "collective-gatherings-perceived-synchrony"
+statement = { en = "Studies of marches and demonstrations found participation associated with stronger collective identity, social integration, efficacy and positive affect, mediated by perceived emotional synchrony, consistent with Durkheim's prediction of collective effervescence.", cs = "Studie průvodů a demonstrací zjistily, že účast souvisela se silnější kolektivní identitou, sociálním začleněním, účinností a pozitivním afektem, zprostředkovanými vnímanou emoční synchronií, což odpovídá Durkheimově předpovědi kolektivní efervescence." }
+claim_type = "empirical"
+evidence_level = "C"
+confidence = "MODERATE"
+sources = ["paez-2015", "pizarro-2022", "durkheim-1912"]
+scope = { en = "Participants in collective gatherings, measured during or shortly after the event.", cs = "Účastníci kolektivních setkání, měření během akce nebo krátce po ní." }
+caveat = { en = "Most designs are correlational; people who choose to attend may differ from those who do not, and long-term effects are not established.", cs = "Většina designů je korelačních; lidé, kteří se rozhodnou přijít, se mohou lišit od těch, kteří nepřijdou, a dlouhodobé účinky nejsou doloženy." }
+used_in = ["theory/collective-emotion-and-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
+
+[[claims]]
+id = "ritual-regulatory-functions"
+statement = { en = "Sociological and psychological theories propose that rituals generate shared emotional energy and group symbols and regulate emotions, performance states and social connection through their physical form and their meaning.", cs = "Sociologické a psychologické teorie navrhují, že rituály vytvářejí sdílenou emoční energii a skupinové symboly a regulují emoce, výkonové stavy a sociální propojení prostřednictvím své fyzické podoby i svého významu." }
+claim_type = "theoretical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["collins-2004", "hobson-2018", "durkheim-1912"]
+scope = { en = "Theoretical frameworks for ritual across sociology and psychology.", cs = "Teoretické rámce rituálu napříč sociologií a psychologií." }
+caveat = { en = "The frameworks generate predictions; many are tested only in short laboratory or single-site field studies.", cs = "Rámce generují předpovědi; řada z nich je testována jen v krátkých laboratorních studiích nebo terénních studiích na jednom místě." }
+used_in = ["theory/collective-emotion-and-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2028-09-13
+
+[[claims]]
+id = "ritual-synchronized-arousal-field"
+statement = { en = "In a field study of 38 people at a fire-walking ritual, heart-rate dynamics showed fine-grained commonalities between fire-walkers and related spectators but not unrelated spectators.", cs = "V terénní studii 38 osob na rituálu chůze po žhavém uhlí vykazovala dynamika srdeční frekvence jemné shody mezi chodci a příbuznými diváky, nikoli však mezi chodci a nepříbuznými diváky." }
+claim_type = "empirical"
+evidence_level = "D"
+confidence = "MODERATE"
+sources = ["konvalinka-2011"]
+scope = { en = "One ritual in one community, measured during the event.", cs = "Jeden rituál v jedné komunitě, měřeno během akce." }
+caveat = { en = "Shared arousal is a physiological association; it does not show shared feeling, wellbeing or any later change.", cs = "Sdílené vzrušení je fyziologická souvislost; neukazuje sdílený prožitek, pohodu ani žádnou pozdější změnu." }
+used_in = ["theory/collective-emotion-and-ritual/index.md"]
+last_reviewed = 2026-09-14
+review_due = 2027-09-14
