@@ -30,10 +30,10 @@
     "render:artwork": "scripts/render-artwork.sh"
   },
   "devDependencies": {
-    "@playwright/test": "1.63.0",
-    "@tailwindcss/cli": "4.3.3",
-    "alpinejs": "3.17.2",
+    "@playwright/test": "1.65.0",
+    "@tailwindcss/cli": "4.3.5",
+    "alpinejs": "3.17.5",
     "flowbite": "4.0.2",
-    "tailwindcss": "4.3.3"
+    "tailwindcss": "4.3.5"
   }
 }
